@@ -1,0 +1,209 @@
+
+package services;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Random;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.WarnoteRepository;
+import domain.Manager;
+import domain.Trip;
+import domain.Warnote;
+
+@Service
+@Transactional
+public class WarnoteService {
+
+	// Managed Repository
+	@Autowired
+	private WarnoteRepository		warnoteRepository;
+
+	// Supporting services
+
+	@Autowired
+	private ManagerService			managerService;
+	/**
+	 * @Autowired
+	 *            private TripService tripService;
+	 **/
+	@Autowired
+	private CustomisationService	customisationService;
+
+
+	// Constructors
+	public WarnoteService() {
+		super();
+	}
+
+	// Additional functions
+	private String generateTicker() {
+		String result;
+		final Calendar now = Calendar.getInstance();
+		String year = String.valueOf(now.get(Calendar.YEAR));
+		year = year.substring(year.length() - 2, year.length());
+		String month = String.valueOf(now.get(Calendar.MONTH) + 1);
+		month = month.length() == 1 ? "0".concat(month) : month;
+		String date = String.valueOf(now.get(Calendar.DATE));
+		date = date.length() == 1 ? "0".concat(date) : date;
+		final Random r = new Random();
+		final char a = (char) (r.nextInt(26) + 'A');
+		final char b = (char) (r.nextInt(26) + 'A');
+		final char c = (char) (r.nextInt(26) + 'A');
+		final char d = (char) (r.nextInt(26) + 'A');
+		final String code = String.valueOf(a) + String.valueOf(b) + String.valueOf(c) + String.valueOf(d);
+		result = code + "-" + date + month + year;
+		return result;
+	}
+
+	// Simple CRUD methods
+
+	public Warnote create() {
+		Manager principal;
+		Warnote result;
+
+		principal = this.managerService.findByPrincipal();
+		Assert.notNull(principal);
+		result = new Warnote();
+		result.setManager(principal);
+		result.setCode(this.generateTicker());
+		return result;
+	}
+
+	public Warnote save(final Warnote warnote) {
+		Warnote result;
+		Manager principal;
+		//Date moment;
+		Trip trip;
+		String code, descripcion;
+		Collection<Warnote> warnotes, updated;
+		Collection<String> spamwords;
+
+		Assert.notNull(warnote);
+
+		code = warnote.getCode();
+		Assert.notNull(code);
+
+		descripcion = warnote.getDescripcion();
+		Assert.notNull(descripcion);
+
+		principal = this.managerService.findByPrincipal();
+
+		Assert.notNull(principal);
+
+		trip = warnote.getTrip();
+		Assert.notNull(trip);
+
+		result = this.warnoteRepository.save(warnote);
+
+		spamwords = this.customisationService.find().getSpamWords();
+		for (final String spamword : spamwords)
+			if (result.getDescripcion().toLowerCase().contains(spamword.toLowerCase()) || result.getTitulo().toLowerCase().contains(spamword.toLowerCase())) {
+				principal.setIsSuspicious(true);
+				break;
+			}
+
+		Assert.notNull(result);
+
+		//respecto a manager(principal)
+		warnotes = principal.getWarnotes();
+		updated = new ArrayList<Warnote>(warnotes);
+		updated.add(result);
+		principal.setWarnotes(updated);
+		//respecto a trip
+		warnotes = trip.getWarnotes();
+		updated = new ArrayList<Warnote>(warnotes);
+		updated.add(result);
+		trip.setWarnotes(updated);
+
+		return result;
+
+	}
+
+	public Warnote findOne(final int id) {
+		Warnote result;
+		result = this.warnoteRepository.findOne(id);
+		return result;
+	}
+
+	public Collection<Warnote> findByManager() {
+		final Collection<Warnote> result;
+		Manager principal;
+
+		principal = this.managerService.findByPrincipal();
+		Assert.notNull(principal);
+		result = this.warnoteRepository.findByManager(principal.getId());
+		Assert.notNull(result);
+		return result;
+
+	}
+
+	public Collection<Warnote> findAll() {
+		Collection<Warnote> result;
+		Manager principal;
+
+		principal = this.managerService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.warnoteRepository.findAll();
+
+		return result;
+	}
+
+	public Collection<Warnote> findWarnotesByDate() {
+		Collection<Warnote> result;
+
+		final Date date = new Date();
+		result = this.warnoteRepository.findWarnotesByDate(date);
+
+		return result;
+	}
+
+	public void delete(final Warnote warnote) {
+		Manager principal;
+		Collection<Warnote> warnotes, updated;
+		Trip trip;
+
+		Assert.notNull(warnote);
+		Assert.isTrue(warnote.getId() != 0);
+
+		principal = this.managerService.findByPrincipal();
+
+		trip = warnote.getTrip();
+
+		Assert.notNull(principal);
+
+		this.warnoteRepository.delete(warnote);
+
+		//respecto a manager(principal)
+		warnotes = principal.getWarnotes();
+		updated = new ArrayList<Warnote>(warnotes);
+		updated.remove(warnote);
+		principal.setWarnotes(updated);
+		//respecto a trip
+		warnotes = trip.getWarnotes();
+		updated = new ArrayList<Warnote>(warnotes);
+		updated.remove(warnote);
+		trip.setWarnotes(updated);
+	}
+
+	public Collection<Warnote> findByTripId(final int tripId) {
+		final Collection<Warnote> result;
+		Manager principal;
+
+		principal = this.managerService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.warnoteRepository.findByTripId(tripId);
+		Assert.notNull(result);
+
+		return result;
+
+	}
+}
