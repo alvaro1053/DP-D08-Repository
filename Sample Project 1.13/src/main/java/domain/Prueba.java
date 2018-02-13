@@ -9,5 +9,7 @@ public class Prueba extends DomainEntity {
 	int		Hola;
 
 	String	segundaPrueba;
+	
+	double pruebaTres;
 
 }
