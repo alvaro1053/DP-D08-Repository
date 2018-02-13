@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 @Entity
 public class Prueba extends DomainEntity {
 
-	int		Hola;
-
-	String	segundaPrueba;
+	int	Hola;
 
 }
