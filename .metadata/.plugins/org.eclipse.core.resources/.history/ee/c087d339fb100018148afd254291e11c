@@ -13,9 +13,7 @@ public class Prueba extends DomainEntity {
 	double	pruebaTres;
 
 	String	heheHolaquetal;
-
-	String	noEtaBuenoLoCambio;
-
-	String	siVerEstoEstoyLlorando;
+	
+String	noEtaBuenoLoCambio;
 
 }
