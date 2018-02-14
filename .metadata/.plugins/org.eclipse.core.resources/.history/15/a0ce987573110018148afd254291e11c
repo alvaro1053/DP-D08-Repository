@@ -30,11 +30,13 @@ public class Rende extends DomainEntity {
 	private User						user;
 
 
+	
 	public User getUser() {
-		return this.user;
+		return user;
 	}
 
-	public void setUser(final User user) {
+	
+	public void setUser(User user) {
 		this.user = user;
 	}
 

@@ -14,7 +14,7 @@ public class Comment extends DomainEntity {
 
 	private Date						moment;
 	private String						text;
-	private String						picture;
+	private String		picture;
 	private Rende						rende;
 	private Collection<ReplyComment>	repliesComments;
 	private User						user;
@@ -36,12 +36,12 @@ public class Comment extends DomainEntity {
 		this.text = text;
 	}
 
-	public String getPicture() {
-		return this.picture;
+	public Collection<String> getPictures() {
+		return this.pictures;
 	}
 
-	public void setPicture(final String picture) {
-		this.picture = picture;
+	public void setPictures(final Collection<String> pictures) {
+		this.pictures = pictures;
 	}
 
 	public Rende getRende() {
