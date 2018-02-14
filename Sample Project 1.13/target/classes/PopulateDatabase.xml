@@ -91,8 +91,8 @@
 	
 	<property name="repliesComments">
 	<list>
-	<ref bean="repliesComments1"/>
-	<ref bean="repliesComments2"/>
+	<ref bean="replyComment1"/>
+	<ref bean="replyComment2"/>
 	</list>
 	</property>
 	
@@ -144,10 +144,10 @@
 	</property>
 	
 	</bean>
-	
-	<!-- User3 -->
-	
-	<bean class="domain.User" id="user3">
+
+	<!-- User3 (disponible proximamente)-->
+	<!-- 
+<bean class="domain.User" id="user3">
 	<property name="name" value="Manolo" />
 	<property name="surname" value="Benitez Perez" />
 	<property name="email" value=""/>
@@ -184,7 +184,9 @@
 	</property>
 	
 	</bean>
-	
+ -->
+ 
+ 
 	<!-- Admins -->
 	
 	<bean class="domain.Admin" id="admin1">
@@ -193,7 +195,6 @@
 	<property name="email" value="admintodopoderoso@email.com"/>
 	<property name="phone" value=""/>	
 	<property name="address" value=""/>
-	
 	<property name="dateBirth" value="1957/05/22 00:00"/>
 	
 	</bean>
@@ -202,17 +203,16 @@
 	
 		<!-- Rende1 -->
 		
-		<bean class="domain.Rende" id="rende1">
+	<bean class="domain.Rende" id="rende1">
 	<property name="name" value="Rende 1" />
-	<property name="Description" value="This is the rende 1, and its +18" />
+	<property name="description" value="This is the rende 1, and its +18" />
 	<property name="moment" value="2018/07/22 12:26"/>
 	<property name="picture" value="https://pbs.twimg.com/profile_images/604644048/sign051.gif"/>
 	<property name="coordenates" ref="location1"/>
 	
-	
-	
 	<property name="attendants">
 	<list>
+	<ref bean = "user1"/> <!-- hemos decidido que el creador se incluye siempre y por defecto a los attendants -->
 	<ref bean = "user3"/> 
 	</list>
 	</property>
@@ -229,22 +229,22 @@
 	
 	<property name="announcements">
 	<list>
-	<ref bean = "announcement1"/>
-	<ref bean = "announcement2"/> 
+		<ref bean = "announcement1"/>
+		<ref bean = "announcement2"/>
 	</list>
 	</property>
 	
 	<property name="comments">
 	<list>
-	<ref bean = "coment1"/>
-	<ref bean = "coment5"/> 
+	<ref bean = "comment1"/>
+	<ref bean = "comment5"/> 
 	</list>
 	</property>
 	
 	<property name="questions">
 	<list>
-	<ref bean = "question1"/>
-	<ref bean = "question2"/> 
+		<ref bean = "question1"/>
+		<ref bean = "question3"/>
 	</list>
 	</property>
 	
@@ -265,6 +265,7 @@
 	
 	<property name="attendants">
 	<list>
+	<ref bean = "user2"/> <!-- creador de user 2 -->
 	<ref bean = "user3"/> 
 	</list>
 	</property>
@@ -281,6 +282,7 @@
 	
 	<property name="announcements">
 	<list>
+	<ref bean = "announcement3"/>
 	</list>
 	</property>
 	
@@ -294,7 +296,7 @@
 	
 	<property name="questions">
 	<list>
-	<ref bean = "question3"/> 
+		<ref bean = "question2"/>
 	</list>
 	</property>
 	
@@ -316,11 +318,20 @@
 		<!-- Announcement 2 -->
 		
 		
-		<bean class="domain.Announcement" id="announcement1">
+		<bean class="domain.Announcement" id="announcement2">
 	<property name="moment" value="2019/01/22 12:29"/>
 	<property name="title" value="Announcement 2" />
 	<property name="Description" value="This is the announcement 2 and it is awesome but not as much as announcement1" />
 	<property name="rende" ref="rende1"/>
+	</bean>
+	
+		<!-- Announcement 3 -->
+	
+		<bean class="domain.Announcement" id="announcement3">
+	<property name="moment" value="2020/03/18 09:31"/>
+	<property name="title" value="Announcement 3" />
+	<property name="Description" value="This is the announcement 3 and it is awesome but not as much as announcement1" />
+	<property name="rende" ref="rende2"/>
 	</bean>
 	
 	<!-- Comments -->
@@ -328,17 +339,25 @@
 		
 	<bean class="domain.Comment" id="comment1">
 	<property name="moment" value="2018/02/27 12:26"/>
-	<property name="text" value="ey, A little help? lmao" />
+	<property name="text" value="Hi, can you help me? " />
 	<property name="picture" value="" />
-	<property name="rende" ref="rende1"/>
 	
 	<property name="repliesComments">
 	<list>
+<<<<<<< HEAD
 	<ref bean="replycomment1"/>
 	</list>
 	</property>
 	
 	<property name="user" ref="user1>"/>
+=======
+		<ref bean ="replyComment2"/>
+		<ref bean ="replyComment3"/>
+	</list>
+	</property>
+	
+	<property name="user" ref="user1"/>
+>>>>>>> b81c87848bf61c94664bdd8306457046a4665e2f
 	</bean>
 	
 			<!-- Comment 2 -->
@@ -347,11 +366,14 @@
 	<property name="moment" value="2018/02/27 12:40"/>
 	<property name="text" value="I don't understand the description" />
 	<property name="picture" value="https://ae01.alicdn.com/kf/HTB1ois7HVXXXXbIXFXXq6xXFXXXI/2000-PCS-small-crying-face-sad-face-a-diameter-of-15-mm-free-shipping.jpg" />
-	<property name="rende" ref="rende2"/>
 	
 	<property name="repliesComments">
 	<list>
+<<<<<<< HEAD
 	<ref bean="replycomment2"/>
+=======
+	<ref bean ="replyComment1"/>
+>>>>>>> b81c87848bf61c94664bdd8306457046a4665e2f
 	</list>
 	</property>
 	
@@ -364,7 +386,7 @@
 	<property name="moment" value="2018/02/28 16:20"/>
 	<property name="text" value="Somebody help me pls" />
 	<property name="picture" value="" />
-	<property name="rende" ref="rende2"/>
+	
 	
 	<property name="repliesComments">
 	<list>
@@ -381,7 +403,7 @@
 	<property name="moment" value="2018/02/28 19:23"/>
 	<property name="text" value="I will help you soon" />
 	<property name="picture" value="http://static4.bigstockphoto.com/thumbs/4/5/2/small2/25475744.jpg" />
-	<property name="rende" ref="rende2"/>
+
 	
 	<property name="repliesComments">
 	<list>
@@ -389,7 +411,7 @@
 	</list>
 	</property>
 	
-	<property name="user" ref="user3"/>
+	<property name="user" ref="user2"/>
 	</bean>
 	
 				<!-- Comment 5 -->
@@ -398,15 +420,19 @@
 	<property name="moment" value="2018/02/28 19:28"/>
 	<property name="text" value="I can't help you, sorry" />
 	<property name="picture" value="" />
-	<property name="rende" ref="rende1"/>
+
 	
 	<property name="repliesComments">
 	<list>
+<<<<<<< HEAD
 	<ref bean ="replyComment5"/>
+=======
+	<ref bean ="replyComment3"/>
+>>>>>>> b81c87848bf61c94664bdd8306457046a4665e2f
 	</list>
 	</property>
 	
-	<property name="user" ref="user3"/>
+	<property name="user" ref="user2"/>
 	</bean>
 	
 	<!-- RepliesComments -->
@@ -424,7 +450,7 @@
 	<property name="user" ref="user1"/>
 	</bean>
 	
-			<!-- ReplyComment 3 -->
+		<!-- ReplyComment 3 -->
 		
 	<bean class="domain.ReplyComment" id="replyComment3">
 	<property name="reply" value="Thanks :D"/>
@@ -479,19 +505,19 @@
 			<!-- ReplyQuestion 1 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion1">
 	<property name="reply" value="i dunno lol" />
-	<property name="user" ref="user3"/>
+	<property name="user" ref="user1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 2 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion2">
 	<property name="reply" value="Just turn it on" />
-	<property name="user" ref="user3"/>
+	<property name="user" ref="user1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 3 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion3">
 	<property name="reply" value="Maybe you are under-age" />
-	<property name="user" ref="user3"/>
+	<property name="user" ref="user2"/>
 	</bean>
 	
 		

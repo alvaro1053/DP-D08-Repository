@@ -17,7 +17,6 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -95,6 +94,7 @@ public class Rende extends DomainEntity {
 		this.coordenates = coordenates;
 	}
 
+	@ElementCollection
 	public Collection<User> getAttendants() {
 		return this.attendants;
 	}
@@ -150,6 +150,7 @@ public class Rende extends DomainEntity {
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
 	}
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@ElementCollection
 	public Collection<Question> getQuestions() {
