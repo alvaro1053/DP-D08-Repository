@@ -6,7 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -149,7 +149,8 @@ public class Rende extends DomainEntity {
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
 	}
-	@OneToMany(cascade = CascadeType.ALL)
+
+	@ElementCollection
 	public Collection<Question> getQuestions() {
 		return this.questions;
 	}
