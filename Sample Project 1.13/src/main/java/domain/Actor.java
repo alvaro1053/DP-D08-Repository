@@ -10,6 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -52,6 +53,7 @@ public class Actor extends DomainEntity {
 		this.surname = surname;
 	}
 
+	@Email
 	public String getEmail() {
 		return this.email;
 	}
