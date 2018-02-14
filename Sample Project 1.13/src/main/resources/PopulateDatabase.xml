@@ -265,7 +265,7 @@
 	<property name="attendants">
 	<list>
 	<ref bean = "user2"/> <!-- creador de user 2 -->
-	<ref bean = "user3"/> 
+	<ref bean = "user1"/> 
 	</list>
 	</property>
 	
