@@ -77,7 +77,7 @@
 	<property name="name" value="Julio" />
 	<property name="surname" value="Sanabria" />
 	<property name="email" value="illojulio@email.com"/>
-	<property name="phone" value="902242526"/>	
+	<property name="phones" value="902242526"/>	
 	<property name="address" value="Avenida séptima nº5"/>
 	
 	<property name="dateBirth" value="1995/01/23 00:00"/>
@@ -115,7 +115,7 @@
 	<property name="name" value="Mari Carmen" />
 	<property name="surname" value="Fuertes" />
 	<property name="email" value="hastaluegomaricarmen@email.com"/>
-	<property name="phone" value=""/>	
+	<property name="phones" value=""/>	
 	<property name="address" value="C/Infierno nº4"/>
 	
 	<property name="dateBirth" value="2004/06/13 00:00"/>
@@ -151,7 +151,7 @@
 	<property name="name" value="Manolo" />
 	<property name="surname" value="Benitez Perez" />
 	<property name="email" value=""/>
-	<property name="phone" value=""/>	
+	<property name="phones" value=""/>	
 	<property name="address" value=""/>
 	
 	<property name="dateBirth" value="1960/12/28 00:00"/>
@@ -190,9 +190,9 @@
 	<bean class="domain.Admin" id="admin1">
 	<property name="name" value="Manuel" />
 	<property name="surname" value="Bartual Moreno" />
-	<property name="email" value="admintodopoderoso@email.com"/>
-	<property name="phone" value=""/>	
-	<property name="address" value=""/>
+	<property name="email" value="illojulio@email.com"/>
+	<property name="phone" value="902242526"/>	
+	<property name="address" value="Avenida séptima nº5"/>
 	
 	<property name="dateBirth" value="1957/05/22 00:00"/>
 	
@@ -243,7 +243,8 @@
 	
 	<property name="questions">
 	<list>
-
+	<ref bean = "question1"/>
+	<ref bean = "question2"/> 
 	</list>
 	</property>
 	
@@ -293,6 +294,7 @@
 	
 	<property name="questions">
 	<list>
+	<ref bean = "question3"/> 
 	</list>
 	</property>
 	
@@ -314,7 +316,7 @@
 		<!-- Announcement 2 -->
 		
 		
-		<bean class="domain.Announcement" id="announcement2">
+		<bean class="domain.Announcement" id="announcement1">
 	<property name="moment" value="2019/01/22 12:29"/>
 	<property name="title" value="Announcement 2" />
 	<property name="Description" value="This is the announcement 2 and it is awesome but not as much as announcement1" />
@@ -328,6 +330,7 @@
 	<property name="moment" value="2018/02/27 12:26"/>
 	<property name="text" value="ey, A little help? lmao" />
 	<property name="picture" value="" />
+	<property name="rende" ref="rende1"/>
 	
 	<property name="repliesComments">
 	<list>
@@ -343,6 +346,7 @@
 	<property name="moment" value="2018/02/27 12:40"/>
 	<property name="text" value="I don't understand the description" />
 	<property name="picture" value="https://ae01.alicdn.com/kf/HTB1ois7HVXXXXbIXFXXq6xXFXXXI/2000-PCS-small-crying-face-sad-face-a-diameter-of-15-mm-free-shipping.jpg" />
+	<property name="rende" ref="rende2"/>
 	
 	<property name="repliesComments">
 	<list>
@@ -358,7 +362,7 @@
 	<property name="moment" value="2018/02/28 16:20"/>
 	<property name="text" value="Somebody help me pls" />
 	<property name="picture" value="" />
-	
+	<property name="rende" ref="rende2"/>
 	
 	<property name="repliesComments">
 	<list>
@@ -375,7 +379,7 @@
 	<property name="moment" value="2018/02/28 19:23"/>
 	<property name="text" value="I will help you soon" />
 	<property name="picture" value="http://static4.bigstockphoto.com/thumbs/4/5/2/small2/25475744.jpg" />
-
+	<property name="rende" ref="rende2"/>
 	
 	<property name="repliesComments">
 	<list>
@@ -392,7 +396,7 @@
 	<property name="moment" value="2018/02/28 19:28"/>
 	<property name="text" value="I can't help you, sorry" />
 	<property name="picture" value="" />
-
+	<property name="rende" ref="rende1"/>
 	
 	<property name="repliesComments">
 	<list>

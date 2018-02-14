@@ -314,7 +314,7 @@
 		<!-- Announcement 2 -->
 		
 		
-		<bean class="domain.Announcement" id="announcement2">
+		<bean class="domain.Announcement" id="announcement1">
 	<property name="moment" value="2019/01/22 12:29"/>
 	<property name="title" value="Announcement 2" />
 	<property name="Description" value="This is the announcement 2 and it is awesome but not as much as announcement1" />

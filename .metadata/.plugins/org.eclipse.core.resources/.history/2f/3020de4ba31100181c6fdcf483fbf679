@@ -17,12 +17,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Actor extends DomainEntity {
 
-	private String	name;
-	private String	surname;
-	private String	email;
-	private String	phone;
-	private String	address;
-	private Date	dateBirth;
+	private String				name;
+	private String				surname;
+	private String	emails;
+	private String	phones;
+	private String	addresses;
+	private Date				dateBirth;
 
 
 	@Past
@@ -52,28 +52,36 @@ public class Actor extends DomainEntity {
 		this.surname = surname;
 	}
 
-	public String getEmail() {
-		return this.email;
+	
+	public String getEmails() {
+		return emails;
 	}
 
-	public void setEmail(final String emails) {
-		this.email = emails;
+	
+	public void setEmails(String emails) {
+		this.emails = emails;
 	}
 
-	public String getPhone() {
-		return this.phone;
+	
+	public String getPhones() {
+		return phones;
 	}
 
-	public void setPhone(final String phones) {
-		this.phone = phones;
+	
+	public void setPhones(String phones) {
+		this.phones = phones;
 	}
 
-	public String getAddress() {
-		return this.address;
+	
+	public String getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(final String addresses) {
-		this.address = addresses;
+	
+	public void setAddresses(String addresses) {
+		this.addresses = addresses;
 	}
+
+
 
 }
