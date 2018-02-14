@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -17,6 +18,7 @@ public class User extends Actor {
 	private Collection<Rende>			rendes;
 
 
+	@OneToMany(mappedBy = "user")
 	public Collection<Comment> getComments() {
 		return this.comments;
 	}
@@ -24,7 +26,7 @@ public class User extends Actor {
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
 	}
-
+	@OneToMany(mappedBy = "user")
 	public Collection<ReplyComment> getRepliesComments() {
 		return this.repliesComments;
 	}
@@ -32,7 +34,7 @@ public class User extends Actor {
 	public void setRepliesComments(final Collection<ReplyComment> repliesComments) {
 		this.repliesComments = repliesComments;
 	}
-
+	@OneToMany(mappedBy = "user")
 	public Collection<ReplyQuestion> getRepliesAnswers() {
 		return this.repliesAnswers;
 	}
@@ -40,7 +42,7 @@ public class User extends Actor {
 	public void setRepliesAnswers(final Collection<ReplyQuestion> repliesAnswers) {
 		this.repliesAnswers = repliesAnswers;
 	}
-
+	@OneToMany(mappedBy = "user")
 	public Collection<Rende> getRendes() {
 		return this.rendes;
 	}

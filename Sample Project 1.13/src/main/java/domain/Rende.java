@@ -7,8 +7,18 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -30,6 +40,9 @@ public class Rende extends DomainEntity {
 	private User						user;
 
 
+	@NotNull
+	@Valid
+	@ManyToOne(optional = true)
 	public User getUser() {
 		return this.user;
 	}
@@ -37,7 +50,7 @@ public class Rende extends DomainEntity {
 	public void setUser(final User user) {
 		this.user = user;
 	}
-
+	@NotBlank
 	public String getName() {
 		return this.name;
 	}
@@ -45,7 +58,7 @@ public class Rende extends DomainEntity {
 	public void setName(final String name) {
 		this.name = name;
 	}
-
+	@NotBlank
 	public String getDescription() {
 		return this.description;
 	}
@@ -53,7 +66,9 @@ public class Rende extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
-
+	@NotBlank
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -61,7 +76,7 @@ public class Rende extends DomainEntity {
 	public void setMoment(final Date moment) {
 		this.moment = moment;
 	}
-
+	@URL
 	public String getPicture() {
 		return this.picture;
 	}
@@ -69,7 +84,7 @@ public class Rende extends DomainEntity {
 	public void setPicture(final String picture) {
 		this.picture = picture;
 	}
-
+	@Valid
 	public Location getCoordenates() {
 		return this.coordenates;
 	}
@@ -85,7 +100,7 @@ public class Rende extends DomainEntity {
 	public void setAttendants(final Collection<User> attendants) {
 		this.attendants = attendants;
 	}
-
+	@NotNull
 	public Boolean getIsDraft() {
 		return this.isDraft;
 	}
@@ -93,7 +108,7 @@ public class Rende extends DomainEntity {
 	public void setIsDraft(final Boolean isDraft) {
 		this.isDraft = isDraft;
 	}
-
+	@NotNull
 	public Boolean getAdultOnly() {
 		return this.adultOnly;
 	}
@@ -101,7 +116,7 @@ public class Rende extends DomainEntity {
 	public void setAdultOnly(final Boolean adultOnly) {
 		this.adultOnly = adultOnly;
 	}
-
+	@NotNull
 	public Boolean getRSVP() {
 		return this.RSVP;
 	}
@@ -109,7 +124,7 @@ public class Rende extends DomainEntity {
 	public void setRSVP(final Boolean rSVP) {
 		this.RSVP = rSVP;
 	}
-
+	@ManyToMany
 	public Collection<Rende> getLinked() {
 		return this.linked;
 	}
@@ -117,7 +132,7 @@ public class Rende extends DomainEntity {
 	public void setLinked(final Collection<Rende> linked) {
 		this.linked = linked;
 	}
-
+	@OneToMany(mappedBy = "rende")
 	public Collection<Announcement> getAnnouncements() {
 		return this.announcements;
 	}
@@ -125,7 +140,7 @@ public class Rende extends DomainEntity {
 	public void setAnnouncements(final Collection<Announcement> announcements) {
 		this.announcements = announcements;
 	}
-
+	@OneToMany(mappedBy = "rende")
 	public Collection<Comment> getComments() {
 		return this.comments;
 	}
@@ -133,7 +148,7 @@ public class Rende extends DomainEntity {
 	public void setComments(final Collection<Comment> comments) {
 		this.comments = comments;
 	}
-
+	@OneToMany(mappedBy = "rende")
 	public Collection<Question> getQuestions() {
 		return this.questions;
 	}
