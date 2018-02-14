@@ -344,11 +344,20 @@
 	
 	<property name="repliesComments">
 	<list>
+<<<<<<< HEAD
 	<ref bean="replycomment1"/>
 	</list>
 	</property>
 	
 	<property name="user" ref="user1>"/>
+=======
+		<ref bean ="replyComment2"/>
+		<ref bean ="replyComment3"/>
+	</list>
+	</property>
+	
+	<property name="user" ref="user1"/>
+>>>>>>> b81c87848bf61c94664bdd8306457046a4665e2f
 	</bean>
 	
 			<!-- Comment 2 -->
@@ -360,7 +369,11 @@
 	
 	<property name="repliesComments">
 	<list>
+<<<<<<< HEAD
 	<ref bean="replycomment2"/>
+=======
+	<ref bean ="replyComment1"/>
+>>>>>>> b81c87848bf61c94664bdd8306457046a4665e2f
 	</list>
 	</property>
 	
@@ -411,7 +424,11 @@
 	
 	<property name="repliesComments">
 	<list>
+<<<<<<< HEAD
 	<ref bean ="replyComment5"/>
+=======
+	<ref bean ="replyComment3"/>
+>>>>>>> b81c87848bf61c94664bdd8306457046a4665e2f
 	</list>
 	</property>
 	
