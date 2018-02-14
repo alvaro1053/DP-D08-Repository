@@ -94,7 +94,8 @@ public class Rende extends DomainEntity {
 	public void setCoordenates(final Location coordenates) {
 		this.coordenates = coordenates;
 	}
-	@ManyToMany
+	@ElementCollection
+	@Column
 	public Collection<User> getAttendants() {
 		return this.attendants;
 	}

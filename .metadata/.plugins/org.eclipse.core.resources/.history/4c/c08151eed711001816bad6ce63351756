@@ -7,7 +7,6 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -68,7 +67,7 @@ public class Rende extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
-
+	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getMoment() {
@@ -94,7 +93,8 @@ public class Rende extends DomainEntity {
 	public void setCoordenates(final Location coordenates) {
 		this.coordenates = coordenates;
 	}
-	@ManyToMany
+
+	@ElementCollection
 	public Collection<User> getAttendants() {
 		return this.attendants;
 	}
