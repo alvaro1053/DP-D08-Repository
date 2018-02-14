@@ -1,0 +1,41 @@
+
+package domain;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class ReplyComment extends DomainEntity {
+
+	private String	reply;
+	private Comment	comment;
+	private User	user;
+
+
+	public String getReply() {
+		return this.reply;
+	}
+
+	public void setReply(final String reply) {
+		this.reply = reply;
+	}
+
+	public Comment getComment() {
+		return this.comment;
+	}
+
+	public void setComment(final Comment comment) {
+		this.comment = comment;
+	}
+
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(final User user) {
+		this.user = user;
+	}
+
+}

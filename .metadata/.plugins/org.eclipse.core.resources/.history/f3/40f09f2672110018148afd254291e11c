@@ -1,0 +1,42 @@
+
+package domain;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class Question extends DomainEntity {
+
+	private String			question;
+	private ReplyQuestion	replyQuestion;
+	private Rende			rende;
+	
+	public String getQuestion() {
+		return question;
+	}
+	
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	
+	public ReplyQuestion getReplyQuestion() {
+		return replyQuestion;
+	}
+	
+	public void setReplyQuestion(ReplyQuestion replyQuestion) {
+		this.replyQuestion = replyQuestion;
+	}
+	
+	public Rende getRende() {
+		return rende;
+	}
+	
+	public void setRende(Rende rende) {
+		this.rende = rende;
+	}
+	
+	
+
+}

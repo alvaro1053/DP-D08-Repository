@@ -1,0 +1,18 @@
+
+package domain;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class ReplyQuestion extends DomainEntity {
+
+	private String		reply;
+	private Question	question;
+	private User		user;
+
+}

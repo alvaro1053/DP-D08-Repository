@@ -1,0 +1,14 @@
+package domain;
+
+import javax.persistence.Access;
+import javax.persistence.Embeddable;
+import javax.persistence.AccessType;
+
+
+@Embeddable
+@Access(AccessType.PROPERTY)
+public class Location {
+	private double	latitude;
+	private double	longitude;
+
+}

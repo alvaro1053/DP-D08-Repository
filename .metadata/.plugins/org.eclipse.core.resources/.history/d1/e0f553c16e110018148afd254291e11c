@@ -1,0 +1,51 @@
+
+package domain;
+
+import java.util.Collection;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class User extends Actor {
+	private Collection<Comment> comments;
+	private Collection<ReplyComment> repliesComments;
+	private Collection<ReplyAnswet> repliesAnswers;
+	private Collection<Rende> rendes;
+	
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+	
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
+	}
+	
+	public Collection<ReplyComment> getRepliesComments() {
+		return repliesComments;
+	}
+	
+	public void setRepliesComments(Collection<ReplyComment> repliesComments) {
+		this.repliesComments = repliesComments;
+	}
+	
+	public Collection<ReplyAnswet> getRepliesAnswers() {
+		return repliesAnswers;
+	}
+	
+	public void setRepliesAnswers(Collection<ReplyAnswet> repliesAnswers) {
+		this.repliesAnswers = repliesAnswers;
+	}
+	
+	public Collection<Rende> getRendes() {
+		return rendes;
+	}
+	
+	public void setRendes(Collection<Rende> rendes) {
+		this.rendes = rendes;
+	}
+	
+
+}
