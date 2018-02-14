@@ -213,7 +213,6 @@
 	<property name="attendants">
 	<list>
 	<ref bean = "user1"/> <!-- hemos decidido que el creador se incluye siempre y por defecto a los attendants -->
-	<ref bean = "user3"/> 
 	</list>
 	</property>
 	
@@ -344,11 +343,11 @@
 	
 	<property name="repliesComments">
 	<list>
-	<ref bean="replycomment1"/>
+	<ref bean="replyComment1"/>
 	</list>
 	</property>
 	
-	<property name="user" ref="user1>"/>
+	<property name="user" ref="user1"/>
 	</bean>
 	
 			<!-- Comment 2 -->
@@ -360,7 +359,7 @@
 	
 	<property name="repliesComments">
 	<list>
-	<ref bean="replycomment2"/>
+	<ref bean="replyComment2"/>
 	</list>
 	</property>
 	
