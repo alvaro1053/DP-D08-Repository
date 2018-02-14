@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="user1" />
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="user2" />
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Other domain beans come here -->	
+	
+	
+	<!-- USER -->
+	
+	
+		<!-- User1 -->
+	<bean class="domain.User" id="user1">
+	<property name="name" value="Julio" />
+	<property name="surname" value="Sanabria" />
+	
+	<property name="emails">
+	<list>
+	<value>illojulio@email.com</value>
+	<value>illohulio@email.com</value>
+	</list>
+	</property>
+	
+	<property name="phones">
+	<list>
+	<value>666666666</value>
+	<value>902242526</value>
+	</list>
+	</property>
+	
+	<property name="addresses">
+	<list>
+	<value>Avenida séptima nº5</value>
+	<value>C/Infierno nº2</value>
+	</list>
+	</property>
+	
+	<property name="dateBirth" value="1995/01/23 00:00"/>
+	
+	<property name="comments">
+	<list>
+	<ref bean="comment1"/>
+	<ref bean="comment2"/>
+	</list>
+	</property>
+	
+	<property name="repliesComments">
+	<list>
+	<ref bean="repliesComments1"/>
+	</list>
+	</property>
+	
+	<property name="repliesQuestions">
+	<list>
+	<ref bean="replyQuestion1"/>
+	<ref bean="replyQuestion2"/>
+	</list>
+	</property>
+	
+	<property name="rendes">
+	<list>
+	<ref bean="rende1"/>
+	</list>
+	</property>
+	
+	</bean>
+	
+	
+		<!-- User2 -->
+	<bean class="domain.User" id="user2">
+	<property name="name" value="Mari Carmen" />
+	<property name="surname" value="Fuertes" />
+	
+	<property name="emails">
+	<list>
+	<value>hastaluegomaricarmen@email.com</value>
+	</list>
+	</property>
+	
+	<property name="phones">
+	<list>
+	</list>
+	</property>
+	
+	<property name="addresses">
+	<list>
+	<value>C/Madrid nº9</value>
+	</list>
+	</property>
+	
+	<property name="dateBirth" value="2004/06/13 00:00"/>
+	
+	<property name="comments">
+	<list>
+	<ref bean="comment3"/>
+	</list>
+	</property>
+	
+	<property name="repliesComments">
+	<list>
+	</list>
+	</property>
+	
+	<property name="repliesQuestions">
+	<list>
+	<ref bean="replyQuestion3"/>
+	</list>
+	</property>
+	
+	<property name="rendes">
+	<list>
+	<ref bean="rende2"/>
+	</list>
+	</property>
+	
+	</bean>
+	
+	<!-- User3 -->
+	
+	<bean class="domain.User" id="user3">
+	<property name="name" value="Manolo" />
+	<property name="surname" value="Benitez Perez" />
+	
+	<property name="emails">
+	<list>
+	</list>
+	</property>
+	
+	<property name="phones">
+	<list>
+	</list>
+	</property>
+	
+	<property name="addresses">
+	<list>
+	</list>
+	</property>
+	
+	<property name="dateBirth" value="1960/12/28 00:00"/>
+	
+	<property name="comments">
+	<list>
+	<ref bean="comment4"/>
+	<ref bean="comment5"/>
+	</list>
+	</property>
+	
+	<property name="repliesComments">
+	<list>
+	<ref bean="replyComment3"/>
+	<ref bean="replyComment4"/>
+	</list>
+	</property>
+	
+	<property name="repliesQuestions">
+	<list>
+	</list>
+	</property>
+	
+	<property name="rendes">
+	<list>
+	</list>
+	</property>
+	
+	</bean>
+	
+	<!-- Admins -->
+	
+	<bean class="domain.Admin" id="admin1">
+	<property name="name" value="Manuel" />
+	<property name="surname" value="Bartual Moreno" />
+	
+	<property name="emails">
+	<list>
+	<value>admintodopoderoso@email.es</value>
+	</list>
+	</property>
+	
+	<property name="phones">
+	<list>
+	<value>658741236</value>
+	</list>
+	</property>
+	
+	<property name="addresses">
+	<list>
+	</list>
+	</property>
+	
+	<property name="dateBirth" value="1957/05/22 00:00"/>
+	
+	</bean>
+	
+	<!-- Rendes -->
+	
+		<!-- Rende1 -->
+		
+		<bean class="domain.Rende" id="rende1">
+	<property name="name" value="Rende 1" />
+	<property name="Description" value="This is the rende 1, and its +18" />
+	<property name="moment" value="2018/07/22 12:26"/>
+	<property name="picture" value="https://pbs.twimg.com/profile_images/604644048/sign051.gif"/>
+	<property name="coordenates" ref="location1"/>
+	
+	
+	
+	<property name="attendants">
+	<list>
+	<ref bean = "user3"/> 
+	</list>
+	</property>
+	
+	<property name="isDraft" value="false"/>
+	<property name="adultOnly" value="true"/>
+	<property name="RSVP" value="true"/>
+	
+	<property name="linked">
+	<list>
+	<ref bean = "rende2"/> 
+	</list>
+	</property>
+	
+	<property name="announcements">
+	<list>
+	<ref bean = "announcement1"/>
+	<ref bean = "announcement2"/> 
+	</list>
+	</property>
+	
+	<property name="comments">
+	<list>
+	<ref bean = "coment1"/>
+	<ref bean = "coment3"/> 
+	<ref bean = "coment5"/> 
+	</list>
+	</property>
+	
+	<property name="question">
+	<list>
+	<ref bean = "question1"/>
+	<ref bean = "question2"/> 
+	</list>
+	</property>
+	
+	<property name="user" ref="user1"/>
+	</bean>
+		
+		
+			<!-- Rende2 -->
+		
+		<bean class="domain.Rende" id="rende2">
+	<property name="name" value="Rende 2" />
+	<property name="Description" value="This is the rende 2, and its not +18" />
+	<property name="moment" value="2018/02/27 12:26"/>
+	<property name="picture" value="https://vignette.wikia.nocookie.net/mrmen/images/5/52/Small.gif/revision/latest?cb=20100731114437"/>
+	<property name="coordenates" ref="location2"/>
+	
+	
+	
+	<property name="attendants">
+	<list>
+	</list>
+	</property>
+	
+	<property name="isDraft" value="false"/>
+	<property name="adultOnly" value="false"/>
+	<property name="RSVP" value="false"/>
+	
+	<property name="linked">
+	<list>
+	<ref bean = "rende1"/> 
+	</list>
+	</property>
+	
+	<property name="announcements">
+	<list>
+	</list>
+	</property>
+	
+	<property name="comments">
+	<list>
+	<ref bean = "coment2"/>
+	<ref bean = "coment4"/>
+	</list>
+	</property>
+	
+	<property name="question">
+	<list>
+	<ref bean = "question3"/> 
+	</list>
+	</property>
+	
+	<property name="user" ref="user2"/>
+	</bean>
+	
+	<!-- Announcements -->
+	
+		<!-- Announcement 1 -->
+		
+		
+		<bean class="domain.Announcement" id="announcement1">
+	<property name="name" value="Rende 2" />
+	<property name="Description" value="This is the rende 2, and its not +18" />
+	<property name="moment" value="2019/05/22 12:26"/>
+	<property name="picture" value="https://vignette.wikia.nocookie.net/mrmen/images/5/52/Small.gif/revision/latest?cb=20100731114437"/>
+	<property name="coordenates" ref="location2"/>
+	
+	
+	
+	<property name="attendants">
+	<list>
+	</list>
+	</property>
+	
+	<property name="isDraft" value="false"/>
+	<property name="adultOnly" value="false"/>
+	<property name="RSVP" value="false"/>
+	
+	<property name="linked">
+	<list>
+	<ref bean = "rende1"/> 
+	</list>
+	</property>
+	
+	<property name="announcements">
+	<list>
+	</list>
+	</property>
+	
+	<property name="comments">
+	<list>
+	<ref bean = "coment2"/>
+	<ref bean = "coment4"/>
+	</list>
+	</property>
+	
+	<property name="question">
+	<list>
+	<ref bean = "question3"/> 
+	</list>
+	</property>
+	
+	<property name="user" ref="user2"/>
+	</bean>
+		
+	
+	
+	
+	
+	
+	
+	
+
+
+</beans>
