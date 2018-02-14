@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="60" version="2.0">
+<workbench progressCount="64" version="2.0">
 <workbenchAdvisor/>
-<window height="689" maximized="true" minimized="true" width="951" x="320" y="75">
+<window height="689" maximized="true" width="951" x="320" y="75">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -30,9 +30,9 @@
 <coolItem id="org.eclipse.datatools.sqltools.data.internal.ui.editor.tableDataEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jpt.jpa.ui.internal.editors.PersistenceEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.m2e.editor.MavenPomEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -41,10 +41,60 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="3"/>
+<part id="4"/>
+<part id="6"/>
+<part id="1"/>
+<part id="2"/>
+<part id="5"/>
+<part id="7"/>
+<part id="8"/>
+<part id="9"/>
+</presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" partName="Actor.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/Actor.java" title="Actor.java" tooltip="Sample Project 1.13/src/main/java/domain/Actor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/Actor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="9" selectionOffset="692" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Announcement.java" partName="Announcement.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/Announcement.java" title="Announcement.java" tooltip="Sample Project 1.13/src/main/java/domain/Announcement.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/Announcement.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="623" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Comment.java" partName="Comment.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/Comment.java" title="Comment.java" tooltip="Sample Project 1.13/src/main/java/domain/Comment.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/Comment.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="49" selectionOffset="637" selectionTopPixel="55"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DomainEntity.java" partName="DomainEntity.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/DomainEntity.java" title="DomainEntity.java" tooltip="Sample Project 1.13/src/main/java/domain/DomainEntity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/DomainEntity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Location.java" partName="Location.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/Location.java" title="Location.java" tooltip="Sample Project 1.13/src/main/java/domain/Location.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/Location.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReplyComment.java" partName="ReplyComment.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/ReplyComment.java" title="ReplyComment.java" tooltip="Sample Project 1.13/src/main/java/domain/ReplyComment.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/ReplyComment.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="User.java" partName="User.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/User.java" title="User.java" tooltip="Sample Project 1.13/src/main/java/domain/User.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/User.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="14" selectionOffset="403" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="PopulateDatabase.xml" partName="PopulateDatabase.xml" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/resources/PopulateDatabase.xml" title="PopulateDatabase.xml" tooltip="Sample Project 1.13/src/main/resources/PopulateDatabase.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/resources/PopulateDatabase.xml"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Rende.java" partName="Rende.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/Rende.java" title="Rende.java" tooltip="Sample Project 1.13/src/main/java/domain/Rende.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/Rende.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="869" selectionTopPixel="2254"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Question.java" partName="Question.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Sample Project 1.13/src/main/java/domain/Question.java" title="Question.java" tooltip="Sample Project 1.13/src/main/java/domain/Question.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Sample Project 1.13/src/main/java/domain/Question.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="374" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.eclipse.jdt.junit.ResultView" partName="JUnit">
@@ -94,6 +144,10 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (5 items)"/>
+<category IMemento.internal.id="Errors"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="219" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -109,7 +163,7 @@
 <viewState CommonNavigator.LINKING_ENABLED="0"/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="org.eclipse.jst.j2ee.J2EEPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jst.j2ee.J2EEPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -214,7 +268,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@4c02bc48" ratio="0.67608285" ratioLeft="359" ratioRight="172" relationship="4" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@4c02bc48" ratio="0.67826086" ratioLeft="546" ratioRight="259" relationship="4" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
 <folder activePageID="org.eclipse.debug.ui.BreakpointView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
@@ -290,12 +344,180 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/Sample Project 1.13/src/main/resources/PopulateDatabase.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Sample Project 1.13/src/main/java/domain/Comment.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Sample Project 1.13/src/main/java/domain/ReplyComment.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Sample Project 1.13/src/main/java/domain/Question.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Sample Project 1.13/src/main/java/domain/ReplyQuestion.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Sample Project 1.13/src/main/java/domain/Rende.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Sample Project 1.13/src/main/java/domain/Announcement.java"/>
+</editors>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="8757" y="0"/>
+</item>
+<item historyLabel="Comment.java" index="1">
+<position info="not_deleted" x="637" y="49"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="10738" y="0"/>
+</item>
+<item historyLabel="ReplyComment.java" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="10787" y="0"/>
+</item>
+<item historyLabel="ReplyComment.java" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="12848" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="12848" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="12848" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="11681" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="11710" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="11710" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="11744" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="12339" y="0"/>
+</item>
+<item historyLabel="ReplyComment.java" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ReplyQuestion.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position/>
+</item>
+<item historyLabel="ReplyQuestion.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="6720" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="3625" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="93" y="37"/>
+</item>
+<item historyLabel="ReplyQuestion.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="51" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="256" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="6721" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="51" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="6721" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="3589" y="37"/>
+</item>
+<item historyLabel="ReplyQuestion.java" index="4">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="3589" y="37"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="656" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="3626" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="6721" y="0"/>
+</item>
+<item historyLabel="Announcement.java" index="6">
+<position info="not_deleted" x="623" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="3380" y="0"/>
+</item>
+<item historyLabel="Question.java" index="3">
+<position info="not_deleted" x="374" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="3380" y="0"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="6371" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="1263" y="10"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="4842" y="0"/>
+</item>
+<item historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="1263" y="10"/>
+</item>
+<item historyLabel="PopulateDatabase.xml" index="0">
+<position info="not_deleted" x="4842" y="0"/>
+</item>
+<item active="true" historyLabel="Rende.java" index="5">
+<position info="not_deleted" x="1263" y="10"/>
+</item>
+</navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@5c6ae889"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@4c02bc48"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@3edd044d"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@42137ac0"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -305,54 +527,55 @@
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1d14958a"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@631ebf05"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Question.java" tooltip="Sample Project 1.13/src/main/java/domain/Question.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/Question.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Rende.java" tooltip="Sample Project 1.13/src/main/java/domain/Rende.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/Rende.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReplyQuestion.java" tooltip="Sample Project 1.13/src/main/java/domain/ReplyQuestion.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/ReplyQuestion.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Authority.java" tooltip="Sample Project 1.13/src/main/java/security/Authority.java">
+<persistable path="/Sample Project 1.13/src/main/java/security/Authority.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="PopulateDatabase.xml" tooltip="Sample Project 1.13/src/main/resources/PopulateDatabase.xml">
+<persistable path="/Sample Project 1.13/src/main/resources/PopulateDatabase.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PopulateDatabase.java" tooltip="Sample Project 1.13/src/main/java/utilities/PopulateDatabase.java">
+<persistable path="/Sample Project 1.13/src/main/java/utilities/PopulateDatabase.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="User.java" tooltip="Sample Project 1.13/src/main/java/domain/User.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/User.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ReplyComment.java" tooltip="Sample Project 1.13/src/main/java/domain/ReplyComment.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/ReplyComment.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Location.java" tooltip="Sample Project 1.13/src/main/java/domain/Location.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/Location.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DomainEntity.java" tooltip="Sample Project 1.13/src/main/java/domain/DomainEntity.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/DomainEntity.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Comment.java" tooltip="Sample Project 1.13/src/main/java/domain/Comment.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/Comment.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Announcement.java" tooltip="Sample Project 1.13/src/main/java/domain/Announcement.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/Announcement.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" tooltip="Sample Project 1.13/src/main/java/domain/Actor.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/Actor.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Admin.java" tooltip="Sample Project 1.13/src/main/java/domain/Admin.java">
+<persistable path="/Sample Project 1.13/src/main/java/domain/Admin.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="server.xml" tooltip="Servers/Tomcat v7.0 Server at localhost-config/server.xml">
 <persistable path="/Servers/Tomcat v7.0 Server at localhost-config/server.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" name="messages.properties" tooltip="Acme-Explorer/src/main/webapp/views/warnote/messages.properties">
-<persistable path="/Acme-Explorer/src/main/webapp/views/warnote/messages.properties"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" name="messages_es.properties" tooltip="Acme-Explorer/src/main/webapp/views/warnote/messages_es.properties">
-<persistable path="/Acme-Explorer/src/main/webapp/views/warnote/messages_es.properties"/>
-</file>
-<file factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" id="org.eclipse.jdt.ui.ClassFileEditor" name="ContainerBase.class" tooltip="org.apache.catalina.core.ContainerBase">
-<persistable org.eclipse.jdt.ui.ClassFileIdentifier="=Acme-Explorer/C:\/Program Files\/Apache Software Foundation\/Tomcat 7.0\/lib\/catalina.jar&lt;org.apache.catalina.core(ContainerBase.class"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AdministratorAdministratorController.java" tooltip="Acme-Explorer/src/main/java/controllers/administrator/AdministratorAdministratorController.java">
-<persistable path="/Acme-Explorer/src/main/java/controllers/administrator/AdministratorAdministratorController.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ActorAdministratorController.java" tooltip="Acme-Explorer/src/main/java/controllers/administrator/ActorAdministratorController.java">
-<persistable path="/Acme-Explorer/src/main/java/controllers/administrator/ActorAdministratorController.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="edit.jsp" tooltip="Acme-Explorer/src/main/webapp/views/sponsor/edit.jsp">
-<persistable path="/Acme-Explorer/src/main/webapp/views/sponsor/edit.jsp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WarnoteManagerController.java" tooltip="Acme-Explorer/src/main/java/controllers/manager/WarnoteManagerController.java">
-<persistable path="/Acme-Explorer/src/main/java/controllers/manager/WarnoteManagerController.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WarnoteService.java" tooltip="Acme-Explorer/src/main/java/services/WarnoteService.java">
-<persistable path="/Acme-Explorer/src/main/java/services/WarnoteService.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="PopulateDatabase.xml" tooltip="Acme-Explorer/src/main/resources/PopulateDatabase.xml">
-<persistable path="/Acme-Explorer/src/main/resources/PopulateDatabase.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Authority.java" tooltip="Sample-Project/src/main/java/security/Authority.java">
-<persistable path="/Sample-Project/src/main/java/security/Authority.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DatabaseUtil.java" tooltip="Sample-Project/src/main/java/utilities/internal/DatabaseUtil.java">
-<persistable path="/Sample-Project/src/main/java/utilities/internal/DatabaseUtil.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EclipseStream.java" tooltip="Sample-Project/src/main/java/utilities/internal/EclipseStream.java">
-<persistable path="/Sample-Project/src/main/java/utilities/internal/EclipseStream.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EclipseConsole.java" tooltip="Sample-Project/src/main/java/utilities/internal/EclipseConsole.java">
-<persistable path="/Sample-Project/src/main/java/utilities/internal/EclipseConsole.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AbstractTest.java" tooltip="Sample-Project/src/test/java/utilities/AbstractTest.java">
-<persistable path="/Sample-Project/src/test/java/utilities/AbstractTest.java"/>
 </file>
 </mruList>
 </workbench>
