@@ -385,7 +385,7 @@
 	
 	<property name="repliesComments">
 	<list>
-	<ref bean ="replyComment4"/>
+	<ref bean ="replyComment3"/>
 	</list>
 	</property>
 	
@@ -402,7 +402,7 @@
 	
 	<property name="repliesComments">
 	<list>
-	<ref bean ="replyComment5"/>
+	<ref bean ="replyComment1"/>
 	</list>
 	</property>
 	
@@ -429,20 +429,6 @@
 	<bean class="domain.ReplyComment" id="replyComment3">
 	<property name="reply" value="Thanks :D"/>
 	<property name="user" ref="user2"/>
-	</bean>
-	
-		<!-- ReplyComment 4 -->
-		
-	<bean class="domain.ReplyComment" id="replyComment4">
-	<property name="reply" value="ey whatssapp"/>
-	<property name="user" ref="user1"/>
-	</bean>
-	
-		<!-- ReplyComment 5 -->
-		
-	<bean class="domain.ReplyComment" id="replyComment5">
-	<property name="reply" value="i dont know"/>
-	<property name="user" ref="user1"/>
 	</bean>
 	
 	<!-- Locations -->

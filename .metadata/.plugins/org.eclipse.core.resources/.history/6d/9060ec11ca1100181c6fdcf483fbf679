@@ -428,19 +428,19 @@
 		
 	<bean class="domain.ReplyComment" id="replyComment3">
 	<property name="reply" value="Thanks :D"/>
-	<property name="user" ref="user2"/>
+	<property name="user" ref="user1"/>
 	</bean>
 	
 		<!-- ReplyComment 4 -->
 		
-	<bean class="domain.ReplyComment" id="replyComment4">
+	<bean class="domain.ReplyComment" id="replyComment3">
 	<property name="reply" value="ey whatssapp"/>
 	<property name="user" ref="user1"/>
 	</bean>
 	
 		<!-- ReplyComment 5 -->
 		
-	<bean class="domain.ReplyComment" id="replyComment5">
+	<bean class="domain.ReplyComment" id="replyComment3">
 	<property name="reply" value="i dont know"/>
 	<property name="user" ref="user1"/>
 	</bean>
