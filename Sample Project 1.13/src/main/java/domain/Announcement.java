@@ -24,7 +24,6 @@ public class Announcement extends DomainEntity {
 	private Rende	rende;
 
 
-	@NotBlank
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	public Date getMoment() {
