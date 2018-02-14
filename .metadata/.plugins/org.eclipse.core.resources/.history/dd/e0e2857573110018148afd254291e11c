@@ -20,11 +20,13 @@ public class Actor extends DomainEntity {
 	private Date				dateBirth;
 
 
+	
 	public Date getDateBirth() {
-		return this.dateBirth;
+		return dateBirth;
 	}
 
-	public void setDateBirth(final Date dateBirth) {
+	
+	public void setDateBirth(Date dateBirth) {
 		this.dateBirth = dateBirth;
 	}
 

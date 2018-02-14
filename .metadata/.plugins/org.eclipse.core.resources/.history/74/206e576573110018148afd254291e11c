@@ -27,16 +27,8 @@ public class Rende extends DomainEntity {
 	private Collection<Announcement>	announcements;
 	private Collection<Comment>			comments;
 	private Collection<Question>		questions;
-	private User						user;
+	private User user;
 
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(final User user) {
-		this.user = user;
-	}
 
 	public String getName() {
 		return this.name;

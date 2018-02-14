@@ -17,16 +17,8 @@ public class Actor extends DomainEntity {
 	private Collection<String>	emails;
 	private Collection<String>	phones;
 	private Collection<String>	addresses;
-	private Date				dateBirth;
+	private Date				birth;
 
-
-	public Date getDateBirth() {
-		return this.dateBirth;
-	}
-
-	public void setDateBirth(final Date dateBirth) {
-		this.dateBirth = dateBirth;
-	}
 
 	public String getName() {
 		return this.name;
