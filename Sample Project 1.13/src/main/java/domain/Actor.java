@@ -1,7 +1,6 @@
 
 package domain;
 
-import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
@@ -18,12 +17,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Actor extends DomainEntity {
 
-	private String				name;
-	private String				surname;
-	private Collection<String>	emails;
-	private Collection<String>	phones;
-	private Collection<String>	addresses;
-	private Date				dateBirth;
+	private String	name;
+	private String	surname;
+	private String	email;
+	private String	phone;
+	private String	address;
+	private Date	dateBirth;
 
 
 	@Past
@@ -53,28 +52,28 @@ public class Actor extends DomainEntity {
 		this.surname = surname;
 	}
 
-	public Collection<String> getEmails() {
-		return this.emails;
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void setEmails(final Collection<String> emails) {
-		this.emails = emails;
+	public void setEmail(final String emails) {
+		this.email = emails;
 	}
 
-	public Collection<String> getPhones() {
-		return this.phones;
+	public String getPhone() {
+		return this.phone;
 	}
 
-	public void setPhones(final Collection<String> phones) {
-		this.phones = phones;
+	public void setPhone(final String phones) {
+		this.phone = phones;
 	}
 
-	public Collection<String> getAddresses() {
-		return this.addresses;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setAddresses(final Collection<String> addresses) {
-		this.addresses = addresses;
+	public void setAddress(final String addresses) {
+		this.address = addresses;
 	}
 
 }
