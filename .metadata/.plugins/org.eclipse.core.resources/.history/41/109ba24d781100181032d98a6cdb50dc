@@ -71,9 +71,6 @@
 			<list>
 				<bean class="security.Authority">
 					<property name="authority" value="ADMIN" />
-				</bean>
-			</list>
-		</property>
 	</bean>
 
 				

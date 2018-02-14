@@ -59,8 +59,7 @@
 	
 	<!-- Other domain beans come here -->	
 	
-<<<<<<< HEAD
-	
+
 	
 	
 	
@@ -73,14 +72,10 @@
 				<bean class="security.Authority">
 					<property name="authority" value="ADMIN" />
 				</bean>
-		<property name="authorities">
-			<list>
-				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-						</list>
+			</list>
 		</property>
 	</bean>
+
 				
 
 	<bean id="userAccount5" class="security.UserAccount">
@@ -91,11 +86,8 @@
 				<bean class="security.Authority">
 					<property name="authority" value="ADMIN" />
 				</bean>
-			<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
-				</bean>
 			</list>
-		</property>
+			</property>
 	</bean>
-	
+
 </beans>
