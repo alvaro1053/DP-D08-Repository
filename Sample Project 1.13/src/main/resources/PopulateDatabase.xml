@@ -299,7 +299,7 @@
 	</list>
 	</property>
 	
-	<property name="question">
+	<property name="questions">
 	<list>
 	<ref bean = "question1"/>
 	<ref bean = "question2"/> 
@@ -350,7 +350,7 @@
 	</list>
 	</property>
 	
-	<property name="question">
+	<property name="questions">
 	<list>
 	<ref bean = "question3"/> 
 	</list>
