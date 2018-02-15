@@ -80,7 +80,7 @@
 	<property name="phone" value="902242526"/>	
 	<property name="address" value="Avenida séptima nº5"/>
 	
-	<property name="dateBirth" value="1995/01/23 00:00"/>
+	<property name="dateBirth" value="1995/01/23"/>
 	
 	<property name="comments">
 	<list>
@@ -119,7 +119,7 @@
 	<property name="phone" value=""/>	
 	<property name="address" value="C/Infierno nº4"/>
 	
-	<property name="dateBirth" value="2004/06/13 00:00"/>
+	<property name="dateBirth" value="2004/06/13"/>
 	
 	<property name="comments">
 	<list>
@@ -146,16 +146,16 @@
 	
 	</bean>
 
-	<!-- User3 (disponible proximamente)-->
-	<!-- 
-<bean class="domain.User" id="user3">
+	<!-- User3 -->
+	
+	<bean class="domain.User" id="user3">
 	<property name="name" value="Manolo" />
 	<property name="surname" value="Benitez Perez" />
-	<property name="email" value=""/>
-	<property name="phone" value=""/>	
-	<property name="address" value=""/>
+	<property name="email" value="manolito@gmail.com"/>
+	<property name="phone" value=""/>	<!-- ya que es opcional -->
+	<property name="address" value=""/>   <!-- ya que es opcional -->
 	
-	<property name="dateBirth" value="1960/12/28 00:00"/>
+	<property name="dateBirth" value="1960/12/28"/>
 	
 	<property name="comments">
 	<list>
@@ -166,16 +166,14 @@
 	
 	<property name="repliesComments">
 	<list>
-	<ref bean="replyComment3"/>
 	<ref bean="replyComment4"/>
+	<ref bean="replyComment5"/>
 	</list>
 	</property>
 	
 	<property name="repliesQuestions">
 	<list>
-	<ref bean="replyQuestion1"/>
-	<ref bean="replyQuestion2"/>
-	<ref bean="replyQuestion3"/>
+	<ref bean="replyQuestion5"/>
 	</list>
 	</property>
 	
@@ -185,7 +183,6 @@
 	</property>
 	
 	</bean>
- -->
  
  
 	<!-- Admins -->
@@ -196,7 +193,7 @@
 	<property name="email" value="admintodopoderoso@email.com"/>
 	<property name="phone" value=""/>	
 	<property name="address" value=""/>
-	<property name="dateBirth" value="1957/05/22 00:00"/>
+	<property name="dateBirth" value="1957/05/22"/>
 	
 	</bean>
 	
@@ -348,6 +345,99 @@
 	
 	<property name="user" ref="user1"/>
 	</bean>
+	
+	
+	<!-- Rende4 -->
+		
+	<bean class="domain.Rende" id="rende4">
+	<property name="name" value="Rende 4" />
+	<property name="Description" value="This is the rende 4, and its +18" />
+	<property name="moment" value="2019/01/14 18:10"/>
+	<property name="picture" value=""/>  <!-- ya que es opcional -->
+		<!-- Location NULL -->
+	
+	
+	<property name="attendants">
+	<list>
+	<ref bean = "user3"/> <!-- creador -->
+	
+	</list>
+	</property>
+	
+	<property name="isDraft" value="true"/>
+	<property name="adultOnly" value="true"/>
+	<property name="RSVP" value="false"/>
+	
+	<property name="linked">
+	<list>
+	</list>
+	</property>
+	
+	<property name="announcements">
+	<list>
+	<ref bean = "announcement4"/> 
+	</list>
+	</property>
+	
+	<property name="comments">
+	<list>
+	
+	</list>
+	</property>
+	
+	<property name="questions">
+	<list>
+	</list>
+	</property>
+	
+	<property name="user" ref="user3"/>
+	</bean>
+	
+	<!-- Rende5 -->
+		
+	<bean class="domain.Rende" id="rende5">
+	<property name="name" value="Rende 5" />
+	<property name="Description" value="This is the rende 5, and its not +18" />
+	<property name="moment" value="2018/02/29 11:11"/>
+	<property name="picture" value=""/>  <!-- ya que es opcional -->
+	<property name="coordenates" ref="location2"/>
+	
+	
+	<property name="attendants">
+	<list>
+	<ref bean = "user2"/> <!-- creador -->
+	
+	</list>
+	</property>
+	
+	<property name="isDraft" value="false"/>
+	<property name="adultOnly" value="false"/>
+	<property name="RSVP" value="true"/>
+	
+	<property name="linked">
+	<list>
+	</list>
+	</property>
+	
+	<property name="announcements">
+	<list>
+	<ref bean = "announcement5"/> 
+	<ref bean = "announcement6"/> 
+	</list>
+	</property>
+	
+	<property name="comments">
+	<list>
+	</list>
+	</property>
+	
+	<property name="questions">
+	<list>
+	</list>
+	</property>
+	
+	<property name="user" ref="user2"/>
+	</bean>
 	<!-- Announcements -->
 	
 		<!-- Announcement 1 -->
@@ -377,6 +467,33 @@
 	<property name="title" value="Announcement 3" />
 	<property name="Description" value="This is the announcement 3 and it is awesome but not as much as announcement1" />
 	<property name="rende" ref="rende2"/>
+	</bean>
+	
+		<!-- Announcement 4 -->
+	
+		<bean class="domain.Announcement" id="announcement4">
+	<property name="moment" value="2018/03/12 09:27"/>
+	<property name="title" value="Announcement 4" />
+	<property name="Description" value="This is the announcement 4 and it is awesome but not as much as announcement1" />
+	<property name="rende" ref="rende4"/>
+	</bean>
+	
+		<!-- Announcement 5 -->
+	
+		<bean class="domain.Announcement" id="announcement5">
+	<property name="moment" value="2017/05/09 21:27"/>
+	<property name="title" value="Announcement 5" />
+	<property name="Description" value="This is the announcement 5 and it is awesome but not as much as announcement1" />
+	<property name="rende" ref="rende5"/>
+	</bean>
+	
+		<!-- Announcement 6 -->
+	
+		<bean class="domain.Announcement" id="announcement6">
+	<property name="moment" value="2019/01/31 22:36"/>
+	<property name="title" value="Announcement 6" />
+	<property name="Description" value="This is the announcement 6 and it is awesome but not as much as announcement1" />
+	<property name="rende" ref="rende5"/>
 	</bean>
 	
 	<!-- Comments -->
@@ -489,14 +606,14 @@
 		
 	<bean class="domain.ReplyComment" id="replyComment4">
 	<property name="reply" value="ey whatssapp"/>
-	<property name="user" ref="user1"/>
+	<property name="user" ref="user3"/>
 	</bean>
 	
 		<!-- ReplyComment 5 -->
 		
 	<bean class="domain.ReplyComment" id="replyComment5">
 	<property name="reply" value="i dont know"/>
-	<property name="user" ref="user1"/>
+	<property name="user" ref="user3"/>
 	</bean>
 	
 	<!-- Locations -->
@@ -576,7 +693,11 @@
 	<property name="user" ref="user2"/>
 	</bean>
 	
-		
+				<!-- ReplyQuestion 5 -->
+	<bean class="domain.ReplyQuestion" id="replyQuestion5">
+	<property name="reply" value="Seremos 5 personas" />
+	<property name="user" ref="user3"/>
+	</bean>	
 		
 	
 	

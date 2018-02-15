@@ -11,24 +11,24 @@ import org.hibernate.validator.constraints.Range;
 @Access(AccessType.PROPERTY)
 public class Location {
 
-	private double	latitude;
-	private double	longitude;
+	private Double	latitude;
+	private Double	longitude;
 
 
 	@Range(min = -90, max = 90)
-	public double getLatitude() {
+	public Double getLatitude() {
 		return this.latitude;
 	}
 
-	public void setLatitude(final double latitude) {
+	public void setLatitude(final Double latitude) {
 		this.latitude = latitude;
 	}
 	@Range(min = -180, max = 180)
-	public double getLongitude() {
+	public Double getLongitude() {
 		return this.longitude;
 	}
 
-	public void setLongitude(final double longitude) {
+	public void setLongitude(final Double longitude) {
 		this.longitude = longitude;
 	}
 
