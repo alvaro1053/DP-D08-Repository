@@ -184,6 +184,8 @@
 	
 	<property name="rendes">
 	<list>
+	<ref bean="rende4"/>
+	<ref bean="rende5"/>
 	</list>
 	</property>
 	
@@ -445,7 +447,7 @@
 	</list>
 	</property>
 	
-	<property name="user" ref="user2"/>
+	<property name="user" ref="user3"/>
 	</bean>
 	<!-- Announcements -->
 	
