@@ -52,6 +52,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Documents and Settings\Student\Desktop\Workspaces\2oCuatri\DP-D08-Repository\Acme Rendezvous"/>
 			<item value="C:\Documents and Settings\Student\Desktop\Workspace\Segundo cuatrimestre\D08\Sample Project 1.13"/>
 			<item value="C:\Documents and Settings\Student\Desktop\Workspace\Acme-Explorer-Warnote-WS\Acme-Explorer"/>
 			<item value="C:\Documents and Settings\Student\Desktop\Workspace\Acme-Explorer"/>
@@ -66,7 +67,6 @@
 			<item value="E:\Sample Workspace 1.7\Sample Project 1.7"/>
 			<item value="X:\Sample Project 1.6"/>
 			<item value="X:\Sample Workspace 1.6\Sample Project 1.6"/>
-			<item value="C:\Users\corchu\VirtualBox VMs\Design-Testing\Sample Workspace 1.4\Sample Project 1.4"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
