@@ -33,7 +33,7 @@ public class Rende extends DomainEntity {
 	private Collection<User>			attendants;
 	private Boolean						isDraft;
 	private Boolean						adultOnly;
-	private Boolean						RSVP;
+	private Boolean						isDeleted;
 	private Collection<Rende>			linked;
 	private Collection<Announcement>	announcements;
 	private Collection<Comment>			comments;
@@ -118,12 +118,12 @@ public class Rende extends DomainEntity {
 		this.adultOnly = adultOnly;
 	}
 	@NotNull
-	public Boolean getRSVP() {
-		return this.RSVP;
+	public Boolean getIsDeleted() {
+		return this.isDeleted;
 	}
 
-	public void setRSVP(final Boolean rSVP) {
-		this.RSVP = rSVP;
+	public void setIsDeleted(final Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	@ManyToMany
 	public Collection<Rende> getLinked() {

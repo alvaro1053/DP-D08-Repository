@@ -229,7 +229,7 @@
 	
 	<property name="isDraft" value="false"/>
 	<property name="adultOnly" value="true"/>
-	<property name="RSVP" value="true"/>
+	<property name="isDeleted" value="true"/>
 	
 	<property name="linked">
 	<list>
@@ -283,7 +283,7 @@
 	
 	<property name="isDraft" value="false"/>
 	<property name="adultOnly" value="false"/>
-	<property name="RSVP" value="false"/>
+	<property name="isDeleted" value="false"/>
 	
 	<property name="linked">
 	<list>
@@ -335,7 +335,7 @@
 	
 	<property name="isDraft" value="true"/>
 	<property name="adultOnly" value="false"/>
-	<property name="RSVP" value="false"/>
+	<property name="isDeleted" value="false"/>
 	
 	<property name="linked">
 	<list>
@@ -379,7 +379,7 @@
 	
 	<property name="isDraft" value="true"/>
 	<property name="adultOnly" value="true"/>
-	<property name="RSVP" value="false"/>
+	<property name="isDeleted" value="false"/>
 	
 	<property name="linked">
 	<list>
@@ -426,7 +426,7 @@
 	
 	<property name="isDraft" value="false"/>
 	<property name="adultOnly" value="false"/>
-	<property name="RSVP" value="true"/>
+	<property name="isDeleted" value="true"/>
 	
 	<property name="linked">
 	<list>
