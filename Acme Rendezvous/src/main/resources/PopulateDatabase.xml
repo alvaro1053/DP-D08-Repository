@@ -98,6 +98,8 @@
 	
 	<property name="repliesQuestions">
 	<list>
+	<ref bean="replyQuestion1"/>
+	<ref bean="replyQuestion2"/>
 	</list>
 	</property>
 	
@@ -124,6 +126,7 @@
 	<property name="comments">
 	<list>
 	<ref bean="comment3"/>
+	<ref bean="comment6"/>
 	</list>
 	</property>
 	
@@ -135,6 +138,7 @@
 	<property name="repliesQuestions">
 	<list>
 	<ref bean="replyQuestion3"/>
+	<ref bean="replyQuestion4"/>
 	</list>
 	</property>
 	
@@ -168,6 +172,7 @@
 	<list>
 	<ref bean="replyComment4"/>
 	<ref bean="replyComment5"/>
+	<ref bean="replyComment6"/>
 	</list>
 	</property>
 	
@@ -199,7 +204,7 @@
 	
 	<!-- Rendes -->
 	
-		<!-- Rende1 -->
+			<!-- Rende1 -->
 		
 	<bean class="domain.Rende" id="rende1">
 	<property name="name" value="Rende 1" />
@@ -222,6 +227,7 @@
 	<property name="linked">
 	<list>
 	<ref bean = "rende2"/> 
+	<ref bean = "rende4"/> 
 	</list>
 	</property>
 	
@@ -301,7 +307,8 @@
 	<property name="user" ref="user2"/>
 	</bean>
 	
-	<!-- Rende3 -->
+	
+			<!-- Rende3 -->
 		
 	<bean class="domain.Rende" id="rende3">
 	<property name="name" value="Rende 3" />
@@ -347,7 +354,7 @@
 	</bean>
 	
 	
-	<!-- Rende4 -->
+			<!-- Rende4 -->
 		
 	<bean class="domain.Rende" id="rende4">
 	<property name="name" value="Rende 4" />
@@ -360,7 +367,6 @@
 	<property name="attendants">
 	<list>
 	<ref bean = "user3"/> <!-- creador -->
-	
 	</list>
 	</property>
 	
@@ -370,6 +376,7 @@
 	
 	<property name="linked">
 	<list>
+	<ref bean = "rende1"/> 
 	</list>
 	</property>
 	
@@ -393,7 +400,7 @@
 	<property name="user" ref="user3"/>
 	</bean>
 	
-	<!-- Rende5 -->
+			<!-- Rende5 -->
 		
 	<bean class="domain.Rende" id="rende5">
 	<property name="name" value="Rende 5" />
@@ -428,11 +435,13 @@
 	
 	<property name="comments">
 	<list>
+	<ref bean = "comment6"/> 
 	</list>
 	</property>
 	
 	<property name="questions">
 	<list>
+	
 	</list>
 	</property>
 	
@@ -563,7 +572,7 @@
 	<property name="user" ref="user2"/>
 	</bean>
 	
-				<!-- Comment 5 -->
+			<!-- Comment 5 -->
 		
 	<bean class="domain.Comment" id="comment5">
 	<property name="moment" value="2018/02/28 19:28"/>
@@ -580,8 +589,27 @@
 	<property name="user" ref="user2"/>
 	</bean>
 	
+			<!-- Comment 6 -->
+		
+	<bean class="domain.Comment" id="comment6">
+	<property name="moment" value="2018/02/28 19:28"/>
+	<property name="text" value="This comment is unnecessary" />
+	<property name="picture" value="" />
+
+	
+	<property name="repliesComments">
+	<list>
+	<ref bean ="replyComment6"/>
+	</list>
+	</property>
+	
+	<property name="user" ref="user2"/>
+	</bean>
+	
+	
+	
 	<!-- RepliesComments -->
-		<!-- ReplyComment 1 -->
+			<!-- ReplyComment 1 -->
 		
 	<bean class="domain.ReplyComment" id="replyComment1">
 	<property name="reply" value="Oh damn, :("/>
@@ -615,6 +643,16 @@
 	<property name="reply" value="i dont know"/>
 	<property name="user" ref="user3"/>
 	</bean>
+	
+		<!-- ReplyComment 6 -->
+		
+	<bean class="domain.ReplyComment" id="replyComment6">
+	<property name="reply" value="i know, right?"/>
+	<property name="user" ref="user3"/>
+	</bean>
+	
+	
+	
 	
 	<!-- Locations -->
 		<!-- Location 1 -->
@@ -651,7 +689,7 @@
 	</bean>
 			<!-- Question 3 -->
 	<bean class="domain.Question" id="question3">
-	<property name="question" value="why cant i display +18 Rendezvouses?" />
+	<property name="question" value="why can't i display +18 Rendezvouses?" />
 	<property name="replyQuestions" >
 	<list>
 	<ref bean = "replyQuestion3"/>
@@ -659,9 +697,9 @@
 	</property>
 	</bean>
 	
-				<!-- Question 3 -->
+				<!-- Question 4 -->
 	<bean class="domain.Question" id="question4">
-	<property name="question" value="why?" />
+	<property name="question" value="How did you know about us?" />
 	<property name="replyQuestions" >
 	<list>
 	</list>
@@ -689,16 +727,18 @@
 	
 			<!-- ReplyQuestion 4 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion4">
-	<property name="reply" value="holiquetal" />
+	<property name="reply" value="I search it" />
 	<property name="user" ref="user2"/>
 	</bean>
 	
-				<!-- ReplyQuestion 5 -->
+			<!-- ReplyQuestion 5 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion5">
-	<property name="reply" value="Seremos 5 personas" />
+	<property name="reply" value="I friend on mine told me about it" />
 	<property name="user" ref="user3"/>
-	</bean>	
-		
+	</bean>
+	
+	
+
 	
 	
 	
