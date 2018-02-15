@@ -5,14 +5,20 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import security.UserAccount;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -24,7 +30,7 @@ public class Actor extends DomainEntity {
 	private String	phone;
 	private String	address;
 	private Date	dateBirth;
-
+	private UserAccount				userAccount;
 
 	@Past
 	@Temporal(TemporalType.DATE)
@@ -79,4 +85,14 @@ public class Actor extends DomainEntity {
 		this.address = addresses;
 	}
 
+	@NotNull
+	 @OneToOne(optional = false, cascade = CascadeType.ALL)
+	 @Valid
+	 public UserAccount getUserAccount() {
+	  return this.userAccount;
+	 }
+
+	 public void setUserAccount(final UserAccount userAccount) {
+	  this.userAccount = userAccount;
+	 }
 }

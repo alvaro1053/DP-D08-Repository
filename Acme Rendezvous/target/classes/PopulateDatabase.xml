@@ -79,8 +79,9 @@
 	<property name="email" value="illojulio@email.com"/>
 	<property name="phone" value="902242526"/>	
 	<property name="address" value="Avenida séptima nº5"/>
-	
 	<property name="dateBirth" value="1995/01/23"/>
+	
+	<property name="userAccount" ref="userAccount2"/>
 	
 	<property name="comments">
 	<list>
@@ -120,8 +121,9 @@
 	<property name="email" value="hastaluegomaricarmen@email.com"/>
 	<property name="phone" value=""/>	
 	<property name="address" value="C/Infierno nº4"/>
-	
 	<property name="dateBirth" value="2004/06/13"/>
+	
+	<property name="userAccount" ref="userAccount3"/>
 	
 	<property name="comments">
 	<list>
@@ -158,8 +160,9 @@
 	<property name="email" value="manolito@gmail.com"/>
 	<property name="phone" value=""/>	<!-- ya que es opcional -->
 	<property name="address" value=""/>   <!-- ya que es opcional -->
-	
 	<property name="dateBirth" value="1960/12/28"/>
+	
+	<property name="userAccount" ref="userAccount4"/>
 	
 	<property name="comments">
 	<list>
@@ -201,6 +204,8 @@
 	<property name="phone" value=""/>	
 	<property name="address" value=""/>
 	<property name="dateBirth" value="1957/05/22"/>
+	
+	<property name="userAccount" ref="userAccount1"/>
 	
 	</bean>
 	
