@@ -7,7 +7,6 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -69,8 +68,8 @@ public class Rende extends DomainEntity {
 		this.description = description;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getMoment() {
 		return this.moment;
 	}
