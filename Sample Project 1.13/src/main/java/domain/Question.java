@@ -1,11 +1,13 @@
 
 package domain;
 
+import java.util.Collection;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -13,8 +15,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class Question extends DomainEntity {
 
-	private String			question;
-	private ReplyQuestion	replyQuestion;
+	private String						question;
+	private Collection<ReplyQuestion>	replyQuestions;
 
 
 	@NotBlank
@@ -25,13 +27,14 @@ public class Question extends DomainEntity {
 	public void setQuestion(final String question) {
 		this.question = question;
 	}
-	@OneToOne(cascade = CascadeType.ALL)
-	public ReplyQuestion getReplyQuestion() {
-		return this.replyQuestion;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	public Collection<ReplyQuestion> getReplyQuestions() {
+		return this.replyQuestions;
 	}
 
-	public void setReplyQuestion(final ReplyQuestion replyQuestion) {
-		this.replyQuestion = replyQuestion;
+	public void setReplyQuestions(final Collection<ReplyQuestion> replyQuestions) {
+		this.replyQuestions = replyQuestions;
 	}
 
 }

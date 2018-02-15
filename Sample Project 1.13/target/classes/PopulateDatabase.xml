@@ -104,6 +104,7 @@
 	<property name="rendes">
 	<list>
 	<ref bean="rende1"/>
+	<ref bean = "rende3"/> 
 	</list>
 	</property>
 	
@@ -303,6 +304,50 @@
 	<property name="user" ref="user2"/>
 	</bean>
 	
+	<!-- Rende3 -->
+		
+	<bean class="domain.Rende" id="rende3">
+	<property name="name" value="Rende 3" />
+	<property name="Description" value="This is the rende 3, and its not +18" />
+	<property name="moment" value="2018/03/12 06:22"/>
+	<property name="picture" value="https://vignette.wikia.nocookie.net/mrmen/images/5/52/Small.gif/revision/latest?cb=20100731114437"/>
+	<property name="coordenates" ref="location1"/>
+	
+	
+	
+	<property name="attendants">
+	<list>
+	<ref bean = "user1"/> <!-- creador -->
+	
+	</list>
+	</property>
+	
+	<property name="isDraft" value="true"/>
+	<property name="adultOnly" value="false"/>
+	<property name="RSVP" value="false"/>
+	
+	<property name="linked">
+	<list>
+	</list>
+	</property>
+	
+	<property name="announcements">
+	<list>
+	</list>
+	</property>
+	
+	<property name="comments">
+	<list>
+	</list>
+	</property>
+	
+	<property name="questions">
+	<list>
+	</list>
+	</property>
+	
+	<property name="user" ref="user1"/>
+	</bean>
 	<!-- Announcements -->
 	
 		<!-- Announcement 1 -->
@@ -471,17 +516,39 @@
 			<!-- Question 1 -->
 	<bean class="domain.Question" id="question1">
 	<property name="question" value="how could i solve my lag?" />
-	<property name="replyQuestion" ref="replyQuestion1"/>
+	<property name="replyQuestions" >
+	<list>
+	<ref bean = "replyQuestion1"/>
+	<ref bean = "replyQuestion4"/>
+	</list>
+	</property>
 	</bean>
 			<!-- Question 2 -->
 	<bean class="domain.Question" id="question2">
 	<property name="question" value="i don't know how to turn on my router" />
-	<property name="replyQuestion" ref="replyQuestion2"/>
+	<property name="replyQuestions" >
+	<list>
+	<ref bean = "replyQuestion2"/>
+	</list>
+	</property>
 	</bean>
 			<!-- Question 3 -->
 	<bean class="domain.Question" id="question3">
 	<property name="question" value="why cant i display +18 Rendezvouses?" />
-	<property name="replyQuestion" ref="replyQuestion3"/>
+	<property name="replyQuestions" >
+	<list>
+	<ref bean = "replyQuestion3"/>
+	</list>
+	</property>
+	</bean>
+	
+				<!-- Question 3 -->
+	<bean class="domain.Question" id="question4">
+	<property name="question" value="why?" />
+	<property name="replyQuestions" >
+	<list>
+	</list>
+	</property>
 	</bean>
 	
 	<!-- RepliesQuestions -->
@@ -500,6 +567,12 @@
 			<!-- ReplyQuestion 3 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion3">
 	<property name="reply" value="Maybe you are under-age" />
+	<property name="user" ref="user2"/>
+	</bean>
+	
+			<!-- ReplyQuestion 4 -->
+	<bean class="domain.ReplyQuestion" id="replyQuestion4">
+	<property name="reply" value="holiquetal" />
 	<property name="user" ref="user2"/>
 	</bean>
 	
