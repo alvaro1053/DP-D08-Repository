@@ -64,7 +64,7 @@ public class AnnouncementService {
 
 		Assert.isTrue(principal.getRendes().contains(announcement.getRende()));
 
-		this.announcementRepository.save(announcement);
+		this.announcementRepository.delete(announcement);
 	}
 	// Users must be able to create Announcements
 	public Announcement save(final Announcement announcementToSave) {
