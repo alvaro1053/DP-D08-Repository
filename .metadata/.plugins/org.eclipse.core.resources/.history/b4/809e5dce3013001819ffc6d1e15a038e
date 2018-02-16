@@ -49,7 +49,6 @@ public class RendeService {
 		Rende.setQuestions(new ArrayList<Question>());
 		Rende.setUser(principal);
 		Rende.setIsDraft(true);
-		Rende.setIsDeleted(false);
 		return Rende;
 	}
 

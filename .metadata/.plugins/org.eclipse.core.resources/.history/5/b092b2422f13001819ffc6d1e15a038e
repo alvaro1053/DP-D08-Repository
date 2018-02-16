@@ -1,0 +1,126 @@
+
+package services;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.AnnouncementRepository;
+import domain.Announcement;
+import domain.User;
+
+@Service
+@Transactional
+public class AnnouncementService {
+
+	// Managed Repository
+	@Autowired
+	private AnnouncementRepository	announcementRepository;
+
+	// Supporting services
+	@Autowired
+	private UserService				userService;
+
+
+	// Constructors
+
+	public AnnouncementService() {
+		super();
+	}
+
+	// Simple CRUD methods
+
+	public Announcement create() {
+		User principal;
+		Announcement Announcement;
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		Announcement = new Announcement();
+		return Announcement;
+	}
+
+	//  An actor who is not authenticated must be able to browse the list of Announcements and display them
+	public Collection<Announcement> findAll() {
+		final Collection<Announcement> result = this.announcementRepository.findAll();
+		Assert.notNull(result);
+		return result;
+	}
+
+	// Other business methods
+
+	public void delete(final Announcement announcement) {
+		User principal;
+		Assert.notNull(announcement);
+		Assert.isTrue(announcement.getId() != 0);
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+
+		Assert.isTrue(this.findByUser().contains(announcement));
+
+		this.announcementRepository.save(announcement);
+	}
+
+	// Users must be able to create Announcements
+	public Announcement save(final Announcement announcementToSave) {
+		User principal;
+		Announcement result;
+		Collection<Announcement> Announcements, updated, rSVPS, updated2;
+		Assert.notNull(announcementToSave);
+
+		principal = this.userService.findByPrincipal();
+
+		Assert.notNull(principal);
+
+		if (announcementToSave.getId() == 0) {
+			final Date moment = new Date(System.currentTimeMillis() - 1);
+			announcementToSave.setMoment(moment);
+
+		}
+
+		Assert.isTrue(announcementToSave.getMoment().after(moment));
+
+		result = this.announcementRepository.save(announcementToSave);
+
+		Announcements = principal.getAnnouncements();
+		updated = new ArrayList<Announcement>(Announcements);
+		updated.add(result);
+		principal.setAnnouncements(updated);
+
+		rSVPS = principal.getrSVPS();
+		updated2 = new ArrayList<Announcement>(rSVPS);
+		updated2.add(result);
+		principal.setrSVPS(updated2);
+
+		return result;
+	}
+	public Collection<Announcement> findByUser() {
+		User principal;
+		Collection<Announcement> result;
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		result = principal.getAnnouncements();
+
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+	public Announcement findOne(final int AnnouncementId) {
+		Announcement result;
+
+		result = this.announcementRepository.findOne(AnnouncementId);
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+}
