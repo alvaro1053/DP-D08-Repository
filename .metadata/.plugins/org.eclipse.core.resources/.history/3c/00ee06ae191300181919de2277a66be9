@@ -189,7 +189,6 @@
 	<property name="rSVPS">
 	<list>
 	<ref bean="rende4"/>
-	<ref bean="rende5"/>
 	</list>
 	</property>
 	
@@ -441,7 +440,7 @@
 	
 	<property name="attendants">
 	<list>
-	<ref bean = "user3"/> <!-- creador -->
+	<ref bean = "user2"/> <!-- creador -->
 	
 	</list>
 	</property>

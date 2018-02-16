@@ -97,13 +97,6 @@
 	</list>
 	</property>
 	
-	<property name="rSVPS">
-	<list>
-	<ref bean="rende1"/>
-	<ref bean="rende3"/>
-	</list>
-	</property>
-	
 	<property name="repliesQuestions">
 	<list>
 	<ref bean="replyQuestion1"/>
@@ -136,14 +129,6 @@
 	<list>
 	<ref bean="comment3"/>
 	<ref bean="comment6"/>
-	</list>
-	</property>
-	
-	<property name="rSVPS">
-	<list>
-	<ref bean="rende1"/>
-	<ref bean="rende2"/>
-	<ref bean="rende5"/>
 	</list>
 	</property>
 	
@@ -183,13 +168,6 @@
 	<list>
 	<ref bean="comment4"/>
 	<ref bean="comment5"/>
-	</list>
-	</property>
-	
-	<property name="rSVPS">
-	<list>
-	<ref bean="rende4"/>
-	<ref bean="rende5"/>
 	</list>
 	</property>
 	
@@ -441,7 +419,7 @@
 	
 	<property name="attendants">
 	<list>
-	<ref bean = "user3"/> <!-- creador -->
+	<ref bean = "user2"/> <!-- creador -->
 	
 	</list>
 	</property>

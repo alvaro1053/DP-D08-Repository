@@ -6,7 +6,6 @@ import java.util.Collection;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,15 +18,6 @@ public class User extends Actor {
 	private Collection<Rende>			rendes;
 	private Collection<Rende>			rSVPS;
 
-
-	@ManyToMany
-	public Collection<Rende> getrSVPS() {
-		return this.rSVPS;
-	}
-
-	public void setrSVPS(final Collection<Rende> rSVPS) {
-		this.rSVPS = rSVPS;
-	}
 
 	@OneToMany(mappedBy = "user")
 	public Collection<Comment> getComments() {

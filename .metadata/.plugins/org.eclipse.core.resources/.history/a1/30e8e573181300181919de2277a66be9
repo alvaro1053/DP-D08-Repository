@@ -22,10 +22,11 @@ public class User extends Actor {
 
 	@ManyToMany
 	public Collection<Rende> getrSVPS() {
-		return this.rSVPS;
+		return rSVPS;
 	}
 
-	public void setrSVPS(final Collection<Rende> rSVPS) {
+	
+	public void setrSVPS(Collection<Rende> rSVPS) {
 		this.rSVPS = rSVPS;
 	}
 
