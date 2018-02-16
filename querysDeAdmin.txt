@@ -1,0 +1,47 @@
+The average and the standard deviation of rendezvouses created per user.
+select avg(u.rendes.size),sqrt(sum(u.rendes.size*u.rendes.size)/count(u.rendes.size)-(avg(u.rendes.size)*avg(u.rendes.size))) from User u;
+
+The ratio of users who have ever created a rendezvous versus the users who
+have never created any rendezvouses
+select 1.0*count(u) from User u where u.rendes.size > 0 /(select count(u) from User u where u.rendes.size = 0);
+
+
+The average and the standard deviation of user per Rende
+select avg(r.attendants.size),sqrt(sum(r.attendants.size*r.attendants.size)/count(r.attendants.size)-(avg(r.attendants.size)*avg(r.attendants.size))) from Rende r;
+
+The average and the standard deviation of rendezvouses that are RSVPd per
+user ----> ¿Esta se puede hacer siendo unidireccional?
+
+
+The top-10 rendezvouses in terms of users who have RSVPd them (Esta query no te lo limita a 10, según he leído para limitarlo a 10 habría que limitarlo en el método)
+select r from Rende r order by r.attendants.size desc;
+
+
+The average and the standard deviation of announcements per rendezvous.
+
+select avg(r.announcements.size),sqrt(sum(r.announcements.size*r.announcements.size)/count(r.announcements.size)-(avg(r.announcements.size)*avg(r.announcements.size))) from Rende r;
+
+The rendezvouses that whose number of announcements is above 75% the
+average number of announcements per rendezvous.
+select r from Rende r where ( r.announcements.size > 0.75 * (select avg(r.announcements.size) from Rende r));
+
+
+The rendezvouses that are linked to a number of rendezvouses that is greater
+than the average plus 10%
+
+select r from Rende r where ( r.linked.size > 1.1 * (select avg(r.linked.size) from Rende r));
+
+The average and the standard deviation of the number of questions per rendezvous
+select avg(r.questions.size),sqrt(sum(r.questions.size*r.questions.size)/count(r.questions.size)-(avg(r.questions.size)*avg(r.questions.size))) from Rende r;
+
+The average and the standard deviation of the number of answers to the
+questions per rendezvous
+
+select avg(q.replyQuestions.size),sqrt(sum(q.replyQuestions.size*q.replyQuestions.size)/count(q.replyQuestions.size)-(avg(q.replyQuestions.size)*avg(q.replyQuestions.size))) from Rende r join r.questions q;
+
+
+ The average and the standard deviation of replies per comment.
+
+select avg(c.repliesComments.size),sqrt(sum(c.repliesComments.size*c.repliesComments.size)/count(c.repliesComments.size)-(avg(c.repliesComments.size)*avg(c.repliesComments.size))) from Comment c;
+
+
