@@ -1,2 +1,5 @@
 1518731459301	Delete element
 1518731574019	Rename field 'auditorService'
+1518790541564	Rename field 'RendeRepository'
+1518790564079	Rename field 'UserService'
+1518790815110	Rename local variable 't'

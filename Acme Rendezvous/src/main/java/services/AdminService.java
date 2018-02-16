@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import repositories.AdminRepository;
 import security.LoginService;
 import security.UserAccount;
 import domain.Admin;
+import domain.Rende;
 
 @Service
 @Transactional
@@ -18,7 +21,7 @@ public class AdminService {
 
 	// Managed Repository
 	@Autowired
-	private AdminRepository	AdminRepository;
+	private AdminRepository	adminRepository;
 
 
 	// Supporting services
@@ -56,14 +59,14 @@ public class AdminService {
 
 		}
 
-		saved = this.AdminRepository.save(Admin);
+		saved = this.adminRepository.save(Admin);
 
 		return saved;
 	}
 
 	public Admin findOne(final int AdminId) {
 		Admin result;
-		result = this.AdminRepository.findOne(AdminId);
+		result = this.adminRepository.findOne(AdminId);
 		return result;
 	}
 
@@ -83,10 +86,99 @@ public class AdminService {
 	public Admin findByUserAccount(final UserAccount userAccount) {
 		Assert.notNull(userAccount);
 		Admin result;
-		result = this.AdminRepository.findByUserAccountId(userAccount.getId());
+		result = this.adminRepository.findByUserAccountId(userAccount.getId());
 		return result;
 	}
 
 	// Other business methods
+
+	//statistics methods
+	public Collection<Double> averageAndDesviationOfRendesPerUser() {
+		final Collection<Double> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageAndDesviationOfRendesPerUser();
+		return res;
+	}
+	public Collection<Double> averageAndDesviationOfAnnouncementPerRende() {
+		final Collection<Double> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageAndDesviationOfAnnouncementPerRende();
+		return res;
+	}
+
+	public Collection<Double> averageAndDesviationOfQuestionsPerRende() {
+		final Collection<Double> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageAndDesviationOfQuestionsPerRende();
+		return res;
+	}
+
+	public Collection<Double> averageAndDesviationOfRepliesPerComment() {
+		final Collection<Double> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageAndDesviationOfRepliesPerComment();
+		return res;
+	}
+
+	public Collection<Double> averageAndDesviationOfRSVPPerRende() {
+		final Collection<Double> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageAndDesviationOfRSVPPerRende();
+		return res;
+	}
+
+	public Collection<Double> averageAndDesviationOfRSVPPerUser() {
+		final Collection<Double> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageAndDesviationOfRSVPPerUser();
+		return res;
+	}
+
+	public Collection<Rende> rendesWithMoreAnnouncementsThanTheAverage() {
+		final Collection<Rende> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.rendesWithMoreAnnouncementsThanTheAverage();
+		return res;
+	}
+
+	public Collection<Rende> rendesWithMoreLinkedThanTheAverage() {
+		final Collection<Rende> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.rendesWithMoreLinkedThanTheAverage();
+		return res;
+	}
+	public Collection<Rende> top10RendesByAttendants() {
+		final Collection<Rende> res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.top10RendesByAttendants();
+		return res;
+	}
+
+	public Double ratioOfUsersWithRendesCreated() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.ratioOfUsersWithRendesCreated();
+		return res;
+	}
 
 }

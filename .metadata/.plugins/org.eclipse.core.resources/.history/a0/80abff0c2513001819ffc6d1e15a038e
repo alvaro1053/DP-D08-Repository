@@ -1,0 +1,567 @@
+
+package services;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+
+import repositories.RendeRepository;
+import domain.Announcement;
+import domain.Comment;
+import domain.Question;
+import domain.Rende;
+import domain.User;
+
+@Service
+@Transactional
+public class RendeService {
+
+	// Managed Repository
+	@Autowired
+	private RendeRepository	rendeRepository;
+
+	// Supporting services
+	@Autowired
+	private UserService		userService;
+
+
+	// Constructors
+
+	public RendeService() {
+		super();
+	}
+
+	// Simple CRUD methods
+
+	public Rende create() {
+		User principal;
+		Rende Rende;
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		Rende = new Rende();
+		Rende.setAnnouncements(new ArrayList<Announcement>());
+		Rende.setComments(new ArrayList<Comment>());
+		Rende.setQuestions(new ArrayList<Question>());
+		Rende.setUser(principal);
+		Rende.setIsDraft(true);
+		return Rende;
+	}
+
+	//  An actor who is not authenticated must be able to browse the list of Rendes and display them
+	public Collection<Rende> findAll() {
+		final Collection<Rende> result = this.rendeRepository.findAll();
+		Assert.notNull(result);
+		return result;
+	}
+
+	// Other business methods
+
+	public void cancel(final Rende rende) {
+		User principal;
+		Assert.notNull(rende);
+		Assert.isTrue(rende.getId() != 0);
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+
+		Assert.isTrue(this.findByUser().contains(rende));
+		rende.setIsDeleted(true);
+
+		this.rendeRepository.save(rende);
+	}
+
+	// Users must be able to create Rendes
+	public Rende save(final Rende rendeToSave) {
+		User principal;
+		Rende result;
+		Collection<Rende> Rendes, updated;
+		Assert.notNull(rendeToSave);
+
+		principal = this.userService.findByPrincipal();
+
+		Assert.notNull(principal);
+
+		if (rendeToSave.getId() == 0) {
+		Collection<User> attendants = new ArrayList<User>();
+		attendants.add(principal);
+		rendeToSave.setUser(principal);
+		rendeToSave.setAttendants(attendants);
+		}
+
+		currentMoment = new Date(System.currentTimeMillis() - 1);
+
+		Assert.isTrue(rendeToSave.getPublicationDate().after(currentMoment));
+		Assert.isTrue(rendeToSave.getStartDate().after(rendeToSave.getPublicationDate()));
+		Assert.isTrue(rendeToSave.getEndDate().after(rendeToSave.getStartDate()));
+		Assert.isTrue(!rendeToSave.getLegaltext().getIsDraft());
+
+		vatTax = this.customisationService.find().getVatTax();
+
+		double price = 0;
+		for (final Stage stage : rendeToSave.getStage())
+			price += stage.getPrice();
+
+		price += (price * (vatTax / 100));
+		rendeToSave.setPrice(price);
+
+		isSpam = false;
+
+		spamWords = this.customisationService.find().getSpamWords();
+		for (final String spam : spamWords)
+			if (rendeToSave.getTitle().toLowerCase().contains(spam.toLowerCase())) {
+				isSpam = true;
+				break;
+			} else if (rendeToSave.getDescription().toLowerCase().contains(spam.toLowerCase())) {
+				isSpam = true;
+				break;
+			} else
+				for (final String r : rendeToSave.getRequirements())
+					if (r.toLowerCase().contains(spam.toLowerCase())) {
+						isSpam = true;
+						break;
+					}
+
+		if (isSpam == true)
+			principal.setIsSuspicious(true);
+
+		List<Stage> stages;
+		List<Stage> orderedStages;
+		int i;
+		boolean areAllStagesValid;
+
+		orderedStages = new ArrayList<>();
+		stages = rendeToSave.getStage();
+		i = 1;
+		areAllStagesValid = true;
+
+		for (final Stage stg : stages) {
+			stg.setNumber(i);
+			i++;
+			orderedStages.add(stg);
+			if (stg.getNumber() == null || stg.getDescription().length() == 0 || stg.getTitle().length() == 0 || stg.getPrice() == null) {
+				areAllStagesValid = false;
+				break;
+			}
+		}
+		Assert.isTrue(areAllStagesValid);
+
+		rendeToSave.setStage(orderedStages);
+
+		/*
+		 * boolean areStagesNumberedCorrectly = true;
+		 * List<Stage> stages;
+		 * List<Stage> orderedStages;
+		 * orderedStages = new ArrayList<>();
+		 * stages = t.getStage();
+		 * 
+		 * for (int i = 1; i <= stages.size(); i++) {
+		 * boolean existsStageNumberI = false;
+		 * for (final Stage stg : stages)
+		 * if (stg.getNumber() == i) {
+		 * orderedStages.add(stg);
+		 * existsStageNumberI = true;
+		 * break;
+		 * }
+		 * if (!existsStageNumberI) {
+		 * areStagesNumberedCorrectly = false;
+		 * break;
+		 * }
+		 * }
+		 * 
+		 * Assert.isTrue(areStagesNumberedCorrectly);
+		 * t.setStage(orderedStages);
+		 */
+
+		result = this.rendeRepository.save(rendeToSave);
+
+		Rendes = principal.getRendes();
+		updated = new ArrayList<Rende>(Rendes);
+		updated.add(result);
+		principal.setRendes(updated);
+
+		ranger = result.getRanger();
+
+		Rendes = ranger.getRendes();
+		updated = new ArrayList<Rende>(Rendes);
+		updated.add(result);
+		ranger.setRendes(updated);
+
+		category = result.getCategory();
+
+		Rendes = category.getRendes();
+		updated = new ArrayList<Rende>(Rendes);
+		updated.add(result);
+		category.setRendes(updated);
+
+		return result;
+	}
+	//  Users must be able to list the Rendes they manage 
+	public Collection<Rende> findByUser() {
+		User principal;
+		Collection<Rende> result;
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		result = principal.getRendes();
+
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+	// Users must be able to delete a Rende they manage if the Rende has not been published yet. Once published, the Rende cannot be deleted.
+	// A Rende that has not been published yet, doesn't have any stories, notes, applications, sponsorships or audit records .
+
+	public void delete(final Rende t) {
+		User principal;
+		final Date currentMoment;
+		Collection<SurvivalClass> survivalClasses;
+		Collection<Rende> Rendes;
+		Ranger ranger;
+		Category category;
+
+		Assert.notNull(t);
+		Assert.isTrue(t.getId() != 0);
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal); // Checks if the principal is a User
+
+		Assert.isTrue(principal.getRendes().contains(t));
+
+		currentMoment = new Date(System.currentTimeMillis() - 1);
+
+		Assert.isTrue(t.getPublicationDate().after(currentMoment));
+
+		survivalClasses = t.getSurvivalClasses();
+
+		for (final SurvivalClass survivalClass : survivalClasses)
+			this.survivalClassService.delete(survivalClass);
+
+		Rendes = principal.getRendes();
+		Collection<Rende> updated = new ArrayList<Rende>(Rendes);
+		updated.remove(t);
+		principal.setRendes(updated);
+
+		ranger = t.getRanger();
+
+		Rendes = ranger.getRendes();
+		updated = new ArrayList<Rende>(Rendes);
+		updated.remove(t);
+		ranger.setRendes(updated);
+
+		category = t.getCategory();
+
+		Rendes = category.getRendes();
+		updated = new ArrayList<Rende>(Rendes);
+		updated.remove(t);
+		category.setRendes(updated);
+
+		this.rendeRepository.delete(t);
+
+	}
+
+	// V Users must be able to cancel any of their Rendes that has been published but has not started, yet.
+	public void cancel(final Rende t, final String reason) {
+		Assert.notNull(t);
+		Assert.isTrue(t.getId() != 0);
+		Assert.notNull(reason);
+		Assert.isTrue(!reason.isEmpty());
+		Assert.isNull(t.getCancellationReason());
+		final User principal = this.userService.findByPrincipal();
+		Assert.notNull(principal); // Checks if the principal is a User
+		Assert.isTrue(principal.getRendes().contains(t));
+		final Date currentMoment = new Date();
+		Assert.isTrue(t.getPublicationDate().before(currentMoment));
+		Assert.isTrue(t.getStartDate().after(currentMoment));
+		t.setCancellationReason(reason);
+		this.rendeRepository.save(t);
+	}
+
+	public Collection<Rende> findBySingleKey(String singleKey) {
+		Collection<Rende> result;
+		singleKey = "%" + singleKey + "%";
+		result = this.rendeRepository.findBySingleKey(singleKey);
+		Assert.notNull(result);
+		return result;
+	}
+
+	public Collection<Rende> findByCategory(final int categoryId) {
+		Collection<Rende> result;
+		result = this.rendeRepository.findByCategory(categoryId);
+		Assert.notNull(result);
+		return result;
+	}
+
+	public Collection<Rende> findByTag(final Tag tag) {
+		Collection<Rende> result;
+		Administrator principal;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.findByTagId(tag.getId());
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+	public Rende findOne(final int RendeId) {
+		Rende result;
+
+		result = this.rendeRepository.findOne(RendeId);
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+	public Collection<Rende> findAllPublishedRendes() {
+		Collection<Rende> result;
+
+		result = this.rendeRepository.findAllPublishedRendes();
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+	public Double averageRendesPerUser() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.averageRendesPerUser();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Integer minRendesPerUser() {
+		Administrator principal;
+		Integer result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.maxRendesPerUser();
+		if (result == null)
+			result = 0;
+
+		return result;
+	}
+
+	public Integer maxRendesPerUser() {
+		Administrator principal;
+		Integer result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.maxRendesPerUser();
+		if (result == null)
+			result = 0;
+
+		return result;
+	}
+
+	public Double stdDeviationRendesPerUser() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.stdDeviationRendesPerUser();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Double averagePricePerRende() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.averagePricePerRende();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Integer maxPricePerRende() {
+		Administrator principal;
+		Integer result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.maxPricePerRende();
+		if (result == null)
+			result = 0;
+
+		return result;
+	}
+
+	public Integer minPricePerRende() {
+		Administrator principal;
+		Integer result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.minPricePerRende();
+		if (result == null)
+			result = 0;
+
+		return result;
+	}
+
+	public Double stdDeviationPricePerRende() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.stdDeviationPricePerRende();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Double averageRendesPerRanger() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.averageRendesPerRanger();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Integer minRendesPerRanger() {
+		Administrator principal;
+		Integer result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.minRendesPerRanger();
+		if (result == null)
+			result = 0;
+
+		return result;
+	}
+
+	public Integer maxRendesPerRanger() {
+		Administrator principal;
+		Integer result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.maxRendesPerRanger();
+		if (result == null)
+			result = 0;
+
+		return result;
+	}
+
+	public Double stdDeviationRendesPerRanger() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.stdDeviationRendesPerRanger();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Double ratioCancelledRendes() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.ratioCancelledRendes();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Double ratioRendesWithAudit() {
+		Administrator principal;
+		Double result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.ratioRendesWithAudit();
+		if (result == null)
+			result = 0.0;
+
+		return result;
+	}
+
+	public Collection<Rende> RendesMostApplications() {
+		Administrator principal;
+		Collection<Rende> result;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = this.rendeRepository.RendesMostApplications();
+		Assert.notNull(result);
+
+		return result;
+	}
+
+	public Map<LegalText, Integer> groupByNumberOfRendes() {
+		final Map<LegalText, Integer> result = new HashMap<LegalText, Integer>();
+		final Administrator principal;
+		final Collection<Rende> Rendes;
+
+		principal = this.administratorService.findByPrincipal();
+		Assert.notNull(principal);
+
+		Rendes = this.rendeRepository.findAll();
+		for (final Rende t : Rendes)
+			if (result.containsKey(t.getLegaltext())) {
+				Integer index = result.get(t.getLegaltext());
+				index++;
+				result.put(t.getLegaltext(), index);
+			} else
+				result.put(t.getLegaltext(), 1);
+
+		return result;
+	}
+
+}

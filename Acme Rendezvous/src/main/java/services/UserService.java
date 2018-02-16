@@ -40,7 +40,7 @@ public class UserService {
 		User result;
 
 		result = new User();
-
+		result.setrSVPS(new ArrayList<Rende>());
 		result.setComments(new ArrayList<Comment>());
 		result.setRendes(new ArrayList<Rende>());
 		result.setRepliesComments(new ArrayList<ReplyComment>());
