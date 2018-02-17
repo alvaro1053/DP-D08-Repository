@@ -22,7 +22,7 @@
 
 
 
-<form:form action="user/announcement/edit.do" modelAttribute="announcement">
+<form:form action="announcement/user/edit.do" modelAttribute="announcement">
 
 	<form:hidden path="id" />
 	<form:hidden path="moment" />

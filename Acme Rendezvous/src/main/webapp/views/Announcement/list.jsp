@@ -22,27 +22,34 @@
 
 
 	<!-- Attributes -->
-
+	
+	
+	<!-- title -->
 	<spring:message code="announcement.title" var="titleHeader" />
 	<display:column property="title" title="${titleHeader}"
 		sortable="true" />
 
 
-
+	<!-- moment -->
+	<spring:message code="announcement.format"
+  		var="format" />
 	<spring:message code="announcement.moment"
 		var="momentHeader" />
 	<display:column property="moment" title="${momentHeader}"
-		sortable="true" format = "{0,date,dd/MM/yyyy HH:mm}" />
+		sortable="true" format = "${format}" />
 
 
-
+	<!-- rende -->
 	<spring:message code="announcement.rende"
 		var="rendeHeader" />
-	 <display:column property="rende" title="${rendeHeader}" sortable="true"/> 
+	<display:column property="rende" title="${rendeHeader}" sortable="true"/> 
+	
+	
+	
 	
 	
 	<security:authorize access="hasRole('USER')">
-			<a href="user/announcement/create.do"> <spring:message
+			<a href="announcement/user/create.do"> <spring:message
 				code="announcement.create" />
 			</a>
 	</security:authorize> 
