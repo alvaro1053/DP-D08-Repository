@@ -112,7 +112,7 @@ public class CommentService {
 		comments = rende.getComments();
 		updated = new ArrayList<Comment>(comments);
 		updated.remove(comment);
-		rende.setComments(comments);
+		rende.setComments(updated);
 
 		this.commentRepository.delete(comment);
 
