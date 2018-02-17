@@ -22,7 +22,7 @@
 </jstl:when>
 <jstl:otherwise>
 
-<!-- Tiene que ser el usuario que HAYA CREADO la rende quien pueda editarla (lo miraremos más tarde -->
+<!-- Tiene que ser el usuario que HAYA CREADO la rende quien pueda editarla y además el ADMIN puede eliminar (lo miraremos más tarde)-->
 <form:form action="rende/user/edit.do" modelAttribute="rende">
 
 	<form:hidden path="id" />

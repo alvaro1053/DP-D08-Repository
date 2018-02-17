@@ -25,6 +25,7 @@
 <form:form action="announcement/user/edit.do" modelAttribute="announcement">
 
 	<form:hidden path="id" />
+	<form:hidden path="version" />
 	<form:hidden path="moment" />
 	
 	
@@ -51,14 +52,18 @@
 	<spring:message code="announcement.save" var="saveAnnouncement"  />
 	<spring:message code="announcement.delete" var="deleteAnnouncement"  />
 	<spring:message code="announcement.cancel" var="cancelAnnouncement"  />
+	<spring:message code="announcement.confirm" var="confirmAnnouncement"  />
 	
 	
 	<input type="submit" name="save"
 		value="${saveAnnouncement}" />&nbsp; 
 		
 	<security:authorize access="hasRole('ADMIN')">	
-		<input type="submit" name="delete"
-			value="${deleteAnnouncement}" />&nbsp; 
+		<jstl:if test="${announcement.id != 0}">
+  	<input type="submit" name="delete" value="${deleteAnnouncement}"
+   		onclick="return confirm('${confirmAnnouncement}')" />&nbsp;
+	</jstl:if>
+ 
 	</security:authorize>		
 
 	<input type="button" name="cancel"

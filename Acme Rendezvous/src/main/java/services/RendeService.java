@@ -61,7 +61,7 @@ public class RendeService {
 	}
 
 	// Other business methods
-
+	//Un ADMIN puede eliminar también
 	public void delete(final Rende rende) {
 		User principal;
 		Assert.notNull(rende);
