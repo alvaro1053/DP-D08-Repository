@@ -71,6 +71,7 @@ public class RendeService {
 		Assert.notNull(principal);
 
 		Assert.isTrue(this.findByUser().contains(rende));
+		Assert.isTrue(rende.getIsDraft());
 		rende.setIsDeleted(true);
 
 		this.rendeRepository.save(rende);
@@ -97,7 +98,7 @@ public class RendeService {
 		final Date currentMoment = new Date(System.currentTimeMillis() - 1);
 
 		Assert.isTrue(rendeToSave.getMoment().after(currentMoment));
-
+		
 		result = this.rendeRepository.save(rendeToSave);
 
 		Rendes = principal.getRendes();
