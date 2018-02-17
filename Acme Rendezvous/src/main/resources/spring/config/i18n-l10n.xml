@@ -26,6 +26,10 @@
 		<value>/views/administrator/messages</value>
 		<value>/views/customer/messages</value>
 		<value>/views/profile/messages</value>
+		
+		<!-- Acme Rendezvous -->
+		
+		<value>/views/announcement/messages</value>
 	</util:list>
 
 </beans>
