@@ -30,7 +30,7 @@ public class Actor extends DomainEntity {
 	private String	phone;
 	private String	address;
 	private Date	dateBirth;
-	private UserAccount				userAccount;
+	private UserAccount	userAccount;
 
 	@Past
 	@Temporal(TemporalType.DATE)
