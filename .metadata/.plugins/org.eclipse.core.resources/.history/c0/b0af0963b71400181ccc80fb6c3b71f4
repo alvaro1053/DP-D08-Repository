@@ -21,10 +21,7 @@
 
 <jstl:choose>
 <jstl:when test="${rende.isDraft == false || rende.isDeleted == true}">
-<form:form action="rende/user/edit.do" modelAttribute="rende">
 <h3><spring:message code="rende.nopermission" /></h3>
-</form:form>
-
 <acme:selectMultiple items="${rendes }" itemLabel="name" code="rende.linked" path="linked"/>
 </jstl:when>
 <jstl:otherwise>
