@@ -10,15 +10,19 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
 	<!-- isDraft (si NO es draft no se debe poder editar)-->
 	<!-- isDeleted (si ha sido borrada no se debe poder editar)-->
+<security:authorize access="hasRole('USER')">
+	
 <jstl:if test="${permission }">
 
 <jstl:choose>
 <jstl:when test="${rende.isDraft == false || rende.isDeleted == true}">
 <h3><spring:message code="rende.nopermission" /></h3>
+<acme:selectMultiple items="${rendes }" itemLabel="name" code="rende.linked" path="linked"/>
 </jstl:when>
 <jstl:otherwise>
 
@@ -36,38 +40,21 @@
 	
 <!-- ATRIBUTES -->
 	<!-- name -->
-	<form:label path="name">
-		<spring:message code="rende.name" />:
-	</form:label>
-	<form:input path="name"/>
-	<form:errors cssClass="error" path="name" />
+	<acme:textbox code="name" path="rende.name"/>
 	<br />
 	<br />
 	
-	<!-- description -->
-	<form:label path="description">
-		<spring:message code="rende.description" />:
-	</form:label>
-	<form:input path="description"/>
-	<form:errors cssClass="error" path="description" />
+	<acme:textarea code="description" path="rende.description"/>
 	<br />
 	<br />
 
 	<!-- moment -->	
-	<form:label path="moment">
-		<spring:message code="rende.moment" />:
-	</form:label>
-	<form:input path="moment"/>
-	<form:errors cssClass="error" path="moment" />
+	<acme:textbox code="moment" path="rende.moment"/>
 	<br />
 	<br />
 	
 	<!-- picture -->
-	<form:label path="picture">
-		<spring:message code="rende.picture" />:
-	</form:label>
-	<form:input path="picture"/>
-	<form:errors cssClass="error" path="picture" />  <!-- URL -->
+	<acme:textbox code="picture" path="rende.picture"/>
 	<br />
 	<br />
 	
@@ -80,19 +67,11 @@
 		</form:label>
 	</legend>
 
-	<form:label path="coordenates.latitude">
-			<spring:message code="rende.coordenates.latitude" />:
-	</form:label>
-	<form:input path="coordenates.latitude" />
-	<form:errors cssClass="error" path="coordenates.latitude" />
-	<br />
+	<acme:textbox code="rende.coordenates.latitude" path="coordenates.latitude"/>
+	<br/>
 
-	<form:label path="coordenates.longitude">
-			<spring:message code="rende.coordenates.longitude" />:
-	</form:label>
-	<form:input path="coordenates.longitude" />
-	<form:errors cssClass="error" path="coordenates.longitude" />
-	<br />
+	<acme:textbox code="rende.coordenates.longitude" path="coordenates.longitude"/>
+	<br/>
 
 	</fieldset>
 
@@ -102,7 +81,8 @@
 	<form:checkbox path="adultOnly" name="adultOnly" value="adultOnly"/>
 	<br />
 	<br />
-
+	
+	<acme:selectMultiple items="${rendes }" itemLabel="name" code="rende.linked" path="linked"/>
 	
 
 	<spring:message code="rende.save" var="saveRende"  /><!-- Lo probamos así al principio y luego lo cambiamos para guardar en modo draft y final -->
@@ -128,3 +108,4 @@
 </jstl:choose>
 
 </jstl:if>
+</security:authorize>

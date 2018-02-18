@@ -49,11 +49,21 @@
 		var="rendeHeader" />
 	<display:column property="rende" title="${rendeHeader}" sortable="true"/> 
 	
-	
-	
-	
+	<!-- Reply -->
+	<display:column>
+			<a href="replyComment/list.do?commentId=${row.id}"> <spring:message
+					code="comment.listReply" />
+			</a>
+	</display:column>
 	
 	<security:authorize access="hasRole('USER')">
+	<!-- Reply -->
+	<display:column>
+			<a href="replyComment/create.do?commentId=${row.id}"> <spring:message
+					code="comment.reply" />
+			</a>
+	</display:column>
+	
 			<a href="comment/user/create.do"> <spring:message
 				code="comment.create" />
 			</a>
