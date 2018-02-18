@@ -1,0 +1,131 @@
+
+package UserController;
+
+import java.util.Collection;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import services.RendeService;
+import services.UserService;
+import controllers.AbstractController;
+import domain.Rende;
+
+@Controller
+@RequestMapping("/rende")
+public class RendeUserController extends AbstractController {
+
+	// Services
+
+	@Autowired
+	private RendeService	rendeService;
+
+	@Autowired
+	private UserService		userService;
+
+
+	// Constructors
+
+	public RendeUserController() {
+		super();
+	}
+
+	// Listing
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		Collection<Rende> rendes;
+
+		rendes = this.rendeService.findAll();
+		result = new ModelAndView("rende/list");
+		result.addObject("rendes", rendes);
+
+		return result;
+	}
+
+	// Creation 
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create(@RequestParam final int tripId) {
+		ModelAndView result;
+		Rende rende;
+		rende = this.rendeService.create();
+		result = this.createEditModelAndView(rende);
+		return result;
+	}
+
+	// Edition ----------------------------------------------------------------
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int rendeId) {
+		ModelAndView result;
+		Rende rende;
+		rende = this.rendeService.findOne(rendeId);
+		Assert.notNull(rende);
+
+		result = this.createEditModelAndView(rende);
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final Rende rende, final BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(rende);
+		else
+			try {
+				this.rendeService.save(rende);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(rende, "rende.commit.error");
+			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final Rende rende, final BindingResult binding) {
+		ModelAndView result;
+
+		try {
+			this.rendeService.delete(rende);
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(rende, "rende.commit.error");
+		}
+
+		return result;
+	}
+
+	// Ancillary methods ------------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(final Rende rende) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(rende, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final Rende rende, final String message) {
+		final ModelAndView result;
+		domain.User principal;
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+
+		result = new ModelAndView("rende/edit");
+		result.addObject("rende", rende);
+		result.addObject("message", message);
+		return result;
+	}
+
+}

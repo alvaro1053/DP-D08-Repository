@@ -70,7 +70,7 @@ public class RendeService {
 		principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
 
-		Assert.isTrue(this.findByUser().contains(rende));
+		Assert.isTrue(this.findByUserId(principal.getId()).contains(rende));
 		Assert.isTrue(rende.getIsDraft());
 		rende.setIsDeleted(true);
 
@@ -98,7 +98,7 @@ public class RendeService {
 		final Date currentMoment = new Date(System.currentTimeMillis() - 1);
 
 		Assert.isTrue(rendeToSave.getMoment().after(currentMoment));
-		
+
 		result = this.rendeRepository.save(rendeToSave);
 
 		Rendes = principal.getRendes();
@@ -113,13 +113,13 @@ public class RendeService {
 
 		return result;
 	}
-	public Collection<Rende> findByUser() {
+	public Collection<Rende> findByUserId(final int id) {
 		User principal;
 		Collection<Rende> result;
 
 		principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
-		result = principal.getRendes();
+		result = this.rendeRepository.selectByUserId(id);
 
 		Assert.notNull(result);
 
