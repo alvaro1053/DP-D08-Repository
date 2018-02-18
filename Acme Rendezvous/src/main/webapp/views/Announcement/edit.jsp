@@ -46,8 +46,21 @@
 	<br/>
 	<br/>
 	
-
-
+	
+	<form:label path="rende">
+		<spring:message code="announcement.rende" />:
+	</form:label>
+	<form:select path="rende">
+		<form:option label ="-----" value="0"/>
+		
+		<form:options
+			items="${rendes}"
+			itemLabel = "name"
+			itemValue = "id" />
+	</form:select>
+	<form:errors cssClass="error" path="rende" />
+	<br/>
+	<br/>
 
 	<spring:message code="announcement.save" var="saveAnnouncement"  />
 	<spring:message code="announcement.delete" var="deleteAnnouncement"  />
