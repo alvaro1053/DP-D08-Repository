@@ -50,6 +50,16 @@
 		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
 		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
+		
+		
+		<!-- Acme Rendezvous announcement -->
+		<security:intercept-url pattern="/announcement/list.do" access="permitAll" /> 
+		<!-- Acme Rendezvous announcement -->
+		<security:intercept-url pattern="/rende/list.do" access="permitAll" /> 
+		<security:intercept-url pattern="/rende/create.do" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/rende/edit.do" access="hasRole('USER')" /> 
+		
+	
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

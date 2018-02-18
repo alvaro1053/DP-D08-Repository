@@ -45,13 +45,28 @@
  	<display:column property="moment" title="${momentHeader}"
   	sortable="true" format = "${format}"/>
 	
-		
-
- 
- 
- 
+	<!-- Comments -->
+	<display:column>
+			<a href="comment/list.do?rendeId=${row.id}"> <spring:message
+					code="rende.comments" />
+			</a>
+	</display:column>
+	
+	
+	<!-- Questions -->
+	<display:column>
+			<a href="question/list.do?rendeId=${row.id}"> <spring:message
+					code="rende.questions" />
+			</a>
+	</display:column>
+	
+	<!-- Linked -->
+<display:table name="${row.linked}" id="linked" pagesize="15" class="displaytag">
+<display:column property="name" title="${nameHeader}" sortable="false" />
+</display:table>
  
 </display:table>
 
-
+<security:authorize access="hasRole('USER')">
 <a href="rende/user/create.do"><spring:message code ="rende.newRende"/></a>
+</security:authorize>

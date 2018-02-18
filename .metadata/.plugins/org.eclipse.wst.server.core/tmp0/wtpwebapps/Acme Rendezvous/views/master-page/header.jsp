@@ -40,9 +40,15 @@
 			</li>
 		</security:authorize>
 		
+		
+		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
+		
+		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
+		
+		
 		
 		<security:authorize access="isAuthenticated()">
 			<li>

@@ -42,18 +42,14 @@
 	<!-- rende -->
 	<spring:message code="announcement.rende"
 		var="rendeHeader" />
-	<display:column property="rende" title="${rendeHeader}" sortable="true"/> 
+	<display:column property="rende.name" title="${rendeHeader}" sortable="true"/> 
 	
-	
-	
-	
-	
+
+</display:table>
+
+
 	<security:authorize access="hasRole('USER')">
 			<a href="announcement/user/create.do"> <spring:message
 				code="announcement.create" />
 			</a>
 	</security:authorize> 
-
-
-</display:table>
-

@@ -21,6 +21,7 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="183" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor" itemType="typePlaceholder" x="-1" y="-1"/>
@@ -32,7 +33,7 @@
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.m2e.editor.MavenPomEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -49,16 +50,17 @@
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="User.java" partName="User.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Acme Rendezvous/src/main/java/domain/User.java" title="User.java" tooltip="Acme Rendezvous/src/main/java/domain/User.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme Rendezvous/src/main/java/domain/User.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="551" selectionTopPixel="40"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RenderUserController.java" partName="RenderUserController.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Acme Rendezvous/src/main/java/UserController/RenderUserController.java" title="RenderUserController.java" tooltip="Acme Rendezvous/src/main/java/UserController/RenderUserController.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme Rendezvous/src/main/java/UserController/RenderUserController.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1485" selectionTopPixel="355"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="PopulateDatabase.xml" partName="PopulateDatabase.xml" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Acme Rendezvous/src/main/resources/PopulateDatabase.xml" title="PopulateDatabase.xml" tooltip="Acme Rendezvous/src/main/resources/PopulateDatabase.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme Rendezvous/src/main/resources/PopulateDatabase.xml"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RendeService.java" partName="RendeService.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Acme Rendezvous/src/main/java/services/RendeService.java" title="RendeService.java" tooltip="Acme Rendezvous/src/main/java/services/RendeService.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme Rendezvous/src/main/java/services/RendeService.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2966" selectionTopPixel="1649"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Rende.java" partName="Rende.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Acme Rendezvous/src/main/java/domain/Rende.java" title="Rende.java" tooltip="Acme Rendezvous/src/main/java/domain/Rende.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme Rendezvous/src/main/java/domain/Rende.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="695"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RendeRepository.java" partName="RendeRepository.java" path="C:/Documents and Settings/Student/Desktop/Workspaces/2oCuatri/DP-D08-Repository/Acme Rendezvous/src/main/java/repositories/RendeRepository.java" title="RendeRepository.java" tooltip="Acme Rendezvous/src/main/java/repositories/RendeRepository.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Acme Rendezvous/src/main/java/repositories/RendeRepository.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -109,7 +111,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Errors (100 of 637 items)"/>
+<category IMemento.internal.id="Errors (21 items)"/>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="219" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
@@ -127,7 +129,7 @@
 <viewState CommonNavigator.LINKING_ENABLED="0"/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.ui.console.ConsoleView" activePerspective="org.eclipse.jst.j2ee.J2EEPerspective">
+<perspectives activePart="org.eclipse.ui.navigator.ProjectExplorer" activePerspective="org.eclipse.jst.j2ee.J2EEPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jst.j2ee.internal.perspective.J2EEPerspective" id="org.eclipse.jst.j2ee.J2EEPerspective" label="Java EE"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -232,7 +234,7 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@4c02bc48" ratio="0.70186335" ratioLeft="565" ratioRight="240" relationship="4" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@4c02bc48" ratio="0.6298137" ratioLeft="507" ratioRight="298" relationship="4" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
@@ -271,7 +273,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info folder="true" part="topRight" ratio="0.7564378" ratioLeft="705" ratioRight="227" relationship="2" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
+<info folder="true" part="topRight" ratio="0.82608694" ratioLeft="1577" ratioRight="332" relationship="2" relative="org.eclipse.ui.internal.ViewStack@5c6ae889">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
@@ -304,177 +306,175 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/ActorRepository.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/services/ActorService.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/domain/Actor.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/services/AdminService.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/UserRepository.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/AdminRepository.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/utilities/PopulateDatabase.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/AdminRepository.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/ActorRepository.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/services/Actor.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/services/ActorService.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/services/UserService.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/services/AdminService.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/UserRepository.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/QuestionRepository.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/domain/Question.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/domain/Comment.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/domain/User.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" path="/Acme Rendezvous/src/main/resources/PopulateDatabase.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.core.runtime.xml.source" path="/Acme Rendezvous/src/main/resources/PopulateDatabase.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/domain/Rende.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme Rendezvous/src/main/webapp/views/rende/edit.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" path="/Acme Rendezvous/src/main/webapp/views/replyComment/messages_es.properties"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme Rendezvous/src/main/webapp/views/rende/list.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" path="/Acme Rendezvous/src/main/webapp/views/rende/messages_es.properties"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" path="/Acme Rendezvous/src/main/webapp/views/rende/messages.properties"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme Rendezvous/src/main/webapp/views/comment/edit.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme Rendezvous/src/main/webapp/views/comment/list.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme Rendezvous/src/main/webapp/views/rende/list.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme Rendezvous/src/main/webapp/views/replyComment/list.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" path="/Acme Rendezvous/src/main/webapp/views/rende/edit.jsp"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" path="/Acme Rendezvous/src/main/webapp/views/rende/messages.properties"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" path="/Acme Rendezvous/src/main/webapp/views/replyComment/messages.properties"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/controllers/AnnouncementController.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/UserController/RendeUserController.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/UserController/RenderUserController.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/UserController/RenderUserController.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/services/RendeService.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/repositories/RendeRepository.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Acme Rendezvous/src/main/java/utilities/QueryDatabase.java"/>
 </editors>
-<item historyLabel="ActorService.java" index="1">
-<position info="not_deleted" x="274" y="0"/>
+<item historyLabel="list.jsp" index="2">
+<position info="not_deleted" x="2045" y="0"/>
 </item>
-<item historyLabel="AdminService.java" index="3">
-<position info="not_deleted" x="1150" y="0"/>
+<item historyLabel="edit.jsp" index="0">
+<position info="not_deleted" x="2395" y="0"/>
 </item>
-<item historyLabel="UserRepository.java" index="4">
-<position info="not_deleted" x="306" y="108"/>
+<item historyLabel="messages_es.properties" index="3">
+<position info="not_deleted" x="796" y="0"/>
 </item>
-<item historyLabel="AdminRepository.java" index="5">
-<position info="not_deleted" x="349" y="0"/>
+<item historyLabel="messages.properties" index="4">
+<position info="not_deleted" x="805" y="0"/>
 </item>
-<item historyLabel="AdminService.java" index="3">
-<position info="not_deleted" x="1150" y="0"/>
+<item historyLabel="edit.jsp" index="0">
+<position info="not_deleted" x="775" y="0"/>
 </item>
-<item historyLabel="AdminRepository.java" index="5">
-<position info="not_deleted" x="379" y="0"/>
-</item>
-<item historyLabel="UserRepository.java" index="4">
-<position info="not_deleted" x="255" y="0"/>
-</item>
-<item historyLabel="ActorRepository.java" index="0">
+<item historyLabel="edit.jsp" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="AdminService.java" index="3">
-<position info="not_deleted" x="1150" y="0"/>
+<item historyLabel="edit.jsp" index="0">
+<position info="not_deleted" x="775" y="0"/>
 </item>
-<item historyLabel="ActorService.java" index="1">
-<position info="not_deleted" x="757" y="0"/>
+<item historyLabel="list.jsp" index="6">
+<position/>
 </item>
-<item historyLabel="Actor.java" index="2">
-<position info="not_deleted" x="887" y="0"/>
+<item historyLabel="edit.jsp" index="0">
+<position info="not_deleted" x="775" y="0"/>
 </item>
-<item historyLabel="UserRepository.java" index="4">
-<position info="not_deleted" x="200" y="0"/>
+<item historyLabel="list.jsp" index="2">
+<position info="not_deleted" x="2045" y="0"/>
 </item>
-<item historyLabel="ActorRepository.java" index="0">
+<item historyLabel="list.jsp" index="6">
+<position/>
+</item>
+<item historyLabel="list.jsp" index="2">
+<position info="not_deleted" x="2045" y="0"/>
+</item>
+<item historyLabel="edit.jsp" index="0">
+<position info="not_deleted" x="775" y="0"/>
+</item>
+<item historyLabel="list.jsp" index="2">
+<position info="not_deleted" x="2045" y="0"/>
+</item>
+<item historyLabel="list.jsp" index="6">
+<position/>
+</item>
+<item historyLabel="list.jsp" index="7">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="PopulateDatabase.java" index="6">
+<item historyLabel="list.jsp" index="8">
+<position/>
+</item>
+<item historyLabel="list.jsp" index="7">
+<position/>
+</item>
+<item historyLabel="list.jsp" index="6">
+<position info="not_deleted" x="1917" y="0"/>
+</item>
+<item historyLabel="edit.jsp" index="9">
+<position info="not_deleted" x="1082" y="0"/>
+</item>
+<item historyLabel="messages.properties" index="10">
+<position info="not_deleted" x="690" y="0"/>
+</item>
+<item historyLabel="messages_es.properties" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="messages.properties" index="11">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="list.jsp" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="edit.jsp" index="9">
+<position info="not_deleted" x="1078" y="0"/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="429" y="45"/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="669" y="0"/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="120" y="49"/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="56" y="294"/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="56" y="294"/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="56" y="294"/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position/>
+</item>
+<item historyLabel="AnnouncementController.java" index="12">
+<position info="not_deleted" x="56" y="294"/>
+</item>
+<item historyLabel="RenderUserController.java" index="14">
+<position/>
+</item>
+<item historyLabel="RendeUserController.java" index="13">
+<position info="not_deleted" x="3542" y="2"/>
+</item>
+<item historyLabel="RenderUserController.java" index="14">
+<position info="not_deleted" x="686" y="0"/>
+</item>
+<item historyLabel="edit.jsp" index="9">
+<position info="not_deleted" x="1078" y="0"/>
+</item>
+<item historyLabel="RenderUserController.java" index="15">
+<position info="not_deleted" x="1485" y="0"/>
+</item>
+<item historyLabel="RendeService.java" index="16">
+<position info="not_deleted" x="2966" y="0"/>
+</item>
+<item historyLabel="RendeRepository.java" index="17">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="QueryDatabase.java" index="18">
 <position info="not_deleted" x="4" y="0"/>
 </item>
-<item historyLabel="Actor.java" index="2">
-<position info="not_deleted" x="887" y="0"/>
-</item>
-<item historyLabel="AdminRepository.java" index="7">
-<position info="not_deleted" x="2" y="0"/>
-</item>
-<item historyLabel="ActorRepository.java" index="8">
-<position info="not_deleted" x="2" y="0"/>
-</item>
-<item historyLabel="Actor.java" index="9">
+<item active="true" historyLabel="RendeRepository.java" index="17">
 <position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ActorRepository.java" index="8">
-<position info="not_deleted" x="2" y="0"/>
-</item>
-<item historyLabel="ActorService.java" index="10">
-<position info="not_deleted" x="2157" y="0"/>
-</item>
-<item historyLabel="ActorService.java" index="10">
-<position info="not_deleted" x="654" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position info="not_deleted" x="2257" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position info="not_deleted" x="949" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position info="not_deleted" x="994" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position info="not_deleted" x="1055" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position info="not_deleted" x="2252" y="0"/>
-</item>
-<item historyLabel="ActorService.java" index="10">
-<position info="not_deleted" x="654" y="0"/>
-</item>
-<item historyLabel="AdminService.java" index="12">
-<position info="not_deleted" x="1437" y="0"/>
-</item>
-<item historyLabel="ActorRepository.java" index="8">
-<position info="not_deleted" x="2" y="0"/>
-</item>
-<item historyLabel="UserRepository.java" index="13">
-<position info="not_deleted" x="345" y="0"/>
-</item>
-<item historyLabel="AdminRepository.java" index="7">
-<position info="not_deleted" x="379" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position info="not_deleted" x="2252" y="0"/>
-</item>
-<item historyLabel="ActorService.java" index="10">
-<position info="not_deleted" x="654" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position info="not_deleted" x="1857" y="0"/>
-</item>
-<item historyLabel="AdminRepository.java" index="7">
-<position info="not_deleted" x="379" y="0"/>
-</item>
-<item historyLabel="AdminRepository.java" index="7">
-<position info="not_deleted" x="426" y="0"/>
-</item>
-<item historyLabel="QuestionRepository.java" index="14">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="AdminRepository.java" index="7">
-<position info="not_deleted" x="426" y="0"/>
-</item>
-<item historyLabel="Question.java" index="15">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Comment.java" index="16">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="UserService.java" index="11">
-<position/>
-</item>
-<item historyLabel="AdminRepository.java" index="7">
-<position info="not_deleted" x="426" y="0"/>
-</item>
-<item historyLabel="User.java" index="17">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="User.java" index="17">
-<position info="not_deleted" x="533" y="0"/>
-</item>
-<item historyLabel="User.java" index="17">
-<position info="not_deleted" x="551" y="0"/>
-</item>
-<item historyLabel="PopulateDatabase.xml" index="18">
-<position/>
-</item>
-<item historyLabel="PopulateDatabase.xml" index="19">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Rende.java" index="20">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Rende.java" index="20">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item active="true" historyLabel="PopulateDatabase.xml" index="18">
-<position info="not_deleted" x="4741" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -482,6 +482,13 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@5c6ae889"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@3edd044d"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@42137ac0"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -491,54 +498,52 @@
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1d14958a"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@4c02bc48"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Rende.java" tooltip="Acme Rendezvous/src/main/java/domain/Rende.java">
-<persistable path="/Acme Rendezvous/src/main/java/domain/Rende.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QueryDatabase.java" tooltip="Acme Rendezvous/src/main/java/utilities/QueryDatabase.java">
+<persistable path="/Acme Rendezvous/src/main/java/utilities/QueryDatabase.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" name="PopulateDatabase.xml" tooltip="Acme Rendezvous/src/main/resources/PopulateDatabase.xml">
-<persistable path="/Acme Rendezvous/src/main/resources/PopulateDatabase.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RendeRepository.java" tooltip="Acme Rendezvous/src/main/java/repositories/RendeRepository.java">
+<persistable path="/Acme Rendezvous/src/main/java/repositories/RendeRepository.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="User.java" tooltip="Acme Rendezvous/src/main/java/domain/User.java">
-<persistable path="/Acme Rendezvous/src/main/java/domain/User.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RendeService.java" tooltip="Acme Rendezvous/src/main/java/services/RendeService.java">
+<persistable path="/Acme Rendezvous/src/main/java/services/RendeService.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Comment.java" tooltip="Acme Rendezvous/src/main/java/domain/Comment.java">
-<persistable path="/Acme Rendezvous/src/main/java/domain/Comment.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RenderUserController.java" tooltip="Acme Rendezvous/src/main/java/UserController/RenderUserController.java">
+<persistable path="/Acme Rendezvous/src/main/java/UserController/RenderUserController.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Question.java" tooltip="Acme Rendezvous/src/main/java/domain/Question.java">
-<persistable path="/Acme Rendezvous/src/main/java/domain/Question.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="RendeUserController.java" tooltip="Acme Rendezvous/src/main/java/UserController/RendeUserController.java">
+<persistable path="/Acme Rendezvous/src/main/java/UserController/RendeUserController.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="QuestionRepository.java" tooltip="Acme Rendezvous/src/main/java/repositories/QuestionRepository.java">
-<persistable path="/Acme Rendezvous/src/main/java/repositories/QuestionRepository.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AnnouncementController.java" tooltip="Acme Rendezvous/src/main/java/controllers/AnnouncementController.java">
+<persistable path="/Acme Rendezvous/src/main/java/controllers/AnnouncementController.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AdminService.java" tooltip="Acme Rendezvous/src/main/java/services/AdminService.java">
-<persistable path="/Acme Rendezvous/src/main/java/services/AdminService.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="list.jsp" tooltip="Acme Rendezvous/src/main/webapp/views/replyComment/list.jsp">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/replyComment/list.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserService.java" tooltip="Acme Rendezvous/src/main/java/services/UserService.java">
-<persistable path="/Acme Rendezvous/src/main/java/services/UserService.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" name="messages.properties" tooltip="Acme Rendezvous/src/main/webapp/views/replyComment/messages.properties">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/replyComment/messages.properties"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ActorService.java" tooltip="Acme Rendezvous/src/main/java/services/ActorService.java">
-<persistable path="/Acme Rendezvous/src/main/java/services/ActorService.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" name="messages_es.properties" tooltip="Acme Rendezvous/src/main/webapp/views/replyComment/messages_es.properties">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/replyComment/messages_es.properties"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" tooltip="Acme Rendezvous/src/main/java/services/Actor.java">
-<persistable path="/Acme Rendezvous/src/main/java/services/Actor.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.PropertiesFileEditor" name="messages.properties" tooltip="Acme Rendezvous/src/main/webapp/views/rende/messages.properties">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/rende/messages.properties"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="PopulateDatabase.java" tooltip="Acme Rendezvous/src/main/java/utilities/PopulateDatabase.java">
-<persistable path="/Acme Rendezvous/src/main/java/utilities/PopulateDatabase.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="edit.jsp" tooltip="Acme Rendezvous/src/main/webapp/views/rende/edit.jsp">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/rende/edit.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ActorRepository.java" tooltip="Acme Rendezvous/src/main/java/repositories/ActorRepository.java">
-<persistable path="/Acme Rendezvous/src/main/java/repositories/ActorRepository.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="list.jsp" tooltip="Acme Rendezvous/src/main/webapp/views/comment/list.jsp">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/comment/list.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AdminRepository.java" tooltip="Acme Rendezvous/src/main/java/repositories/AdminRepository.java">
-<persistable path="/Acme Rendezvous/src/main/java/repositories/AdminRepository.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="list.jsp" tooltip="Acme Rendezvous/src/main/webapp/views/rende/list.jsp">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/rende/list.jsp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UserRepository.java" tooltip="Acme Rendezvous/src/main/java/repositories/UserRepository.java">
-<persistable path="/Acme Rendezvous/src/main/java/repositories/UserRepository.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Actor.java" tooltip="Acme Rendezvous/src/main/java/domain/Actor.java">
-<persistable path="/Acme Rendezvous/src/main/java/domain/Actor.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jst.jsp.core.jspsource.source" name="edit.jsp" tooltip="Acme Rendezvous/src/main/webapp/views/comment/edit.jsp">
+<persistable path="/Acme Rendezvous/src/main/webapp/views/comment/edit.jsp"/>
 </file>
 </mruList>
 </workbench>
