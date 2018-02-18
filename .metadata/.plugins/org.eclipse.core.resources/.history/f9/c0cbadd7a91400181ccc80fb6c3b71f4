@@ -1,0 +1,77 @@
+
+
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+
+
+
+<!-- Listing grid -->
+
+<display:table pagesize="5" class="displaytag" 
+	name="replyComments" requestURI="replyComment/list.do" id="row">
+
+
+
+	<!-- Attributes -->
+	
+	
+	<!-- text -->
+	<spring:message code="replyComment.reply" var="textHeader" />
+	<display:column property="text" title="${textHeader}"
+		sortable="true" />
+		
+	<!-- picture -->
+	<spring:message code="replyComment.picture" var="pictureHeader" />
+	<display:column property="picture" title="${pictureHeader}"
+		sortable="true" />
+
+
+	<!-- moment -->
+	<spring:message code="replyComment.format"
+  		var="format" />
+	<spring:message code="replyComment.moment"
+		var="momentHeader" />
+	<display:column property="moment" title="${momentHeader}"
+		sortable="true" format = "${format}" />
+
+
+	<!-- rende -->
+	<spring:message code="replyComment.rende"
+		var="rendeHeader" />
+	<display:column property="rende" title="${rendeHeader}" sortable="true"/> 
+	
+	<!-- Reply -->
+	<display:column>
+			<a href="replyComment/list.do?replyCommentId=${row.id}"> <spring:message
+					code="replyComment.listReply" />
+			</a>
+	</display:column>
+	
+	<security:authorize access="hasRole('USER')">
+	<!-- Reply -->
+	<display:column>
+			<a href="replyComment/create.do?replyCommentId=${row.id}"> <spring:message
+					code="replyComment.reply" />
+			</a>
+	</display:column>
+	
+	
+	
+	
+			<a href="replyComment/user/create.do"> <spring:message
+				code="replyComment.create" />
+			</a>
+	</security:authorize> 
+
+
+</display:table>
+

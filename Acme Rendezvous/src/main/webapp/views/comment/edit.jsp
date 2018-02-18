@@ -10,6 +10,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
 
@@ -22,22 +23,9 @@
 	<form:hidden path="rende" />
 	
 	
-
-	<form:label path="text">
-		<spring:message code="comment.text" />:
-	</form:label>
-	<form:input path="text" />
-	<form:errors cssClass="error" path="text" />
-	<br/>
-	<br/>
+<acme:textbox code="comment.text" path="text"/>
 	
-	<form:label path="picture">
-		<spring:message code="comment.picture" />:
-	</form:label>
-	<form:textarea path="picture" />
-	<form:errors cssClass="error" path="picture" />
-	<br/>
-	<br/>
+<acme:textbox code="comment.picture" path="picture"/>
 	
 
 
