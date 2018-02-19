@@ -15,49 +15,27 @@
 
 	<!-- isDraft (si NO es draft no se debe poder editar)-->
 	<!-- isDeleted (si ha sido borrada no se debe poder editar)-->
-<security:authorize access="hasRole('USER')">
-	
-<jstl:if test="${permission }">
-
-<jstl:choose>
-<jstl:when test="${rende.isDraft == false || rende.isDeleted == true}">
-<form:form action="rende/user/edit.do" modelAttribute="rende">
-<h3><spring:message code="rende.nopermission" /></h3>
-</form:form>
-
-<acme:selectMultiple items="${rendes }" itemLabel="name" code="rende.linked" path="linked"/>
-</jstl:when>
-<jstl:otherwise>
 
 <!-- Tiene que ser el usuario que HAYA CREADO la rende quien pueda editarla y además el ADMIN puede eliminar (lo miraremos más tarde)-->
-<form:form action="rende/user/edit.do" modelAttribute="rende">
+<form:form action="rende/user/edit.do" modelAttribute="rendeForm">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="user" />
-	<form:hidden path="announcement" />
-	<form:hidden path="comment" />
-	<form:hidden path="question" />
-	<form:hidden path="linked" /><!-- no estoy seguro de si es hidden -->
 		
 	
 <!-- ATRIBUTES -->
 	<!-- name -->
-	<acme:textbox code="name" path="rende.name"/>
+	<acme:textbox code="rende.name" path="name"/>
 	<br />
 	<br />
 	
-	<acme:textarea code="description" path="rende.description"/>
+	<acme:textarea code="rende.description" path="description"/>
 	<br />
 	<br />
 
-	<!-- moment -->	
-	<acme:textbox code="moment" path="rende.moment"/>
-	<br />
-	<br />
 	
 	<!-- picture -->
-	<acme:textbox code="picture" path="rende.picture"/>
+	<acme:textbox code="rende.picture" path="picture"/>
 	<br />
 	<br />
 	
@@ -69,7 +47,6 @@
 			<spring:message code="rende.coordenates" /> : 
 		</form:label>
 	</legend>
-
 	<acme:textbox code="rende.coordenates.latitude" path="coordenates.latitude"/>
 	<br/>
 
@@ -80,13 +57,19 @@
 
 	<br />
 	<br />
-	
-	<form:checkbox path="adultOnly" name="adultOnly" value="adultOnly"/>
+	<spring:message code="rende.adultOnly" />
+	<form:checkbox path="adultOnly" name="adult" value="true"/>
 	<br />
 	<br />
 	
-	<acme:selectMultiple items="${rendes }" itemLabel="name" code="rende.linked" path="linked"/>
+	<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
+	<br />
+	<br />
 	
+	<spring:message code="rende.isDraft" />
+	<form:checkbox path="isDraft" name="draft" value="true"/>
+	<br />
+	<br />
 
 	<spring:message code="rende.save" var="saveRende"  /><!-- Lo probamos así al principio y luego lo cambiamos para guardar en modo draft y final -->
 	<spring:message code="rende.cancel" var="cancelRende"  />
@@ -95,7 +78,8 @@
 	
 	
 	<input type="submit" name="save" value="${saveRende}" />&nbsp; 
- 		<jstl:if test="${rende.id != 0}">
+ 	
+ 	<jstl:if test="${rende.id != 0}">	
   	<input type="submit" name="delete" value="${deleteRende}"
    		onclick="return confirm('${confirmRende}')" />&nbsp;
 	</jstl:if>
@@ -106,9 +90,3 @@
  <br />
 
 </form:form>
-
-</jstl:otherwise>
-</jstl:choose>
-
-</jstl:if>
-</security:authorize>

@@ -40,6 +40,13 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="isAnonymous()">
+			<li><a class="fNiv" href="rende/list.do"><spring:message code="master.page.rendeList" /></a></li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv" href="rende/user/list.do"><spring:message code="master.page.rendeList" /></a></li>
+		</security:authorize>
 		
 		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
 		

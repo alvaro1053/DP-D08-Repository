@@ -10,20 +10,15 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!-- Listing grid -->
 
 
 
 <display:table pagesize="5" class="displaytag" 
-	name="rendes" requestURI="${requestURI}" id="row">
+	name="rendes" requestURI="rende/user/list.do" id="row">
 	
-	
-	<!-- Attributes -->
-	
-	<display:column>
-   <a href="rende/user/edit.do?rendeId=${row.id}"> <spring:message code="rende.edit" /></a>
-	</display:column>
 
 	<!-- name -->
 	<spring:message code="rende.name"
@@ -44,16 +39,14 @@
   	var="momentHeader" />
  	<display:column property="moment" title="${momentHeader}"
   	sortable="true" format = "${format}"/>
-	
-	<!-- Comments -->
-	<display:column>
-			<a href="comment/list.do?rendeId=${row.id}"> <spring:message
-					code="rende.comments" />
-			</a>
-	</display:column>
-	
+  	
+  	<!-- Creator -->
+  	<spring:message code="rende.creator"
+  	var="creator" />
+  	<display:column property="user.name" title="${creator}"/>
 	
 	<!-- Questions -->
+	
 	<display:column>
 			<a href="question/list.do?rendeId=${row.id}"> <spring:message
 					code="rende.questions" />
@@ -63,10 +56,12 @@
 	<!-- Linked -->
 <display:table name="${row.linked}" id="linked" pagesize="15" class="displaytag">
 <display:column property="name" title="${nameHeader}" sortable="false" />
+
 </display:table>
- 
+
 </display:table>
 
 <security:authorize access="hasRole('USER')">
+
 <a href="rende/user/create.do"><spring:message code ="rende.newRende"/></a>
 </security:authorize>
