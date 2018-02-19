@@ -2,6 +2,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -72,6 +73,14 @@ public class UserService {
 		User result;
 		result = this.UserRepository.findOne(UserId);
 		return result;
+	}
+	
+	public Collection<User> findAll() {
+		Collection<User> result;
+		result = this.UserRepository.findAll();
+		Assert.notNull(result);
+		return result;
+
 	}
 
 	//Other business methods

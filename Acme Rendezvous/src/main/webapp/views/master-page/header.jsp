@@ -43,6 +43,8 @@
 		
 		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
 		
+		<li><a class="fNiv" href="users/list.do"><spring:message code="master.page.userList" /></a></li>
+		
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>

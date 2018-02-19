@@ -60,8 +60,9 @@
 		<security:intercept-url pattern="/rende/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/rende/create.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/edit.do" access="hasRole('USER')" /> 
+		<!-- Acme Rendezvous userList -->
+		<security:intercept-url pattern="/users/list.do" access="permitAll" /> 
 		
-	
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
