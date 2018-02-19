@@ -1,0 +1,84 @@
+package forms;
+
+import java.util.Collection;
+
+import domain.DomainEntity;
+import domain.Location;
+import domain.Rende;
+import domain.User;
+
+public class RendeForm extends DomainEntity {
+	
+	private String						name;
+	private String						description;
+	private String						picture;
+	private Location					coordenates;
+	private Collection<User>			attendants;
+	private Boolean						isDraft;
+	private Boolean						adultOnly;
+	private Collection<Rende>			linked;
+	
+	public RendeForm(){
+		super();
+	}
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	
+	public Location getCoordenates() {
+		return coordenates;
+	}
+	public void setCoordenates(Location coordenates) {
+		this.coordenates = coordenates;
+	}
+	
+	public Collection<User> getAttendants() {
+		return attendants;
+	}
+	public void setAttendants(Collection<User> attendants) {
+		this.attendants = attendants;
+	}
+	
+	public Boolean getIsDraft() {
+		return isDraft;
+	}
+	public void setIsDraft(Boolean isDraft) {
+		this.isDraft = isDraft;
+	}
+	
+	public Boolean getAdultOnly() {
+		return adultOnly;
+	}
+	public void setAdultOnly(Boolean adultOnly) {
+		this.adultOnly = adultOnly;
+	}
+	
+	public Collection<Rende> getLinked() {
+		return linked;
+	}
+	public void setLinked(Collection<Rende> linked) {
+		this.linked = linked;
+	}
+
+	
+}

@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.RendeRepository;
-import domain.Announcement;
-import domain.Comment;
-import domain.Question;
 import domain.Rende;
 import domain.User;
+import forms.RendeForm;
 
 @Service
 @Transactional
@@ -38,19 +38,16 @@ public class RendeService {
 
 	// Simple CRUD methods
 
-	public Rende create() {
+	public RendeForm create() {
 		User principal;
-		Rende Rende;
+		RendeForm rendeForm;
+		
 		principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
-		Rende = new Rende();
-		Rende.setAnnouncements(new ArrayList<Announcement>());
-		Rende.setComments(new ArrayList<Comment>());
-		Rende.setQuestions(new ArrayList<Question>());
-		Rende.setUser(principal);
-		Rende.setIsDraft(true);
-		Rende.setIsDeleted(false);
-		return Rende;
+		rendeForm = new RendeForm();
+		rendeForm.setIsDraft(true);
+		
+		return rendeForm;
 	}
 
 	//  An actor who is not authenticated must be able to browse the list of Rendes and display them
@@ -94,10 +91,12 @@ public class RendeService {
 			rendeToSave.setUser(principal);
 			rendeToSave.setAttendants(attendants);
 		}
+		
+		rendeToSave.setMoment(new Date(System.currentTimeMillis()-1));
 
-		final Date currentMoment = new Date(System.currentTimeMillis() - 1);
+		final Date currentMoment = new Date();
 
-		Assert.isTrue(rendeToSave.getMoment().after(currentMoment));
+		Assert.isTrue(rendeToSave.getMoment().before(currentMoment));
 
 		result = this.rendeRepository.save(rendeToSave);
 
@@ -149,6 +148,42 @@ public class RendeService {
 
 		return result;
 
+	}
+	
+	public Collection<Rende> selectNotAdultRendes() {
+		Collection<Rende> result;
+		result = this.rendeRepository.selectNotAdultRendes();
+		return result;
+
+	}
+	
+	//Reconstruct --------------------------------------------
+	
+	@Autowired
+	private Validator validator;
+	
+	public Rende reconstruct(RendeForm rendeForm, BindingResult binding) {
+		Rende result;
+		User principal;
+		
+		principal = this.userService.findByPrincipal();
+		
+		result = new Rende();
+		
+		result.setName(rendeForm.getName());
+		result.setDescription(rendeForm.getDescription());
+		result.setPicture(rendeForm.getPicture());
+		result.setCoordenates(rendeForm.getCoordenates());
+		result.setAttendants(rendeForm.getAttendants());
+		result.setIsDraft(rendeForm.getIsDraft());
+		result.setAdultOnly(rendeForm.getAdultOnly());
+		result.setLinked(rendeForm.getLinked());
+		result.setIsDraft(rendeForm.getIsDraft());	
+		result.setIsDeleted(false);	
+		result.setUser(principal);
+		
+		validator.validate(result, binding);
+		return result;
 	}
 
 }
