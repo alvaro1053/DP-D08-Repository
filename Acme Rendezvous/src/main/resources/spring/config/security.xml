@@ -65,7 +65,8 @@
 	
 		<!-- Acme Rendezvous userList -->
 		<security:intercept-url pattern="/users/list.do" access="permitAll" /> 
-
+		<security:intercept-url pattern="/users/display.do" access="permitAll" /> 
+		
 		
 
 		

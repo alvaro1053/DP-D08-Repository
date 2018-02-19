@@ -62,5 +62,10 @@
 	<display:column property="dateBirth" title="${dateBirthHeader}"
 		sortable="true" />	
 	
-	
+	<display:column>
+		<a href="users/display.do?userId=${row.id}"> <spring:message
+			code="users.display" />
+		</a>
+	</display:column>
+		
 </display:table>
