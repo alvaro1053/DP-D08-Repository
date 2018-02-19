@@ -21,6 +21,19 @@
 
 
 
+	<security:authorize access="hasRole('ADMIN')">	
+		<display:column>
+			<jstl:if test="${announcement.id != 0}">
+				<spring:message code="announcement.confirm" var="confirmAnnouncement"  />
+		  		
+		  		<a href="announcement/admin/delete.do?AnnouncementId=${row.id}" onclick="return confirm('${confirmAnnouncement}')">
+		  			<spring:message code="announcement.delete"/>
+		  		</a>
+			</jstl:if>
+ 		</display:column>
+	</security:authorize>	
+
+
 	<!-- Attributes -->
 	
 	
@@ -47,9 +60,19 @@
 
 </display:table>
 
+	
+
 
 	<security:authorize access="hasRole('USER')">
 			<a href="announcement/user/create.do"> <spring:message
 				code="announcement.create" />
 			</a>
 	</security:authorize> 
+	<br>
+	
+	<jstl:if test="${SucessDelete}">
+		<strong><spring:message code="announcement.confirmed.delete"/></strong>
+		<br>
+		<br>
+	</jstl:if>
+	

@@ -55,6 +55,7 @@
 		<!-- Acme Rendezvous announcement -->
 		<security:intercept-url pattern="/announcement/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/announcement/user/**" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/announcement/admin/**" access="hasRole('ADMIN')" /> 
 		<!-- Acme Rendezvous rende -->
 		<security:intercept-url pattern="/rende/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/rende/create.do" access="hasRole('USER')" /> 
