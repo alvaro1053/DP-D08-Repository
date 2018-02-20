@@ -114,7 +114,7 @@
 	<property name="rendes">
 	<list>
 	<ref bean="rende1"/>
-	<ref bean = "rende3"/> 
+	<ref bean ="rende3"/> 
 	</list>
 	</property>
 	

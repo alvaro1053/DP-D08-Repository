@@ -8,3 +8,13 @@
 1518974114345	Copy package
 1518974123595	Delete element
 1518974141626	Delete element
+1518996999826	Copy package
+1518997006389	Delete element
+1519038055689	Copy compilation unit
+1519038117814	Delete element
+1519043818561	Rename compilation unit 'User.java'
+1519043903780	Rename compilation unit 'UserForm.java'
+1519044793397	Copy files
+1519044837928	Copy file
+1519044856959	Rename resource 'login.jsp'
+1519077046755	Rename local variable 'userForm'

@@ -1,0 +1,8 @@
+
+package form;
+
+import domain.DomainEntity;
+
+public class ActorForm extends DomainEntity {
+
+}

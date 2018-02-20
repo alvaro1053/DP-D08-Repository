@@ -95,7 +95,7 @@ public class RendeService {
 			rendeToSave.setAttendants(attendants);
 		}
 
-		final Date currentMoment = new Date(System.currentTimeMillis() - 1);
+		final Date currentMoment = new Date(System.currentTimeMillis() - 10);
 
 		Assert.isTrue(rendeToSave.getMoment().after(currentMoment));
 
@@ -137,6 +137,13 @@ public class RendeService {
 
 		Assert.notNull(result);
 
+		return result;
+
+	}
+
+	public Collection<Rende> selectNotAdultRendes() {
+		Collection<Rende> result;
+		result = this.rendeRepository.selectNotAdultRendes();
 		return result;
 
 	}

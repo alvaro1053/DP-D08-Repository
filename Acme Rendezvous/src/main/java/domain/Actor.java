@@ -24,13 +24,14 @@ import security.UserAccount;
 @Access(AccessType.PROPERTY)
 public class Actor extends DomainEntity {
 
-	private String	name;
-	private String	surname;
-	private String	email;
-	private String	phone;
-	private String	address;
-	private Date	dateBirth;
+	private String		name;
+	private String		surname;
+	private String		email;
+	private String		phone;
+	private String		address;
+	private Date		dateBirth;
 	private UserAccount	userAccount;
+
 
 	@Past
 	@Temporal(TemporalType.DATE)
@@ -58,9 +59,8 @@ public class Actor extends DomainEntity {
 	public void setSurname(final String surname) {
 		this.surname = surname;
 	}
-
-	@Email
 	@NotBlank
+	@Email
 	public String getEmail() {
 		return this.email;
 	}
@@ -86,13 +86,13 @@ public class Actor extends DomainEntity {
 	}
 
 	@NotNull
-	 @OneToOne(optional = false, cascade = CascadeType.ALL)
-	 @Valid
-	 public UserAccount getUserAccount() {
-	  return this.userAccount;
-	 }
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	@Valid
+	public UserAccount getUserAccount() {
+		return this.userAccount;
+	}
 
-	 public void setUserAccount(final UserAccount userAccount) {
-	  this.userAccount = userAccount;
-	 }
+	public void setUserAccount(final UserAccount userAccount) {
+		this.userAccount = userAccount;
+	}
 }

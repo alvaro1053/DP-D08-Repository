@@ -1,0 +1,84 @@
+
+package controllers;
+
+import java.util.Collection;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import domain.Rende;
+
+import services.ActorService;
+import services.UserService;
+import form.ActorForm;
+
+@Controller
+@RequestMapping("/user")
+public class UserRegisterController {
+
+	@Autowired
+	private UserService		userService;
+	@Autowired
+	private ActorService	actorService;
+
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		final ActorForm userForm = new ActorForm();
+		result = new ModelAndView("user/register");
+		result.addObject("actorForm", userForm);
+		return result;
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(final ActorForm actorForm, final BindingResult binding) {
+		ModelAndView result;
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(actorForm);
+		else
+			try {
+				this.rendeService.save(rende);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(rende, "rende.commit.error");
+			}
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final ActorForm actorForm) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(actorForm, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final ActorForm actorForm, final String message) {
+		final ModelAndView result;
+		final Collection<Rende> rendes = this.rendeService.findAll();
+		domain.User principal;
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		Boolean permision = true;
+		if (rende.getId() != 0 && (rende.getUser().getId() != principal.getId()))
+			permision = false;
+
+		result = new ModelAndView("rende/edit");
+		result.addObject("permision", permision);
+		result.addObject("rende", rende);
+		result.addObject("rendes", rendes);
+		result.addObject("message", message);
+		return result;
+	}
+}
+}

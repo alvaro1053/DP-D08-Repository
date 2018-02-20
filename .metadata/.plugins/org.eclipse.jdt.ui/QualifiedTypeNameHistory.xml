@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="repositories.ExamRepository"/>
-<fullyQualifiedTypeName name="org.springframework.validation.Validator"/>
-<fullyQualifiedTypeName name="java.lang.Thread"/>
-<fullyQualifiedTypeName name="org.junit.After"/>
-<fullyQualifiedTypeName name="services.ReviewerService"/>
-<fullyQualifiedTypeName name="org.apache.commons.lang.builder.ReflectionToStringBuilder"/>
-<fullyQualifiedTypeName name="utilities.internal.CustomPrintBuilder"/>
-<fullyQualifiedTypeName name="java.lang.reflect.Field"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="utilities.internal.LoggerHelper"/>
 <fullyQualifiedTypeName name="java.util.logging.Handler"/>
@@ -31,7 +23,6 @@
 <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
 <fullyQualifiedTypeName name="com.lowagie.text.Entities"/>
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
-<fullyQualifiedTypeName name="domain.DomainEntity"/>
 <fullyQualifiedTypeName name="utilities.internal.DatabaseUtil"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="org.hibernate.metamodel.binding.CascadeType"/>
@@ -43,7 +34,6 @@
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
 <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
 <fullyQualifiedTypeName name="repositories.UserRepository"/>
-<fullyQualifiedTypeName name="domain.User"/>
 <fullyQualifiedTypeName name="domain.Actor"/>
 <fullyQualifiedTypeName name="javax.validation.constraints.NotNull"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
@@ -57,7 +47,17 @@
 <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
 <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-<fullyQualifiedTypeName name="java.util.Collection"/>
 <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.AbstractController"/>
 <fullyQualifiedTypeName name="org.springframework.util.Assert"/>
+<fullyQualifiedTypeName name="java.security.Principal"/>
+<fullyQualifiedTypeName name="controllers.AbstractController"/>
+<fullyQualifiedTypeName name="services.UserService"/>
+<fullyQualifiedTypeName name="domain.DomainEntity"/>
+<fullyQualifiedTypeName name="form.ActorForm"/>
+<fullyQualifiedTypeName name="domain.User"/>
+<fullyQualifiedTypeName name="security.Authority"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="org.hibernate.validator.constraints.Email"/>
+<fullyQualifiedTypeName name="org.springframework.validation.Validator"/>
+<fullyQualifiedTypeName name="org.springframework.validation.ObjectError"/>
 </qualifiedTypeNameHistroy>

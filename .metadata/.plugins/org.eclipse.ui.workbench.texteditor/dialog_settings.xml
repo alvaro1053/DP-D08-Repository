@@ -13,18 +13,19 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="User" key="selection"/>
+		<item value="actor" key="selection"/>
 		<list key="findhistory">
+			<item value="user"/>
+			<item value="trip"/>
+			<item value="Trip"/>
 			<item value="Manager"/>
 			<item value="manager"/>
 			<item value="SurvivalClass"/>
 			<item value="survivalClass"/>
 			<item value="comment"/>
-			<item value="Administrator"/>
-			<item value="Question"/>
-			<item value="list"/>
 		</list>
 		<list key="replacehistory">
+			<item value="actor"/>
 			<item value="User"/>
 			<item value="user"/>
 			<item value="Rende"/>
@@ -32,7 +33,6 @@
 			<item value="replyComment"/>
 			<item value="Admin"/>
 			<item value=".err."/>
-			<item value=""/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

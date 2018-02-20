@@ -1,0 +1,22 @@
+
+package form;
+
+import java.util.Date;
+
+import security.UserAccount;
+import domain.DomainEntity;
+
+public class ActorForm extends DomainEntity {
+
+	private String	name;
+	private String	surname;
+	private String	email;
+	private String	phone;
+	private String	address;
+	private Date	dateBirth;
+	private UserAccount	userAccount;
+	private String confirmPassword;
+	
+	
+	
+}
