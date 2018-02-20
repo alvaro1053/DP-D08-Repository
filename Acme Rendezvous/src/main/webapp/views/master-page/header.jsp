@@ -50,7 +50,7 @@
 		
 		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
 		
-		<li><a class="fNiv" href="users/list.do"><spring:message code="master.page.userList" /></a></li>
+		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.userList" /></a></li>
 		
 		
 		<security:authorize access="isAnonymous()">

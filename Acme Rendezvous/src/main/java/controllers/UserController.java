@@ -16,7 +16,7 @@ import services.UserService;
 
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController extends AbstractController {
 
 	
@@ -39,7 +39,7 @@ public class UserController extends AbstractController {
 		users = this.userService.findAll();
 		
 		
-		result = new ModelAndView("users/list");
+		result = new ModelAndView("user/list");
 		result.addObject("users", users);
 		return result;
 	}
@@ -52,7 +52,7 @@ public class UserController extends AbstractController {
 
 			user = this.userService.findOne(userId);
 
-			result = new ModelAndView("users/display");
+			result = new ModelAndView("user/display");
 			result.addObject("user", user);
 			result.addObject("principal", null);
 			return result;

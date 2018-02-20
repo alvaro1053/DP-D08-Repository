@@ -25,47 +25,47 @@
 
 
 <tr>
-<td> <strong> <spring:message code="users.username" /> : </strong> </td>
+<td> <strong> <spring:message code="user.username" /> : </strong> </td>
 <td>  <jstl:out value = "${user.userAccount.username}"/> &nbsp;  </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="users.name" /> : </strong> </td>
+<td> <strong> <spring:message code="user.name" /> : </strong> </td>
 <td>  <jstl:out value = "${user.name}"/> &nbsp;  </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="users.surname" /> : </strong> </td>
+<td> <strong> <spring:message code="user.surname" /> : </strong> </td>
 <td>  <jstl:out value = "${user.surname}"/> &nbsp;  </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="users.phone" /> : </strong> </td>
+<td> <strong> <spring:message code="user.phone" /> : </strong> </td>
 <td>  <jstl:out value="${user.phone}" /> &nbsp; </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="users.address" /> : </strong> </td>
+<td> <strong> <spring:message code="user.address" /> : </strong> </td>
 <td>  <jstl:out value="${user.address}" /> &nbsp; </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="users.email" /> : </strong> </td>
+<td> <strong> <spring:message code="user.email" /> : </strong> </td>
 <td> <jstl:out value ="${user.email}" /> &nbsp; </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="users.dateBirth" /> : </strong> </td>
+<td> <strong> <spring:message code="user.dateBirth" /> : </strong> </td>
 <td> <jstl:out value ="${user.dateBirth}" /> &nbsp; </td>
 </tr>
 
 
 
 
-<spring:message code="users.showRende" var="showRende"/>
+<spring:message code="user.showRende" var="showRende"/>
 
 <tr>
-<td> <strong> <spring:message code="users.rendes" /> : </strong> </td>
+<td> <strong> <spring:message code="user.rendes" /> : </strong> </td>
 <td> 
 
 <jstl:choose>
@@ -78,7 +78,7 @@
 </jstl:when>
 <jstl:otherwise>
 
-<spring:message code="users.rendes.empty" />
+<spring:message code="user.rendes.empty" />
 
 </jstl:otherwise>
 </jstl:choose>
