@@ -59,19 +59,17 @@
 		
 		<!-- Acme Rendezvous rende -->
 		<security:intercept-url pattern="/rende/list.do" access="permitAll" /> 
-<<<<<<< HEAD
 		<security:intercept-url pattern="/rende/user/create.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/list.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/edit.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/user/register.do" access="permitAll" /> 
 		
 		
-		
-=======
+	
 		<security:intercept-url pattern="/rende/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/rende/user/create.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/edit.do" access="hasRole('USER')" /> 
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
+
 	
 		<!-- Acme Rendezvous userList -->
 		<security:intercept-url pattern="/users/list.do" access="permitAll" /> 

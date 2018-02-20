@@ -17,23 +17,10 @@
 
 
 <display:table pagesize="5" class="displaytag" 
-<<<<<<< HEAD
 	name="rendes" requestURI="${requestURI}" id="row">
 		
 	<!-- Attributes -->
-<security:authorize access="hasRole('USER')">
 
-	<display:column>
-	<jstl:if test="${principal.id == row.user.id}">
-   <a href="rende/user/edit.do?rendeId=${row.id}"> <spring:message code="rende.edit" /></a>
-   </jstl:if>
-	</display:column>
-=======
-	name="rendes" requestURI="rende/user/list.do" id="row">
-	
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
-
-	</security:authorize>
 
 	<!-- name -->
 	<spring:message code="rende.name"
@@ -59,7 +46,6 @@
   	<spring:message code="rende.creator"
   	var="creator" />
   	<display:column property="user.name" title="${creator}"/>
-<<<<<<< HEAD
 	
 	<!-- Comments -->
 	<display:column>
@@ -67,10 +53,6 @@
 					code="rende.comments" />
 			</a>
 	</display:column>
-	
-=======
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
-	
 	<!-- Questions -->
 	
 	<display:column>

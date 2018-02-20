@@ -30,12 +30,10 @@
 		<!-- Acme Rendezvous -->
 		<value>/views/announcement/tiles.xml</value>
 		<value>/views/rende/tiles.xml</value>
-<<<<<<< HEAD
 		<value>/views/user/tiles.xml</value>
-		
-=======
+
 		<value>/views/users/tiles.xml</value>
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
+
 
 	</util:list>
 

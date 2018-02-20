@@ -39,7 +39,7 @@ public class UserRegisterController {
 		else
 			try {
 				this.userService.save(user);
-				result = new ModelAndView("redirect:../");
+				result = new ModelAndView("redirect:/..");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(actorForm, "user.commit.error");
 			}
