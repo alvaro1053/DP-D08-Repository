@@ -39,5 +39,10 @@
 	</jstl:if>
 	
 	<input type="submit" value="<spring:message code="security.login" />" />
+	<br />
+	<a href="user/register.do?"> <spring:message
+					code="security.login.regiser" />
+			</a>
+	
 	
 </form:form>
