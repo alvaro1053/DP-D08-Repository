@@ -27,6 +27,8 @@
 		<bean class="converters.AnnouncementToStringConverter" />
 		<bean class="converters.StringToRendeConverter" />
 		<bean class="converters.RendeToStringConverter" />
+		<bean class="converters.StringToUserConverter" />
+		<bean class="converters.UserToStringConverter" />
 		
 	</util:list>
 	

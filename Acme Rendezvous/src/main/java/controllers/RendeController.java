@@ -21,6 +21,7 @@ public class RendeController extends AbstractController {
 
 	@Autowired
 	private RendeService	rendeService;
+
 	@Autowired
 	private UserService		userService;
 

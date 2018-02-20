@@ -69,15 +69,7 @@
 	
 	
 	<input type="submit" name="save"
-		value="${saveAnnouncement}" />&nbsp; 
-		
-	<security:authorize access="hasRole('ADMIN')">	
-		<jstl:if test="${announcement.id != 0}">
-  	<input type="submit" name="delete" value="${deleteAnnouncement}"
-   		onclick="return confirm('${confirmAnnouncement}')" />&nbsp;
-	</jstl:if>
- 
-	</security:authorize>		
+		value="${saveAnnouncement}" />&nbsp; 	
 
 	<input type="button" name="cancel"
 		value="${cancelAnnouncement}"

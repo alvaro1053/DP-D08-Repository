@@ -15,6 +15,7 @@
 
 	<!-- isDraft (si NO es draft no se debe poder editar)-->
 	<!-- isDeleted (si ha sido borrada no se debe poder editar)-->
+<<<<<<< HEAD
 <security:authorize access="hasRole('USER')">
 
 <!--  Usar pruned object -->
@@ -39,16 +40,21 @@
 </form:form>
 </jstl:when>
 <jstl:when test="${permision ==true && rende.isDraft==true && rende.isDeleted==false}">
+=======
+>>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
 
 <!-- Tiene que ser el usuario que HAYA CREADO la rende quien pueda editarla y además el ADMIN puede eliminar (lo miraremos más tarde)-->
-<form:form action="rende/user/edit.do" modelAttribute="rende">
+<form:form action="rende/user/edit.do" modelAttribute="rendeForm">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+<<<<<<< HEAD
 	<form:hidden path="user" />
 	<form:hidden path="announcements" />
 	<form:hidden path="comments" />
 	<form:hidden path="questions" />
+=======
+>>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
 		
 	
 <!-- ATRIBUTES -->
@@ -61,10 +67,13 @@
 	<br />
 	<br />
 
+<<<<<<< HEAD
 	<!-- moment -->	
 	<acme:textbox code="rende.moment" path="moment"/>
 	<br />
 	<br />
+=======
+>>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
 	
 	<!-- picture -->
 	<acme:textbox code="rende.picture" path="picture"/>
@@ -95,7 +104,16 @@
 	<br />
 	
 	<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
+<<<<<<< HEAD
+=======
+	<br />
+	<br />
+>>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
 	
+	<spring:message code="rende.isDraft" />
+	<form:checkbox path="isDraft" name="draft" value="true"/>
+	<br />
+	<br />
 
 	<spring:message code="rende.save" var="saveRende"  /><!-- Lo probamos así al principio y luego lo cambiamos para guardar en modo draft y final -->
 	<spring:message code="rende.cancel" var="cancelRende"  />
@@ -104,7 +122,8 @@
 	
 	
 	<input type="submit" name="save" value="${saveRende}" />&nbsp; 
- 		<jstl:if test="${rende.id != 0}">
+ 	
+ 	<jstl:if test="${rende.id != 0}">	
   	<input type="submit" name="delete" value="${deleteRende}"
    		onclick="return confirm('${confirmRende}')" />&nbsp;
 	</jstl:if>
@@ -115,6 +134,7 @@
  <br />
 
 </form:form>
+<<<<<<< HEAD
 
 </jstl:when>
 <jstl:otherwise>
@@ -123,3 +143,5 @@
 </jstl:choose>
 
 </security:authorize>
+=======
+>>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf

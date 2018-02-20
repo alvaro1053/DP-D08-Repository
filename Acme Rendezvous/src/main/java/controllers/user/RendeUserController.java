@@ -19,6 +19,7 @@ import services.UserService;
 import controllers.AbstractController;
 import domain.Rende;
 import domain.User;
+import forms.RendeForm;
 
 @Controller
 @RequestMapping("/rende/user")
@@ -58,9 +59,9 @@ public class RendeUserController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView result;
-		Rende rende;
-		rende = this.rendeService.create();
-		result = this.createEditModelAndView(rende);
+		RendeForm rendeForm;
+		rendeForm = this.rendeService.create();
+		result = this.createEditModelAndView(rendeForm);
 		return result;
 	}
 
@@ -78,8 +79,11 @@ public class RendeUserController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Rende rende, final BindingResult binding) {
+	public ModelAndView save(@Valid final RendeForm rendeForm, final BindingResult binding) {
 		ModelAndView result;
+		Rende rende;
+
+		rende = this.rendeService.reconstruct(rendeForm, binding);
 
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(rende);
@@ -133,6 +137,28 @@ public class RendeUserController extends AbstractController {
 		result.addObject("rende", rende);
 		result.addObject("rendes", rendes);
 		result.addObject("message", message);
+		return result;
+	}
+
+	// Ancillary methods Nuevos forms ------------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(final RendeForm rendeForm) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(rendeForm, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final RendeForm rendeForm, final String message) {
+		final ModelAndView result;
+		final Collection<Rende> rendes = this.rendeService.findAll();
+
+		result = new ModelAndView("rende/edit");
+		result.addObject("rendeForm", rendeForm);
+		result.addObject("rendes", rendes);
+		result.addObject("message", message);
+
 		return result;
 	}
 }

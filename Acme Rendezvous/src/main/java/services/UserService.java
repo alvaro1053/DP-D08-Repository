@@ -80,6 +80,14 @@ public class UserService {
 		result = this.UserRepository.findOne(UserId);
 		return result;
 	}
+	
+	public Collection<User> findAll() {
+		Collection<User> result;
+		result = this.UserRepository.findAll();
+		Assert.notNull(result);
+		return result;
+
+	}
 
 	//Other business methods
 	public User findByPrincipal() {

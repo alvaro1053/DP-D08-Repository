@@ -17,4 +17,5 @@ public interface RendeRepository extends JpaRepository<Rende, Integer> {
 
 	@Query("select r from Rende r where r.adultOnly = false")
 	public Collection<Rende> selectNotAdultRendes();
+
 }

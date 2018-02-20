@@ -10,6 +10,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!-- Listing grid -->
 
@@ -19,15 +20,7 @@
 	name="rendes" requestURI="${requestURI}" id="row">
 		
 	<!-- Attributes -->
-<security:authorize access="hasRole('USER')">
 
-	<display:column>
-	<jstl:if test="${principal.id == row.user.id}">
-   <a href="rende/user/edit.do?rendeId=${row.id}"> <spring:message code="rende.edit" /></a>
-   </jstl:if>
-	</display:column>
-
-	</security:authorize>
 
 	<!-- name -->
 	<spring:message code="rende.name"
@@ -60,9 +53,8 @@
 					code="rende.comments" />
 			</a>
 	</display:column>
-	
-	
 	<!-- Questions -->
+	
 	<display:column>
 			<a href="question/list.do?rendeId=${row.id}"> <spring:message
 					code="rende.questions" />

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.AnnouncementRepository;
+import domain.Admin;
 import domain.Announcement;
 import domain.Rende;
 import domain.User;
@@ -26,6 +27,9 @@ public class AnnouncementService {
 	// Supporting services
 	@Autowired
 	private UserService				userService;
+	
+	@Autowired
+	private AdminService			adminService;
 
 
 	// Constructors
@@ -55,15 +59,13 @@ public class AnnouncementService {
 	// Other business methods
 
 	public void delete(final Announcement announcement) {
-		User principal;
+		Admin principal;
 		Assert.notNull(announcement);
 		Assert.isTrue(announcement.getId() != 0);
 
-		principal = this.userService.findByPrincipal();
+		principal = this.adminService.findByPrincipal();
 		Assert.notNull(principal);
-
-		Assert.isTrue(principal.getRendes().contains(announcement.getRende()));
-
+		
 		this.announcementRepository.delete(announcement);
 	}
 	// Users must be able to create Announcements
