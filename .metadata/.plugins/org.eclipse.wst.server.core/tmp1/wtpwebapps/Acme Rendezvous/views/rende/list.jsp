@@ -14,7 +14,7 @@
 	
 	
 <security:authorize access="hasRole('USER')">
-	<form action="${uri}/list.do" method="get">
+	<form action="rende${uri}/list.do" method="get">
 	
 	<input type="radio" name="filter" value="0"> <spring:message code="rende.all" />
 	<input type="radio" name="filter" value="1"> <spring:message code="rende.filter.creator" />
@@ -70,7 +70,7 @@
 	<!-- Display -->
 	
 	<display:column>
-			<a href="${uri}/display.do?rendeId=${row.id}"> <spring:message
+			<a href="rende${uri}/display.do?rendeId=${row.id}"> <spring:message
 					code="rende.display" />
 			</a>
 	</display:column>

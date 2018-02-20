@@ -16,55 +16,55 @@
 
 
 <display:table pagesize="5" class="displaytag" 
-	name="users" requestURI="users/list.do" id="row">
+	name="users" requestURI="user${uri}/list.do" id="row">
 	
 	
 	<!-- userAccount -->
-	<spring:message code="users.username"
+	<spring:message code="user.username"
 		var="usernameHeader" />
 	<display:column property="userAccount.username" title="${usernameHeader}"
 		sortable="true" />
 		
 		
 	<!-- name -->
-	<spring:message code="users.name"
+	<spring:message code="user.name"
 		var="nameHeader" />
 	<display:column property="name" title="${nameHeader}"
 		sortable="true" />
 
 	<!-- surname -->
-	<spring:message code="users.surname"
+	<spring:message code="user.surname"
 		var="surnameHeader" />
 	<display:column property="surname" title="${surnameHeader}"
 		sortable="true" />
 		
 	<!-- phone -->
-	<spring:message code="users.phone"
+	<spring:message code="user.phone"
 		var="phoneHeader" />
 	<display:column property="phone" title="${phoneHeader}"
 		sortable="true" />
 		
 	<!-- address -->
-	<spring:message code="users.address"
+	<spring:message code="user.address"
 		var="addressHeader" />
 	<display:column property="address" title="${addressHeader}"
 		sortable="true" />
 
 	<!-- email -->
-	<spring:message code="users.email"
+	<spring:message code="user.email"
 		var="emailHeader" />
 	<display:column property="email" title="${emailHeader}"
 		sortable="true" />
 		
 	<!-- dateBirth -->
-	<spring:message code="users.dateBirth"
+	<spring:message code="user.dateBirth"
 		var="dateBirthHeader" />
 	<display:column property="dateBirth" title="${dateBirthHeader}"
 		sortable="true" />	
 	
 	<display:column>
-		<a href="users/display.do?userId=${row.id}"> <spring:message
-			code="users.display" />
+		<a href="${uri}/display.do?userId=${row.id}"> <spring:message
+			code="user.display" />
 		</a>
 	</display:column>
 		

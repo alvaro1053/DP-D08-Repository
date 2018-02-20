@@ -34,7 +34,7 @@ public class RendeController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Rende> rendes;
-		final String uri = "rende";
+		final String uri = "";
 		rendes = this.rendeService.selectNotAdultRendes();
 		result = new ModelAndView("rende/list");
 		result.addObject("rendes", rendes);
@@ -46,7 +46,7 @@ public class RendeController extends AbstractController {
 	public ModelAndView display(@RequestParam final int rendeId) {
 		ModelAndView result;
 		Rende rende = new Rende();
-		final String uri = "rende";
+		final String uri = "";
 		Boolean permisos = true;
 		rende = this.rendeService.findOne(rendeId);
 		if (rende.getAdultOnly() == true)

@@ -45,7 +45,7 @@
 
 <tr>
 <td> <strong> <spring:message code="rende.user" /> : </strong> </td>
-<td> <a href="users/display.do?userId=${rende.user.id}"><jstl:out value="${rende.user.name}"/> </a> </td>
+<td> <a href="user${uri}/display.do?userId=${rende.user.id}"><jstl:out value="${rende.user.name}"/> </a> </td>
 </tr>
 
 <!-- Attendants -->
@@ -56,7 +56,7 @@
 <jstl:when test="${not empty rende.attendants}"> 
 <ul>
 <jstl:forEach items="${rende.attendants}" var="user">
-<li> <a href="users/display.do?userId=${user.id}"><jstl:out value="${user.name}"/></a></li>
+<li> <a href="user${uri}/display.do?userId=${user.id}"><jstl:out value="${user.name}"/></a></li>
 </jstl:forEach>
 </ul> 
 </jstl:when>

@@ -48,7 +48,7 @@ public class RendeUserController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Rende> rendes;
-		final String uri = "rende/user";
+		final String uri = "/user";
 		final User principal = this.userService.findByPrincipal();
 		final Boolean mayorDeEdad = true;
 		final Date currentMoment = new Date();
@@ -71,7 +71,7 @@ public class RendeUserController extends AbstractController {
 		final ModelAndView result;
 		Collection<Rende> res = new ArrayList<Rende>();
 		final User principal = this.userService.findByPrincipal();
-		final String uri = "rende/user";
+		final String uri = "/user";
 		final Boolean mayor = true;
 		final Date currentMoment = new Date();
 		if (filter == 0) {
@@ -98,7 +98,7 @@ public class RendeUserController extends AbstractController {
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam final int rendeId) {
 		ModelAndView result;
-		final String uri = "rende/user";
+		final String uri = "/user";
 		Rende rende = new Rende();
 		final User principal = this.userService.findByPrincipal();
 		Boolean permisos = true;
