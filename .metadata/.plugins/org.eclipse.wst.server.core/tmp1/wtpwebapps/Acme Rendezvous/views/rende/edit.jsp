@@ -15,47 +15,12 @@
 
 	<!-- isDraft (si NO es draft no se debe poder editar)-->
 	<!-- isDeleted (si ha sido borrada no se debe poder editar)-->
-<<<<<<< HEAD
-<security:authorize access="hasRole('USER')">
-
-<!--  Usar pruned object -->
-<jstl:choose>
-<jstl:when test="${(permision == true) &&  (rende.isDraft ==false || rende.isDeleted ==true)}">
-<form:form action="rende/user/edit.do" modelAttribute="rende">
-<form:hidden path="id" />
-<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
-
-<spring:message code="rende.save" var="saveRende"  /><!-- Lo probamos así al principio y luego lo cambiamos para guardar en modo draft y final -->
-	<spring:message code="rende.cancel" var="cancelRende"  />
-	<spring:message code="rende.delete" var="deleteRende"  />
-	<spring:message code="rende.confirm" var="confirmRende"  />
-		
-	<input type="submit" name="saveLinked" value="${saveRende}" />&nbsp; 
- 	<input type="button" name="cancel"
-  		value="${cancelRende}"
- onclick="javascript: relativeRedir('rende/user/list.do');" />
- <br />
-
-
-</form:form>
-</jstl:when>
-<jstl:when test="${permision ==true && rende.isDraft==true && rende.isDeleted==false}">
-=======
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
 
 <!-- Tiene que ser el usuario que HAYA CREADO la rende quien pueda editarla y además el ADMIN puede eliminar (lo miraremos más tarde)-->
 <form:form action="rende/user/edit.do" modelAttribute="rendeForm">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-<<<<<<< HEAD
-	<form:hidden path="user" />
-	<form:hidden path="announcements" />
-	<form:hidden path="comments" />
-	<form:hidden path="questions" />
-=======
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
-		
 	
 <!-- ATRIBUTES -->
 	<!-- name -->
@@ -66,14 +31,6 @@
 	<acme:textarea code="rende.description" path="description"/>
 	<br />
 	<br />
-
-<<<<<<< HEAD
-	<!-- moment -->	
-	<acme:textbox code="rende.moment" path="moment"/>
-	<br />
-	<br />
-=======
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
 	
 	<!-- picture -->
 	<acme:textbox code="rende.picture" path="picture"/>
@@ -104,11 +61,9 @@
 	<br />
 	
 	<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
-<<<<<<< HEAD
-=======
 	<br />
 	<br />
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf
+
 	
 	<spring:message code="rende.isDraft" />
 	<form:checkbox path="isDraft" name="draft" value="true"/>
@@ -134,14 +89,3 @@
  <br />
 
 </form:form>
-<<<<<<< HEAD
-
-</jstl:when>
-<jstl:otherwise>
-<h3><spring:message code="rende.nopermission" /></h3>
-</jstl:otherwise>
-</jstl:choose>
-
-</security:authorize>
-=======
->>>>>>> f8463c12d10ad0783e21b7f4ac30161fc29ec1cf

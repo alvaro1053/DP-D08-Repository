@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.UserService;
 import domain.User;
-import forms.ActorForm;
+import form.ActorForm;
 
 @Controller
 @RequestMapping("/user")

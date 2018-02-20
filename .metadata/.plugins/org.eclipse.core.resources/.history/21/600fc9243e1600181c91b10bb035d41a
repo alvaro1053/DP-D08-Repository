@@ -80,7 +80,7 @@ public class UserService {
 		result = this.UserRepository.findOne(UserId);
 		return result;
 	}
-
+	
 	public Collection<User> findAll() {
 		Collection<User> result;
 		result = this.UserRepository.findAll();

@@ -21,7 +21,7 @@ import domain.Rende;
 import domain.ReplyComment;
 import domain.ReplyQuestion;
 import domain.User;
-import forms.ActorForm;
+import form.ActorForm;
 
 @Service
 @Transactional
@@ -80,7 +80,7 @@ public class UserService {
 		result = this.UserRepository.findOne(UserId);
 		return result;
 	}
-
+	
 	public Collection<User> findAll() {
 		Collection<User> result;
 		result = this.UserRepository.findAll();
