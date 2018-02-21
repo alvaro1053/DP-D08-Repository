@@ -1,6 +1,12 @@
 package forms;
 
 import java.util.Collection;
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import domain.DomainEntity;
 import domain.Location;
@@ -11,6 +17,7 @@ public class RendeForm extends DomainEntity {
 	
 	private String						name;
 	private String						description;
+	private Date 						moment;
 	private String						picture;
 	private Location					coordenates;
 	private Collection<User>			attendants;
@@ -38,6 +45,15 @@ public class RendeForm extends DomainEntity {
 		this.description = description;
 	}
 	
+	public Date getMoment() {
+		return moment;
+	}
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	public void setMoment(Date moment) {
+		this.moment = moment;
+	}
+
 	public String getPicture() {
 		return picture;
 	}

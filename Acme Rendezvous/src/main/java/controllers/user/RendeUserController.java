@@ -130,10 +130,12 @@ public class RendeUserController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int rendeId) {
 		ModelAndView result;
 		Rende rende;
+		RendeForm rendeForm;
 		rende = this.rendeService.findOne(rendeId);
 		Assert.notNull(rende);
+		rendeForm = this.rendeService.reconstructForm(rende);
 
-		result = this.createEditModelAndView(rende);
+		result = this.createEditModelAndView(rendeForm);
 		return result;
 	}
 
@@ -151,7 +153,7 @@ public class RendeUserController extends AbstractController {
 				this.rendeService.save(rende);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(rende, "rende.commit.error");
+				result = this.createEditModelAndView(rendeForm, "rende.commit.error");
 			}
 
 		return result;

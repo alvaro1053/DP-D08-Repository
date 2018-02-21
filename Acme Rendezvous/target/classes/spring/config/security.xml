@@ -63,12 +63,8 @@
 		<security:intercept-url pattern="/rende/user/create.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/list.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/edit.do" access="hasRole('USER')" /> 
-
 		<security:intercept-url pattern="/rende/user/**" access="hasRole('USER')" />
-		<security:intercept-url pattern="/rende/user/create.do" access="hasRole('USER')" /> 
-		<security:intercept-url pattern="/rende/user/edit.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/rsvp.do" access="hasRole('USER')" /> 
-
 		<security:intercept-url pattern="/rende/user/display.do" access="hasRole('USER')" /> 
 
 
