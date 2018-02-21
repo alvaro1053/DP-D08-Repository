@@ -3,10 +3,11 @@ package controllers.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.validation.Valid;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -51,8 +52,10 @@ public class RendeUserController extends AbstractController {
 		final String uri = "/user";
 		final User principal = this.userService.findByPrincipal();
 		final Boolean mayorDeEdad = true;
-		final Date currentMoment = new Date();
-		if (currentMoment.getYear() - principal.getDateBirth().getYear() < 18)
+		final LocalDate now = new LocalDate();
+		final LocalDate nacimiento = new LocalDate(principal.getDateBirth());
+		final int años = Years.yearsBetween(nacimiento, now).getYears();
+		if (años < 18)
 			rendes = this.rendeService.selectNotAdultRendes();
 		else
 			rendes = this.rendeService.findAll();
@@ -73,9 +76,11 @@ public class RendeUserController extends AbstractController {
 		final User principal = this.userService.findByPrincipal();
 		final String uri = "/user";
 		final Boolean mayor = true;
-		final Date currentMoment = new Date();
+		final LocalDate now = new LocalDate();
+		final LocalDate nacimiento = new LocalDate(principal.getDateBirth());
+		final int años = Years.yearsBetween(nacimiento, now).getYears();
 		if (filter == 0) {
-			if (currentMoment.getYear() - principal.getDateBirth().getYear() < 18)
+			if (años < 18)
 				res = this.rendeService.selectNotAdultRendes();
 			else
 				res = this.rendeService.findAll();
@@ -102,13 +107,16 @@ public class RendeUserController extends AbstractController {
 		Rende rende = new Rende();
 		final User principal = this.userService.findByPrincipal();
 		Boolean permisos = true;
-		final Date currentMoment = new Date();
+		final LocalDate now = new LocalDate();
+		final LocalDate nacimiento = new LocalDate(principal.getDateBirth());
+		final int años = Years.yearsBetween(nacimiento, now).getYears();
 		rende = this.rendeService.findOne(rendeId);
-		if ((currentMoment.getYear() - principal.getDateBirth().getYear() < 18) && rende.getAdultOnly() == true)
+		if ((años < 18) && rende.getAdultOnly() == true)
 			permisos = false;
 
 		result = new ModelAndView("rende/display");
 		result.addObject("rende", rende);
+		result.addObject("principal", principal);
 		result.addObject("permisos", permisos);
 		result.addObject("uri", uri);
 		return result;

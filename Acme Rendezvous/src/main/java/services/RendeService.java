@@ -144,7 +144,6 @@ public class RendeService {
 		Rende result;
 
 		result = this.rendeRepository.findOne(RendeId);
-		Assert.notNull(result);
 
 		return result;
 

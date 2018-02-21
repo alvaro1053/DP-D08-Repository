@@ -12,18 +12,31 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
+<security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
+<jstl:choose>
+<jstl:when test="${principal.rSVPS.contains(rende) || isAdmin }">
 
 
 <!-- Listing grid -->
-
 <display:table pagesize="5" class="displaytag" 
 	name="comments" requestURI="comment/user/list.do" id="row">
 
 
 
-	<!-- Attributes -->
 	
 	
+	<!-- Edit -->
+	<spring:message code="comment.edit" var="edit" />
+	<display:column title="${edit}"
+		sortable="false">
+<jstl:if test="${principal.comments.contains(row) }">
+ <a href="comment/user/edit.do?commentId=${row.id}">${edit}</a>
+ </jstl:if>	
+		</display:column>
+	
+		
+<!-- Attributes -->
+		
 	<!-- text -->
 	<spring:message code="comment.text" var="textHeader" />
 	<display:column property="text" title="${textHeader}"
@@ -35,6 +48,12 @@
 	<display:column title="${pictureHeader}" sortable="true" > <img src="${row.picture}"  width="auto" height="auto"></display:column> 
 
 
+	<!-- Writer -->
+		<spring:message code="comment.writeBy"
+	var="writer" />
+	<display:column title="${writer}" property="user.name" href="user/user/display.do" paramId="userId" paramProperty="user.id">  </display:column>)
+
+
 	<!-- moment -->
 	<spring:message code="comment.format"
   		var="format" />
@@ -42,30 +61,20 @@
 		var="momentHeader" />
 	<display:column property="moment" title="${momentHeader}"
 		sortable="true" format = "${format}" />
-
-
-	<!-- rende -->
-	<spring:message code="comment.rende"
-		var="rendeHeader" />
-	<display:column property="rende.name" title="${rendeHeader}" sortable="true"/> 
 	
 	<!-- Replies of the comment -->
+	<spring:message code="comment.listReply"
+		var="listReply" />
 	<display:column title="${listReply}">
 	
-	<display:table pagesize="1" class="displaytag" 
+	<display:table pagesize="3" class="displaytag" 
 	name="${row.repliesComments}" requestURI="comment/user/list.do" id="reply">
 	
 	<spring:message code="comment.reply2"
 		var="reply2" />
 	<display:column property="reply" title="${reply2}"/>
 	
-	<spring:message code="comment.writeBy"
-	var="writer" />
-	<display:column title="${writer}">
-	 <a href="user/user/display.do?userId=${reply.user.id}">${reply.user.name}</a>
-	 </display:column>
-	
-	
+	<display:column title="${writer}" property="user.name" href="user/user/display.do" paramId="userId" paramProperty="user.id">  </display:column>)
 	</display:table>
 	</display:column>
 	<security:authorize access="hasRole('USER')">
@@ -84,8 +93,12 @@
 
 </display:table>
 
-<spring:message code="comment.writeBy"
-	var="writer" />
- <a href="comment/user/create.do">${reply.user.name}</a>
-
+<spring:message code="comment.create"
+	var="create" />
+ <a href="comment/user/create.do?rendeId=${rende.id}">${create}</a>
+ </jstl:when>
+ <jstl:otherwise>
+ <spring:message code="comment.dirtyHacker" />
+</jstl:otherwise>
+</jstl:choose>
 

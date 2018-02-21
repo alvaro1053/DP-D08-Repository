@@ -12,20 +12,21 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
+<jstl:choose>
+<jstl:when test="${permisos || isAdmin }">
 
-
-<form:form action="comment/user/edit.do" modelAttribute="comment">
-
+<form:form action="comment/user/edit.do" modelAttribute="commentForm">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="moment" />
-	<form:hidden path="user" />
 	<form:hidden path="rende" />
 	
 	
-<acme:textbox code="comment.text" path="text"/>
+<acme:textarea code="comment.text" path="text"/>
+<br/>
 	
 <acme:textbox code="comment.picture" path="picture"/>
+<br/>
 	
 
 
@@ -38,16 +39,20 @@
 	
 	<input type="submit" name="save"
 		value="${saveComment}" />&nbsp; 
-		
-	<jstl:if test="${comment.id != 0}">
+<security:authorize access="hasRole('ADMIN')">
+	<jstl:if test="${commentForm.id != 0}">
   	<input type="submit" name="delete" value="${deleteComment}"
    		onclick="return confirm('${confirmComment}')" />&nbsp;
 	</jstl:if>
- 
+ </security:authorize>
 
 	<input type="button" name="cancel"
 		value="${cancelComment}"
-		onclick="javascript: relativeRedir('comment/list.do');" />
+		onclick="javascript: relativeRedir('comment/user/list.do?rendeId=${commentForm.rende}');" />
 	<br />
 </form:form>
-
+</jstl:when>
+ <jstl:otherwise>
+ <spring:message code="comment.dirtyHacker2" />
+</jstl:otherwise>
+</jstl:choose>

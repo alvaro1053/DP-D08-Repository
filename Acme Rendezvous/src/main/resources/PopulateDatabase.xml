@@ -603,6 +603,7 @@
 	<property name="repliesComments">
 	<list>
 	<ref bean ="replyComment4"/>
+	<ref bean ="replyComment7"/>
 	</list>
 	</property>
 	
@@ -643,6 +644,7 @@
 	<ref bean ="replyComment6"/>
 	</list>
 	</property>
+	<property name="rende" ref="rende5"/>
 	
 	<property name="user" ref="user2"/>
 	</bean>
@@ -692,6 +694,12 @@
 	<property name="user" ref="user3"/>
 	</bean>
 	
+		<!-- ReplyComment 7 -->
+		
+	<bean class="domain.ReplyComment" id="replyComment7">
+	<property name="reply" value="Hiiiiiiiiiiii"/>
+	<property name="user" ref="user3"/>
+	</bean>
 	
 	
 	
