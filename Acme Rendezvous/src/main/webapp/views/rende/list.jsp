@@ -36,7 +36,7 @@
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" 
-	name="rendes" requestURI="rende/user/list.do" id="row">
+	name="rendes" requestURI="rende${uri}/list.do" id="row">
 		
 	<!-- Attributes -->
 	
@@ -52,6 +52,15 @@
 	<security:authorize access="hasRole('USER')">
 		<display:column>
 				<a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
+		</display:column>
+	</security:authorize>
+	
+	
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<jstl:if test="${not row.isDeleted}">
+				<a href="rende/admin/delete.do?rendeId=${row.id}"><spring:message code ="rende.delete"/></a>
+			</jstl:if>
 		</display:column>
 	</security:authorize>
 
