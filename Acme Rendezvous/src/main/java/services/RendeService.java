@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.RendeRepository;
+import domain.Admin;
 import domain.Rende;
 import domain.User;
 import forms.RendeForm;
@@ -29,6 +30,8 @@ public class RendeService {
 	@Autowired
 	private UserService		userService;
 
+	@Autowired
+	private AdminService		adminService;
 
 	// Constructors
 
@@ -73,6 +76,14 @@ public class RendeService {
 
 		this.rendeRepository.save(rende);
 	}
+	
+	public void deleteAdmin(final Rende rende) {
+
+		Admin principalAdmin = this.adminService.findByPrincipal();
+		Assert.notNull(principalAdmin);
+		rende.setIsDeleted(true);
+		
+		}
 
 	// Users must be able to create Rendes
 	public Rende save(final Rende rendeToSave) {
@@ -92,16 +103,10 @@ public class RendeService {
 			rendeToSave.setAttendants(attendants);
 		}
 
-		rendeToSave.setMoment(new Date(System.currentTimeMillis() - 1));
-
-		final Date currentMoment = new Date();
-
-		Assert.isTrue(rendeToSave.getMoment().before(currentMoment));
-
 		result = this.rendeRepository.save(rendeToSave);
 
 		Rendes = principal.getRendes();
-		updated = new ArrayList<Rende>(Rendes);
+		updated = new ArrayList<Rende>(Rendes);	
 		updated.add(result);
 		principal.setRendes(updated);
 
@@ -155,6 +160,13 @@ public class RendeService {
 		return result;
 
 	}
+	
+	public void rsvp(final Rende rende, final User user){
+		rende.getAttendants().add(user);
+		
+		
+		user.getrSVPS().add(rende);
+	}
 
 
 	//Reconstruct --------------------------------------------
@@ -171,8 +183,11 @@ public class RendeService {
 
 		result = new Rende();
 
+		result.setId(rendeForm.getId());
+		result.setVersion(rendeForm.getVersion());
 		result.setName(rendeForm.getName());
 		result.setDescription(rendeForm.getDescription());
+		result.setMoment(rendeForm.getMoment());
 		result.setPicture(rendeForm.getPicture());
 		result.setCoordenates(rendeForm.getCoordenates());
 		result.setAttendants(rendeForm.getAttendants());
@@ -184,6 +199,27 @@ public class RendeService {
 		result.setUser(principal);
 
 		this.validator.validate(result, binding);
+		return result;
+	}
+	
+	public RendeForm reconstructForm(final Rende rende) {
+		RendeForm result;
+
+		result = new RendeForm();
+
+		result.setId(rende.getId());
+		result.setVersion(rende.getVersion());
+		result.setName(rende.getName());
+		result.setDescription(rende.getDescription());
+		result.setMoment(rende.getMoment());
+		result.setPicture(rende.getPicture());
+		result.setCoordenates(rende.getCoordenates());
+		result.setAttendants(rende.getAttendants());
+		result.setIsDraft(rende.getIsDraft());
+		result.setAdultOnly(rende.getAdultOnly());
+		result.setLinked(rende.getLinked());
+		result.setIsDraft(rende.getIsDraft());
+
 		return result;
 	}
 

@@ -12,7 +12,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-
+<jstl:if test="${!rendeForm.isDeleted}">
 	<!-- isDraft (si NO es draft no se debe poder editar)-->
 	<!-- isDeleted (si ha sido borrada no se debe poder editar)-->
 
@@ -95,3 +95,5 @@
  <br />
 
 </form:form>
+
+</jstl:if>

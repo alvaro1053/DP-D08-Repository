@@ -26,6 +26,10 @@
 <br>
 
 
+<jstl:if test="${rende.isDeleted}">
+	<h4><spring:message code="rende.isDeleted"/></h4>
+</jstl:if>
+
 <table class="displayStyle">
 
 

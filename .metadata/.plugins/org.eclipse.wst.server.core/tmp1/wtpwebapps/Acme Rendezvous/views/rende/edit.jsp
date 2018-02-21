@@ -10,7 +10,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
 	<!-- isDraft (si NO es draft no se debe poder editar)-->
@@ -28,7 +28,13 @@
 	<br />
 	<br />
 	
+	<!-- description -->
 	<acme:textarea code="rende.description" path="description"/>
+	<br />
+	<br />
+	
+	<!-- moment -->
+	<acme:textbox code="rende.moment" path="moment"/>
 	<br />
 	<br />
 	

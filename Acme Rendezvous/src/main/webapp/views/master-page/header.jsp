@@ -44,6 +44,10 @@
 			<li><a class="fNiv" href="rende/list.do"><spring:message code="master.page.rendeList" /></a></li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('ADMIN')">
+		<li><a class="fNiv" href="rende/admin/list.do"><spring:message code="master.page.rendeList" /></a></li>
+		</security:authorize>
+		
 		<security:authorize access="hasRole('USER')">
 			<li><a class="fNiv" href="rende/user/list.do"><spring:message code="master.page.rendeList" /></a></li>
 		</security:authorize>

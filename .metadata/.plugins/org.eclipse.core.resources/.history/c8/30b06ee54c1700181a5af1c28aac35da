@@ -434,7 +434,7 @@
 	<bean class="domain.Rende" id="rende5">
 	<property name="name" value="Rende 5" />
 	<property name="Description" value="This is the rende 5, and its not +18" />
-	<property name="moment" value="2018/02/20 11:11"/>
+	<property name="moment" value="2018/02/29 11:11"/>
 	<property name="picture" value=""/>  <!-- ya que es opcional -->
 	<property name="coordenates" ref="location2"/>
 	

@@ -138,10 +138,12 @@ public class RendeUserController extends AbstractController {
 	public ModelAndView edit(@RequestParam final int rendeId) {
 		ModelAndView result;
 		Rende rende;
+		RendeForm rendeForm;
 		rende = this.rendeService.findOne(rendeId);
 		Assert.notNull(rende);
+		rendeForm = this.rendeService.reconstructForm(rende);
 
-		result = this.createEditModelAndView(rende);
+		result = this.createEditModelAndView(rendeForm);
 		return result;
 	}
 
@@ -159,7 +161,7 @@ public class RendeUserController extends AbstractController {
 				this.rendeService.save(rende);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(rende, "rende.commit.error");
+				result = this.createEditModelAndView(rendeForm, "rende.commit.error");
 			}
 
 		return result;
@@ -178,6 +180,35 @@ public class RendeUserController extends AbstractController {
 
 		return result;
 	}
+	
+	@RequestMapping(value = "/rsvp", method = RequestMethod.GET)
+	public ModelAndView rsvp(@RequestParam final int rendeId){
+		ModelAndView result;
+		Rende rende;
+		User principal;
+		String alreadyRegistered;
+		Boolean successful;
+		
+		
+		
+		rende = this.rendeService.findOne(rendeId);
+		principal = this.userService.findByPrincipal();
+		if(rende.getAttendants().contains(principal)){
+			alreadyRegistered = "rende.alreadyRegistered";
+			result = this.createListModelAndView(alreadyRegistered);
+			result.addObject("message",alreadyRegistered);
+		}else{
+			successful = true;
+			this.rendeService.rsvp(rende, principal);
+			result = this.createListModelAndView(null);
+			result.addObject("successful", successful);
+		}
+		
+		
+		
+		return result;
+	}
+	
 
 	// Ancillary methods ------------------------------------------------------
 
@@ -226,6 +257,25 @@ public class RendeUserController extends AbstractController {
 		result.addObject("rendes", rendes);
 		result.addObject("message", message);
 
+		return result;
+	}
+	
+	protected ModelAndView createListModelAndView(final String message) {
+		final ModelAndView result;
+		Collection<Rende> rendes;
+		final User principal = this.userService.findByPrincipal();
+		final Boolean mayorDeEdad = false;
+
+		
+		rendes = this.rendeService.findAll();
+		
+
+		
+		result = new ModelAndView("rende/list");
+		result.addObject("mayor", mayorDeEdad);
+		result.addObject("principal", principal);
+		result.addObject("rendes", rendes);
+		result.addObject("message", message);
 		return result;
 	}
 }
