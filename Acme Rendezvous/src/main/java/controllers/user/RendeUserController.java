@@ -1,7 +1,9 @@
 
 package controllers.user;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -45,11 +47,73 @@ public class RendeUserController extends AbstractController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
-	
-		result = this.createListModelAndView(null);
-		
+		Collection<Rende> rendes;
+		final String uri = "/user";
+		final User principal = this.userService.findByPrincipal();
+		final Boolean mayorDeEdad = true;
+		final Date currentMoment = new Date();
+		if (currentMoment.getYear() - principal.getDateBirth().getYear() < 18)
+			rendes = this.rendeService.selectNotAdultRendes();
+		else
+			rendes = this.rendeService.findAll();
+		result = new ModelAndView("rende/list");
+		result.addObject("mayor", mayorDeEdad);
+		result.addObject("principal", principal);
+		result.addObject("rendes", rendes);
+		result.addObject("uri", uri);
 		return result;
 	}
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET, params = {
+		"filter"
+	})
+	public ModelAndView filter(@RequestParam final int filter) {
+		final ModelAndView result;
+		Collection<Rende> res = new ArrayList<Rende>();
+		final User principal = this.userService.findByPrincipal();
+		final String uri = "/user";
+		final Boolean mayor = true;
+		final Date currentMoment = new Date();
+		if (filter == 0) {
+			if (currentMoment.getYear() - principal.getDateBirth().getYear() < 18)
+				res = this.rendeService.selectNotAdultRendes();
+			else
+				res = this.rendeService.findAll();
+		} else if (filter == 1)
+			res = this.rendeService.findByUserId(principal.getId());
+		else if (filter == 2)
+			res = this.rendeService.findRSVPSByUser();
+
+		result = new ModelAndView("rende/list");
+		result.addObject("mayor", mayor);
+		result.addObject("principal", principal);
+		result.addObject("uri", uri);
+		result.addObject("rendes", res);
+
+		return result;
+
+	}
+
+	//Display
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int rendeId) {
+		ModelAndView result;
+		final String uri = "/user";
+		Rende rende = new Rende();
+		final User principal = this.userService.findByPrincipal();
+		Boolean permisos = true;
+		final Date currentMoment = new Date();
+		rende = this.rendeService.findOne(rendeId);
+		if ((currentMoment.getYear() - principal.getDateBirth().getYear() < 18) && rende.getAdultOnly() == true)
+			permisos = false;
+
+		result = new ModelAndView("rende/display");
+		result.addObject("rende", rende);
+		result.addObject("permisos", permisos);
+		result.addObject("uri", uri);
+		return result;
+	}
+
 	// Creation 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {

@@ -1,0 +1,36 @@
+rende.name   					= Nombre
+rende.descripcion   			= Descripción
+rende.moment   					= Momento
+rende.user						= Usuario
+rende.format     				= {0,date,dd/MM/yyyy HH:mm} 
+
+rende.edit 						= Editar rende
+rende.list   					= Lista de rendes
+
+rende.save    					= Guardar
+rende.cancel    				= Cancelar
+rende.delete					= Eliminar
+rende.confirm					= ¿Seguro que desea eliminar la rende?
+
+rende.newRende					= Crear nueva Rende
+
+rende.commit.error   			= No se puede realizar la operación
+rende.commit.ok   				= Operación realizada con éxito
+rende.unauthorizedAccess.message  = Usted no tiene permiso para acceder a esta página
+rende.nopermission  			= ¡No tiene permiso para editar esta Rende!
+rende.comments          = Comentarios
+rende.questions         = Preguntas
+rende.linked                    = Enlazados
+rende.picture           = Imagen
+rende.coordenates                = Coordenadas
+rende.coordenates.latitude       = Latitud
+rende.coordenates.longitude      = Longitud
+rende.adultOnly                 = Solo adultos
+rende.creator                  = Creador
+rende.isDraft					= Modo borrador
+rende.filter.creator            = Mis rendezvous
+rende.filter.RZVP               = My RZVPs
+rende.choose                    = Elegir
+rende.all                       = Mostrar todo
+rende.momentPattern             = dd/MM/yyyy HH:mm
+rende.empty                     = No hay nada que mostrar

@@ -40,7 +40,6 @@ public class ActorForm extends DomainEntity {
 	}
 
 	@Size(min = 5, max = 32)
-	@NotBlank
 	public String getConfirmPassword() {
 		return this.confirmPassword;
 	}
@@ -52,6 +51,7 @@ public class ActorForm extends DomainEntity {
 	@Past
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotBlank
 	public Date getDateBirth() {
 		return this.dateBirth;
 	}

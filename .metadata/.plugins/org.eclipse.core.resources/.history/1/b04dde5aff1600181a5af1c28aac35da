@@ -1,0 +1,200 @@
+
+package controllers.user;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import services.CommentService;
+import services.UserService;
+import controllers.AbstractController;
+import domain.Comment;
+import domain.User;
+
+@Controller
+@RequestMapping("/comment/user")
+public class CommentUserController extends AbstractController {
+
+	// Services
+
+	@Autowired
+	private CommentService	commentService;
+
+	@Autowired
+	private UserService		userService;
+
+
+	// Constructors
+
+	public CommentUserController() {
+		super();
+	}
+
+	// Listing
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView filter(@RequestParam final int rendeId) {
+		final ModelAndView result;
+		Collection<Comment> res = new ArrayList<Comment>();
+		final User principal = this.userService.findByPrincipal();
+		final String uri = "/user";
+		final Boolean mayor = true;
+		final Date currentMoment = new Date();
+		if (filter == 0) {
+			if (currentMoment.getYear() - principal.getDateBirth().getYear() < 18)
+				res = this.commentService.selectNotAdultComments();
+			else
+				res = this.commentService.findAll();
+		} else if (filter == 1)
+			res = this.commentService.findByUserId(principal.getId());
+		else if (filter == 2)
+			res = this.commentService.findRSVPSByUser();
+
+		result = new ModelAndView("comment/list");
+		result.addObject("mayor", mayor);
+		result.addObject("principal", principal);
+		result.addObject("uri", uri);
+		result.addObject("comments", res);
+
+		return result;
+
+	}
+
+	//Display
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int commentId) {
+		ModelAndView result;
+		final String uri = "/user";
+		Comment comment = new Comment();
+		final User principal = this.userService.findByPrincipal();
+		Boolean permisos = true;
+		final Date currentMoment = new Date();
+		comment = this.commentService.findOne(commentId);
+		if ((currentMoment.getYear() - principal.getDateBirth().getYear() < 18) && comment.getAdultOnly() == true)
+			permisos = false;
+
+		result = new ModelAndView("comment/display");
+		result.addObject("comment", comment);
+		result.addObject("permisos", permisos);
+		result.addObject("uri", uri);
+		return result;
+	}
+
+	// Creation 
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
+		ModelAndView result;
+		CommentForm commentForm;
+		commentForm = this.commentService.create();
+		result = this.createEditModelAndView(commentForm);
+		return result;
+	}
+
+	// Edition ----------------------------------------------------------------
+
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView edit(@RequestParam final int commentId) {
+		ModelAndView result;
+		Comment comment;
+		comment = this.commentService.findOne(commentId);
+		Assert.notNull(comment);
+
+		result = this.createEditModelAndView(comment);
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
+	public ModelAndView save(@Valid final CommentForm commentForm, final BindingResult binding) {
+		ModelAndView result;
+		Comment comment;
+
+		comment = this.commentService.reconstruct(commentForm, binding);
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(comment);
+		else
+			try {
+				this.commentService.save(comment);
+				result = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(comment, "comment.commit.error");
+			}
+
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final Comment comment, final BindingResult binding) {
+		ModelAndView result;
+
+		try {
+			this.commentService.delete(comment);
+			result = new ModelAndView("redirect:list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(comment, "comment.commit.error");
+		}
+
+		return result;
+	}
+
+	// Ancillary methods ------------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(final Comment comment) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(comment, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final Comment comment, final String message) {
+		final ModelAndView result;
+		final Collection<Comment> comments = this.commentService.findAll();
+		domain.User principal;
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		Boolean permision = true;
+		if (comment.getId() != 0 && (comment.getUser().getId() != principal.getId()))
+			permision = false;
+
+		result = new ModelAndView("comment/edit");
+		result.addObject("permision", permision);
+		result.addObject("comment", comment);
+		result.addObject("comments", comments);
+		result.addObject("message", message);
+		return result;
+	}
+
+	// Ancillary methods Nuevos forms ------------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(final CommentForm commentForm) {
+		ModelAndView result;
+
+		result = this.createEditModelAndView(commentForm, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(final CommentForm commentForm, final String message) {
+		final ModelAndView result;
+		final Collection<Comment> comments = this.commentService.findAll();
+
+		result = new ModelAndView("comment/edit");
+		result.addObject("commentForm", commentForm);
+		result.addObject("comments", comments);
+		result.addObject("message", message);
+
+		return result;
+	}
+}

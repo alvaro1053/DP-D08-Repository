@@ -1,0 +1,38 @@
+rende.name   					= Name
+rende.description   			= Description
+rende.moment   					= Moment
+rende.user						= User
+rende.format    			 	= {0,date,yyyy/MM/dd HH:mm}
+
+rende.edit 						= Edit rende
+rende.list   					= List of rendes
+	
+rende.save    					= Save
+rende.cancel    				= Cancel
+rende.delete					= Delete
+rende.confirm					= Are you sure you want to delete the rende?
+
+rende.newRende					= Create new Rende
+
+rende.commit.error   			= Cannot commit this operation
+rende.commit.ok   				= Operation completed succesfully!
+rende.unauthorizedAccess.message  = You do not have access to this page
+rende.nopermission  			= ¡You do not have permission to edit this Rende!
+rende.comments          = Comments
+rende.questions         = Questions
+rende.linked                    = Linked
+rende.picture          = Picture
+rende.coordenates                = Coordenates
+rende.coordenates.latitude       = Latitude
+rende.coordenates.longitude      = Longitude
+rende.adultOnly                 = Adult only
+rende.creator                   = Creator
+rende.isDraft					= Draft mode
+rende.filter.creator            = My rendezvous
+rende.filter.RZVP               = My RZVPs
+rende.choose                    = Choose
+rende.all                       = Show all
+rende.momentPattern             = yyyy/dd/MM/ HH:mm
+rende.empty                     = Nothing to show
+rende.attendants                = Attendants
+rende.age.error                 = You must have +18 years to show this.

@@ -17,7 +17,7 @@
 <!-- Listing grid -->
 
 <display:table pagesize="5" class="displaytag" 
-	name="comments" requestURI="comment/list.do" id="row">
+	name="comments" requestURI="comment/user/list.do" id="row">
 
 
 
@@ -31,8 +31,8 @@
 		
 	<!-- picture -->
 	<spring:message code="comment.picture" var="pictureHeader" />
-	<display:column property="picture" title="${pictureHeader}"
-		sortable="true" />
+	<spring:message code="comment.pictureError" var="pictureError" />
+	<display:column title="${pictureHeader}" sortable="true" > <img src="${row.picture}"  width="auto" height="auto"></display:column> 
 
 
 	<!-- moment -->
@@ -47,15 +47,27 @@
 	<!-- rende -->
 	<spring:message code="comment.rende"
 		var="rendeHeader" />
-	<display:column property="rende" title="${rendeHeader}" sortable="true"/> 
+	<display:column property="rende.name" title="${rendeHeader}" sortable="true"/> 
 	
-	<!-- Reply -->
-	<display:column>
-			<a href="replyComment/list.do?commentId=${row.id}"> <spring:message
-					code="comment.listReply" />
-			</a>
+	<!-- Replies of the comment -->
+	<display:column title="${listReply}">
+	
+	<display:table pagesize="1" class="displaytag" 
+	name="${row.repliesComments}" requestURI="comment/user/list.do" id="reply">
+	
+	<spring:message code="comment.reply2"
+		var="reply2" />
+	<display:column property="reply" title="${reply2}"/>
+	
+	<spring:message code="comment.writeBy"
+	var="writer" />
+	<display:column title="${writer}">
+	 <a href="user/user/display.do?userId=${reply.user.id}">${reply.user.name}</a>
+	 </display:column>
+	
+	
+	</display:table>
 	</display:column>
-	
 	<security:authorize access="hasRole('USER')">
 	<!-- Reply -->
 	<display:column>
@@ -71,4 +83,9 @@
 
 
 </display:table>
+
+<spring:message code="comment.writeBy"
+	var="writer" />
+ <a href="comment/user/create.do">${reply.user.name}</a>
+
 

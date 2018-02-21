@@ -550,6 +550,8 @@
 	</list>
 	</property>
 	
+	<property name="rende" ref="rende1"/>
+	
 	<property name="user" ref="user1"/>
 	</bean>
 	
@@ -565,6 +567,8 @@
 	<ref bean="replyComment2"/>
 	</list>
 	</property>
+	
+	<property name="rende" ref="rende2"/>
 	
 	<property name="user" ref="user1"/>
 	</bean>
@@ -583,6 +587,8 @@
 	</list>
 	</property>
 	
+	<property name="rende" ref="rende2"/>
+	
 	<property name="user" ref="user2"/>
 	</bean>
 	
@@ -600,6 +606,8 @@
 	</list>
 	</property>
 	
+	<property name="rende" ref="rende2"/>
+	
 	<property name="user" ref="user2"/>
 	</bean>
 	
@@ -616,6 +624,8 @@
 	<ref bean ="replyComment5"/>
 	</list>
 	</property>
+	
+	<property name="rende" ref="rende1"/>
 	
 	<property name="user" ref="user2"/>
 	</bean>

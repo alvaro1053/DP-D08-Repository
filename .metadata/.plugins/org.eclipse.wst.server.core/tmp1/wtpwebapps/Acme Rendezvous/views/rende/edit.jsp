@@ -78,7 +78,7 @@
 	
 	<input type="submit" name="save" value="${saveRende}" />&nbsp; 
  	
- 	<jstl:if test="${rende.id != 0}">	
+ 	<jstl:if test="${rendeForm.id != 0}">	
   	<input type="submit" name="delete" value="${deleteRende}"
    		onclick="return confirm('${confirmRende}')" />&nbsp;
 	</jstl:if>

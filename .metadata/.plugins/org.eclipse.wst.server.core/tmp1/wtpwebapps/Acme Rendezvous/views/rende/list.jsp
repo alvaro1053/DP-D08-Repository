@@ -11,10 +11,22 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+	
+	
+<security:authorize access="hasRole('USER')">
+	<form action="rende${uri}/list.do" method="get">
+	
+	<input type="radio" name="filter" value="0"> <spring:message code="rende.all" />
+	<input type="radio" name="filter" value="1"> <spring:message code="rende.filter.creator" />
+	<input type="radio" name="filter" value="2"> <spring:message code="rende.filter.RZVP" />
+
+	<br />
+	<spring:message code="rende.choose" var="choose"/>
+	<input type="submit" value="${choose}">
+	</form>
+</security:authorize>
 
 <!-- Listing grid -->
-
-
 
 <display:table pagesize="5" class="displaytag" 
 	name="rendes" requestURI="rende/user/list.do" id="row">
@@ -54,6 +66,15 @@
 					code="rende.questions" />
 			</a>
 	</display:column>
+	
+	<!-- Display -->
+	
+	<display:column>
+			<a href="rende${uri}/display.do?rendeId=${row.id}"> <spring:message
+					code="rende.display" />
+			</a>
+	</display:column>
+	
 	
 	<!-- Linked -->
 <display:table name="${row.linked}" id="linked" pagesize="15" class="displaytag">
