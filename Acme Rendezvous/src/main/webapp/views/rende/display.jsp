@@ -67,6 +67,25 @@
 </td>
 </tr>
 
+<!-- Linkeds -->
+<tr>
+<td> <strong> <spring:message code="rende.linked" /> : </strong> </td>
+<td> 
+<jstl:choose>
+<jstl:when test="${not empty rende.linked}"> 
+<ul>
+<jstl:forEach items="${rende.linked}" var="rende">
+<li> <a href="rende${uri}/display.do?rendeId=${rende.id}"><jstl:out value="${rende.name}"/></a></li>
+</jstl:forEach>
+</ul> 
+</jstl:when>
+<jstl:otherwise>
+<spring:message code="rende.empty" />
+</jstl:otherwise>
+</jstl:choose>
+</td>
+</tr>
+
 </table>
 </jstl:when>
 <jstl:otherwise>

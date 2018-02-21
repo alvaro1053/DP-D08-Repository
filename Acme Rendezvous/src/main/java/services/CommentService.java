@@ -117,5 +117,11 @@ public class CommentService {
 		this.commentRepository.delete(comment);
 
 	}
+	public Collection<Comment> findByRendeId(final int rendeId) {
+		Collection<Comment> rendes = new ArrayList<Comment>();
+		rendes = this.commentRepository.findByRende(rendeId);
+		return rendes;
+
+	}
 
 }

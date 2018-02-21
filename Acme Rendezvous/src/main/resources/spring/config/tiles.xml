@@ -30,6 +30,7 @@
 		<!-- Acme Rendezvous -->
 		<value>/views/announcement/tiles.xml</value>
 		<value>/views/rende/tiles.xml</value>
+		<value>/views/comment/tiles.xml</value>
 		<value>/views/user/tiles.xml</value>
 
 

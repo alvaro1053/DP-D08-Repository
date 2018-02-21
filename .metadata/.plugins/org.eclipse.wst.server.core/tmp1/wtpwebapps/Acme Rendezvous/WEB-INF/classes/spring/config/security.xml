@@ -69,11 +69,14 @@
 
 
 
-		<!-- Acme Rendezvous userList -->
+		<!-- Acme Rendezvous user -->
 		<security:intercept-url pattern="/user/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/user/display.do" access="permitAll" /> 
 		<security:intercept-url pattern="/user/register.do" access="permitAll" /> 
 		<security:intercept-url pattern="/user/user/**" access="hasRole('USER')" /> 
+		
+		<!-- Acme Rendezvous Comments -->
+		<security:intercept-url pattern="/comment/user/**" access="hasRole('USER')" /> 
 		
 		
 

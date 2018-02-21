@@ -40,7 +40,6 @@ public class ActorForm extends DomainEntity {
 	}
 
 	@Size(min = 5, max = 32)
-	@NotBlank
 	public String getConfirmPassword() {
 		return this.confirmPassword;
 	}
