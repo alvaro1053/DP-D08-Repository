@@ -442,6 +442,8 @@
 	<property name="attendants">
 	<list>
 	<ref bean = "user3"/> <!-- creador -->
+	<ref bean = "user2"/>
+	
 	
 	</list>
 	</property>

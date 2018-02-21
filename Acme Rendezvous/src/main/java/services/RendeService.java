@@ -156,6 +156,13 @@ public class RendeService {
 		return result;
 
 	}
+	
+	public void rsvp(final Rende rende, final User user){
+		rende.getAttendants().add(user);
+		
+		
+		user.getrSVPS().add(rende);
+	}
 
 
 	//Reconstruct --------------------------------------------

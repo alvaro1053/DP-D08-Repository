@@ -14,12 +14,22 @@
 
 <!-- Listing grid -->
 
+<jstl:if test="${successful}">
+	<h3><spring:message code="rende.successful"></spring:message></h3>
+</jstl:if>
+
 
 
 <display:table pagesize="5" class="displaytag" 
 	name="rendes" requestURI="rende/user/list.do" id="row">
 		
 	<!-- Attributes -->
+	
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+				<a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
+		</display:column>
+	</security:authorize>
 
 
 	<!-- name -->
@@ -63,7 +73,9 @@
 
 </display:table>
 
+
 <security:authorize access="hasRole('USER')">
 
 <a href="rende/user/create.do"><spring:message code ="rende.newRende"/></a>
 </security:authorize>
+<br/>
