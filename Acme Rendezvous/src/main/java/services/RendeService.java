@@ -166,12 +166,12 @@ public class RendeService {
 
 
 	public Rende reconstruct(final RendeForm rendeForm, final BindingResult binding) {
-		Rende result;
+		Rende result = this.rendeRepository.findOne(rendeForm.getId());
 		User principal;
 
 		principal = this.userService.findByPrincipal();
-
-		result = new Rende();
+ if(rendeForm.getId() == 0){
+	 result = new Rende();
 
 		result.setId(rendeForm.getId());
 		result.setVersion(rendeForm.getVersion());
@@ -187,6 +187,21 @@ public class RendeService {
 		result.setIsDraft(rendeForm.getIsDraft());
 		result.setIsDeleted(false);
 		result.setUser(principal);
+ } else if (result.getIsDraft() == true && result.getIsDeleted() == false){
+	 result.setName(rendeForm.getName());
+		result.setDescription(rendeForm.getDescription());
+		result.setMoment(rendeForm.getMoment());
+		result.setPicture(rendeForm.getPicture());
+		result.setCoordenates(rendeForm.getCoordenates());
+		result.setIsDraft(rendeForm.getIsDraft());
+		result.setAdultOnly(rendeForm.getAdultOnly());
+		result.setLinked(rendeForm.getLinked());
+		result.setIsDraft(rendeForm.getIsDraft());
+	 
+ } else{
+	 result.setLinked(rendeForm.getLinked());
+ }
+		
 
 		this.validator.validate(result, binding);
 		return result;
