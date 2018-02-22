@@ -13,9 +13,20 @@ import org.hibernate.validator.constraints.NotBlank;
 @Access(AccessType.PROPERTY)
 public class ReplyQuestion extends DomainEntity {
 
-	private String	reply;
-	private User	user;
+	private String		reply;
+	private User		user;
+	private Question	question;
 
+
+	@Valid
+	@ManyToOne(optional = true)
+	public Question getQuestion() {
+		return this.question;
+	}
+
+	public void setQuestion(final Question question) {
+		this.question = question;
+	}
 
 	@NotBlank
 	public String getReply() {

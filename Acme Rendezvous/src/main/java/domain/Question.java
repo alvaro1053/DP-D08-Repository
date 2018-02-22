@@ -7,7 +7,9 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -17,7 +19,18 @@ public class Question extends DomainEntity {
 
 	private String						question;
 	private Collection<ReplyQuestion>	replyQuestions;
+	private Rende						rende;
 
+
+	@Valid
+	@ManyToOne(optional = true)
+	public Rende getRende() {
+		return this.rende;
+	}
+
+	public void setRende(final Rende rende) {
+		this.rende = rende;
+	}
 
 	@NotBlank
 	public String getQuestion() {

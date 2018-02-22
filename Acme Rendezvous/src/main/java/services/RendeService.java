@@ -3,7 +3,6 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,12 @@ import org.springframework.validation.Validator;
 
 import repositories.RendeRepository;
 import domain.Admin;
+import domain.Announcement;
+import domain.Comment;
+import domain.Question;
 import domain.Rende;
+import domain.ReplyComment;
+import domain.ReplyQuestion;
 import domain.User;
 import forms.RendeForm;
 
@@ -24,14 +28,30 @@ public class RendeService {
 
 	// Managed Repository
 	@Autowired
-	private RendeRepository	rendeRepository;
+	private RendeRepository			rendeRepository;
 
 	// Supporting services
 	@Autowired
-	private UserService		userService;
+	private UserService				userService;
 
 	@Autowired
-	private AdminService		adminService;
+	private AdminService			adminService;
+
+	@Autowired
+	private CommentService			commentService;
+
+	@Autowired
+	private ReplyCommentService		replyCommentService;
+
+	@Autowired
+	private AnnouncementService		announcementService;
+
+	@Autowired
+	private QuestionService			questionService;
+
+	@Autowired
+	private ReplyQuestionService	replyQuestionService;
+
 
 	// Constructors
 
@@ -71,20 +91,63 @@ public class RendeService {
 		Assert.notNull(principal);
 
 		Assert.isTrue(this.findByUserId(principal.getId()).contains(rende));
-		Assert.isTrue(rende.getIsDraft());
 		rende.setIsDeleted(true);
 
 		this.rendeRepository.save(rende);
 	}
-	
-	public void deleteAdmin(final Rende rende) {
 
-		Admin principalAdmin = this.adminService.findByPrincipal();
-		Assert.notNull(principalAdmin);
-		rende.setIsDeleted(true);
-		
+	public void deleteByAdmin(final Rende rende) {
+		Admin principal;
+
+		Assert.notNull(rende);
+		Assert.isTrue(rende.getId() != 0);
+		final User user = rende.getUser();
+		principal = this.adminService.findByPrincipal();
+		Assert.notNull(principal);
+
+		final Collection<ReplyQuestion> repliesQuestionsToRemove = this.replyQuestionService.selectByRendeId(rende.getId());
+
+		final Collection<Comment> commentsToRemove = rende.getComments();
+
+		final Collection<Question> questionsToRemove = rende.getQuestions();
+
+		final Collection<ReplyComment> repliesToRemove = this.replyCommentService.selectByRendeId(rende.getId());
+
+		final Collection<Announcement> announcementsToRemove = rende.getAnnouncements();
+
+		final Collection<Rende> linkedsToOthers = this.selectLinkedById(rende.getId());
+
+		for (final ReplyComment rC : repliesToRemove)
+			this.replyCommentService.delete(rC);
+		for (final Comment r : commentsToRemove)
+			this.commentService.delete(r);
+		for (final Announcement a : announcementsToRemove)
+			this.announcementService.delete(a);
+		for (final ReplyQuestion rQ : repliesQuestionsToRemove)
+			this.replyQuestionService.delete(rQ);
+		for (final Question q : questionsToRemove)
+			this.questionService.delete(q);
+		for (final Rende r : linkedsToOthers) {
+			final Collection<Rende> updated = new ArrayList<Rende>(r.getLinked());
+			updated.remove(rende);
+			r.setLinked(updated);
 		}
 
+		final Collection<Rende> userRendes = user.getRendes();
+		final Collection<Rende> updated = new ArrayList<Rende>(userRendes);
+		updated.remove(rende);
+		user.setRendes(updated);
+
+		for (final User u : rende.getAttendants()) {
+			final Collection<Rende> userRZVPS = u.getrSVPS();
+			final Collection<Rende> updated2 = new ArrayList<Rende>(userRZVPS);
+			updated2.remove(rende);
+			u.setrSVPS(updated2);
+		}
+
+		this.rendeRepository.delete(rende);
+
+	}
 	// Users must be able to create Rendes
 	public Rende save(final Rende rendeToSave) {
 		User principal;
@@ -106,7 +169,7 @@ public class RendeService {
 		result = this.rendeRepository.save(rendeToSave);
 
 		Rendes = principal.getRendes();
-		updated = new ArrayList<Rende>(Rendes);	
+		updated = new ArrayList<Rende>(Rendes);
 		updated.add(result);
 		principal.setRendes(updated);
 
@@ -160,12 +223,17 @@ public class RendeService {
 		return result;
 
 	}
-	
-	public void rsvp(final Rende rende, final User user){
+
+	public User rsvp(final Rende rende, final User user) {
+		User result;
+
 		rende.getAttendants().add(user);
-		
-		
+
 		user.getrSVPS().add(rende);
+
+		result = user;
+
+		return result;
 	}
 
 
@@ -201,7 +269,7 @@ public class RendeService {
 		this.validator.validate(result, binding);
 		return result;
 	}
-	
+
 	public RendeForm reconstructForm(final Rende rende) {
 		RendeForm result;
 
@@ -221,6 +289,11 @@ public class RendeService {
 		result.setIsDraft(rende.getIsDraft());
 
 		return result;
+	}
+
+	public Collection<Rende> selectLinkedById(final int rendeId) {
+		final Collection<Rende> rende = this.rendeRepository.selectLinkedById(rendeId);
+		return rende;
 	}
 
 }

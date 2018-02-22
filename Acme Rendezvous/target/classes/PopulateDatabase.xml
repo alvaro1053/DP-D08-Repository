@@ -472,7 +472,7 @@
 	
 	<property name="questions">
 	<list>
-	
+	<ref bean = "question4"/> 
 	</list>
 	</property>
 	
@@ -733,6 +733,7 @@
 	<ref bean = "replyQuestion4"/>
 	</list>
 	</property>
+	<property name="rende" ref="rende1"/>
 	</bean>
 			<!-- Question 2 -->
 	<bean class="domain.Question" id="question2">
@@ -742,6 +743,7 @@
 	<ref bean = "replyQuestion2"/>
 	</list>
 	</property>
+	<property name="rende" ref="rende2"/>
 	</bean>
 			<!-- Question 3 -->
 	<bean class="domain.Question" id="question3">
@@ -751,6 +753,7 @@
 	<ref bean = "replyQuestion3"/>
 	</list>
 	</property>
+	<property name="rende" ref="rende3"/>
 	</bean>
 	
 				<!-- Question 4 -->
@@ -758,8 +761,10 @@
 	<property name="question" value="How did you know about us?" />
 	<property name="replyQuestions" >
 	<list>
+	<ref bean = "replyQuestion5"/>
 	</list>
 	</property>
+	<property name="rende" ref="rende5"/>
 	</bean>
 	
 	<!-- RepliesQuestions -->
@@ -767,30 +772,35 @@
 	<bean class="domain.ReplyQuestion" id="replyQuestion1">
 	<property name="reply" value="i dunno lol" />
 	<property name="user" ref="user1"/>
+	<property name="question" ref="question1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 2 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion2">
 	<property name="reply" value="Just turn it on" />
 	<property name="user" ref="user1"/>
+	<property name="question" ref="question2"/>
 	</bean>
 	
 			<!-- ReplyQuestion 3 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion3">
 	<property name="reply" value="Maybe you are under-age" />
 	<property name="user" ref="user2"/>
+	<property name="question" ref="question3"/>
 	</bean>
 	
 			<!-- ReplyQuestion 4 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion4">
 	<property name="reply" value="I search it" />
 	<property name="user" ref="user2"/>
+	<property name="question" ref="question1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 5 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion5">
 	<property name="reply" value="I friend on mine told me about it" />
 	<property name="user" ref="user3"/>
+	<property name="question" ref="question4"/>
 	</bean>
 	
 	

@@ -1,0 +1,256 @@
+
+package services;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
+
+import repositories.RendeRepository;
+import domain.Admin;
+import domain.Comment;
+import domain.Rende;
+import domain.ReplyComment;
+import domain.User;
+import forms.RendeForm;
+
+@Service
+@Transactional
+public class RendeService {
+
+	// Managed Repository
+	@Autowired
+	private RendeRepository		rendeRepository;
+
+	// Supporting services
+	@Autowired
+	private UserService			userService;
+
+	@Autowired
+	private AdminService		adminService;
+
+	@Autowired
+	private CommentService		commentService;
+
+	@Autowired
+	private ReplyCommentService	replyCommentService;
+
+
+	// Constructors
+
+	public RendeService() {
+		super();
+	}
+
+	// Simple CRUD methods
+
+	public RendeForm create() {
+		User principal;
+		RendeForm rendeForm;
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		rendeForm = new RendeForm();
+		rendeForm.setIsDraft(true);
+
+		return rendeForm;
+	}
+
+	//  An actor who is not authenticated must be able to browse the list of Rendes and display them
+	public Collection<Rende> findAll() {
+		final Collection<Rende> result = this.rendeRepository.findAll();
+		Assert.notNull(result);
+		return result;
+	}
+
+	// Other business methods
+	//Un ADMIN puede eliminar también
+	public void delete(final Rende rende) {
+		User principal;
+		Assert.notNull(rende);
+		Assert.isTrue(rende.getId() != 0);
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+
+		Assert.isTrue(this.findByUserId(principal.getId()).contains(rende));
+		rende.setIsDeleted(true);
+
+		this.rendeRepository.save(rende);
+	}
+
+	public void deleteByAdmin(final Rende rende) {
+		Admin principal;
+		final Rende result;
+		Assert.notNull(rende);
+		Assert.isTrue(rende.getId() != 0);
+		final User user = rende.getUser();
+		principal = this.adminService.findByPrincipal();
+		Assert.notNull(principal);
+
+		final Collection<Comment> commentsToRemove = rende.getComments();
+		final Collection<Comment> userComments = user.getComments();
+
+		final Collection<ReplyComment> replies = new ArrayList<ReplyComment>();
+		for (final Comment r : rende.getComments()) {
+			for (final ReplyComment rC : r.getRepliesComments()) {
+				replies.add(rC);
+				this.replyCommentService.delete(rC);
+
+			}
+			this.commentService.delete(r);
+		}
+		user.
+
+		rende.setIsDeleted(true);
+
+	}
+	// Users must be able to create Rendes
+	public Rende save(final Rende rendeToSave) {
+		User principal;
+		Rende result;
+		Collection<Rende> Rendes, updated, rSVPS, updated2;
+		Assert.notNull(rendeToSave);
+
+		principal = this.userService.findByPrincipal();
+
+		Assert.notNull(principal);
+
+		if (rendeToSave.getId() == 0) {
+			final Collection<User> attendants = new ArrayList<User>();
+			attendants.add(principal);
+			rendeToSave.setUser(principal);
+			rendeToSave.setAttendants(attendants);
+		}
+
+		result = this.rendeRepository.save(rendeToSave);
+
+		Rendes = principal.getRendes();
+		updated = new ArrayList<Rende>(Rendes);
+		updated.add(result);
+		principal.setRendes(updated);
+
+		rSVPS = principal.getrSVPS();
+		updated2 = new ArrayList<Rende>(rSVPS);
+		updated2.add(result);
+		principal.setrSVPS(updated2);
+
+		return result;
+	}
+	public Collection<Rende> findByUserId(final int id) {
+		User principal;
+		Collection<Rende> result;
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		result = this.rendeRepository.selectByUserId(id);
+
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+	public Collection<Rende> findRSVPSByUser() {
+		User principal;
+		Collection<Rende> result;
+
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		result = principal.getrSVPS();
+
+		Assert.notNull(result);
+
+		return result;
+
+	}
+
+	public Rende findOne(final int RendeId) {
+		Rende result;
+
+		result = this.rendeRepository.findOne(RendeId);
+
+		return result;
+
+	}
+
+	public Collection<Rende> selectNotAdultRendes() {
+		Collection<Rende> result;
+		result = this.rendeRepository.selectNotAdultRendes();
+		return result;
+
+	}
+
+	public User rsvp(final Rende rende, final User user) {
+		User result;
+
+		rende.getAttendants().add(user);
+
+		user.getrSVPS().add(rende);
+
+		result = user;
+
+		return result;
+	}
+
+
+	//Reconstruct --------------------------------------------
+
+	@Autowired
+	private Validator	validator;
+
+
+	public Rende reconstruct(final RendeForm rendeForm, final BindingResult binding) {
+		Rende result;
+		User principal;
+
+		principal = this.userService.findByPrincipal();
+
+		result = new Rende();
+
+		result.setId(rendeForm.getId());
+		result.setVersion(rendeForm.getVersion());
+		result.setName(rendeForm.getName());
+		result.setDescription(rendeForm.getDescription());
+		result.setMoment(rendeForm.getMoment());
+		result.setPicture(rendeForm.getPicture());
+		result.setCoordenates(rendeForm.getCoordenates());
+		result.setAttendants(rendeForm.getAttendants());
+		result.setIsDraft(rendeForm.getIsDraft());
+		result.setAdultOnly(rendeForm.getAdultOnly());
+		result.setLinked(rendeForm.getLinked());
+		result.setIsDraft(rendeForm.getIsDraft());
+		result.setIsDeleted(false);
+		result.setUser(principal);
+
+		this.validator.validate(result, binding);
+		return result;
+	}
+
+	public RendeForm reconstructForm(final Rende rende) {
+		RendeForm result;
+
+		result = new RendeForm();
+
+		result.setId(rende.getId());
+		result.setVersion(rende.getVersion());
+		result.setName(rende.getName());
+		result.setDescription(rende.getDescription());
+		result.setMoment(rende.getMoment());
+		result.setPicture(rende.getPicture());
+		result.setCoordenates(rende.getCoordenates());
+		result.setAttendants(rende.getAttendants());
+		result.setIsDraft(rende.getIsDraft());
+		result.setAdultOnly(rende.getAdultOnly());
+		result.setLinked(rende.getLinked());
+		result.setIsDraft(rende.getIsDraft());
+
+		return result;
+	}
+
+}

@@ -88,7 +88,7 @@ public class ReplyCommentUserController extends AbstractController {
 		else
 			try {
 				this.replyCommentService.save(replyComment);
-				result = new ModelAndView("redirect:comment/user/list.do?rendeId=" + replyComment.getComment().getRende().getId());
+				result = new ModelAndView("redirect:../../comment/user/list.do?rendeId=" + replyComment.getComment().getRende().getId());
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(replyComment, true, "comment.commit.error");
 			}

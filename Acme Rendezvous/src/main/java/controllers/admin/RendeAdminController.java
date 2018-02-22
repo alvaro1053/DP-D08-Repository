@@ -48,18 +48,14 @@ public class RendeAdminController extends AbstractController {
 		Rende rende;
 
 		rende = this.rendeService.findOne(rendeId);
-		if (rende.getIsDeleted()) {
-			final String messageAlreadyDeleted = "rende.commit.error";
-			result = this.createListModelAndView(messageAlreadyDeleted);
-		} else
-			try {
-				final String messageSuccessfullyDeleted = "rende.deleted";
-				this.rendeService.deleteAdmin(rende);
-				result = this.createListModelAndView(messageSuccessfullyDeleted);
-			} catch (final Throwable oops) {
-				final String messageError = "rende.commit.error";
-				result = this.createListModelAndView(messageError);
-			}
+		try {
+			final String messageSuccessfullyDeleted = "rende.deleted";
+			this.rendeService.deleteByAdmin(rende);
+			result = this.createListModelAndView(messageSuccessfullyDeleted);
+		} catch (final Throwable oops) {
+			final String messageError = "rende.commit.error";
+			result = this.createListModelAndView(messageError);
+		}
 
 		return result;
 	}

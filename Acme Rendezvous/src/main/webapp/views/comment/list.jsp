@@ -26,14 +26,15 @@
 	
 	
 	<!-- Edit -->
+	<jstl:if test="${not rende.isDeleted}">
 	<spring:message code="comment.edit" var="edit" />
 	<display:column title="${edit}"
 		sortable="false">
-<jstl:if test="${principal.comments.contains(row) }">
- <a href="comment/user/edit.do?commentId=${row.id}">${edit}</a>
- </jstl:if>	
-		</display:column>
-	
+	<jstl:if test="${principal.comments.contains(row) }">
+ 		<a href="comment/user/edit.do?commentId=${row.id}">${edit}</a>
+ 	</jstl:if>	
+	</display:column>
+	</jstl:if>
 		
 <!-- Attributes -->
 		
@@ -80,9 +81,11 @@
 	<security:authorize access="hasRole('USER')">
 	<!-- Reply -->
 	<display:column>
+		<jstl:if test="${not rende.isDeleted}">
 			<a href="replyComment/user/create.do?commentId=${row.id}"> <spring:message
 					code="comment.reply" />
 			</a>
+		</jstl:if>
 	</display:column>
 	
 			<a href="comment/user/create.do"> <spring:message
@@ -93,9 +96,12 @@
 
 </display:table>
 
+<br/>
+<jstl:if test="${not rende.isDeleted}">
 <spring:message code="comment.create"
 	var="create" />
  <a href="comment/user/create.do?rendeId=${rende.id}">${create}</a>
+ </jstl:if>
  </jstl:when>
  <jstl:otherwise>
  <spring:message code="comment.dirtyHacker" />

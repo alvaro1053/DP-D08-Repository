@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.QuestionRepository;
 import domain.Question;
+import domain.Rende;
 import domain.ReplyQuestion;
 import domain.User;
 
@@ -20,11 +21,14 @@ public class QuestionService {
 
 	// Managed Repository
 	@Autowired
-	private QuestionRepository	questionRepository;
+	private QuestionRepository		questionRepository;
 
 	// Supporting Repository
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
+
+	@Autowired
+	private ReplyQuestionService	replyQuestionService;
 
 
 	// Constructors
@@ -62,13 +66,17 @@ public class QuestionService {
 	}
 
 	public void delete(final Question question) {
-		User principal;
 		Assert.notNull(question);
+		Collection<Question> updated;
 
-		principal = this.userService.findByPrincipal();
-		Assert.notNull(principal);
+		for (final ReplyQuestion rc : question.getReplyQuestions())
+			this.replyQuestionService.delete(rc);
+
+		final Rende rende = question.getRende();
+		updated = new ArrayList<Question>(rende.getQuestions());
+		updated.remove(question);
+		rende.setQuestions(updated);
 
 		this.questionRepository.delete(question);
 	}
-
 }
