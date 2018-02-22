@@ -197,7 +197,7 @@ public class RendeUserController extends AbstractController {
 			result.addObject("message", alreadyRegistered);
 		} else {
 			successful = true;
-			this.rendeService.rsvp(rende, principal);
+			User user = this.rendeService.rsvp(rende, principal);
 			result = this.createListModelAndView(null);
 			result.addObject("successful", successful);
 		}
@@ -258,6 +258,7 @@ public class RendeUserController extends AbstractController {
 	protected ModelAndView createListModelAndView(final String message) {
 		final ModelAndView result;
 		Collection<Rende> rendes;
+		String uri = "/user";
 		final User principal = this.userService.findByPrincipal();
 		Boolean mayorDeEdad = false;
 		final LocalDate now = new LocalDate();
@@ -266,6 +267,7 @@ public class RendeUserController extends AbstractController {
 		if (años < 18)
 			mayorDeEdad = true;
 
+		
 		rendes = this.rendeService.findAll();
 
 		result = new ModelAndView("rende/list");
@@ -273,6 +275,8 @@ public class RendeUserController extends AbstractController {
 		result.addObject("principal", principal);
 		result.addObject("rendes", rendes);
 		result.addObject("message", message);
+		result.addObject("uri", uri);
+		
 		return result;
 	}
 }

@@ -55,16 +55,26 @@
 
 
 <!-- Comments -->
-<security:authorize access="hasAnyRole('ADMIN','USER')">
-<security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
-<jstl:if test="${principal.rSVPS.contains(rende) || isAdmin}">
-<tr>
-<spring:message code="rende.comments" var="comments" />
-<td> <strong> <spring:message code="rende.comments"/> : </strong> </td>
-<td> <a href="comment/user/list.do?rendeId=${rende.id}">${comments} </a> </td>
-</tr>
+
+<security:authorize access="hasRole('USER')">
+<jstl:if test="${principal.rSVPS.contains(rende)}">
+	<tr>
+		<spring:message code="rende.comments" var="comments" />
+		<td> <strong> <spring:message code="rende.comments"/> : </strong> </td>
+		<td> <a href="comment/user/list.do?rendeId=${rende.id}">${comments} </a> </td>
+	</tr>
 </jstl:if>
 </security:authorize>
+
+
+<security:authorize access="hasRole('ADMIN')">
+	<tr>
+		<spring:message code="rende.comments" var="comments" />
+		<td> <strong> <spring:message code="rende.comments"/> : </strong> </td>
+		<td> <a href="comment/user/list.do?rendeId=${rende.id}">${comments} </a> </td>
+	</tr>
+</security:authorize>
+
 
 
 <!-- Attendants -->

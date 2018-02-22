@@ -161,11 +161,17 @@ public class RendeService {
 
 	}
 	
-	public void rsvp(final Rende rende, final User user){
+	public User rsvp(final Rende rende, final User user){
+		User result;
+		
 		rende.getAttendants().add(user);
 		
 		
 		user.getrSVPS().add(rende);
+		
+		result = user;
+		
+		return result;
 	}
 
 
