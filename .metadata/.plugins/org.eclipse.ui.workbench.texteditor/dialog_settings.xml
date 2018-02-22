@@ -2,37 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="237" key="DIALOG_WIDTH"/>
-		<item value="282" key="DIALOG_Y_ORIGIN"/>
-		<item value="993" key="DIALOG_X_ORIGIN"/>
+		<item value="505" key="DIALOG_Y_ORIGIN"/>
 		<item value="362" key="DIALOG_HEIGHT"/>
+		<item value="1234" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="true" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="true" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="actor" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
-			<item value="user"/>
-			<item value="trip"/>
-			<item value="Trip"/>
-			<item value="Manager"/>
-			<item value="manager"/>
-			<item value="SurvivalClass"/>
-			<item value="survivalClass"/>
-			<item value="comment"/>
+			<item value="Form"/>
+			<item value="Comment"/>
+			<item value="rende"/>
+			<item value="announcement"/>
+			<item value="Announcement"/>
+			<item value="paramId"/>
+			<item value="property"/>
+			<item value="Rende"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
+			<item value="ReplyComment"/>
+			<item value="comment"/>
+			<item value="Comment"/>
 			<item value="actor"/>
 			<item value="User"/>
 			<item value="user"/>
 			<item value="Rende"/>
-			<item value="rende"/>
-			<item value="replyComment"/>
-			<item value="Admin"/>
-			<item value=".err."/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

@@ -29,6 +29,10 @@
 		<bean class="converters.RendeToStringConverter" />
 		<bean class="converters.StringToUserConverter" />
 		<bean class="converters.UserToStringConverter" />
+		<bean class="converters.StringToCommentConverter" />
+		<bean class="converters.CommentToStringConverter" />
+		<bean class="converters.StringToReplyCommentConverter" />
+		<bean class="converters.ReplyCommentToStringConverter" />
 		
 	</util:list>
 	

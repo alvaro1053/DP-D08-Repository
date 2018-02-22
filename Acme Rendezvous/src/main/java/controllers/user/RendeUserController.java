@@ -180,35 +180,30 @@ public class RendeUserController extends AbstractController {
 
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/rsvp", method = RequestMethod.GET)
-	public ModelAndView rsvp(@RequestParam final int rendeId){
+	public ModelAndView rsvp(@RequestParam final int rendeId) {
 		ModelAndView result;
 		Rende rende;
 		User principal;
 		String alreadyRegistered;
 		Boolean successful;
-		
-		
-		
+
 		rende = this.rendeService.findOne(rendeId);
 		principal = this.userService.findByPrincipal();
-		if(rende.getAttendants().contains(principal)){
+		if (rende.getAttendants().contains(principal)) {
 			alreadyRegistered = "rende.alreadyRegistered";
 			result = this.createListModelAndView(alreadyRegistered);
-			result.addObject("message",alreadyRegistered);
-		}else{
+			result.addObject("message", alreadyRegistered);
+		} else {
 			successful = true;
 			this.rendeService.rsvp(rende, principal);
 			result = this.createListModelAndView(null);
 			result.addObject("successful", successful);
 		}
-		
-		
-		
+
 		return result;
 	}
-	
 
 	// Ancillary methods ------------------------------------------------------
 
@@ -259,18 +254,20 @@ public class RendeUserController extends AbstractController {
 
 		return result;
 	}
-	
+
 	protected ModelAndView createListModelAndView(final String message) {
 		final ModelAndView result;
 		Collection<Rende> rendes;
 		final User principal = this.userService.findByPrincipal();
-		final Boolean mayorDeEdad = false;
+		Boolean mayorDeEdad = false;
+		final LocalDate now = new LocalDate();
+		final LocalDate nacimiento = new LocalDate(principal.getDateBirth());
+		final int años = Years.yearsBetween(nacimiento, now).getYears();
+		if (años < 18)
+			mayorDeEdad = true;
 
-		
 		rendes = this.rendeService.findAll();
-		
 
-		
 		result = new ModelAndView("rende/list");
 		result.addObject("mayor", mayorDeEdad);
 		result.addObject("principal", principal);

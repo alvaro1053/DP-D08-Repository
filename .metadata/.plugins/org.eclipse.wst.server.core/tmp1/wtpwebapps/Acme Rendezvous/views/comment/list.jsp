@@ -80,7 +80,7 @@
 	<security:authorize access="hasRole('USER')">
 	<!-- Reply -->
 	<display:column>
-			<a href="replyComment/create.do?commentId=${row.id}"> <spring:message
+			<a href="replyComment/user/create.do?commentId=${row.id}"> <spring:message
 					code="comment.reply" />
 			</a>
 	</display:column>

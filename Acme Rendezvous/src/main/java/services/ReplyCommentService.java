@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.ReplyCommentRepository;
 import domain.Admin;
+import domain.Comment;
 import domain.ReplyComment;
 import domain.User;
 
@@ -24,10 +25,10 @@ public class ReplyCommentService {
 
 	// Managed services
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
 
 	@Autowired
-	private AdminService		adminService;
+	private AdminService			adminService;
 
 
 	//Constructor
@@ -38,9 +39,9 @@ public class ReplyCommentService {
 	public ReplyComment create() {
 		User principal;
 		ReplyComment replyComment;
-//		Date moment;//no deberíamos guardar ek momento de la respuesta
+		//		Date moment;//no deberíamos guardar ek momento de la respuesta
 
-//		moment = new Date(System.currentTimeMillis() - 1);
+		//		moment = new Date(System.currentTimeMillis() - 1);
 
 		principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
@@ -48,25 +49,25 @@ public class ReplyCommentService {
 		replyComment = new ReplyComment();
 
 		replyComment.setUser(principal);
-//		replyComment.setMoment(moment);
+		//		replyComment.setMoment(moment);
 
 		return replyComment;
 	}
 
 	public ReplyComment save(final ReplyComment replyComment) {
 		User principal;
-//		Date moment;
+		//		Date moment;
 		ReplyComment result;
 		Collection<ReplyComment> replyComments, updated;
 
-//		moment = new Date(System.currentTimeMillis() - 1);
+		//		moment = new Date(System.currentTimeMillis() - 1);
 
 		Assert.notNull(replyComment);
 
 		principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
 
-//		replyComment.setMoment(moment);
+		//		replyComment.setMoment(moment);
 		replyComment.setUser(principal);
 
 		result = this.replyCommentRepository.save(replyComment);
@@ -74,8 +75,13 @@ public class ReplyCommentService {
 		//Actualizar relaciones
 		replyComments = principal.getRepliesComments();
 		updated = new ArrayList<ReplyComment>(replyComments);
-		updated.add(replyComment);
+		updated.add(result);
 		principal.setRepliesComments(updated);
+
+		final Comment comment = result.getComment();
+		final Collection<ReplyComment> updated2 = new ArrayList<ReplyComment>(comment.getRepliesComments());
+		updated2.add(result);
+		comment.setRepliesComments(updated2);
 
 		return result;
 	}

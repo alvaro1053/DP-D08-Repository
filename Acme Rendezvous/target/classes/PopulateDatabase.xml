@@ -657,6 +657,7 @@
 	<bean class="domain.ReplyComment" id="replyComment1">
 	<property name="reply" value="Oh damn, :("/>
 	<property name="user" ref="user1"/>
+	<property name="comment" ref="comment1"/>
 	</bean>
 	
 		<!-- ReplyComment 2 -->
@@ -664,6 +665,7 @@
 	<bean class="domain.ReplyComment" id="replyComment2">
 	<property name="reply" value="Maybe later"/>
 	<property name="user" ref="user1"/>
+	<property name="comment" ref="comment2"/>
 	</bean>
 	
 		<!-- ReplyComment 3 -->
@@ -671,6 +673,7 @@
 	<bean class="domain.ReplyComment" id="replyComment3">
 	<property name="reply" value="Thanks :D"/>
 	<property name="user" ref="user2"/>
+	<property name="comment" ref="comment3"/>
 	</bean>
 	
 		<!-- ReplyComment 4 -->
@@ -678,6 +681,7 @@
 	<bean class="domain.ReplyComment" id="replyComment4">
 	<property name="reply" value="ey whatssapp"/>
 	<property name="user" ref="user3"/>
+	<property name="comment" ref="comment4"/>
 	</bean>
 	
 		<!-- ReplyComment 5 -->
@@ -685,6 +689,7 @@
 	<bean class="domain.ReplyComment" id="replyComment5">
 	<property name="reply" value="i dont know"/>
 	<property name="user" ref="user3"/>
+	<property name="comment" ref="comment5"/>
 	</bean>
 	
 		<!-- ReplyComment 6 -->
@@ -692,6 +697,7 @@
 	<bean class="domain.ReplyComment" id="replyComment6">
 	<property name="reply" value="i know, right?"/>
 	<property name="user" ref="user3"/>
+	<property name="comment" ref="comment6"/>
 	</bean>
 	
 		<!-- ReplyComment 7 -->
@@ -699,6 +705,7 @@
 	<bean class="domain.ReplyComment" id="replyComment7">
 	<property name="reply" value="Hiiiiiiiiiiii"/>
 	<property name="user" ref="user3"/>
+	<property name="comment" ref="comment4"/>
 	</bean>
 	
 	
