@@ -59,6 +59,7 @@ public class RendeUserController extends AbstractController {
 			rendes = this.rendeService.selectNotAdultRendes();
 		else
 			rendes = this.rendeService.findAll();
+		
 		result = new ModelAndView("rende/list");
 		result.addObject("mayor", mayorDeEdad);
 		result.addObject("principal", principal);
