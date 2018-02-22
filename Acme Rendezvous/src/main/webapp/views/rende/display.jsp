@@ -26,6 +26,10 @@
 <br>
 
 
+<jstl:if test="${rende.isDeleted}">
+	<h4><spring:message code="rende.isDeleted"/></h4>
+</jstl:if>
+
 <table class="displayStyle">
 
 
@@ -47,6 +51,31 @@
 <td> <strong> <spring:message code="rende.user" /> : </strong> </td>
 <td> <a href="user${uri}/display.do?userId=${rende.user.id}"><jstl:out value="${rende.user.name}"/> </a> </td>
 </tr>
+
+
+
+<!-- Comments -->
+
+<security:authorize access="hasRole('USER')">
+<jstl:if test="${principal.rSVPS.contains(rende)}">
+	<tr>
+		<spring:message code="rende.comments" var="comments" />
+		<td> <strong> <spring:message code="rende.comments"/> : </strong> </td>
+		<td> <a href="comment/user/list.do?rendeId=${rende.id}">${comments} </a> </td>
+	</tr>
+</jstl:if>
+</security:authorize>
+
+
+<security:authorize access="hasRole('ADMIN')">
+	<tr>
+		<spring:message code="rende.comments" var="comments" />
+		<td> <strong> <spring:message code="rende.comments"/> : </strong> </td>
+		<td> <a href="comment/user/list.do?rendeId=${rende.id}">${comments} </a> </td>
+	</tr>
+</security:authorize>
+
+
 
 <!-- Attendants -->
 <tr>

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CommentRepository;
 import domain.Admin;
@@ -16,6 +18,7 @@ import domain.Comment;
 import domain.Rende;
 import domain.ReplyComment;
 import domain.User;
+import forms.CommentForm;
 
 @Service
 @Transactional
@@ -30,7 +33,13 @@ public class CommentService {
 	private UserService			userService;
 
 	@Autowired
+	private RendeService		rendeService;
+
+	@Autowired
 	private AdminService		adminService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	//Constructor
@@ -51,7 +60,6 @@ public class CommentService {
 
 		comment = new Comment();
 
-		comment.setUser(principal);
 		comment.setMoment(moment);
 		comment.setRepliesComments(repliesComments);
 
@@ -124,4 +132,33 @@ public class CommentService {
 
 	}
 
+	public Comment findOne(final int commentId) {
+		final User principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		final Comment comment = this.commentRepository.findOne(commentId);
+		return comment;
+
+	}
+
+	public Comment reconstruct(final CommentForm commentForm, final BindingResult binding) {
+		Comment comment;
+		if (commentForm.getId() == 0) {
+			comment = this.create();
+			comment.setUser(this.userService.findByPrincipal());
+			comment.setPicture(commentForm.getPicture());
+
+			final Rende rende = this.rendeService.findOne(commentForm.getRende());
+			comment.setRende(rende);
+
+			comment.setText(commentForm.getText());
+
+		} else {
+			comment = this.commentRepository.findOne(commentForm.getId());
+			comment.setPicture(commentForm.getPicture());
+			comment.setText(commentForm.getText());
+		}
+
+		this.validator.validate(commentForm, binding);
+		return comment;
+	}
 }

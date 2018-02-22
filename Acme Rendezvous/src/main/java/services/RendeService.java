@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.RendeRepository;
+import domain.Admin;
 import domain.Rende;
 import domain.User;
 import forms.RendeForm;
@@ -29,6 +30,8 @@ public class RendeService {
 	@Autowired
 	private UserService		userService;
 
+	@Autowired
+	private AdminService		adminService;
 
 	// Constructors
 
@@ -73,6 +76,14 @@ public class RendeService {
 
 		this.rendeRepository.save(rende);
 	}
+	
+	public void deleteAdmin(final Rende rende) {
+
+		Admin principalAdmin = this.adminService.findByPrincipal();
+		Assert.notNull(principalAdmin);
+		rende.setIsDeleted(true);
+		
+		}
 
 	// Users must be able to create Rendes
 	public Rende save(final Rende rendeToSave) {
@@ -138,7 +149,6 @@ public class RendeService {
 		Rende result;
 
 		result = this.rendeRepository.findOne(RendeId);
-		Assert.notNull(result);
 
 		return result;
 
@@ -151,11 +161,17 @@ public class RendeService {
 
 	}
 	
-	public void rsvp(final Rende rende, final User user){
+	public User rsvp(final Rende rende, final User user){
+		User result;
+		
 		rende.getAttendants().add(user);
 		
 		
 		user.getrSVPS().add(rende);
+		
+		result = user;
+		
+		return result;
 	}
 
 

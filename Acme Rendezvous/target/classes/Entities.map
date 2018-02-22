@@ -1,5 +1,6 @@
 #./src/main/resources/Entities.map
-#Thu Feb 22 10:48:57 CET 2018
+<<<<<<< HEAD
+#Thu Feb 22 11:44:14 CET 2018
 question1=50
 rende5=60
 rende4=59
@@ -40,3 +41,47 @@ replyQuestion1=51
 question4=79
 question3=53
 question2=56
+=======
+#Thu Feb 22 11:33:36 CET 2018
+question1=51
+rende5=61
+rende4=60
+rende3=59
+rende2=56
+rende1=50
+replyComment7=76
+replyComment6=80
+replyComment5=78
+replyComment4=75
+replyComment3=73
+replyComment2=71
+replyComment1=69
+announcement6=67
+announcement5=66
+announcement4=65
+announcement3=64
+announcement2=63
+announcement1=62
+userAccount4=45
+comment6=79
+userAccount3=44
+user3=48
+comment5=77
+userAccount2=43
+user2=47
+comment4=74
+userAccount1=42
+user1=46
+comment3=72
+comment2=70
+comment1=68
+admin1=49
+replyQuestion5=82
+replyQuestion4=53
+replyQuestion3=55
+replyQuestion2=58
+replyQuestion1=52
+question4=81
+question3=54
+question2=57
+>>>>>>> aabf46f83fdaa03e75e50311ae53f40fd6b12a91
