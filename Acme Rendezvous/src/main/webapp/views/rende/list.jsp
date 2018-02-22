@@ -38,15 +38,6 @@
 <display:table pagesize="5" class="displaytag" 
 	name="rendes" requestURI="rende${uri}/list.do" id="row">
 		
-	<!-- Attributes -->
-	<!-- Restriccion de ADMIN cuando esté el controlador de admin
-	<security:authorize access="hasRole('ADMIN')">
-		<display:column>
-			<a href="rende/admin/edit.do?rendeId=${row.id}"><spring:message code ="rende.edit"/></a>
-		</display:column>
-	</security:authorize>	
-	-->
-	
 	<!-- Esta es una forma provisional (NIVEL C)  -->
 	<security:authorize access="hasRole('USER')">
 		<display:column>
