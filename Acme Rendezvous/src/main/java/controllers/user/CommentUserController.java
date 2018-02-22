@@ -110,7 +110,7 @@ public class CommentUserController extends AbstractController {
 		else
 			try {
 				this.commentService.save(comment);
-				result = new ModelAndView("redirect: /list.do?rendeId=" + comment.getRende().getId());
+				result = new ModelAndView("redirect:../user/list.do?rendeId=" + comment.getRende().getId());
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(commentForm, true, "comment.commit.error");
 			}
@@ -124,7 +124,7 @@ public class CommentUserController extends AbstractController {
 		final Comment comment = this.commentService.reconstruct(commentForm, binding);
 		try {
 			this.commentService.delete(comment);
-			result = new ModelAndView("redirect: /list.do?rendeId=" + comment.getRende().getId());
+			result = new ModelAndView("redirect:../user/list.do?rendeId=" + comment.getRende().getId());
 		} catch (final Throwable oops) {
 			result = this.createEditModelAndView(commentForm, true, "comment.commit.error");
 		}
