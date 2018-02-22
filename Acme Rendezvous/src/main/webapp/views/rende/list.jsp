@@ -39,17 +39,22 @@
 	name="rendes" requestURI="rende${uri}/list.do" id="row">
 		
 	<!-- Attributes -->
+	<!-- Restriccion de ADMIN cuando esté el controlador de admin
+	<security:authorize access="hasRole('ADMIN')">
+		<display:column>
+			<a href="rende/admin/edit.do?rendeId=${row.id}"><spring:message code ="rende.edit"/></a>
+		</display:column>
+	</security:authorize>	
+	-->
 	
+	<!-- Esta es una forma provisional (NIVEL C)  -->
 	<security:authorize access="hasRole('USER')">
 		<display:column>
 			<jstl:if test="${principal.id == row.user.id}">
 				<a href="rende/user/edit.do?rendeId=${row.id}"><spring:message code ="rende.edit"/></a>
 			</jstl:if>
 		</display:column>
-	</security:authorize>
-	
-	
-	<security:authorize access="hasRole('USER')">
+		
 		<display:column>
 				<a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
 		</display:column>
@@ -107,10 +112,11 @@
 	
 	
 	<!-- Linked -->
-<display:table name="${row.linked}" id="linked" pagesize="15" class="displaytag">
-<display:column property="name" title="${nameHeader}" sortable="false" />
-
-</display:table>
+	<display:table name="${row.linked}" id="linked" pagesize="15" class="displaytag">
+		<display:column property="name" title="${nameHeader}" sortable="false" />
+	</display:table>
+	
+	
 
 </display:table>
 

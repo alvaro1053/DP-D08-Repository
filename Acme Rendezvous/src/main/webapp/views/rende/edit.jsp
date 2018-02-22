@@ -13,15 +13,16 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 
-	<!-- isDraft (si NO es draft no se debe poder editar)-->
-	<!-- isDeleted (si ha sido borrada no se debe poder editar)-->
-
-<!-- Tiene que ser el usuario que HAYA CREADO la rende quien pueda editarla y además el ADMIN puede eliminar (lo miraremos más tarde)-->
+	
 <form:form action="rende/user/edit.do" modelAttribute="rendeForm">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
+	<form:hidden path="isDeleted" />
 	
+	
+	<jstl:choose>
+	<jstl:when test="${rendeForm.isDraft == true || rendeForm.isDeleted == false}">
 <!-- ATRIBUTES -->
 	<!-- name -->
 	<acme:textbox code="rende.name" path="name"/>
@@ -76,6 +77,19 @@
 	<br />
 	<br />
 
+	</jstl:when>
+	<jstl:otherwise>
+		<form:hidden path="isDraft" />
+		<form:hidden path="adultOnly" />
+		<form:hidden path="description" />
+		<form:hidden path="name" />
+		<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
+	<br />
+	<br />
+	
+	</jstl:otherwise>
+	</jstl:choose>
+	
 	<spring:message code="rende.save" var="saveRende"  /><!-- Lo probamos así al principio y luego lo cambiamos para guardar en modo draft y final -->
 	<spring:message code="rende.cancel" var="cancelRende"  />
 	<spring:message code="rende.delete" var="deleteRende"  />

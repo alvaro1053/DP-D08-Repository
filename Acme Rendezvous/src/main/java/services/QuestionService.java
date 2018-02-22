@@ -73,7 +73,8 @@ public class QuestionService {
 			this.replyQuestionService.delete(rc);
 
 		final Rende rende = question.getRende();
-		updated = new ArrayList<Question>(rende.getQuestions());
+		final Collection<Question> questions = rende.getQuestions();
+		updated = new ArrayList<Question>(questions);
 		updated.remove(question);
 		rende.setQuestions(updated);
 

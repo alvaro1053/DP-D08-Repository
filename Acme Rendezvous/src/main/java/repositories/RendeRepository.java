@@ -18,6 +18,6 @@ public interface RendeRepository extends JpaRepository<Rende, Integer> {
 	@Query("select r from Rende r where r.adultOnly = false")
 	public Collection<Rende> selectNotAdultRendes();
 
-	@Query("select l from Rende r join r.linked l where r.id = ?1")
+	@Query("select l from Rende r join r.linked l where r.id MEMBER OF l.linked AND r.id =?1")
 	public Collection<Rende> selectLinkedById(int id);
 }
