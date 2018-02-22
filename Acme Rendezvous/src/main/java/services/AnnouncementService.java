@@ -27,7 +27,7 @@ public class AnnouncementService {
 	// Supporting services
 	@Autowired
 	private UserService				userService;
-	
+
 	@Autowired
 	private AdminService			adminService;
 
@@ -65,7 +65,13 @@ public class AnnouncementService {
 
 		principal = this.adminService.findByPrincipal();
 		Assert.notNull(principal);
-		
+
+		final Rende rende = announcement.getRende();
+		final Collection<Announcement> announcements = rende.getAnnouncements();
+		final Collection<Announcement> updated = new ArrayList<Announcement>(announcements);
+		updated.remove(announcement);
+		rende.setAnnouncements(updated);
+
 		this.announcementRepository.delete(announcement);
 	}
 	// Users must be able to create Announcements

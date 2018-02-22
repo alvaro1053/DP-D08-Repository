@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item value="237" key="DIALOG_WIDTH"/>
-		<item value="505" key="DIALOG_Y_ORIGIN"/>
-		<item value="362" key="DIALOG_HEIGHT"/>
-		<item value="1234" key="DIALOG_X_ORIGIN"/>
+		<item value="264" key="DIALOG_WIDTH"/>
+		<item value="286" key="DIALOG_Y_ORIGIN"/>
+		<item value="653" key="DIALOG_X_ORIGIN"/>
+		<item value="399" key="DIALOG_HEIGHT"/>
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="true" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="replyComment" key="selection"/>
 		<list key="findhistory">
-			<item value="Form"/>
-			<item value="Comment"/>
 			<item value="rende"/>
+			<item value="Rende"/>
 			<item value="announcement"/>
 			<item value="Announcement"/>
-			<item value="paramId"/>
-			<item value="property"/>
-			<item value="Rende"/>
+			<item value="commentForm"/>
+			<item value="comment"/>
+			<item value="Form"/>
+			<item value="Comment"/>
 		</list>
 		<list key="replacehistory">
-			<item value=""/>
+			<item value="replyComment"/>
 			<item value="ReplyComment"/>
 			<item value="comment"/>
 			<item value="Comment"/>
+			<item value=""/>
 			<item value="actor"/>
 			<item value="User"/>
 			<item value="user"/>
-			<item value="Rende"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

@@ -58,10 +58,9 @@
 	
 	
 	<security:authorize access="hasRole('ADMIN')">
+		<spring:message code="rende.confirm" var="confirmRende"  />
 		<display:column>
-			<jstl:if test="${not row.isDeleted}">
-				<a href="rende/admin/delete.do?rendeId=${row.id}"><spring:message code ="rende.delete"/></a>
-			</jstl:if>
+				<a href="rende/admin/delete.do?rendeId=${row.id}" onclick="return confirm('${confirmRende}')"><spring:message code ="rende.delete" /></a>
 		</display:column>
 	</security:authorize>
 

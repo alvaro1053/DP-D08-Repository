@@ -39,6 +39,9 @@ public class CommentService {
 	private AdminService		adminService;
 
 	@Autowired
+	private ReplyCommentService	replyCommentService;
+
+	@Autowired
 	private Validator			validator;
 
 
@@ -70,8 +73,8 @@ public class CommentService {
 		User principal;
 		Date moment;
 		Comment result;
-		Rende rende;
-		Collection<Comment> comments, updated;
+		final Rende rende;
+		final Collection<Comment> comments, updated;
 
 		moment = new Date(System.currentTimeMillis() - 1);
 
@@ -84,18 +87,6 @@ public class CommentService {
 		comment.setUser(principal);
 
 		result = this.commentRepository.save(comment);
-
-		//Actualizar relaciones
-		comments = principal.getComments();
-		updated = new ArrayList<Comment>(comments);
-		updated.add(comment);
-		principal.setComments(updated);
-
-		rende = comment.getRende();
-		comments = rende.getComments();
-		updated = new ArrayList<Comment>(comments);
-		updated.add(comment);
-		rende.setComments(updated);
 
 		return result;
 	}
@@ -110,6 +101,10 @@ public class CommentService {
 		Assert.notNull(principal);
 
 		//Eliminar relaciones
+
+		for (final ReplyComment c : comment.getRepliesComments())
+			this.replyCommentService.delete(c);
+
 		user = comment.getUser();
 		comments = user.getComments();
 		updated = new ArrayList<Comment>(comments);
@@ -156,6 +151,8 @@ public class CommentService {
 			comment = this.commentRepository.findOne(commentForm.getId());
 			comment.setPicture(commentForm.getPicture());
 			comment.setText(commentForm.getText());
+			comment.setId(commentForm.getId());
+			comment.setVersion(commentForm.getVersion());
 		}
 
 		this.validator.validate(commentForm, binding);

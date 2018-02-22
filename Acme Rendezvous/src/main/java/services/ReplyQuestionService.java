@@ -1,12 +1,17 @@
 
 package services;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ReplyQuestionRepository;
+import domain.Admin;
+import domain.Question;
 import domain.ReplyQuestion;
 import domain.User;
 
@@ -20,7 +25,10 @@ public class ReplyQuestionService {
 
 	// Supporting Repository
 	@Autowired
-	private UserService			userService;
+	private UserService				userService;
+
+	@Autowired
+	private AdminService			adminService;
 
 
 	// Constructors
@@ -54,14 +62,31 @@ public class ReplyQuestionService {
 	}
 
 	public void delete(final ReplyQuestion replyQuestion) {
-		User principal;
+		Admin principal;
+		Collection<ReplyQuestion> updated, updated2;
 		Assert.notNull(replyQuestion);
 
-		principal = this.userService.findByPrincipal();
+		principal = this.adminService.findByPrincipal();
 		Assert.notNull(principal);
 
+		final Question question = replyQuestion.getQuestion();
+		final Collection<ReplyQuestion> replyQuestions1 = question.getReplyQuestions();
+		updated = new ArrayList<ReplyQuestion>(replyQuestions1);
+		updated.remove(replyQuestion);
+		question.setReplyQuestions(updated);
+
+		final User user = replyQuestion.getUser();
+		final Collection<ReplyQuestion> replyQuestions2 = user.getRepliesQuestions();
+		updated2 = new ArrayList<ReplyQuestion>(replyQuestions2);
+		updated2.remove(replyQuestion);
+		user.setRepliesQuestions(updated2);
+
 		this.replyQuestionRepository.delete(replyQuestion);
-		
+
+	}
+	public Collection<ReplyQuestion> selectByRendeId(final int rendeId) {
+		final Collection<ReplyQuestion> res = this.replyQuestionRepository.selectByRendeId(rendeId);
+		return res;
 	}
 
 }

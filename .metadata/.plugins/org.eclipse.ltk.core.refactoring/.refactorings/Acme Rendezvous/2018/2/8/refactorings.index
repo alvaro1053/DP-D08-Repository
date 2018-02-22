@@ -30,3 +30,7 @@
 1519250121664	Rename field 'commentService'
 1519250169023	Rename local variable 'comment'
 1519253310655	Rename local variable 'comment'
+1519302182342	Rename local variable 'repliesToRemove'
+1519316490528	Rename local variable 'announcement'
+1519319779709	Rename local variable 'questions1'
+1519319822998	Rename local variable 'questions2'
