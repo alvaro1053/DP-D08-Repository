@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="utilities.internal.ConsolePrinter"/>
 <fullyQualifiedTypeName name="java.util.logging.LogManager"/>
 <fullyQualifiedTypeName name="java.util.logging.Level"/>
 <fullyQualifiedTypeName name="org.apache.commons.lang.StringUtils"/>
@@ -34,7 +33,6 @@
 <fullyQualifiedTypeName name="javax.validation.Valid"/>
 <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
 <fullyQualifiedTypeName name="security.UserAccount"/>
-<fullyQualifiedTypeName name="domain.Comment"/>
 <fullyQualifiedTypeName name="domain.ReplyQuestion"/>
 <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
 <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
@@ -60,4 +58,6 @@
 <fullyQualifiedTypeName name="domain.ReplyComment"/>
 <fullyQualifiedTypeName name="javax.validation.constraints.NotNull"/>
 <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+<fullyQualifiedTypeName name="services.CommentService"/>
+<fullyQualifiedTypeName name="domain.Comment"/>
 </qualifiedTypeNameHistroy>
