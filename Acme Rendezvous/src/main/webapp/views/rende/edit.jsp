@@ -76,21 +76,8 @@
 	<form:checkbox path="isDraft" name="draft" value="true"/>
 	<br />
 	<br />
-
-	</jstl:when>
-	<jstl:otherwise>
-		<form:hidden path="isDraft" />
-		<form:hidden path="adultOnly" />
-		<form:hidden path="description" />
-		<form:hidden path="name" />
-		<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
-	<br />
-	<br />
 	
-	</jstl:otherwise>
-	</jstl:choose>
-	
-	<spring:message code="rende.save" var="saveRende"  /><!-- Lo probamos así al principio y luego lo cambiamos para guardar en modo draft y final -->
+	<spring:message code="rende.save" var="saveRende"  />
 	<spring:message code="rende.cancel" var="cancelRende"  />
 	<spring:message code="rende.delete" var="deleteRende"  />
 	<spring:message code="rende.confirm" var="confirmRende"  />
@@ -107,5 +94,26 @@
   		value="${cancelRende}"
   onclick="javascript: relativeRedir('rende/user/list.do');" />
  <br />
+
+	</jstl:when>
+	<jstl:otherwise>
+		<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
+	<br />
+	<br />
+	
+	<spring:message code="rende.save" var="saveRende"  />
+	<spring:message code="rende.cancel" var="cancelRende"  />
+		
+	<input type="submit" name="save" value="${saveRende}" />&nbsp; 
+ 
+ 	<input type="button" name="cancel"
+  		value="${cancelRende}"
+  onclick="javascript: relativeRedir('rende/user/list.do');" />
+ <br />
+	
+	</jstl:otherwise>
+	</jstl:choose>
+	
+
 
 </form:form>

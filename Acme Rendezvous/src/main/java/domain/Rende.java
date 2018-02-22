@@ -67,7 +67,8 @@ public class Rende extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
-
+	
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getMoment() {

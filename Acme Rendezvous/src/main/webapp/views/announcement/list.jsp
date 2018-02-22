@@ -42,7 +42,10 @@
 	<display:column property="title" title="${titleHeader}"
 		sortable="true" />
 
-
+	<!-- description -->
+	<spring:message code="announcement.description" var="descriptionHeader" />
+	<display:column property="description" title="${descriptionHeader}"/>
+	
 	<!-- moment -->
 	<spring:message code="announcement.format"
   		var="format" />

@@ -81,7 +81,6 @@ public class RendeService {
 	}
 
 	// Other business methods
-	//Un ADMIN puede eliminar también
 	public void delete(final Rende rende) {
 		User principal;
 		Assert.notNull(rende);
@@ -92,7 +91,7 @@ public class RendeService {
 
 		Assert.isTrue(this.findByUserId(principal.getId()).contains(rende));
 		rende.setIsDeleted(true);
-
+		
 		this.rendeRepository.save(rende);
 	}
 
@@ -257,6 +256,8 @@ public class RendeService {
 			result.setIsDraft(rendeForm.getIsDraft());
 			result.setIsDeleted(false);
 			result.setUser(principal);
+			
+
 		} else if (result.getIsDraft() == true && result.getIsDeleted() == false) {
 			result.setName(rendeForm.getName());
 			result.setDescription(rendeForm.getDescription());
@@ -267,10 +268,12 @@ public class RendeService {
 			result.setAdultOnly(rendeForm.getAdultOnly());
 			result.setLinked(rendeForm.getLinked());
 			result.setIsDraft(rendeForm.getIsDraft());
+			
 
 		} else
 			result.setLinked(rendeForm.getLinked());
-
+		
+		
 		this.validator.validate(result, binding);
 		return result;
 	}
@@ -293,6 +296,7 @@ public class RendeService {
 		result.setLinked(rende.getLinked());
 		result.setIsDraft(rende.getIsDraft());
 
+		
 		return result;
 	}
 

@@ -41,7 +41,7 @@
 	<!-- Esta es una forma provisional (NIVEL C)  -->
 	<security:authorize access="hasRole('USER')">
 		<display:column>
-			<jstl:if test="${principal.id == row.user.id}">
+			<jstl:if test="${principal.id == row.user.id && row.isDeleted == false}">
 				<a href="rende/user/edit.do?rendeId=${row.id}"><spring:message code ="rende.edit"/></a>
 			</jstl:if>
 		</display:column>
@@ -124,6 +124,11 @@
 			<img id="alarmImg" src="images/alarm.png" alt="${passed}" title="${passed}"/>
 		</jstl:if>
 	</display:column>
+	
+	<spring:message code="rende.listDeleted"
+  	var="listDeleted" />
+  	<display:column property="isDeleted" title="${listDeleted}" sortable="true"/>
+	
 	
 	<!-- RSVP -->
 	<security:authorize access="hasRole('USER')">
