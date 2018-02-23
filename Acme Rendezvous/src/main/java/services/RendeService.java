@@ -252,7 +252,12 @@ public class RendeService {
 			result.setAttendants(rendeForm.getAttendants());
 			result.setIsDraft(rendeForm.getIsDraft());
 			result.setAdultOnly(rendeForm.getAdultOnly());
-			result.setLinked(rendeForm.getLinked());
+			if(!(rendeForm.getLinked().contains(null))){
+				result.setLinked(rendeForm.getLinked());
+			}else{
+				rendeForm.getLinked().remove(null);
+				result.setLinked(rendeForm.getLinked());
+			}
 			result.setIsDraft(rendeForm.getIsDraft());
 			result.setIsDeleted(false);
 			result.setUser(principal);
