@@ -20,7 +20,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
+<jstl:if test="${not empty announcements}">
+<jstl:forEach items="${announcements}" var="announcement">
 <table class="displayStyle">
 
 <tr>
@@ -34,21 +35,39 @@
 <td>  <jstl:out value="${announcement.description}"> </jstl:out> </td>
 </tr>
 
+<spring:message code="announcement.formatDisplay"
+ var="format" />
 
 <tr>
 <td> <strong> <spring:message code="announcement.moment" /> : </strong> </td>
-<td> <fmt:formatDate value="${announcement.moment}" /> </td>
+<td> <fmt:formatDate pattern="${format}" value="${announcement.moment}" /> </td>
 </tr>
 
 <tr>
 <td> <strong> <spring:message code="announcement.rende" /> : </strong> </td>
-<td> <a href="rende/user/display.do?rendeId=${announcement.rende.id}"><jstl:out value="${announcement.rende.name}"/></a> </td>
+<td> <a href="rende/display.do?rendeId=${announcement.rende.id}"><jstl:out value="${announcement.rende.name}"/></a> </td>
 </tr>
 
 
 
-
-
 </table>
+</jstl:forEach>
+</jstl:if>
 
+<security:authorize access="isAnonymous()">
+	<jstl:if test="${empty announcements}">
+		<h4><spring:message code = "announcement.noAnnouncements"/></h4>
+		<a href="user/register.do"><spring:message code = "announcement.register"/></a>
+		<spring:message code = "announcement.o"/> 
+		<a href="security/login.do"><spring:message code = "announcement.singUp"/></a>
+		<spring:message code = "announcement.newOne"/> 
+		
+		<br>
+	</jstl:if>
+</security:authorize>
 
+<security:authorize access="hasAnyRole('USER','ADMIN')">
+	<jstl:if test="${empty announcements}">
+		<h4><spring:message code = "announcement.noAnnouncements"/></h4>
+	</jstl:if>
+</security:authorize>

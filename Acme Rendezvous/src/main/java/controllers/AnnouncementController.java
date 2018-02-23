@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Announcement;
+import domain.Rende;
 
 import services.AnnouncementService;
+import services.RendeService;
 
 
 
@@ -22,6 +25,9 @@ public class AnnouncementController extends AbstractController {
 	//Autowired
 	@Autowired
 	AnnouncementService announcementService;
+	
+	@Autowired
+	RendeService rendeService;
 	
 	//Constructor
 	public AnnouncementController(){
@@ -37,6 +43,23 @@ public class AnnouncementController extends AbstractController {
 		
 		
 		result = new ModelAndView("announcement/list");
+		result.addObject("announcements", announcements);
+		return result;
+	}
+	
+	//Display
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int rendeId) {
+		ModelAndView result;
+		Rende rende;
+		Collection<Announcement> announcements;
+		rende = this.rendeService.findOne(rendeId);
+		
+		announcements = rende.getAnnouncements();
+		
+		
+
+		result = new ModelAndView("announcement/display");
 		result.addObject("announcements", announcements);
 		return result;
 	}
