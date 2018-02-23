@@ -169,7 +169,7 @@ public class RendeUserController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final RendeForm rendeForm, final BindingResult binding) {
+	public ModelAndView delete(@Valid final RendeForm rendeForm, final BindingResult binding) {
 		ModelAndView result;
 
 		Rende rende = this.rendeService.reconstruct(rendeForm, binding);

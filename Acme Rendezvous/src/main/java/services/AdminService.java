@@ -91,58 +91,124 @@ public class AdminService {
 	}
 
 	//statistics methods
-	public Collection<Double> averageAndDesviationOfRendesPerUser() {
-		final Collection<Double> res;
+	public Double averageOfRendesPerUser() {
+		final Double res;
 		Admin principal;
 		principal = this.findByPrincipal();
 		Assert.notNull(principal);
-		res = this.adminRepository.averageAndDesviationOfRendesPerUser();
+		res = this.adminRepository.averageOfRendesPerUser();
 		return res;
 	}
-	public Collection<Double> averageAndDesviationOfAnnouncementPerRende() {
-		final Collection<Double> res;
+	public Double desviationOfRendesPerUser() {
+		final Double res;
 		Admin principal;
 		principal = this.findByPrincipal();
 		Assert.notNull(principal);
-		res = this.adminRepository.averageAndDesviationOfAnnouncementPerRende();
+		res = this.adminRepository.desviationOfRendesPerUser();
 		return res;
 	}
-
-	public Collection<Double> averageAndDesviationOfQuestionsPerRende() {
-		final Collection<Double> res;
+	
+	
+	
+	public Double averageOfAnnouncementPerRende() {
+		final Double res;
 		Admin principal;
 		principal = this.findByPrincipal();
 		Assert.notNull(principal);
-		res = this.adminRepository.averageAndDesviationOfQuestionsPerRende();
+		res = this.adminRepository.averageOfAnnouncementPerRende();
 		return res;
 	}
-
-	public Collection<Double> averageAndDesviationOfRepliesPerComment() {
-		final Collection<Double> res;
+	public Double desviationOfAnnouncementPerRende() {
+		final Double res;
 		Admin principal;
 		principal = this.findByPrincipal();
 		Assert.notNull(principal);
-		res = this.adminRepository.averageAndDesviationOfRepliesPerComment();
-		return res;
-	}
-
-	public Collection<Double> averageAndDesviationOfRSVPPerRende() {
-		final Collection<Double> res;
-		Admin principal;
-		principal = this.findByPrincipal();
-		Assert.notNull(principal);
-		res = this.adminRepository.averageAndDesviationOfRSVPPerRende();
+		res = this.adminRepository.desviationOfAnnouncementPerRende();
 		return res;
 	}
 
-	public Collection<Double> averageAndDesviationOfRSVPPerUser() {
-		final Collection<Double> res;
+	
+	
+	
+	public Double averageOfQuestionsPerRende() {
+		final Double res;
 		Admin principal;
 		principal = this.findByPrincipal();
 		Assert.notNull(principal);
-		res = this.adminRepository.averageAndDesviationOfRSVPPerUser();
+		res = this.adminRepository.averageOfQuestionsPerRende();
 		return res;
 	}
+	public Double desviationOfQuestionsPerRende() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.desviationOfQuestionsPerRende();
+		return res;
+	}
+	
+	
+	
+	
+
+	public Double averageOfRepliesPerComment() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageOfRepliesPerComment();
+		return res;
+	}
+	public Double desviationOfRepliesPerComment() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.desviationOfRepliesPerComment();
+		return res;
+	}
+	
+	
+	
+
+	public Double averageOfRSVPPerRende() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageOfRSVPPerRende();
+		return res;
+	}
+	public Double desviationOfRSVPPerRende() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.desviationOfRSVPPerRende();
+		return res;
+	}
+	
+	
+	
+
+	public Double averageOfRSVPPerUser() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageOfRSVPPerUser();
+		return res;
+	}
+	public Double desviationOfRSVPPerUser() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.desviationOfRSVPPerUser();
+		return res;
+	}
+	
+	
 
 	public Collection<Rende> rendesWithMoreAnnouncementsThanTheAverage() {
 		final Collection<Rende> res;
@@ -176,6 +242,25 @@ public class AdminService {
 		principal = this.findByPrincipal();
 		Assert.notNull(principal);
 		res = this.adminRepository.ratioOfUsersWithRendesCreated();
+		return res;
+	}
+	
+	
+	
+	public Double averageOfRepliesPerQuestion() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.averageOfRepliesPerQuestion();
+		return res;
+	}
+	public Double desviationOfRepliesPerQuestion() {
+		final Double res;
+		Admin principal;
+		principal = this.findByPrincipal();
+		Assert.notNull(principal);
+		res = this.adminRepository.desviationOfRepliesPerQuestion();
 		return res;
 	}
 
