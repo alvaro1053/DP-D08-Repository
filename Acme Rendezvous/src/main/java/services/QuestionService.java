@@ -81,4 +81,10 @@ public class QuestionService {
 
 		this.questionRepository.delete(question);
 	}
+	public Collection<Question> SelectRepliedByUserId(final int id) {
+		final User principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
+		final Collection<Question> res = this.questionRepository.repliedByUserId(id);
+		return res;
+	}
 }

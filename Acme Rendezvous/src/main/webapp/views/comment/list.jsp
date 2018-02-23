@@ -81,7 +81,7 @@
 	<display:column title="${listReply}">
 	
 	<display:table pagesize="3" class="displaytag" 
-	name="${row.repliesComments}" requestURI="comment/user/list.do" id="reply">
+	name="${row.repliesComments}" requestURI="comment${uri}/list.do" id="reply">
 	
 	<spring:message code="comment.reply2"
 		var="reply2" />
@@ -90,7 +90,7 @@
 	<spring:message code="comment.delete"
 		var="delete" />
 	
-	<display:column title="${writer}" property="user.name" href="user/user/display.do" paramId="userId" paramProperty="user.id">  </display:column>)
+	<display:column title="${writer}" property="user.name" href="user${uri}/display.do" paramId="userId" paramProperty="user.id">  </display:column>)
 	
 	<security:authorize access="hasRole('ADMIN')">
 	<display:column title="${delete}"> <a href="replyComment/admin/delete.do?replyCommentId=${reply.id}">${delete}</a> </display:column>
