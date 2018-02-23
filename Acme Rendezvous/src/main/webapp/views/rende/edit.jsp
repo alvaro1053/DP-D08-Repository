@@ -70,6 +70,63 @@
 	<acme:selectMultiple items="${rendes}" itemLabel="name" code="rende.linked" path="linked"/>
 	<br />
 	<br />
+	
+	
+	<jstl:if test="${rendeForm.id ==0 }">
+	<!-- QUESTIONS -->
+	
+	
+	<fieldset>
+
+	
+	<legend> <form:label path="questions"> <spring:message code="rende.questions" />: </form:label> </legend>
+
+
+
+		<div id="list1">
+		<table class="displayStyle">
+			<tr>
+			<th>  <spring:message code="rende.question" /> :  </th>
+			<th> </th>
+			 </tr>
+			
+			<jstl:choose> 
+			<jstl:when test="${empty rendeForm.questions}">
+			<tr class="list-item">
+			
+			
+			
+			<td>  	<form:input path="questions[0].question" /> <form:errors cssClass="error" path="questions[0].question" /></td>
+			<td>	<a href="#" onclick="event.preventDefault();"
+					class="list-remove"> <spring:message code="rende.question.remove" /> </a> </td>
+			</tr>
+			
+			</jstl:when>
+			<jstl:otherwise>
+			<jstl:forEach items="${rendeForm.questions}" var="question" varStatus="i" begin="0">
+   			 <tr class="list-item">
+			<td> <form:input path="questions[${i.index}].question" /> <form:errors cssClass="error" path="questions[${i.index}].question" /></td>
+     		<td>	<a href="#" onclick="event.preventDefault();"
+					class="list-remove"> <spring:message code="rende.question.remove" /> </a> </td>
+	    </tr>
+            <br />
+        </jstl:forEach>
+			</jstl:otherwise>
+			</jstl:choose>
+			
+		</table>
+		<a href="#" onclick="event.preventDefault();" class="list-add"><spring:message code="rende.question.add" /></a>
+		</div>
+		<br />
+		<form:errors cssClass="error" path="questions" />
+
+</fieldset>
+
+</jstl:if>
+
+
+
+
 
 	
 	<spring:message code="rende.isDraft" />
@@ -117,3 +174,9 @@
 
 
 </form:form>
+
+<script>
+    $(document).ready(function() {
+        $("#list1").dynamiclist();
+    });
+ </script>

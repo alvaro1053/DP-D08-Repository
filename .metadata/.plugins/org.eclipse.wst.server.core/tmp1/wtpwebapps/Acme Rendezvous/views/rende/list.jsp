@@ -38,25 +38,12 @@
 <display:table pagesize="5" class="displaytag" 
 	name="rendes" requestURI="rende${uri}/list.do" id="row">
 		
-	<!-- Attributes -->
-	<!-- Restriccion de ADMIN cuando esté el controlador de admin
-	<security:authorize access="hasRole('ADMIN')">
-		<display:column>
-			<a href="rende/admin/edit.do?rendeId=${row.id}"><spring:message code ="rende.edit"/></a>
-		</display:column>
-	</security:authorize>	
-	-->
-	
 	<!-- Esta es una forma provisional (NIVEL C)  -->
 	<security:authorize access="hasRole('USER')">
 		<display:column>
-			<jstl:if test="${principal.id == row.user.id}">
+			<jstl:if test="${principal.id == row.user.id && row.isDeleted == false}">
 				<a href="rende/user/edit.do?rendeId=${row.id}"><spring:message code ="rende.edit"/></a>
 			</jstl:if>
-		</display:column>
-		
-		<display:column>
-				<a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
 		</display:column>
 	</security:authorize>
 	
@@ -72,9 +59,12 @@
 	<!-- name -->
 	<spring:message code="rende.name"
 		var="nameHeader" />
-	<display:column property="name" title="${nameHeader}"
-		sortable="true" />
-		
+	<display:column title="${nameHeader}"
+		sortable="true">
+		<a href="rende${uri}/display.do?rendeId=${row.id}">
+			<jstl:out value="${row.name}"/>
+		</a>
+	</display:column>
 	<!-- description -->
 	<spring:message code="rende.description"
 		var="descriptionHeader" />
@@ -94,6 +84,60 @@
   	var="creator" />
   	<display:column property="user.name" title="${creator}"/>
 	
+		<!-- Attendants -->
+	<spring:message code="rende.linked"
+  	var="linked" />
+	<display:column title="${linked}">
+	<ul>
+		<jstl:forEach items="${row.linked}" var="linked"> 
+			 <li>
+				 <a href="rende/user/display.do?rendeId=${linked.id}">
+				 	<jstl:out value ="${linked.name}" />
+				 </a>
+			 </li>
+		</jstl:forEach>
+	</ul>
+	</display:column>
+	
+	<!-- Attendants -->
+	<spring:message code="rende.attendants"
+  	var="attendants" />
+	<display:column title="${attendants}">
+	<ul>
+		<jstl:forEach items="${row.attendants}" var="attendant"> 
+			 <li>
+				 <a href="user/display.do?userId=${attendant.id}">
+				 	<jstl:out value ="${attendant.name}" />
+				 </a>
+			 </li>
+		</jstl:forEach>
+	</ul>
+	</display:column>
+	
+	<spring:message code="rende.expired" var="expired"></spring:message>
+	<display:column title="${expired}">
+	<jsp:useBean id="now" class="java.util.Date"/>
+		<jstl:if test="${row.moment lt now}">
+			<spring:message code="rende.passed"
+  			var="passed" />
+  			
+			<img id="alarmImg" src="images/alarm.png" alt="${passed}" title="${passed}"/>
+		</jstl:if>
+	</display:column>
+	
+	<spring:message code="rende.listDeleted"
+  	var="listDeleted" />
+  	<display:column property="isDeleted" title="${listDeleted}" sortable="true"/>
+	
+	
+	<!-- RSVP -->
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<jstl:if test="${not (row.moment lt now)}">
+				<a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
+			</jstl:if>
+		</display:column>
+	</security:authorize>
 	<!-- Questions -->
 	
 	<display:column>
@@ -101,21 +145,13 @@
 					code="rende.questions" />
 			</a>
 	</display:column>
-	
-	<!-- Display -->
-	
-	<display:column>
-			<a href="rende${uri}/display.do?rendeId=${row.id}"> <spring:message
-					code="rende.display" />
-			</a>
-	</display:column>
+
 	
 	
 	<!-- Linked -->
 	<display:table name="${row.linked}" id="linked" pagesize="15" class="displaytag">
 		<display:column property="name" title="${nameHeader}" sortable="false" />
 	</display:table>
-	
 	
 
 </display:table>

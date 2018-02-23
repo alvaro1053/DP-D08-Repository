@@ -1,0 +1,55 @@
+
+package controllers.admin;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import services.AdminService;
+import services.RendeService;
+import services.ReplyCommentService;
+import domain.ReplyComment;
+
+@Controller
+@RequestMapping("/replyComment/admin")
+public class ReplyCommentAdminController {
+
+	// Services
+
+	@Autowired
+	private ReplyCommentService	replyCommentService;
+
+	@Autowired
+	private AdminService		adminService;
+
+	@Autowired
+	private RendeService		rendeService;
+
+
+	//Delete
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam final int replyCommentId) {
+		ModelAndView result;
+		int commentId = 0;
+		try {
+			final ReplyComment replyCmment = this.replyCommentService.findOne(replyCommentId);
+			commentId = replyCmment.getComment().getId();
+			final String messageSuccessfullyDeleted = "replyComment.deleted";
+			this.replyCommentService.delete(replyCmment);
+			result = this.createListModelAndView(messageSuccessfullyDeleted, commentId);
+		} catch (final Throwable oops) {
+			final String messageError = "replycomment.commit.error";
+			result = this.createListModelAndView(messageError, commentId);
+		}
+		return result;
+
+	}
+
+	private ModelAndView createListModelAndView(final String message, final int commentId) {
+
+		return null;
+	}
+}

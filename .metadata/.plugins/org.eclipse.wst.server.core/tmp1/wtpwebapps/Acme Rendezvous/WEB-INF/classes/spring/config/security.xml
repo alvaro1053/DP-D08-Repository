@@ -61,9 +61,9 @@
 		<security:intercept-url pattern="/rende/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/rende/display.do" access="permitAll" /> 
 		<security:intercept-url pattern="/rende/user/create.do" access="hasRole('USER')" /> 
-		<security:intercept-url pattern="/rende/user/list.do" access="hasAnyRole('USER','ADMIN')" /> 
-		<security:intercept-url pattern="/rende/user/edit.do" access="hasAnyRole('USER','ADMIN')" /> 
-		<security:intercept-url pattern="/rende/user/**" access="hasAnyRole('USER','ADMIN')" /> 
+		<security:intercept-url pattern="/rende/user/list.do" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/rende/user/edit.do" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/rende/user/**" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/rsvp.do" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/rende/user/display.do" access="hasRole('USER')" /> 
 
@@ -73,11 +73,14 @@
 		<security:intercept-url pattern="/user/list.do" access="permitAll" /> 
 		<security:intercept-url pattern="/user/display.do" access="permitAll" /> 
 		<security:intercept-url pattern="/user/register.do" access="permitAll" /> 
-		<security:intercept-url pattern="/user/user/**" access="hasAnyRole('USER','ADMIN')" /> 
+		<security:intercept-url pattern="/user/user/**" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/user/admin/**" access="hasRole('ADMIN')" /> 
+		
 		
 		<!-- Acme Rendezvous Comments -->
-		<security:intercept-url pattern="/comment/user/**" access="hasAnyRole('USER','ADMIN')" /> 
-		<security:intercept-url pattern="/replyComment/user/**" access="hasAnyRole('USER','ADMIN')" /> 
+		<security:intercept-url pattern="/comment/user/**" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/comment/admin/**" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/replyComment/admin/**" access="hasRole('ADMIN')" />
 		
 		
 

@@ -42,7 +42,10 @@
 	<display:column property="title" title="${titleHeader}"
 		sortable="true" />
 
-
+	<!-- description -->
+	<spring:message code="announcement.description" var="descriptionHeader" />
+	<display:column property="description" title="${descriptionHeader}"/>
+	
 	<!-- moment -->
 	<spring:message code="announcement.format"
   		var="format" />
@@ -57,10 +60,16 @@
 		var="rendeHeader" />
 	<display:column property="rende.name" title="${rendeHeader}" sortable="true"/> 
 	
+	
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<a href="announcement/user/display.do?announcementId=${row.id}"><spring:message code ="announcement.display"/></a>
+		</display:column>
+	</security:authorize>
 
 </display:table>
 
-	
+
 
 
 	<security:authorize access="hasRole('USER')">

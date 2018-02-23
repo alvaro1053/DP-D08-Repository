@@ -14,16 +14,16 @@
 
 <security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
 <jstl:choose>
-<jstl:when test="${principal.rSVPS.contains(rende) || isAdmin }">
+<jstl:when test="${permisos}">
 
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" 
-	name="comments" requestURI="comment/user/list.do" id="row">
+	name="comments" requestURI="comment${uri }/list.do" id="row">
 
 
 
-	
+	<security:authorize access="hasRole('USER')">
 	
 	<!-- Edit -->
 	<jstl:if test="${not rende.isDeleted}">
@@ -35,7 +35,19 @@
  	</jstl:if>	
 	</display:column>
 	</jstl:if>
-		
+	</security:authorize>
+	
+	
+		<security:authorize access="hasRole('ADMIN')">
+	
+	<!-- Delete -->
+	<spring:message code="comment.delete" var="delete" />
+	<display:column title="${delete}"
+		sortable="false">
+ 		<a href="comment/admin/delete.do?commentId=${row.id}">${delete}</a>
+	</display:column>
+	</security:authorize>
+	
 <!-- Attributes -->
 		
 	<!-- text -->
@@ -75,10 +87,21 @@
 		var="reply2" />
 	<display:column property="reply" title="${reply2}"/>
 	
+	<spring:message code="comment.delete"
+		var="delete" />
+	
 	<display:column title="${writer}" property="user.name" href="user/user/display.do" paramId="userId" paramProperty="user.id">  </display:column>)
+	
+	<security:authorize access="hasRole('ADMIN')">
+	<display:column title="${delete}"> <a href="replyComment/admin/delete.do?replyCommentId=${reply.id}">${delete}</a> </display:column>
+	</security:authorize>)
+	
 	</display:table>
 	</display:column>
 	<security:authorize access="hasRole('USER')">
+	
+	
+	
 	<!-- Reply -->
 	<display:column>
 		<jstl:if test="${not rende.isDeleted}">
@@ -97,11 +120,13 @@
 </display:table>
 
 <br/>
+<security:authorize access="hasRole('USER')">
 <jstl:if test="${not rende.isDeleted}">
 <spring:message code="comment.create"
 	var="create" />
  <a href="comment/user/create.do?rendeId=${rende.id}">${create}</a>
  </jstl:if>
+ </security:authorize>
  </jstl:when>
  <jstl:otherwise>
  <spring:message code="comment.dirtyHacker" />

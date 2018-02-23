@@ -61,6 +61,7 @@
 		var="dateBirthHeader" />
 	<display:column property="dateBirth" title="${dateBirthHeader}"
 		sortable="true" />	
+		
 	
 	<display:column>
 		<a href="user${uri}/display.do?userId=${row.id}"> <spring:message

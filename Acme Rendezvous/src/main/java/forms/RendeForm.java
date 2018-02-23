@@ -1,7 +1,9 @@
+
 package forms;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -10,105 +12,110 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import domain.DomainEntity;
 import domain.Location;
+import domain.Question;
 import domain.Rende;
 import domain.User;
 
 public class RendeForm extends DomainEntity {
-	
-	private String						name;
-	private String						description;
-	private Date 						moment;
-	private String						picture;
-	private Location					coordenates;
-	private Collection<User>			attendants;
-	private Boolean						isDraft;
-	private Boolean						adultOnly;
-	private Collection<Rende>			linked;
-	
-	public Boolean 						isDeleted;
-	
-	
-	
-	public Boolean getIsDeleted() {
-		return isDeleted;
+
+	private String				name;
+	private String				description;
+	private Date				moment;
+	private String				picture;
+	private Location			coordenates;
+	private Collection<User>	attendants;
+	private Boolean				isDraft;
+	private Boolean				adultOnly;
+	private Collection<Rende>	linked;
+
+	private List<Question>		questions;
+
+	public Boolean				isDeleted;
+
+
+	public List<Question> getQuestions() {
+		return this.questions;
 	}
 
-	public void setIsDeleted(Boolean isDeleted) {
+	public void setQuestions(final List<Question> questions) {
+		this.questions = questions;
+	}
+
+	public Boolean getIsDeleted() {
+		return this.isDeleted;
+	}
+
+	public void setIsDeleted(final Boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
 
-
-
-	public RendeForm(){
+	public RendeForm() {
 		super();
 	}
-	
-	
-	
+
 	public String getName() {
-		return name;
+		return this.name;
 	}
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
-	
+
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
 	}
-	
+
 	public Date getMoment() {
-		return moment;
+		return this.moment;
 	}
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	public void setMoment(Date moment) {
+	public void setMoment(final Date moment) {
 		this.moment = moment;
 	}
 
 	public String getPicture() {
-		return picture;
+		return this.picture;
 	}
-	public void setPicture(String picture) {
+	public void setPicture(final String picture) {
 		this.picture = picture;
 	}
-	
+
 	public Location getCoordenates() {
-		return coordenates;
+		return this.coordenates;
 	}
-	public void setCoordenates(Location coordenates) {
+	public void setCoordenates(final Location coordenates) {
 		this.coordenates = coordenates;
 	}
-	
+
 	public Collection<User> getAttendants() {
-		return attendants;
+		return this.attendants;
 	}
-	public void setAttendants(Collection<User> attendants) {
+	public void setAttendants(final Collection<User> attendants) {
 		this.attendants = attendants;
 	}
-	
+
 	public Boolean getIsDraft() {
-		return isDraft;
+		return this.isDraft;
 	}
-	public void setIsDraft(Boolean isDraft) {
+	public void setIsDraft(final Boolean isDraft) {
 		this.isDraft = isDraft;
 	}
-	
+
 	public Boolean getAdultOnly() {
-		return adultOnly;
+		return this.adultOnly;
 	}
-	public void setAdultOnly(Boolean adultOnly) {
+	public void setAdultOnly(final Boolean adultOnly) {
 		this.adultOnly = adultOnly;
 	}
-	
+
 	public Collection<Rende> getLinked() {
-		return linked;
+		return this.linked;
 	}
-	public void setLinked(Collection<Rende> linked) {
+	public void setLinked(final Collection<Rende> linked) {
 		this.linked = linked;
 	}
 
-	
 }
