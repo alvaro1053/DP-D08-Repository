@@ -3,6 +3,7 @@ package controllers.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -154,9 +156,17 @@ public class RendeUserController extends AbstractController {
 		Rende rende;
 
 		rende = this.rendeService.reconstruct(rendeForm, binding);
-
+		
+		if(rende.getMoment().before(new Date())){
+			if(!rende.getIsDraft())
+				rendeForm.setIsDraft(true);
+			
+			result = this.createEditModelAndView(rendeForm, "rende.moment.error");
+			return result;
+		}
+		
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(rende);
+			result = this.createEditModelAndView(rendeForm);
 		else
 			try {
 				this.rendeService.save(rende);
@@ -169,7 +179,7 @@ public class RendeUserController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final RendeForm rendeForm, final BindingResult binding) {
+	public ModelAndView delete(@Valid final RendeForm rendeForm, final BindingResult binding) {
 		ModelAndView result;
 
 		Rende rende = this.rendeService.reconstruct(rendeForm, binding);

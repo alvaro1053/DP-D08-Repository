@@ -25,7 +25,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li>
-					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>					
+					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>		
 				</ul>
 			</li>
 		</security:authorize>
@@ -46,6 +46,7 @@
 		
 		<security:authorize access="hasRole('ADMIN')">
 		<li><a class="fNiv" href="rende/admin/list.do"><spring:message code="master.page.rendeList" /></a></li>
+		<li><a class="fNiv" href="dashboard/admin/display.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('USER')">
