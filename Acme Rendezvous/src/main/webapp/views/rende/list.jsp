@@ -114,7 +114,7 @@
 	</ul>
 	</display:column>
 	
-	<spring:message code="rende.expired" var="expired"></spring:message>
+	<spring:message code="rende.expired" var="expired"/>
 	<display:column title="${expired}">
 	<jsp:useBean id="now" class="java.util.Date"/>
 		<jstl:if test="${row.moment lt now}">
@@ -152,6 +152,12 @@
 	<display:table name="${row.linked}" id="linked" pagesize="15" class="displaytag">
 		<display:column property="name" title="${nameHeader}" sortable="false" />
 	</display:table>
+	
+	<display:column>
+		<a href="announcement/display.do?rendeId=${row.id}"> <spring:message
+				code="rende.announcement" />
+		</a>
+	</display:column>
 	
 
 </display:table>
