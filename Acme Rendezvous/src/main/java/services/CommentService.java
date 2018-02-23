@@ -73,8 +73,6 @@ public class CommentService {
 		User principal;
 		Date moment;
 		Comment result;
-		final Rende rende;
-		final Collection<Comment> comments, updated;
 
 		moment = new Date(System.currentTimeMillis() - 1);
 
@@ -128,8 +126,6 @@ public class CommentService {
 	}
 
 	public Comment findOne(final int commentId) {
-		final User principal = this.userService.findByPrincipal();
-		Assert.notNull(principal);
 		final Comment comment = this.commentRepository.findOne(commentId);
 		return comment;
 

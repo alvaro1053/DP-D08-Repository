@@ -86,7 +86,7 @@ public class ReplyCommentService {
 		return result;
 	}
 
-	public void delete(ReplyComment replyComment) {
+	public void delete(final ReplyComment replyComment) {
 		Admin principal;
 		User user;
 		Collection<ReplyComment> replycomments, updated, updated2;
@@ -101,7 +101,7 @@ public class ReplyCommentService {
 		updated.remove(replyComment);
 		user.setRepliesComments(updated);
 
-		Comment c = replyComment.getComment();
+		final Comment c = replyComment.getComment();
 		updated2 = new ArrayList<ReplyComment>(c.getRepliesComments());
 		updated2.remove(replyComment);
 		c.setRepliesComments(updated2);
@@ -112,5 +112,11 @@ public class ReplyCommentService {
 	public Collection<ReplyComment> selectByRendeId(final int rendeId) {
 		final Collection<ReplyComment> res = this.replyCommentRepository.selectByRendeId(rendeId);
 		return res;
+	}
+
+	public ReplyComment findOne(final int replyCommentId) {
+		final ReplyComment replyComment = this.replyCommentRepository.findOne(replyCommentId);
+		Assert.notNull(replyComment);
+		return replyComment;
 	}
 }

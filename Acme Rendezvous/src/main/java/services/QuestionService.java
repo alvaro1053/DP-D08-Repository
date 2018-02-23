@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,13 +68,13 @@ public class QuestionService {
 
 	public void delete(final Question question) {
 		Assert.notNull(question);
-		Collection<Question> updated;
+		List<Question> updated;
 
 		for (final ReplyQuestion rc : question.getReplyQuestions())
 			this.replyQuestionService.delete(rc);
 
 		final Rende rende = question.getRende();
-		final Collection<Question> questions = rende.getQuestions();
+		final List<Question> questions = rende.getQuestions();
 		updated = new ArrayList<Question>(questions);
 		updated.remove(question);
 		rende.setQuestions(updated);

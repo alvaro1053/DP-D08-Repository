@@ -71,7 +71,7 @@
 	<tr>
 		<spring:message code="rende.comments" var="comments" />
 		<td> <strong> <spring:message code="rende.comments"/> : </strong> </td>
-		<td> <a href="comment/user/list.do?rendeId=${rende.id}">${comments} </a> </td>
+		<td> <a href="comment/admin/list.do?rendeId=${rende.id}">${comments} </a> </td>
 	</tr>
 </security:authorize>
 

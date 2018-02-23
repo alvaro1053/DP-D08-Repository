@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -91,7 +92,7 @@ public class RendeService {
 
 		Assert.isTrue(this.findByUserId(principal.getId()).contains(rende));
 		rende.setIsDeleted(true);
-		
+
 		this.rendeRepository.save(rende);
 	}
 
@@ -235,13 +236,12 @@ public class RendeService {
 
 
 	public Rende reconstruct(final RendeForm rendeForm, final BindingResult binding) {
-		Rende result = this.rendeRepository.findOne(rendeForm.getId());
+		Rende result = new Rende();
 		User principal;
+		final List<Question> questions = new ArrayList<Question>();
 
 		principal = this.userService.findByPrincipal();
 		if (rendeForm.getId() == 0) {
-			result = new Rende();
-
 			result.setId(rendeForm.getId());
 			result.setVersion(rendeForm.getVersion());
 			result.setName(rendeForm.getName());
@@ -256,9 +256,16 @@ public class RendeService {
 			result.setIsDraft(rendeForm.getIsDraft());
 			result.setIsDeleted(false);
 			result.setUser(principal);
-			
+			if (rendeForm.getQuestions() != null)
+				for (final Question q : rendeForm.getQuestions())
+					if (q.getQuestion() != null || q.getQuestion() != "" || q == null) {
+						q.setRende(result);
+						questions.add(q);
+					}
+			result.setQuestions(questions);
 
 		} else if (result.getIsDraft() == true && result.getIsDeleted() == false) {
+			result = this.rendeRepository.findOne(rendeForm.getId());
 			result.setName(rendeForm.getName());
 			result.setDescription(rendeForm.getDescription());
 			result.setMoment(rendeForm.getMoment());
@@ -268,12 +275,10 @@ public class RendeService {
 			result.setAdultOnly(rendeForm.getAdultOnly());
 			result.setLinked(rendeForm.getLinked());
 			result.setIsDraft(rendeForm.getIsDraft());
-			
 
 		} else
 			result.setLinked(rendeForm.getLinked());
-		
-		
+
 		this.validator.validate(result, binding);
 		return result;
 	}
@@ -295,8 +300,8 @@ public class RendeService {
 		result.setAdultOnly(rende.getAdultOnly());
 		result.setLinked(rende.getLinked());
 		result.setIsDraft(rende.getIsDraft());
+		result.setQuestions(rende.getQuestions());
 
-		
 		return result;
 	}
 

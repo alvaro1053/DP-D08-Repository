@@ -3,6 +3,7 @@ package domain;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -37,7 +38,7 @@ public class Rende extends DomainEntity {
 	private Collection<Rende>			linked;
 	private Collection<Announcement>	announcements;
 	private Collection<Comment>			comments;
-	private Collection<Question>		questions;
+	private List<Question>				questions;
 	private User						user;
 
 
@@ -67,7 +68,7 @@ public class Rende extends DomainEntity {
 	public void setDescription(final String description) {
 		this.description = description;
 	}
-	
+
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
@@ -153,11 +154,12 @@ public class Rende extends DomainEntity {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@ElementCollection
-	public Collection<Question> getQuestions() {
+	@Valid
+	public List<Question> getQuestions() {
 		return this.questions;
 	}
 
-	public void setQuestions(final Collection<Question> questions) {
+	public void setQuestions(final List<Question> questions) {
 		this.questions = questions;
 	}
 

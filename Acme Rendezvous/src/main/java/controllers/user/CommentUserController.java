@@ -53,9 +53,13 @@ public class CommentUserController extends AbstractController {
 		final User principal = this.userService.findByPrincipal();
 		res = this.commentService.findByRendeId(rendeId);
 		final Rende rende = this.rendeService.findOne(rendeId);
+		Boolean permisos = false;
+		if (principal.getrSVPS().contains(rende))
+			permisos = true;
 
 		result = new ModelAndView("comment/list");
 		result.addObject("principal", principal);
+		result.addObject("permisos", permisos);
 		result.addObject("uri", uri);
 		result.addObject("comments", res);
 		result.addObject("rende", rende);
@@ -114,20 +118,6 @@ public class CommentUserController extends AbstractController {
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(commentForm, true, "comment.commit.error");
 			}
-		return result;
-
-	}
-	//Delete
-	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final CommentForm commentForm, final BindingResult binding) {
-		ModelAndView result;
-		final Comment comment = this.commentService.reconstruct(commentForm, binding);
-		try {
-			this.commentService.delete(comment);
-			result = new ModelAndView("redirect:../user/list.do?rendeId=" + comment.getRende().getId());
-		} catch (final Throwable oops) {
-			result = this.createEditModelAndView(commentForm, true, "comment.commit.error");
-		}
 		return result;
 
 	}

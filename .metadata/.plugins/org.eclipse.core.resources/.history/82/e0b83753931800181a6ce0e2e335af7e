@@ -1,0 +1,27 @@
+
+package controllers.admin;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import services.AdminService;
+import services.RendeService;
+import services.ReplyCommentService;
+
+@Controller
+@RequestMapping("/replyComment/admin")
+public class ReplyCommentAdminController {
+
+	// Services
+
+	@Autowired
+	private ReplyCommentService	replyCommentService;
+
+	@Autowired
+	private AdminService		adminService;
+
+	@Autowired
+	private RendeService		rendeService;
+
+}

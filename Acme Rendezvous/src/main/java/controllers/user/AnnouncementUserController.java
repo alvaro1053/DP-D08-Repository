@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.AnnouncementService;
@@ -69,19 +68,6 @@ public class AnnouncementUserController extends AbstractController {
 		return result;
 
 	}
-	
-	//Display
-		@RequestMapping(value = "/display", method = RequestMethod.GET)
-		public ModelAndView display(@RequestParam final int announcementId) {
-			ModelAndView result;
-			Announcement announcement = this.announcementService.findOne(announcementId);
-			
-			
-
-			result = new ModelAndView("announcement/display");
-			result.addObject("announcement", announcement);
-			return result;
-		}
 	
 	
 	
