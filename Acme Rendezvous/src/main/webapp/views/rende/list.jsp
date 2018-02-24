@@ -32,6 +32,10 @@
 	<h3><spring:message code="rende.successful"></spring:message></h3>
 </jstl:if>
 
+<jstl:if test="${successfullyCancelled}">
+	<h3><spring:message code="rende.successfullyCancelled"></spring:message></h3>
+</jstl:if>
+
 
 <!-- Listing grid -->
 

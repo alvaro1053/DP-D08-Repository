@@ -189,15 +189,16 @@ public class RendeUserController extends AbstractController {
 		ModelAndView result;
 		Rende rende;
 		User principal;
-		String alreadyRegistered;
 		Boolean successful;
+		Boolean successfullyCancelled;
 
 		rende = this.rendeService.findOne(rendeId);
 		principal = this.userService.findByPrincipal();
 		if (rende.getAttendants().contains(principal)) {
-			alreadyRegistered = "rende.alreadyRegistered";
-			result = this.createListModelAndView(alreadyRegistered);
-			result.addObject("message", alreadyRegistered);
+			successfullyCancelled = true;
+			final User user = this.rendeService.cancelRsvp(rende, principal);
+			result = this.createListModelAndView(null);
+			result.addObject("successfullyCancelled", successfullyCancelled);
 		} else {
 			successful = true;
 			final User user = this.rendeService.rsvp(rende, principal);
@@ -207,6 +208,7 @@ public class RendeUserController extends AbstractController {
 
 		return result;
 	}
+	
 
 	// Ancillary methods ------------------------------------------------------
 

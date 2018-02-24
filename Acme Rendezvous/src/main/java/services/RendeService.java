@@ -223,16 +223,25 @@ public class RendeService {
 
 	public User rsvp(final Rende rende, final User user) {
 		User result;
-
-		rende.getAttendants().add(user);
-
-		user.getrSVPS().add(rende);
-
+		
+		if (!rende.getAttendants().contains(user)){
+			rende.getAttendants().add(user);
+			user.getrSVPS().add(rende);
+		}
 		result = user;
-
 		return result;
 	}
 
+	public User cancelRsvp(final Rende rende, final User user) {
+		User result;
+		
+		if (rende.getAttendants().contains(user)){
+			rende.getAttendants().remove(user);
+			user.getrSVPS().remove(rende);
+		}
+		result = user;
+		return result;
+	}
 
 	//Reconstruct --------------------------------------------
 
