@@ -122,4 +122,12 @@ public class AnnouncementService {
 
 	}
 
+	public Collection<Announcement> announcementsChronological(final int rendeId){
+		Collection<Announcement> result;
+		
+		result = this.announcementRepository.announcementsChronological(rendeId);
+		
+		return result;
+	}
+	
 }

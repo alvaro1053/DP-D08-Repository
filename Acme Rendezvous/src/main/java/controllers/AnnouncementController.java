@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import domain.Announcement;
-import domain.Rende;
 
 import services.AnnouncementService;
 import services.RendeService;
@@ -51,11 +50,10 @@ public class AnnouncementController extends AbstractController {
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam final int rendeId) {
 		ModelAndView result;
-		Rende rende;
 		Collection<Announcement> announcements;
-		rende = this.rendeService.findOne(rendeId);
 		
-		announcements = rende.getAnnouncements();
+		
+		announcements = this.announcementService.announcementsChronological(rendeId);
 		
 		
 

@@ -26,10 +26,6 @@ public class ReplyQuestionService {
 	@Autowired
 	private UserService				userService;
 
-	@Autowired
-	private AdminService			adminService;
-
-
 	// Constructors
 	public ReplyQuestionService() {
 		super();

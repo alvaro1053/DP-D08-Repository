@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.AdminService;
-import services.CommentService;
-import services.RendeService;
 import services.ReplyCommentService;
 import domain.Admin;
 import domain.Comment;
@@ -31,12 +29,6 @@ public class ReplyCommentAdminController {
 
 	@Autowired
 	private AdminService		adminService;
-
-	@Autowired
-	private RendeService		rendeService;
-
-	@Autowired
-	private CommentService		commentService;
 
 
 	//Delete

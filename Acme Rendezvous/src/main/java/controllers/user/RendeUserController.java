@@ -51,13 +51,14 @@ public class RendeUserController extends AbstractController {
 		Collection<Rende> rendes;
 		final String uri = "/user";
 		final User principal = this.userService.findByPrincipal();
-		final Boolean mayorDeEdad = true;
+		Boolean mayorDeEdad = true;
 		final LocalDate now = new LocalDate();
 		final LocalDate nacimiento = new LocalDate(principal.getDateBirth());
 		final int años = Years.yearsBetween(nacimiento, now).getYears();
-		if (años < 18)
+		if (años < 18){
+			mayorDeEdad = false;
 			rendes = this.rendeService.selectNotAdultRendes();
-		else
+		}else
 			rendes = this.rendeService.findAll();
 
 		result = new ModelAndView("rende/list");
@@ -201,12 +202,12 @@ public class RendeUserController extends AbstractController {
 		principal = this.userService.findByPrincipal();
 		if (rende.getAttendants().contains(principal)) {
 			successfullyCancelled = true;
-			final User user = this.rendeService.cancelRsvp(rende, principal);
+			this.rendeService.cancelRsvp(rende, principal);
 			result = this.createListModelAndView(null);
 			result.addObject("successfullyCancelled", successfullyCancelled);
 		} else {
 			successful = true;
-			final User user = this.rendeService.rsvp(rende, principal);
+			this.rendeService.rsvp(rende, principal);
 			result = this.createListModelAndView(null);
 			result.addObject("successful", successful);
 		}

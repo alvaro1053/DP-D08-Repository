@@ -42,9 +42,10 @@
 	
 	<!-- Delete -->
 	<spring:message code="comment.delete" var="delete" />
+	<spring:message code="comment.confirmComment" var="confirmComment" />
 	<display:column title="${delete}"
 		sortable="false">
- 		<a href="comment/admin/delete.do?commentId=${row.id}">${delete}</a>
+ 		<a href="comment/admin/delete.do?commentId=${row.id}" onclick="return confirm('${confirmComment}')">${delete}</a>
 	</display:column>
 	</security:authorize>
 	
@@ -93,7 +94,7 @@
 	<display:column title="${writer}" property="user.name" href="user${uri}/display.do" paramId="userId" paramProperty="user.id">  </display:column>)
 	
 	<security:authorize access="hasRole('ADMIN')">
-	<display:column title="${delete}"> <a href="replyComment/admin/delete.do?replyCommentId=${reply.id}">${delete}</a> </display:column>
+	<display:column title="${delete}"> <a href="replyComment/admin/delete.do?replyCommentId=${reply.id}" onclick="return confirm('${confirmComment}')">${delete}</a> </display:column>
 	</security:authorize>)
 	
 	</display:table>

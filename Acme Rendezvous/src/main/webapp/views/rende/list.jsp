@@ -88,7 +88,7 @@
   	var="creator" />
   	<display:column property="user.name" title="${creator}"/>
 	
-		<!-- Attendants -->
+		<!-- Linked -->
 	<spring:message code="rende.linked"
   	var="linked" />
 	<display:column title="${linked}">
@@ -118,30 +118,27 @@
 	</ul>
 	</display:column>
 	
-	<spring:message code="rende.expired" var="expired"/>
-	<display:column title="${expired}">
+	<!-- Info -->
+	<spring:message code="rende.info" var="info"/>
+	<spring:message code="rende.adultOnly" var="adultOnly"/>
+	<spring:message code="rende.isDeleted" var="isDeleted"/>
+	
+	<display:column title="${info}">
 	<jsp:useBean id="now" class="java.util.Date"/>
 		<jstl:if test="${row.moment lt now}">
 			<spring:message code="rende.passed"
   			var="passed" />
   			
-			<img id="alarmImg" src="images/alarm.png" alt="${passed}" title="${passed}"/>
+			<img class="alarmImg" src="images/alarm.png" alt="${passed}" title="${passed}"/>
+		</jstl:if>
+		<jstl:if test="${row.adultOnly}">
+			<img class="alarmImg" src="images/cancel.png" alt="${adultOnly}" title="${adultOnly}"/>
+		</jstl:if>
+		<jstl:if test="${row.isDeleted}">
+			<img class="alarmImg" src="images/deleted.png" alt="${isDeleted}" title="${isDeleted}"/>
 		</jstl:if>
 	</display:column>
 	
-	<!-- Is Deleted -->
-	<spring:message code="rende.listDeleted"
-  	var="listDeleted" />
-  	<display:column title="${listDeleted}" sortable="true"> 
-  	<jstl:choose>
-  	<jstl:when test="${row.isDeleted }">
-  	<spring:message code="rende.yes"/>
-  	</jstl:when>
-  	<jstl:otherwise>
-  	<spring:message code="rende.no"/>
-  	</jstl:otherwise>
-  	</jstl:choose>
-  	 </display:column>
 	
 	
 	<!-- RSVP -->

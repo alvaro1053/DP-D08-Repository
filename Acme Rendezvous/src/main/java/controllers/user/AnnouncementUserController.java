@@ -14,10 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AnnouncementService;
 import services.RendeService;
+import services.UserService;
 
 import controllers.AbstractController;
 import domain.Announcement;
 import domain.Rende;
+import domain.User;
 
 
 @Controller
@@ -32,6 +34,8 @@ public class AnnouncementUserController extends AbstractController {
 	@Autowired
 	private RendeService rendeService;
 	
+	@Autowired
+	private UserService userService;
 	
 	//Constructor
 	public AnnouncementUserController(){
@@ -84,8 +88,8 @@ public class AnnouncementUserController extends AbstractController {
 	protected ModelAndView createEditModelAndView(final Announcement announcement, final String message) {
 		final ModelAndView result;
 		Collection<Rende> rendes;
-		
-		rendes = this.rendeService.findRSVPSByUser();
+		User principal = this.userService.findByPrincipal();
+		rendes = this.rendeService.findByUserId(principal.getId());
 		result = new ModelAndView("announcement/edit");
 		result.addObject("announcement", announcement);
 		result.addObject("rendes", rendes);
