@@ -161,14 +161,19 @@ public class RendeService {
 
 		Assert.notNull(principal);
 
+		result = this.rendeRepository.save(rendeToSave);
+
 		if (rendeToSave.getId() == 0) {
 			final Collection<User> attendants = new ArrayList<User>();
 			attendants.add(principal);
-			rendeToSave.setUser(principal);
-			rendeToSave.setAttendants(attendants);
-		}
+			result.setUser(principal);
+			result.setAttendants(attendants);
 
-		result = this.rendeRepository.save(rendeToSave);
+			final Collection<Rende> RSVPS = principal.getrSVPS();
+			RSVPS.add(result);
+			principal.setrSVPS(RSVPS);
+
+		}
 
 		return result;
 	}
@@ -252,9 +257,11 @@ public class RendeService {
 			result.setAttendants(rendeForm.getAttendants());
 			result.setIsDraft(rendeForm.getIsDraft());
 			result.setAdultOnly(rendeForm.getAdultOnly());
-			if(!(rendeForm.getLinked().contains(null))){
+			if (rendeForm.getLinked() == null)
+				result.setLinked(new ArrayList<Rende>());
+			else if (!(rendeForm.getLinked().contains(null)))
 				result.setLinked(rendeForm.getLinked());
-			}else{
+			else {
 				rendeForm.getLinked().remove(null);
 				result.setLinked(rendeForm.getLinked());
 			}

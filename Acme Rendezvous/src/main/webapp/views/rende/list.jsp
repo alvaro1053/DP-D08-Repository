@@ -125,23 +125,40 @@
 		</jstl:if>
 	</display:column>
 	
+	<!-- Is Deleted -->
 	<spring:message code="rende.listDeleted"
   	var="listDeleted" />
-  	<display:column property="isDeleted" title="${listDeleted}" sortable="true"/>
+  	<display:column title="${listDeleted}" sortable="true"> 
+  	<jstl:choose>
+  	<jstl:when test="${row.isDeleted }">
+  	<spring:message code="rende.yes"/>
+  	</jstl:when>
+  	<jstl:otherwise>
+  	<spring:message code="rende.no"/>
+  	</jstl:otherwise>
+  	</jstl:choose>
+  	 </display:column>
 	
 	
 	<!-- RSVP -->
-	<security:authorize access="hasRole('USER')">
-		<display:column>
-			<jstl:if test="${not (row.moment lt now)}">
-				<a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
-			</jstl:if>
-		</display:column>
-	</security:authorize>
+ <security:authorize access="hasRole('USER')">
+  <display:column>
+   <jstl:if test="${not row.attendants.contains(principal)}">
+    <jstl:if test="${not (row.moment lt now)}">
+     <a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
+    </jstl:if>
+   </jstl:if>
+   
+   <jstl:if test="${row.attendants.contains(principal)}">
+    <a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.cancelRSVP"/></a>
+   </jstl:if>
+  </display:column>
+ </security:authorize>
+ 
 	<!-- Questions -->
 	
 	<display:column>
-			<a href="question/list.do?rendeId=${row.id}"> <spring:message
+			<a href="question${uri}/list.do?rendeId=${row.id}"> <spring:message
 					code="rende.questions" />
 			</a>
 	</display:column>

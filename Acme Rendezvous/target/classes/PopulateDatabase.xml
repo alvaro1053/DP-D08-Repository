@@ -277,7 +277,7 @@
 	<property name="questions">
 	<list>
 		<ref bean = "question1"/>
-		<ref bean = "question3"/>
+	
 	</list>
 	</property>
 	
@@ -290,7 +290,7 @@
 	<bean class="domain.Rende" id="rende2">
 	<property name="name" value="Rende 2" />
 	<property name="Description" value="This is the rende 2, and its not +18" />
-	<property name="moment" value="2018/02/27 12:26"/>
+	<property name="moment" value="2018/03/27 12:26"/>
 	<property name="picture" value="https://vignette.wikia.nocookie.net/mrmen/images/5/52/Small.gif/revision/latest?cb=20100731114437"/>
 	<property name="coordenates" ref="location2"/>
 	
@@ -376,6 +376,7 @@
 	
 	<property name="questions">
 	<list>
+	<ref bean = "question3"/>
 	</list>
 	</property>
 	
@@ -434,7 +435,7 @@
 	<bean class="domain.Rende" id="rende5">
 	<property name="name" value="Rende 5" />
 	<property name="Description" value="This is the rende 5, and its not +18" />
-	<property name="moment" value="2018/02/20 11:11"/>
+	<property name="moment" value="2018/07/20 11:11"/>
 	<property name="picture" value=""/>  <!-- ya que es opcional -->
 	<property name="coordenates" ref="location2"/>
 	

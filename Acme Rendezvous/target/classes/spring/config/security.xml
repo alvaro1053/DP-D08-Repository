@@ -82,7 +82,14 @@
 		<!-- Acme Rendezvous Comments -->
 		<security:intercept-url pattern="/comment/user/**" access="hasRole('USER')" /> 
 		<security:intercept-url pattern="/comment/admin/**" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/replyComment/user/**" access="hasRole('USER')" />
 		<security:intercept-url pattern="/replyComment/admin/**" access="hasRole('ADMIN')" />
+		
+		<!-- Acme Rendezvous Questions -->
+		<security:intercept-url pattern="/question/user/**" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/question/admin/**" access="hasRole('ADMIN')" /> 
+		<security:intercept-url pattern="/replyQuestion/user/**" access="hasRole('USER')" /> 
+		<security:intercept-url pattern="/replyQuestion/admin/**" access="hasRole('ADMIN')" /> 
 		
 		
 

@@ -18,7 +18,6 @@ import controllers.AbstractController;
 import domain.Question;
 import domain.Rende;
 import domain.User;
-import forms.CommentForm;
 
 @Controller
 @RequestMapping("/question/user")
@@ -66,6 +65,7 @@ public class QuestionUserController extends AbstractController {
 			permisos = true;
 		result = new ModelAndView("question/list");
 		result.addObject("permisos", permisos);
+		result.addObject("principal", principal);
 		result.addObject("uri", uri);
 		result.addObject("questions", res);
 		result.addObject("replied", repliedByPrincipal);
@@ -75,93 +75,39 @@ public class QuestionUserController extends AbstractController {
 
 	}
 
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam final int questionId) {
+		ModelAndView result;
+		Rende r = new Rende();
+		Collection<Question> res = new ArrayList<Question>();
+		Boolean permisos = false;
+		try {
+			final Question question = this.questionService.findOne(questionId);
+			r = question.getRende();
+			res = r.getQuestions();
+			res.remove(question);
+			this.questionService.delete(question);
+			permisos = true;
+			final String message = "question.deleted";
+			result = this.CreateListModelAndView(res, message, permisos);
+		} catch (final Throwable oops) {
+			result = this.CreateListModelAndView(res, "question.commit.error", false);
+		}
+
+		return result;
+	}
+
+	// Ancillary methods ------------------------------------------------------
 	private ModelAndView CreateListModelAndView(final Collection<Question> res, final String message, final Boolean permisos) {
 		final ModelAndView result;
+		final User principal = this.userService.findByPrincipal();
 		result = new ModelAndView("question/list");
+		final String uri = "/user";
+		result.addObject("principal", principal);
 		result.addObject("questions", res);
 		result.addObject("message", message);
 		result.addObject("permisos", permisos);
-		return result;
-	}
-
-	//Create
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create(@RequestParam final int rendeId) {
-		ModelAndView result;
-		final User principal = this.userService.findByPrincipal();
-		final CommentForm question = new CommentForm();
-		final Rende rende = this.rendeService.findOne(rendeId);
-		question.setRende(rendeId);
-		Boolean permisos = false;
-		if (principal.getrSVPS().contains(rende))
-			permisos = true;
-
-		result = this.createEditModelAndView(question, permisos);
-
-		return result;
-	}
-	/*
-	 * Edit
-	 * 
-	 * @RequestMapping(value = "/edit", method = RequestMethod.GET)
-	 * public ModelAndView edit(@RequestParam final int commentId) {
-	 * ModelAndView result;
-	 * final User principal = this.userService.findByPrincipal();
-	 * Boolean permisos = false;
-	 * final CommentForm commentForm = new CommentForm();
-	 * final Question question = this.questionService.findOne(commentId);
-	 * if (question != null) {
-	 * commentForm.setId(question.getId());
-	 * commentForm.setText(question.getText());
-	 * commentForm.setPicture(question.getPicture());
-	 * commentForm.setRende(question.getRende().getId());
-	 * if (principal.getrSVPS().contains(question.getRende()) && principal.getComments().contains(question))
-	 * permisos = true;
-	 * }
-	 * result = this.createEditModelAndView(commentForm, permisos);
-	 * return result;
-	 * }
-	 * 
-	 * //Save
-	 * 
-	 * @RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	 * public ModelAndView save(final CommentForm commentForm, final BindingResult binding) {
-	 * ModelAndView result;
-	 * final Question question = this.questionService.reconstruct(commentForm, binding);
-	 * if (binding.hasErrors())
-	 * result = this.createEditModelAndView(commentForm, true);
-	 * else
-	 * try {
-	 * this.questionService.save(question);
-	 * result = new ModelAndView("redirect:../user/list.do?rendeId=" + question.getRende().getId());
-	 * } catch (final Throwable oops) {
-	 * result = this.createEditModelAndView(commentForm, true, "question.commit.error");
-	 * }
-	 * return result;
-	 * 
-	 * }
-	 */
-
-	// Ancillary methods ------------------------------------------------------
-
-	protected ModelAndView createEditModelAndView(final CommentForm question, final Boolean permisos) {
-		ModelAndView result;
-
-		result = this.createEditModelAndView(question, permisos, null);
-
-		return result;
-	}
-
-	protected ModelAndView createEditModelAndView(final CommentForm question, final Boolean permisos, final String message) {
-		final ModelAndView result;
-
-		final User principal = this.userService.findByPrincipal();
-		result = new ModelAndView("question/edit");
-		result.addObject("commentForm", question);
-		result.addObject("principal", principal);
-		result.addObject("permisos", permisos);
-		result.addObject("message", message);
-
+		result.addObject("uri", uri);
 		return result;
 	}
 }

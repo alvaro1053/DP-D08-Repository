@@ -1,0 +1,18 @@
+# messages_es.properties
+#
+# Copyright (C) 2017 Universidad de Sevilla
+# 
+# The use of this project is hereby constrained to the conditions of the 
+# TDG Licence, a copy of which you may download from 
+# http://www.tdg-seville.info/License.html
+
+replyComment.reply    = Respuesta
+replyComment.user     = Usuario
+
+replyComment.save 			= Guardar
+replyComment.delete 		= Eliminar 
+replyComment.cancel 		= Cancelar
+replyComment.confirm        = ¿Estás seguro/a?
+replyComment.error         = No tienes permisos para hacer esto.
+replyComment.deleted       = La respuesta ha sido borrada
+replycomment.commit.error  = Error al borrar la respuesta

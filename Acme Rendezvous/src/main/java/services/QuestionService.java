@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.QuestionRepository;
+import domain.Actor;
+import domain.Admin;
 import domain.Question;
 import domain.Rende;
 import domain.ReplyQuestion;
@@ -27,6 +29,9 @@ public class QuestionService {
 	// Supporting Repository
 	@Autowired
 	private UserService				userService;
+
+	@Autowired
+	private ActorService			actorService;
 
 	@Autowired
 	private ReplyQuestionService	replyQuestionService;
@@ -69,6 +74,9 @@ public class QuestionService {
 	public void delete(final Question question) {
 		Assert.notNull(question);
 		List<Question> updated;
+		final Actor principal = this.actorService.findByPrincipal();
+		if (principal instanceof User)
+			Assert.isTrue(((User) principal).getRendes().contains(question.getRende()) || principal instanceof Admin);
 
 		for (final ReplyQuestion rc : question.getReplyQuestions())
 			this.replyQuestionService.delete(rc);
@@ -85,6 +93,14 @@ public class QuestionService {
 		final User principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
 		final Collection<Question> res = this.questionRepository.repliedByUserId(id);
+		return res;
+	}
+
+	public Question findOne(final int id) {
+		final Actor principal = this.actorService.findByPrincipal();
+		final Question res = this.questionRepository.findOne(id);
+		if (principal instanceof User)
+			Assert.isTrue(((User) principal).getRendes().contains(res.getRende()) || ((User) principal).getrSVPS().contains(res.getRende()) || principal instanceof Admin);
 		return res;
 	}
 }

@@ -33,6 +33,8 @@
 		<value>/views/comment/tiles.xml</value>
 		<value>/views/user/tiles.xml</value>
 		<value>/views/replyComment/tiles.xml</value>
+		<value>/views/question/tiles.xml</value>
+		<value>/views/replyQuestion/tiles.xml</value>
 
 
 

@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ReplyQuestionRepository;
-import domain.Admin;
 import domain.Question;
 import domain.ReplyQuestion;
 import domain.User;
@@ -56,18 +55,24 @@ public class ReplyQuestionService {
 		principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
 
+		replyQuestion.setUser(principal);
+
 		result = this.replyQuestionRepository.save(replyQuestion);
+		final Collection<ReplyQuestion> update = principal.getRepliesQuestions();
+		update.add(result);
+		principal.setRepliesQuestions(update);
+
+		final Question question = result.getQuestion();
+		final Collection<ReplyQuestion> update2 = question.getReplyQuestions();
+		update2.add(result);
+		question.setReplyQuestions(update2);
 
 		return result;
 	}
 
 	public void delete(final ReplyQuestion replyQuestion) {
-		Admin principal;
 		Collection<ReplyQuestion> updated, updated2;
 		Assert.notNull(replyQuestion);
-
-		principal = this.adminService.findByPrincipal();
-		Assert.notNull(principal);
 
 		final Question question = replyQuestion.getQuestion();
 		final Collection<ReplyQuestion> replyQuestions1 = question.getReplyQuestions();

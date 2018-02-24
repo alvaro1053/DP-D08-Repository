@@ -73,6 +73,7 @@ public class Rende extends DomainEntity {
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	@Future
 	public Date getMoment() {
 		return this.moment;
 	}

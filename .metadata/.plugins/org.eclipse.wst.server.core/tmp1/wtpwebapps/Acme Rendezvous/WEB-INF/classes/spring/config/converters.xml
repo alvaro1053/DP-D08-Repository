@@ -34,6 +34,12 @@
 		<bean class="converters.StringToReplyCommentConverter" />
 		<bean class="converters.ReplyCommentToStringConverter" />
 		
+		<bean class="converters.StringToReplyQuestionConverter" />
+		<bean class="converters.ReplyQuestionToStringConverter" />
+		
+		<bean class="converters.StringToQuestionConverter" />
+		<bean class="converters.QuestionToStringConverter" />
+		
 	</util:list>
 	
 </beans>

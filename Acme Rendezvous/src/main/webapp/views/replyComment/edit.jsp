@@ -39,12 +39,6 @@
 	<input type="submit" name="save"
 		value="${saveComment}" />&nbsp; 
 		
-<security:authorize access="hasRole('ADMIN')">
-	<jstl:if test="${replyComment.id != 0}">
-  	<input type="submit" name="delete" value="${deleteComment}"
-   		onclick="return confirm('${confirmComment}')" />&nbsp;
-	</jstl:if>
- </security:authorize>
 
 	<input type="button" name="cancel"
 		value="${cancelComment}"

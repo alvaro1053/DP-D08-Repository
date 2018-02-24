@@ -3,7 +3,6 @@ package controllers.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.validation.Valid;
 
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,7 +59,7 @@ public class RendeUserController extends AbstractController {
 			rendes = this.rendeService.selectNotAdultRendes();
 		else
 			rendes = this.rendeService.findAll();
-		
+
 		result = new ModelAndView("rende/list");
 		result.addObject("mayor", mayorDeEdad);
 		result.addObject("principal", principal);
@@ -156,15 +154,7 @@ public class RendeUserController extends AbstractController {
 		Rende rende;
 
 		rende = this.rendeService.reconstruct(rendeForm, binding);
-		
-		if(rende.getMoment().before(new Date())){
-			if(!rende.getIsDraft())
-				rendeForm.setIsDraft(true);
-			
-			result = this.createEditModelAndView(rendeForm, "rende.moment.error");
-			return result;
-		}
-		
+
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(rendeForm);
 		else
@@ -182,7 +172,7 @@ public class RendeUserController extends AbstractController {
 	public ModelAndView delete(@Valid final RendeForm rendeForm, final BindingResult binding) {
 		ModelAndView result;
 
-		Rende rende = this.rendeService.reconstruct(rendeForm, binding);
+		final Rende rende = this.rendeService.reconstruct(rendeForm, binding);
 
 		try {
 			this.rendeService.delete(rende);
@@ -210,7 +200,7 @@ public class RendeUserController extends AbstractController {
 			result.addObject("message", alreadyRegistered);
 		} else {
 			successful = true;
-			User user = this.rendeService.rsvp(rende, principal);
+			final User user = this.rendeService.rsvp(rende, principal);
 			result = this.createListModelAndView(null);
 			result.addObject("successful", successful);
 		}
@@ -271,7 +261,7 @@ public class RendeUserController extends AbstractController {
 	protected ModelAndView createListModelAndView(final String message) {
 		final ModelAndView result;
 		Collection<Rende> rendes;
-		String uri = "/user";
+		final String uri = "/user";
 		final User principal = this.userService.findByPrincipal();
 		Boolean mayorDeEdad = false;
 		final LocalDate now = new LocalDate();
@@ -280,7 +270,6 @@ public class RendeUserController extends AbstractController {
 		if (años < 18)
 			mayorDeEdad = true;
 
-		
 		rendes = this.rendeService.findAll();
 
 		result = new ModelAndView("rende/list");
@@ -289,7 +278,7 @@ public class RendeUserController extends AbstractController {
 		result.addObject("rendes", rendes);
 		result.addObject("message", message);
 		result.addObject("uri", uri);
-		
+
 		return result;
 	}
 }
