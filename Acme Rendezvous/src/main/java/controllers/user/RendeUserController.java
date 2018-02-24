@@ -129,7 +129,8 @@ public class RendeUserController extends AbstractController {
 		ModelAndView result;
 		RendeForm rendeForm;
 		rendeForm = this.rendeService.create();
-		result = this.createEditModelAndView(rendeForm);
+		Boolean finalModeOption = false;
+		result = this.createEditModelAndView(finalModeOption,rendeForm);
 		return result;
 	}
 
@@ -140,11 +141,13 @@ public class RendeUserController extends AbstractController {
 		ModelAndView result;
 		Rende rende;
 		RendeForm rendeForm;
+		Boolean finalModeOption = true;
+		
 		rende = this.rendeService.findOne(rendeId);
 		Assert.notNull(rende);
 		rendeForm = this.rendeService.reconstructForm(rende);
 
-		result = this.createEditModelAndView(rendeForm);
+		result = this.createEditModelAndView(finalModeOption, rendeForm);
 		return result;
 	}
 
@@ -155,13 +158,15 @@ public class RendeUserController extends AbstractController {
 
 		rende = this.rendeService.reconstruct(rendeForm, binding);
 
-		if (binding.hasErrors())
+		if (binding.hasErrors()){
+			rendeForm.setIsDraft(true);
 			result = this.createEditModelAndView(rendeForm);
-		else
+		}else
 			try {
 				this.rendeService.save(rende);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
+				rendeForm.setIsDraft(true);
 				result = this.createEditModelAndView(rendeForm, "rende.commit.error");
 			}
 
@@ -247,6 +252,19 @@ public class RendeUserController extends AbstractController {
 
 		return result;
 	}
+	
+	private ModelAndView createEditModelAndView(Boolean finalModeOption, RendeForm rendeForm) {
+		
+		final ModelAndView result;
+		final Collection<Rende> rendes = this.rendeService.findAll();
+
+		result = new ModelAndView("rende/edit");
+		result.addObject("rendeForm", rendeForm);
+		result.addObject("rendes", rendes);
+		result.addObject("finalModeOption", finalModeOption);
+
+		return result;
+	}
 
 	protected ModelAndView createEditModelAndView(final RendeForm rendeForm, final String message) {
 		final ModelAndView result;
@@ -256,6 +274,7 @@ public class RendeUserController extends AbstractController {
 		result.addObject("rendeForm", rendeForm);
 		result.addObject("rendes", rendes);
 		result.addObject("message", message);
+		result.addObject("finalModeOption", true);
 
 		return result;
 	}

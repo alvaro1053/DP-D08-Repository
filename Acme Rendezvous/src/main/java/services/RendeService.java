@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.BindingResultUtils;
 import org.springframework.validation.Validator;
 
 import repositories.RendeRepository;
@@ -154,7 +157,6 @@ public class RendeService {
 	public Rende save(final Rende rendeToSave) {
 		User principal;
 		Rende result;
-		final Collection<Rende> Rendes, updated, rSVPS, updated2;
 		Assert.notNull(rendeToSave);
 
 		principal = this.userService.findByPrincipal();
@@ -252,9 +254,13 @@ public class RendeService {
 	public Rende reconstruct(final RendeForm rendeForm, final BindingResult binding) {
 		Rende result = new Rende();
 		User principal;
+		principal = this.userService.findByPrincipal();
+		final LocalDate now = new LocalDate();
+		final LocalDate nacimiento = new LocalDate(principal.getDateBirth());
+		final int años = Years.yearsBetween(nacimiento, now).getYears();
 		final List<Question> questions = new ArrayList<Question>();
 
-		principal = this.userService.findByPrincipal();
+		
 		if (rendeForm.getId() == 0) {
 			result.setId(rendeForm.getId());
 			result.setVersion(rendeForm.getVersion());
@@ -264,28 +270,53 @@ public class RendeService {
 			result.setPicture(rendeForm.getPicture());
 			result.setCoordenates(rendeForm.getCoordenates());
 			result.setAttendants(rendeForm.getAttendants());
-			result.setIsDraft(rendeForm.getIsDraft());
-			result.setAdultOnly(rendeForm.getAdultOnly());
-			if (rendeForm.getLinked() == null)
-				result.setLinked(new ArrayList<Rende>());
-			else if (!(rendeForm.getLinked().contains(null)))
-				result.setLinked(rendeForm.getLinked());
-			else {
-				rendeForm.getLinked().remove(null);
-				result.setLinked(rendeForm.getLinked());
-			}
-			result.setIsDraft(rendeForm.getIsDraft());
-			result.setIsDeleted(false);
-			result.setUser(principal);
-			if (rendeForm.getQuestions() != null)
-				for (final Question q : rendeForm.getQuestions())
-					if (q.getQuestion() != null || q.getQuestion() != "" || q == null) {
-						q.setRende(result);
-						questions.add(q);
+			
+				if(años < 18 && rendeForm.getAdultOnly()){
+					result.setAdultOnly(false);
+					binding.rejectValue("adultOnly", "rende.cannot.underage");
+				}else{
+					result.setAdultOnly(rendeForm.getAdultOnly());
+				}
+			
+				if (rendeForm.getLinked() == null){
+					result.setLinked(new ArrayList<Rende>());
+				}else if (!(rendeForm.getLinked().contains(null))){
+					result.setLinked(rendeForm.getLinked());
+				}else {
+					rendeForm.getLinked().remove(null);
+					result.setLinked(rendeForm.getLinked());
+				}
+			
+				if(rendeForm.getIsDraft() == null){
+					result.setIsDraft(true);
+				}else{
+					result.setIsDraft(rendeForm.getIsDraft());
+				}
+				
+				result.setIsDeleted(false);
+				result.setUser(principal);
+				
+				if (rendeForm.getQuestions() != null){
+					for (final Question q : rendeForm.getQuestions()){
+						if (q.getQuestion() != null || q.getQuestion() != "" || q == null) {
+							q.setRende(result);
+							questions.add(q);
+						}
 					}
+				}
+				
 			result.setQuestions(questions);
 
-		} else if (result.getIsDraft() == true && result.getIsDeleted() == false) {
+		} else if(rendeForm.getId() != 0 && rendeForm.getIsDraft() == null){
+			result = this.rendeRepository.findOne(rendeForm.getId());
+			if(rendeForm.getLinked() == null){
+				final List<Rende> emptyLinked = new ArrayList<Rende>();
+				result.setLinked(emptyLinked);
+			}else{
+				result.setLinked(rendeForm.getLinked());
+			}
+		
+		}else{
 			result = this.rendeRepository.findOne(rendeForm.getId());
 			result.setName(rendeForm.getName());
 			result.setDescription(rendeForm.getDescription());
@@ -293,16 +324,27 @@ public class RendeService {
 			result.setPicture(rendeForm.getPicture());
 			result.setCoordenates(rendeForm.getCoordenates());
 			result.setIsDraft(rendeForm.getIsDraft());
-			result.setAdultOnly(rendeForm.getAdultOnly());
 			result.setLinked(rendeForm.getLinked());
 			result.setIsDraft(rendeForm.getIsDraft());
+			
+			if(años < 18 && rendeForm.getAdultOnly()){
+				result.setAdultOnly(false);
+				binding.rejectValue("adultOnly", "rende.cannot.underage");
+			}else{
+				result.setAdultOnly(rendeForm.getAdultOnly());
+			}
+			
+			if(!(rendeForm.getQuestions() == null))
+				result.setQuestions(rendeForm.getQuestions());
+			
+			if(!(rendeForm.getLinked() == null))
+				result.setQuestions(rendeForm.getQuestions());
 
-		} else
-			result.setLinked(rendeForm.getLinked());
-
-		this.validator.validate(result, binding);
+		}
+		this.validator.validate(result, binding);		
 		return result;
 	}
+		
 
 	public RendeForm reconstructForm(final Rende rende) {
 		RendeForm result;
@@ -317,7 +359,6 @@ public class RendeService {
 		result.setPicture(rende.getPicture());
 		result.setCoordenates(rende.getCoordenates());
 		result.setAttendants(rende.getAttendants());
-		result.setIsDraft(rende.getIsDraft());
 		result.setAdultOnly(rende.getAdultOnly());
 		result.setLinked(rende.getLinked());
 		result.setIsDraft(rende.getIsDraft());

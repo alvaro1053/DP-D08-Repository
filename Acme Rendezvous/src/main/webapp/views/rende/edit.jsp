@@ -64,6 +64,7 @@
 	<br />
 	<spring:message code="rende.adultOnly" />
 	<form:checkbox path="adultOnly" name="adult" value="true"/>
+	<form:errors cssClass="error" path="adultOnly" />
 	<br />
 	<br />
 	
@@ -125,13 +126,11 @@
 </jstl:if>
 
 
-
-
-
-	
+<jstl:if test="${finalModeOption}">
 	<spring:message code="rende.isDraft" />
 	<form:checkbox path="isDraft" name="draft" value="true"/>
 	<br />
+</jstl:if>
 	<br />
 	
 	<spring:message code="rende.save" var="saveRende"  />
