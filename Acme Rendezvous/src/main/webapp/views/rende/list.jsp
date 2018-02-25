@@ -37,6 +37,10 @@
 	<h3><spring:message code="rende.successfullyCancelled"></spring:message></h3>
 </jstl:if>
 
+<jstl:if test="${youCantRSVP}">
+	<h3><spring:message code="rende.cant.cancell"></spring:message></h3>
+</jstl:if>
+
 
 <!-- Listing grid -->
 
@@ -147,7 +151,7 @@
   <display:column>
    <jstl:if test="${not row.attendants.contains(principal)}">
     <jstl:if test="${not (row.moment lt now)}">
-     <a href="rende/user/rsvp.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
+     <a href="replyQuestion/user/create.do?rendeId=${row.id}"><spring:message code ="rende.rsvp"/></a>
     </jstl:if>
    </jstl:if>
    
@@ -163,7 +167,8 @@
 			<a href="question${uri}/list.do?rendeId=${row.id}"> <spring:message
 					code="rende.questions" />
 			</a>
-	</display:column>
+
+</display:column>
 
 	
 	

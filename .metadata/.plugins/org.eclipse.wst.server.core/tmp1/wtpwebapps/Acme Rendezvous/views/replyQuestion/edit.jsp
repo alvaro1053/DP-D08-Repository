@@ -16,14 +16,17 @@
 <jstl:choose>
 <jstl:when test="${permisos || isAdmin }">
 
-<form:form action="replyQuestion/user/edit.do" modelAttribute="replyQuestion">
+<form:form action="replyQuestion/user/edit.do" modelAttribute="replyQuestionForm">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="user" />
-	<form:hidden path="question" />
+	<form:hidden path="questions" />
+	
+	<jstl:forEach items="${replyQuestionForm.questions}" var="question" varStatus="i" begin="0">
+	<jstl:out value="${i.index +1}. ${question.question}"/>
+	<acme:textbox code="replyQuestion.reply" path="replies[${i.index}].reply"/>
+	</jstl:forEach>
 	
 	
-<acme:textarea code="replyQuestion.reply" path="reply"/>
 <br/>
 	
 	

@@ -12,8 +12,9 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:choose>
+<jstl:when test="${permisos}">
 
-	
 <form:form action="rende/user/edit.do" modelAttribute="rendeForm">
 
 	<form:hidden path="id" />
@@ -64,6 +65,7 @@
 	<br />
 	<spring:message code="rende.adultOnly" />
 	<form:checkbox path="adultOnly" name="adult" value="true"/>
+	<form:errors cssClass="error" path="adultOnly" />
 	<br />
 	<br />
 	
@@ -125,13 +127,11 @@
 </jstl:if>
 
 
-
-
-
-	
+<jstl:if test="${finalModeOption}">
 	<spring:message code="rende.isDraft" />
 	<form:checkbox path="isDraft" name="draft" value="true"/>
 	<br />
+</jstl:if>
 	<br />
 	
 	<spring:message code="rende.save" var="saveRende"  />
@@ -174,6 +174,12 @@
 
 
 </form:form>
+
+</jstl:when>
+<jstl:otherwise>
+<spring:message code="rende.permision" />
+</jstl:otherwise>
+</jstl:choose>
 
 <script>
     $(document).ready(function() {

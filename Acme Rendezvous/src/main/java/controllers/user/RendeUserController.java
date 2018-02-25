@@ -55,10 +55,10 @@ public class RendeUserController extends AbstractController {
 		final LocalDate now = new LocalDate();
 		final LocalDate nacimiento = new LocalDate(principal.getDateBirth());
 		final int años = Years.yearsBetween(nacimiento, now).getYears();
-		if (años < 18){
+		if (años < 18) {
 			mayorDeEdad = false;
 			rendes = this.rendeService.selectNotAdultRendes();
-		}else
+		} else
 			rendes = this.rendeService.findAll();
 
 		result = new ModelAndView("rende/list");
@@ -131,9 +131,9 @@ public class RendeUserController extends AbstractController {
 		RendeForm rendeForm;
 		this.userService.findByPrincipal();
 		rendeForm = this.rendeService.create();
-		Boolean finalModeOption = false;
-		result = this.createEditModelAndView(finalModeOption,rendeForm);
-		
+		final Boolean finalModeOption = false;
+		result = this.createEditModelAndView(finalModeOption, rendeForm);
+
 		result.addObject("permisos", true);
 		return result;
 	}
@@ -147,20 +147,20 @@ public class RendeUserController extends AbstractController {
 		Rende rende;
 		Boolean permisos;
 		RendeForm rendeForm;
-		Boolean finalModeOption = true;
-		
+		final Boolean finalModeOption = true;
+
 		principal = this.userService.findByPrincipal();
 		Assert.notNull(principal);
-		
+
 		rende = this.rendeService.findOne(rendeId);
 		Assert.notNull(rende);
 		rendeForm = this.rendeService.reconstructForm(rende);
 
 		permisos = principal.getId() == rende.getUser().getId();
 		result = this.createEditModelAndView(finalModeOption, rendeForm);
-		
-		result.addObject("permisos",permisos);
-		
+
+		result.addObject("permisos", permisos);
+
 		return result;
 	}
 
@@ -170,16 +170,16 @@ public class RendeUserController extends AbstractController {
 		Rende rende;
 		Boolean permisos;
 		User principal;
-		 
+
 		principal = this.userService.findByPrincipal();
 		rende = this.rendeService.reconstruct(rendeForm, binding);
 
 		permisos = principal.getId() == rende.getUser().getId();
 
-		if (binding.hasErrors()){
+		if (binding.hasErrors()) {
 			rendeForm.setIsDraft(true);
 			result = this.createEditModelAndView(rendeForm);
-		}else
+		} else
 			try {
 				this.rendeService.save(rende);
 				result = new ModelAndView("redirect:list.do");
@@ -188,7 +188,7 @@ public class RendeUserController extends AbstractController {
 				result = this.createEditModelAndView(rendeForm, "rende.commit.error");
 			}
 
-		result.addObject("permisos",permisos);
+		result.addObject("permisos", permisos);
 
 		return result;
 	}
@@ -219,9 +219,14 @@ public class RendeUserController extends AbstractController {
 
 		rende = this.rendeService.findOne(rendeId);
 		principal = this.userService.findByPrincipal();
-		
 
-		if (rende.getAttendants().contains(principal)) {
+		if (principal.getRendes().contains(rende)) {
+			final Boolean error = true;
+			result = this.createListModelAndView(null);
+			result.addObject("youCantRSVP", error);
+		}
+
+		else if (rende.getAttendants().contains(principal)) {
 			successfullyCancelled = true;
 			this.rendeService.cancelRsvp(rende, principal);
 			result = this.createListModelAndView(null);
@@ -235,7 +240,6 @@ public class RendeUserController extends AbstractController {
 
 		return result;
 	}
-	
 
 	// Ancillary methods ------------------------------------------------------
 
@@ -274,9 +278,9 @@ public class RendeUserController extends AbstractController {
 
 		return result;
 	}
-	
-	private ModelAndView createEditModelAndView(Boolean finalModeOption, RendeForm rendeForm) {
-		
+
+	private ModelAndView createEditModelAndView(final Boolean finalModeOption, final RendeForm rendeForm) {
+
 		final ModelAndView result;
 		final Collection<Rende> rendes = this.rendeService.findAll();
 
@@ -312,8 +316,10 @@ public class RendeUserController extends AbstractController {
 		final int años = Years.yearsBetween(nacimiento, now).getYears();
 		if (años < 18)
 			mayorDeEdad = true;
-
-		rendes = this.rendeService.findAll();
+		if (mayorDeEdad)
+			rendes = this.rendeService.findAll();
+		else
+			rendes = this.rendeService.selectNotAdultRendes();
 
 		result = new ModelAndView("rende/list");
 		result.addObject("mayor", mayorDeEdad);

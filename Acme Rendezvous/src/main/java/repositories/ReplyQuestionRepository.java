@@ -14,4 +14,7 @@ public interface ReplyQuestionRepository extends JpaRepository<ReplyQuestion, In
 
 	@Query("select q.replyQuestions from Rende r join r.questions q where r.id =?1")
 	public Collection<ReplyQuestion> selectByRendeId(int id);
+
+	@Query("select rQ from User u join u.repliesQuestions rQ where rQ.question.rende.id = ?1 and u.id =?2")
+	public Collection<ReplyQuestion> selectByRendeAndUserId(int rendeId, int userId);
 }

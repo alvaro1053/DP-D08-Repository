@@ -49,7 +49,6 @@ public class QuestionUserController extends AbstractController {
 		Collection<Question> res = new ArrayList<Question>();
 		final String uri = "/user";
 		final User principal = this.userService.findByPrincipal();
-		Boolean permisos = false;
 		Rende rende = new Rende();
 		Collection<Question> repliedByPrincipal = new ArrayList<Question>();
 		try {
@@ -58,13 +57,9 @@ public class QuestionUserController extends AbstractController {
 			res = rende.getQuestions();
 		} catch (final Throwable oops) {
 			final String message = "question.error";
-			permisos = false;
-			result = this.CreateListModelAndView(res, message, permisos);
+			result = this.CreateListModelAndView(res, message);
 		}
-		if (principal.getrSVPS().contains(rende))
-			permisos = true;
 		result = new ModelAndView("question/list");
-		result.addObject("permisos", permisos);
 		result.addObject("principal", principal);
 		result.addObject("uri", uri);
 		result.addObject("questions", res);
@@ -80,25 +75,23 @@ public class QuestionUserController extends AbstractController {
 		ModelAndView result;
 		Rende r = new Rende();
 		Collection<Question> res = new ArrayList<Question>();
-		Boolean permisos = false;
 		try {
 			final Question question = this.questionService.findOne(questionId);
 			r = question.getRende();
 			res = r.getQuestions();
 			res.remove(question);
 			this.questionService.delete(question);
-			permisos = true;
 			final String message = "question.deleted";
-			result = this.CreateListModelAndView(res, message, permisos);
+			result = this.CreateListModelAndView(res, message);
 		} catch (final Throwable oops) {
-			result = this.CreateListModelAndView(res, "question.commit.error", false);
+			result = this.CreateListModelAndView(res, "question.commit.error");
 		}
 
 		return result;
 	}
 
 	// Ancillary methods ------------------------------------------------------
-	private ModelAndView CreateListModelAndView(final Collection<Question> res, final String message, final Boolean permisos) {
+	private ModelAndView CreateListModelAndView(final Collection<Question> res, final String message) {
 		final ModelAndView result;
 		final User principal = this.userService.findByPrincipal();
 		result = new ModelAndView("question/list");
@@ -106,7 +99,6 @@ public class QuestionUserController extends AbstractController {
 		result.addObject("principal", principal);
 		result.addObject("questions", res);
 		result.addObject("message", message);
-		result.addObject("permisos", permisos);
 		result.addObject("uri", uri);
 		return result;
 	}

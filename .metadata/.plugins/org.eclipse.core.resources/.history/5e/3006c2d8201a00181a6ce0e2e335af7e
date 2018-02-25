@@ -1,0 +1,28 @@
+
+package forms;
+
+import java.util.Map;
+
+
+import domain.DomainEntity;
+import domain.Question;
+import domain.ReplyQuestion;
+
+public class ReplyQuestionForm extends DomainEntity {
+
+	private Map<Question,ReplyQuestion>	replies;
+
+	
+	public Map<Question, ReplyQuestion> getReplies() {
+		return replies;
+	}
+
+	
+	public void setReplies(Map<Question, ReplyQuestion> replies) {
+		this.replies = replies;
+	}
+
+
+	
+
+}

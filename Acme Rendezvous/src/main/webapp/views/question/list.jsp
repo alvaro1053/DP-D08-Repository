@@ -13,8 +13,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <security:authorize access="hasRole('ADMIN')" var="isAdmin"/>
-<jstl:choose>
-<jstl:when test="${permisos}">
 
 
 <!-- Listing grid -->
@@ -67,35 +65,14 @@
 	
 	<display:column title="${writer}" property="user.name" href="user${uri}/display.do" paramId="userId" paramProperty="user.id">  </display:column>)
 	
-	<security:authorize access="hasRole('ADMIN')">
-	<display:column title="${delete}"> <a href="replyQuestion/admin/delete.do?replyCommentId=${reply.id}">${delete}</a> </display:column>
-	</security:authorize>)
 	</display:table>
 	</display:column>
 	
 	
-	
-	
-	<!-- Reply -->
-	<security:authorize access="hasRole('USER')">
-	<jstl:if test="${!replied.contains(row) && !principal.rendes.contains(row.rende)}">
-	<display:column>
-		<jstl:if test="${not rende.isDeleted}">
-			<a href="replyQuestion/user/create.do?questionId=${row.id}"> <spring:message
-					code="question.reply" />
-			</a>
-		</jstl:if>
-	</display:column>
-	</jstl:if>
-	</security:authorize> 
 
 
 </display:table>
 
 <br/>
- </jstl:when>
- <jstl:otherwise>
- <spring:message code="question.dirtyHacker" />
-</jstl:otherwise>
-</jstl:choose>
+
 

@@ -45,7 +45,7 @@
 
 <tr>
 <td> <strong> <spring:message code="announcement.rende" /> : </strong> </td>
-<td> <a href="rende/display.do?rendeId=${announcement.rende.id}"><jstl:out value="${announcement.rende.name}"/></a> </td>
+<td> <a href="rende/user/display.do?rendeId=${announcement.rende.id}"><jstl:out value="${announcement.rende.name}"/></a> </td>
 </tr>
 
 

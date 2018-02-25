@@ -1,0 +1,26 @@
+package forms;
+
+import java.util.List;
+
+import domain.DomainEntity;
+import domain.ReplyQuestion;
+
+
+public class ReplyQuestionForm extends DomainEntity{
+	
+	
+	private List<ReplyQuestion> replies;
+
+	
+	public List<ReplyQuestion> getReplies() {
+		return replies;
+	}
+
+	
+	public void setReplies(List<ReplyQuestion> replies) {
+		this.replies = replies;
+	}
+	
+	
+
+}

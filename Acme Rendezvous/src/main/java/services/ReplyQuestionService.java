@@ -26,6 +26,7 @@ public class ReplyQuestionService {
 	@Autowired
 	private UserService				userService;
 
+
 	// Constructors
 	public ReplyQuestionService() {
 		super();
@@ -87,6 +88,11 @@ public class ReplyQuestionService {
 	}
 	public Collection<ReplyQuestion> selectByRendeId(final int rendeId) {
 		final Collection<ReplyQuestion> res = this.replyQuestionRepository.selectByRendeId(rendeId);
+		return res;
+	}
+
+	public Collection<ReplyQuestion> selectByRendeAndUserId(final int rendeId, final int userId) {
+		final Collection<ReplyQuestion> res = this.replyQuestionRepository.selectByRendeAndUserId(rendeId, userId);
 		return res;
 	}
 

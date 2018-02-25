@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.QuestionRepository;
 import domain.Actor;
@@ -17,6 +19,7 @@ import domain.Question;
 import domain.Rende;
 import domain.ReplyQuestion;
 import domain.User;
+import forms.ReplyQuestionForm;
 
 @Service
 @Transactional
@@ -35,6 +38,9 @@ public class QuestionService {
 
 	@Autowired
 	private ReplyQuestionService	replyQuestionService;
+
+	@Autowired
+	private Validator				validatorService;
 
 
 	// Constructors
@@ -102,5 +108,24 @@ public class QuestionService {
 		if (principal instanceof User)
 			Assert.isTrue(((User) principal).getRendes().contains(res.getRende()) || ((User) principal).getrSVPS().contains(res.getRende()) || principal instanceof Admin);
 		return res;
+	}
+
+	public List<ReplyQuestion> reconstruct(final ReplyQuestionForm replyQuestionForm, final BindingResult binding) {
+		final User principal = this.userService.findByPrincipal();
+		List<ReplyQuestion> replies = new ArrayList<ReplyQuestion>();
+		if (replyQuestionForm.getId() == 0) {
+			final List<Question> questions = replyQuestionForm.getQuestions();
+			replies = replyQuestionForm.getReplies();
+
+			for (int i = 0; i < questions.size(); i++) {
+				replies.get(i).setQuestion(questions.get(i));
+				replies.get(i).setUser(principal);
+				this.validatorService.validate(replies.get(i), binding);
+
+			}
+
+		}
+
+		return replies;
 	}
 }
