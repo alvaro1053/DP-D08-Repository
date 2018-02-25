@@ -3,12 +3,15 @@ package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.UserService;
+import domain.Actor;
+import domain.Admin;
 import domain.User;
 import forms.ActorForm;
 
@@ -23,9 +26,21 @@ public class UserRegisterController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
+		Actor principal = null;
+		Boolean permiso;
 		final ActorForm actorForm = new ActorForm();
 		result = this.createEditModelAndView(actorForm);
-
+		try {
+			principal = this.userService.findByPrincipal();
+		} catch (final RuntimeException oops) {
+		}
+		if(principal == null){
+			permiso = true;
+			result.addObject("permiso", permiso);
+		}else{
+			permiso = false;
+			result.addObject("permiso", null);
+		}
 		return result;
 	}
 
