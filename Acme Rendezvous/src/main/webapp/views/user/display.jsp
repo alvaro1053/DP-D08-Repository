@@ -72,7 +72,7 @@
 <jstl:when test="${not empty user.rendes}"> 
 <ul>
 <jstl:forEach items="${user.rendes}" var="rende">
-<li> <jstl:out value="${rende.name}"/> &nbsp; (<a href="rende${uri}/display.do?rendeId=${rende.id}"> ${showRende} </a>) </li>
+<li> <jstl:out value="${rende.name}"/> &nbsp; (<a href="rende/display.do?rendeId=${rende.id}"> ${showRende} </a>) </li>
 </jstl:forEach>
 </ul> 
 </jstl:when>
@@ -86,10 +86,23 @@
 </td>
 </tr>
 
+<jstl:if test="${viewAttendants}">
+
+		<spring:message code="user.questionAndReplies" var="QuestionReplies"/>
+	<tr><td><strong><jstl:out value="${QuestionReplies}"/> <spring:message code="user.to"/> ${rende.name} :</strong></td>
+		<td><jstl:forEach items="${mapQuestionsView}" var="map" varStatus="loop">
+				<br/>
+					<strong> <spring:message code="user.question" /> ${loop.count} : </strong><jstl:out value="${map.key.question}"/> &nbsp; <br/>
+					<strong> <spring:message code="user.reply" /> ${loop.count} : </strong><jstl:out value="${map.value.reply}"/><br/>
+				<br/>
+		</jstl:forEach></td>
+	
+	
+	</tr>
+	
+</jstl:if>
 
 </table>
-
-
 
 
 

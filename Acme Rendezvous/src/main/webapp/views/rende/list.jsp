@@ -100,7 +100,7 @@
 	<ul>
 		<jstl:forEach items="${row.linked}" var="linked"> 
 			 <li>
-				 <a href="rende/user/display.do?rendeId=${linked.id}">
+				 <a href="rende/display.do?rendeId=${linked.id}">
 				 	<jstl:out value ="${linked.name}" />
 				 </a>
 			 </li>
@@ -115,7 +115,7 @@
 	<ul>
 		<jstl:forEach items="${row.attendants}" var="attendant"> 
 			 <li>
-				 <a href="user/display.do?userId=${attendant.id}">
+				 <a href="user/displayAttendant.do?userId=${attendant.id}&rendeId=${row.id}">
 				 	<jstl:out value ="${attendant.name}" />
 				 </a>
 			 </li>
@@ -167,6 +167,7 @@
 			<a href="question${uri}/list.do?rendeId=${row.id}"> <spring:message
 					code="rende.questions" />
 			</a>
+		
 
 </display:column>
 
@@ -183,7 +184,15 @@
 		</a>
 	</display:column>
 	
-
+	<security:authorize access="hasRole('USER')">
+		<jstl:if test="${principal.rSVPS.contains(row)}">
+			<display:column>
+				<a href="comment/user/list.do?rendeId=${row.id}"> <spring:message
+						code="rende.comments" />
+				</a>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
 </display:table>
 
 
