@@ -52,7 +52,7 @@ public class AnnouncementController extends AbstractController {
 		ModelAndView result;
 		Collection<Announcement> announcements;
 		
-		
+
 		announcements = this.announcementService.announcementsChronological(rendeId);
 		
 		

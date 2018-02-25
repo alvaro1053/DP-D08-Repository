@@ -12,8 +12,9 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:choose>
+<jstl:when test="${permisos}">
 
-	
 <form:form action="rende/user/edit.do" modelAttribute="rendeForm">
 
 	<form:hidden path="id" />
@@ -173,6 +174,12 @@
 
 
 </form:form>
+
+</jstl:when>
+<jstl:otherwise>
+<spring:message code="rende.permision" />
+</jstl:otherwise>
+</jstl:choose>
 
 <script>
     $(document).ready(function() {

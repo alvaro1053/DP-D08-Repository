@@ -129,9 +129,12 @@ public class RendeUserController extends AbstractController {
 	public ModelAndView create() {
 		ModelAndView result;
 		RendeForm rendeForm;
+		this.userService.findByPrincipal();
 		rendeForm = this.rendeService.create();
 		Boolean finalModeOption = false;
 		result = this.createEditModelAndView(finalModeOption,rendeForm);
+		
+		result.addObject("permisos", true);
 		return result;
 	}
 
@@ -140,15 +143,24 @@ public class RendeUserController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam final int rendeId) {
 		ModelAndView result;
+		User principal;
 		Rende rende;
+		Boolean permisos;
 		RendeForm rendeForm;
 		Boolean finalModeOption = true;
+		
+		principal = this.userService.findByPrincipal();
+		Assert.notNull(principal);
 		
 		rende = this.rendeService.findOne(rendeId);
 		Assert.notNull(rende);
 		rendeForm = this.rendeService.reconstructForm(rende);
 
+		permisos = principal.getId() == rende.getUser().getId();
 		result = this.createEditModelAndView(finalModeOption, rendeForm);
+		
+		result.addObject("permisos",permisos);
+		
 		return result;
 	}
 
@@ -156,8 +168,13 @@ public class RendeUserController extends AbstractController {
 	public ModelAndView save(@Valid final RendeForm rendeForm, final BindingResult binding) {
 		ModelAndView result;
 		Rende rende;
-
+		Boolean permisos;
+		User principal;
+		 
+		principal = this.userService.findByPrincipal();
 		rende = this.rendeService.reconstruct(rendeForm, binding);
+
+		permisos = principal.getId() == rende.getUser().getId();
 
 		if (binding.hasErrors()){
 			rendeForm.setIsDraft(true);
@@ -170,6 +187,8 @@ public class RendeUserController extends AbstractController {
 				rendeForm.setIsDraft(true);
 				result = this.createEditModelAndView(rendeForm, "rende.commit.error");
 			}
+
+		result.addObject("permisos",permisos);
 
 		return result;
 	}
@@ -200,6 +219,8 @@ public class RendeUserController extends AbstractController {
 
 		rende = this.rendeService.findOne(rendeId);
 		principal = this.userService.findByPrincipal();
+		
+
 		if (rende.getAttendants().contains(principal)) {
 			successfullyCancelled = true;
 			this.rendeService.cancelRsvp(rende, principal);

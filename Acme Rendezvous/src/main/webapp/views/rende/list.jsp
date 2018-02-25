@@ -12,6 +12,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 	
+
 	
 <security:authorize access="hasRole('USER')">
 	<form action="rende${uri}/list.do" method="get">
@@ -186,3 +187,5 @@
 <a href="rende/user/create.do"><spring:message code ="rende.newRende"/></a>
 </security:authorize>
 <br/>
+
+
