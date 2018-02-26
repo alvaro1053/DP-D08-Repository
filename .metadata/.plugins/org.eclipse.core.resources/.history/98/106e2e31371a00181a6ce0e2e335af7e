@@ -316,7 +316,7 @@ public class RendeUserController extends AbstractController {
 		final int años = Years.yearsBetween(nacimiento, now).getYears();
 		if (años < 18)
 			mayorDeEdad = true;
-		if (!mayorDeEdad)
+		if (mayorDeEdad)
 			rendes = this.rendeService.findAll();
 		else
 			rendes = this.rendeService.selectNotAdultRendes();

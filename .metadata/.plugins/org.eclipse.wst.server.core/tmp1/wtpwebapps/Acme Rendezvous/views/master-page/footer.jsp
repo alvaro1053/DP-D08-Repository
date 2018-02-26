@@ -16,4 +16,6 @@
 
 <hr />
 
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Sample Co., Inc.</b>
+<b> Joaquín Romero Moreno <br/>  Álvaro Pérez Pérez <br/>  Iván De los Santos García<br/></b>
+
+<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> </b>

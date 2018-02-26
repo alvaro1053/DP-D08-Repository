@@ -345,3 +345,14 @@
 127.0.0.1 - - [25/Feb/2018:15:12:57 +0100] "GET /Acme-Rendezvous/rende/list.do HTTP/1.1" 200 4890
 127.0.0.1 - - [25/Feb/2018:15:12:59 +0100] "GET /Acme-Rendezvous/question/list.do?rendeId=57 HTTP/1.1" 200 3047
 127.0.0.1 - - [25/Feb/2018:15:13:03 +0100] "GET /Acme-Rendezvous/question/list.do?rendeId=61 HTTP/1.1" 200 3041
+127.0.0.1 - - [25/Feb/2018:15:20:24 +0100] "GET /Acme-Rendezvous/security/login.do HTTP/1.1" 200 2722
+127.0.0.1 - - [25/Feb/2018:15:20:27 +0100] "POST /Acme-Rendezvous/j_spring_security_check HTTP/1.1" 302 -
+127.0.0.1 - - [25/Feb/2018:15:20:27 +0100] "GET /Acme-Rendezvous/ HTTP/1.1" 200 2660
+127.0.0.1 - - [25/Feb/2018:15:20:28 +0100] "GET /Acme-Rendezvous HTTP/1.1" 302 -
+127.0.0.1 - - [25/Feb/2018:15:20:28 +0100] "GET /Acme-Rendezvous/ HTTP/1.1" 200 2660
+127.0.0.1 - - [25/Feb/2018:15:20:29 +0100] "GET /Acme-Rendezvous/rende/user/list.do HTTP/1.1" 200 8118
+127.0.0.1 - - [25/Feb/2018:15:20:29 +0100] "GET /Acme-Rendezvous/images/cancel.png HTTP/1.1" 304 -
+127.0.0.1 - - [25/Feb/2018:15:20:31 +0100] "GET /Acme-Rendezvous/rende/user/rsvp.do?rendeId=50 HTTP/1.1" 200 6184
+127.0.0.1 - - [25/Feb/2018:15:20:38 +0100] "GET /Acme-Rendezvous/rende/user/list.do?filter=0 HTTP/1.1" 200 8157
+127.0.0.1 - - [25/Feb/2018:16:35:19 +0100] "GET /Acme-Rendezvous/rende/user/list.do HTTP/1.1" 302 -
+127.0.0.1 - - [25/Feb/2018:16:35:49 +0100] "GET / HTTP/1.1" 404 951
