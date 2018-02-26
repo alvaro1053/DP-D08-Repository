@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.UserService;
+import domain.Actor;
 import domain.User;
 import forms.ActorForm;
 
@@ -23,9 +24,21 @@ public class UserRegisterController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
+		Actor principal = null;
+		Boolean permiso;
 		final ActorForm actorForm = new ActorForm();
 		result = this.createEditModelAndView(actorForm);
-
+		try {
+			principal = this.userService.findByPrincipal();
+		} catch (final RuntimeException oops) {
+		}
+		if (principal == null) {
+			permiso = true;
+			result.addObject("permiso", permiso);
+		} else {
+			permiso = false;
+			result.addObject("permiso", null);
+		}
 		return result;
 	}
 
@@ -34,9 +47,10 @@ public class UserRegisterController {
 		ModelAndView result;
 		User user = new User();
 		user = this.userService.reconstruct(actorForm, binding);
-		if (binding.hasErrors())
+		if (binding.hasErrors()) {
 			result = this.createEditModelAndView(actorForm);
-		else
+			result.addObject("permiso", true);
+		} else
 			try {
 				this.userService.save(user);
 				result = new ModelAndView("redirect:../");

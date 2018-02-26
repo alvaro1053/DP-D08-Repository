@@ -49,7 +49,7 @@
 
 <tr>
 <td> <strong> <spring:message code="rende.user" /> : </strong> </td>
-<td> <a href="user${uri}/display.do?userId=${rende.user.id}"><jstl:out value="${rende.user.name}"/> </a> </td>
+<td> <a href="user/display.do?userId=${rende.user.id}"><jstl:out value="${rende.user.name}"/> </a> </td>
 </tr>
 
 

@@ -11,6 +11,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
+<jstl:choose>
+<jstl:when test="${permiso}">
 
 <spring:message code="user.terms" var="terms"/>
 
@@ -69,6 +71,10 @@ function Terms(){
 <jstl:out value="${message}"/>
 </form:form>
 
-
+</jstl:when>
+<jstl:otherwise>
+<spring:message code="user.permision" />
+</jstl:otherwise>
+</jstl:choose>
 
 

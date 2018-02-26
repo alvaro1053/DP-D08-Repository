@@ -75,7 +75,7 @@ public class ReplyQuestionUserController extends AbstractController {
 		if (rende.getQuestions().size() != 0)
 			result = this.createEditModelAndView(replyQuestionForm, permisos);
 		else
-			result = new ModelAndView("redirect: ../../rende/user/rsvp.do?rendeId=" + rendeId);
+			result = new ModelAndView("redirect:../../rende/user/rsvp.do?rendeId=" + rendeId);
 
 		return result;
 	}

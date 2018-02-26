@@ -45,7 +45,7 @@
 
 	<input type="button" name="cancel"
 		value="${cancelQuestion}"
-		onclick="javascript: relativeRedir('question/user/list.do?rendeId=${replyQuestion.question.rende.id}');" />
+		onclick="javascript: relativeRedir('rende/user/list.do');" />
 	<br />
 </form:form>
 </jstl:when>

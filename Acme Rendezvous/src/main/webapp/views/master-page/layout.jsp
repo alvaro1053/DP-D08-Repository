@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="styles/displaytag.css" type="text/css">
 
 
+
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
 <script type="text/javascript">

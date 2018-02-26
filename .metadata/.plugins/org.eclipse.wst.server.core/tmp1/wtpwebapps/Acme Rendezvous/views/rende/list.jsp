@@ -91,7 +91,8 @@
   	<!-- Creator -->
   	<spring:message code="rende.creator"
   	var="creator" />
-  	<display:column property="user.name" title="${creator}"/>
+  	<display:column title="${creator}">  <a href="user${uri}/display.do?userId=${row.user.id}">
+				 	<jstl:out value ="${row.user.name} ${row.user.surname}" /> </a></display:column>
 	
 		<!-- Linked -->
 	<spring:message code="rende.linked"
@@ -100,7 +101,7 @@
 	<ul>
 		<jstl:forEach items="${row.linked}" var="linked"> 
 			 <li>
-				 <a href="rende/user/display.do?rendeId=${linked.id}">
+				 <a href="rende/display.do?rendeId=${linked.id}">
 				 	<jstl:out value ="${linked.name}" />
 				 </a>
 			 </li>
@@ -115,8 +116,8 @@
 	<ul>
 		<jstl:forEach items="${row.attendants}" var="attendant"> 
 			 <li>
-				 <a href="user/display.do?userId=${attendant.id}">
-				 	<jstl:out value ="${attendant.name}" />
+				 <a href="user/displayAttendant.do?userId=${attendant.id}&rendeId=${row.id}">
+				 	<jstl:out value ="${attendant.userAccount.username}" />
 				 </a>
 			 </li>
 		</jstl:forEach>
@@ -167,6 +168,7 @@
 			<a href="question${uri}/list.do?rendeId=${row.id}"> <spring:message
 					code="rende.questions" />
 			</a>
+		
 
 </display:column>
 
@@ -183,7 +185,32 @@
 		</a>
 	</display:column>
 	
+	<security:authorize access="hasRole('USER')">
+	
+			<display:column>
+				<jstl:if test="${principal.rSVPS.contains(row)}">
+				<a href="comment/user/list.do?rendeId=${row.id}"> <spring:message
+						code="rende.comments" />
+				</a>
+						</jstl:if>
+			</display:column>
 
+	</security:authorize>
+	
+	
+	
+	<security:authorize access="hasRole('ADMIN')">
+	
+			<display:column>
+
+				<a href="comment/admin/list.do?rendeId=${row.id}"> <spring:message
+						code="rende.comments" />
+				</a>
+			</display:column>
+
+	</security:authorize>
+	
+	
 </display:table>
 
 
