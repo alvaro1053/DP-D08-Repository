@@ -19,7 +19,8 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<jstl:choose>
+<jstl:when test="${permisos}">
 <jstl:if test="${not empty announcements}">
 <jstl:forEach items="${announcements}" var="announcement">
 <table class="displayStyle">
@@ -71,3 +72,8 @@
 		<h4><spring:message code = "announcement.noAnnouncements"/></h4>
 	</jstl:if>
 </security:authorize>
+</jstl:when>
+<jstl:otherwise>
+<h2><spring:message code = "announcement.noPermisos"/></h2>
+</jstl:otherwise>
+</jstl:choose>

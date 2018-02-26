@@ -122,12 +122,20 @@ public class AnnouncementService {
 
 	}
 
-	public Collection<Announcement> announcementsChronological(final int rendeId){
+	public Collection<Announcement> announcementsChronological(final int rendeId) {
 		Collection<Announcement> result;
-		
+
 		result = this.announcementRepository.announcementsChronological(rendeId);
-		
+
 		return result;
 	}
-	
+
+	public Collection<Announcement> announcementsChronologicalByUser(final int userId) {
+		Collection<Announcement> result;
+
+		result = this.announcementRepository.announcementsChronologicalByUser(userId);
+
+		return result;
+	}
+
 }
