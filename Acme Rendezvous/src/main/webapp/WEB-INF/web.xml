@@ -44,4 +44,29 @@
     <error-code>403</error-code>
     <location>/views/misc/403.jsp</location>
   </error-page>
+  
+  
+<!-- 
+  <security-constraint>
+  	<web-resource-collection>
+ 		<web-resource-name>WebApp</web-resource-name>
+ 		<url-pattern>/security/login.do</url-pattern>
+ 		<url-pattern>/user/*</url-pattern>
+ 		<url-pattern>/admin/*</url-pattern>
+ 	</web-resource-collection>
+ 	<user-data-constraint>
+ 		<transport-guarantee> CONFIDENTIAL </transport-guarantee>
+ 	</user-data-constraint>
+  </security-constraint>
+  
+    <security-constraint>
+  	<web-resource-collection>
+ 		<web-resource-name>WebApp</web-resource-name>
+ 		<url-pattern>/*</url-pattern> 
+ 	</web-resource-collection>
+ 	<user-data-constraint>
+ 		<transport-guarantee>NONE</transport-guarantee>
+ 	</user-data-constraint>
+  </security-constraint>
+  -->  
 </web-app>
