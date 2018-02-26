@@ -13,6 +13,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import security.UserAccount;
@@ -40,6 +41,7 @@ public class ActorForm extends DomainEntity {
 	}
 
 	@Size(min = 5, max = 32)
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getConfirmPassword() {
 		return this.confirmPassword;
 	}
@@ -60,6 +62,7 @@ public class ActorForm extends DomainEntity {
 		this.dateBirth = dateBirth;
 	}
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getName() {
 		return this.name;
 	}
@@ -68,6 +71,7 @@ public class ActorForm extends DomainEntity {
 		this.name = name;
 	}
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getSurname() {
 		return this.surname;
 	}
@@ -77,6 +81,7 @@ public class ActorForm extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getEmail() {
 		return this.email;
 	}
@@ -85,6 +90,7 @@ public class ActorForm extends DomainEntity {
 		this.email = emails;
 	}
 
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getPhone() {
 		return this.phone;
 	}
@@ -93,6 +99,7 @@ public class ActorForm extends DomainEntity {
 		this.phone = phones;
 	}
 
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getAddress() {
 		return this.address;
 	}

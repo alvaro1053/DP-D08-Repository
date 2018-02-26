@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -37,6 +38,7 @@ public class Announcement extends DomainEntity {
 		this.moment = moment;
 	}
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getTitle() {
 		return this.title;
 	}
@@ -45,6 +47,7 @@ public class Announcement extends DomainEntity {
 		this.title = title;
 	}
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getDescription() {
 		return this.description;
 	}

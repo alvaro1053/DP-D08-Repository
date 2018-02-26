@@ -16,7 +16,11 @@ import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 import security.UserAccount;
 

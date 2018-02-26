@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -33,6 +34,7 @@ public class Question extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getQuestion() {
 		return this.question;
 	}

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import domain.DomainEntity;
@@ -53,6 +54,7 @@ public class RendeForm extends DomainEntity {
 		super();
 	}
 
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getName() {
 		return this.name;
 	}
@@ -60,6 +62,7 @@ public class RendeForm extends DomainEntity {
 		this.name = name;
 	}
 
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getDescription() {
 		return this.description;
 	}
@@ -67,15 +70,17 @@ public class RendeForm extends DomainEntity {
 		this.description = description;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getMoment() {
 		return this.moment;
 	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+	
 	public void setMoment(final Date moment) {
 		this.moment = moment;
 	}
 
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getPicture() {
 		return this.picture;
 	}

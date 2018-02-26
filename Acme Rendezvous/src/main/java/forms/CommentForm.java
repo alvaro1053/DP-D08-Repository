@@ -6,6 +6,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 import domain.DomainEntity;
@@ -28,6 +29,7 @@ public class CommentForm extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getText() {
 		return this.text;
 	}
@@ -36,6 +38,7 @@ public class CommentForm extends DomainEntity {
 		this.text = text;
 	}
 	@URL
+	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getPicture() {
 		return this.picture;
 	}
