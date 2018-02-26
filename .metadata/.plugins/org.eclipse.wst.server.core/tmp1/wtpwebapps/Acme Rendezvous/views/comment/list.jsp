@@ -59,7 +59,7 @@
 	<!-- picture -->
 	<spring:message code="comment.picture" var="pictureHeader" />
 	<spring:message code="comment.pictureError" var="pictureError" />
-	<display:column title="${pictureHeader}" sortable="true" > <img src="${row.picture}"  width="auto" height="auto"></display:column> 
+	<display:column title="${pictureHeader}" sortable="true" > <img src="${row.picture}"  width="auto" height="200"></display:column> 
 
 
 	<!-- Writer -->

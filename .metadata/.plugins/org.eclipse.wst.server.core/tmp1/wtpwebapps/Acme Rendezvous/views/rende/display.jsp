@@ -41,6 +41,14 @@
 
 
 <tr>
+<td> <strong> <spring:message code="rende.picture" /> : </strong> </td>
+<td> <img src="${rende.picture}"  width="auto" height="200"> </td>
+</tr>
+
+
+
+
+<tr>
 <spring:message code="rende.momentPattern" var="pattern" />
 <td> <strong> <spring:message code="rende.moment" /> : </strong> </td>
 <td> <fmt:formatDate value="${rende.moment}" pattern="${pattern}" /> </td>
@@ -113,6 +121,26 @@
 </jstl:otherwise>
 </jstl:choose>
 </td>
+</tr>
+
+</table>
+
+<table>
+
+<tr>
+<th> <strong> <spring:message code="rende.coordenates" /> : </strong> </th>
+<th></th>
+</tr>
+
+<tr>
+<td> <strong> <spring:message code="rende.coordenates.latitude" /> : </strong> </td>
+<td>  <jstl:out value="${rende.coordenates.latitude}"> </jstl:out> </td>
+</tr>
+
+
+<tr>
+<td> <strong> <spring:message code="rende.coordenates.longitude" /> : </strong> </td>
+<td>  <jstl:out value="${rende.coordenates.longitude}"> </jstl:out> </td>
 </tr>
 
 </table>
