@@ -18,7 +18,7 @@
 
 .jMenu li {
 	display: table-cell;
-	background-color: #322f32;
+	background-color: #56616D;
 	margin: 0px;
 }
 
@@ -44,14 +44,14 @@
 }
 
 .jMenu li ul li {
-	background-color: #322f32;
+	background-color: #56616D;
 	display: block;
-	border-bottom: 1px solid #484548;
+
 	padding: 0;
 }
 
 .jMenu li ul li.arrow {
-	background-color: #322f32;
+	background-color: #56616D;
 	background-image: url('../images/arrow_down.png');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -80,8 +80,7 @@
 }
 
 .jMenu li ul li a:hover {
-	background-color: #514c52;
-	border-top: 1px solid #322f32;
-	border-bottom: 1px solid #322f32;
+	background-color: #56616D;
+
 	text-decoration: none;
 }

@@ -21,11 +21,11 @@ public class UserUserController extends AbstractController {
 
 	//Autowired
 	@Autowired
-	UserService		userService;
+	UserService	userService;
 
+	
 	@Autowired
 	RendeService	rendeService;
-
 
 	//Constructor
 	public UserUserController() {
@@ -52,19 +52,18 @@ public class UserUserController extends AbstractController {
 	public ModelAndView display(@RequestParam final int userId) {
 		final ModelAndView result;
 		User user;
-		final User principal = this.userService.findByPrincipal();
 		final String uri = "/user";
-		final Boolean viewAttendants = false;
+		Boolean viewAttendants = false;
 
 		user = this.userService.findOne(userId);
 
 		result = new ModelAndView("user/display");
 		result.addObject("user", user);
-		result.addObject("principal", principal);
+		result.addObject("principal", null);
 		result.addObject("viewAttendants", viewAttendants);
 		result.addObject("uri", uri);
 		return result;
 
 	}
-
+	
 }
