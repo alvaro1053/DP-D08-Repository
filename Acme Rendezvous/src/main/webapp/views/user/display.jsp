@@ -84,7 +84,7 @@
 <jstl:when test="${not empty user.rendes}"> 
 <ul>
 <jstl:forEach items="${user.rendes}" var="rende">
-<li> <jstl:out value="${rende.name}"/> &nbsp; (<a href="rende/display.do?rendeId=${rende.id}"> ${showRende} </a>) </li>
+<li> <jstl:out value="${rende.name}"/> &nbsp; (<a href="rende/user/display.do?rendeId=${rende.id}"> ${showRende} </a>) </li>
 </jstl:forEach>
 </ul> 
 </jstl:when>
