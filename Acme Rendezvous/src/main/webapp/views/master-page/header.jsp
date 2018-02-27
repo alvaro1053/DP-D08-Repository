@@ -13,6 +13,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
+
 <div>
 	<a href="/Acme-Rendezvous"><img src="images/logo.png" alt="Sample Co., Inc." /></a>
 </div>
