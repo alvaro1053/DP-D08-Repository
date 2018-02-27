@@ -71,11 +71,11 @@
 <td class="right-display"> <jstl:out value ="${user.dateBirth}" /> &nbsp; </td>
 </tr>
 
-
+<!-- RENDES PARA ANONIMOS -->
 
 
 <spring:message code="user.showRende" var="showRende"/>
-
+<security:authorize access="isAnonymous()">
 <tr>
 <td class ="left-display"> <strong> <spring:message code="user.rendes" /> : </strong> </td>
 <td class="right-display"> 
@@ -97,6 +97,68 @@
 
 </td>
 </tr>
+</security:authorize>
+
+
+
+<!-- RENDES PARA USERS -->
+
+
+<spring:message code="user.showRende" var="showRende"/>
+<security:authorize access="hasRole('USER')">
+<tr>
+<td class ="left-display"> <strong> <spring:message code="user.rendes" /> : </strong> </td>
+<td class="right-display"> 
+
+<jstl:choose>
+<jstl:when test="${not empty user.rendes}"> 
+<ul>
+<jstl:forEach items="${user.rendes}" var="rende">
+<li> <jstl:out value="${rende.name}"/> &nbsp; (<a href="rende/user/display.do?rendeId=${rende.id}"> ${showRende} </a>) </li>
+</jstl:forEach>
+</ul> 
+</jstl:when>
+<jstl:otherwise>
+
+<spring:message code="user.rendes.empty" />
+
+</jstl:otherwise>
+</jstl:choose>
+
+</td>
+</tr>
+</security:authorize>
+
+
+<!-- RENDES PARA ADMINS -->
+
+
+<spring:message code="user.showRende" var="showRende"/>
+<security:authorize access="hasRole('ADMIN')">
+<tr>
+<td class ="left-display"> <strong> <spring:message code="user.rendes" /> : </strong> </td>
+<td class="right-display"> 
+
+<jstl:choose>
+<jstl:when test="${not empty user.rendes}"> 
+<ul>
+<jstl:forEach items="${user.rendes}" var="rende">
+<li> <jstl:out value="${rende.name}"/> &nbsp; (<a href="rende/admin/display.do?rendeId=${rende.id}"> ${showRende} </a>) </li>
+</jstl:forEach>
+</ul> 
+</jstl:when>
+<jstl:otherwise>
+
+<spring:message code="user.rendes.empty" />
+
+</jstl:otherwise>
+</jstl:choose>
+
+</td>
+</tr>
+</security:authorize>
+
+
 
 <jstl:if test="${viewAttendants}">
 

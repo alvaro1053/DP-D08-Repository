@@ -105,7 +105,7 @@
 
 
 <spring:message code="user.showRende" var="showRende"/>
-<security:authorize access="hasRole('USER')">
+<security:authorize access="isAnonymous()">
 <tr>
 <td class ="left-display"> <strong> <spring:message code="user.rendes" /> : </strong> </td>
 <td class="right-display"> 
@@ -134,7 +134,7 @@
 
 
 <spring:message code="user.showRende" var="showRende"/>
-<security:authorize access="hasRole('ADMIN')">
+<security:authorize access="isAnonymous()">
 <tr>
 <td class ="left-display"> <strong> <spring:message code="user.rendes" /> : </strong> </td>
 <td class="right-display"> 
