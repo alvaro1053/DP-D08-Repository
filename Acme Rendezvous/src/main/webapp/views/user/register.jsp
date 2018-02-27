@@ -36,10 +36,14 @@ function Terms(){
 	<acme:textbox code="user.email" path="email"/>
 	<br />
 	
-	
-	<acme:textbox code="user.phone" path="phone"/>
+	<!-- Input del form con el formato antiguo para permitir el pattern -->
+	<form:label path="phone">
+		<spring:message code="user.phone" />
+	</form:label>	
+	<form:input path="phone" pattern="[0-9]{9}"/>	
+	<form:errors path="phone" cssClass="error" />
 	<br />
-	
+	<br />
 	<acme:textbox code="user.address" path="address"/>
 	<br />
 	

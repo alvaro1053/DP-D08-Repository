@@ -10,8 +10,10 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -81,6 +83,7 @@ public class ActorForm extends DomainEntity {
 	}
 
 	@NotBlank
+	@Email
 	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
 	public String getEmail() {
 		return this.email;
@@ -91,6 +94,7 @@ public class ActorForm extends DomainEntity {
 	}
 
 	@SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
+	
 	public String getPhone() {
 		return this.phone;
 	}

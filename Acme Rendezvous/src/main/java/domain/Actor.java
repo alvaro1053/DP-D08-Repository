@@ -70,6 +70,7 @@ public class Actor extends DomainEntity {
 		this.email = emails;
 	}
 
+	
 	public String getPhone() {
 		return this.phone;
 	}
