@@ -43,10 +43,28 @@
 <td> <fmt:formatDate pattern="${format}" value="${announcement.moment}" /> </td>
 </tr>
 
+
+<security:authorize access="isAnonymous()">
+<tr>
+<td> <strong> <spring:message code="announcement.rende" /> : </strong> </td>
+<td> <a href="rende/display.do?rendeId=${announcement.rende.id}"><jstl:out value="${announcement.rende.name}"/></a> </td>
+</tr>
+</security:authorize>
+
+<security:authorize access="hasRole('USER')">
 <tr>
 <td> <strong> <spring:message code="announcement.rende" /> : </strong> </td>
 <td> <a href="rende/user/display.do?rendeId=${announcement.rende.id}"><jstl:out value="${announcement.rende.name}"/></a> </td>
 </tr>
+</security:authorize>
+
+
+<security:authorize access="hasRole('ADMIN')">
+<tr>
+<td> <strong> <spring:message code="announcement.rende" /> : </strong> </td>
+<td> <a href="rende/admin/display.do?rendeId=${announcement.rende.id}"><jstl:out value="${announcement.rende.name}"/></a> </td>
+</tr>
+</security:authorize>
 
 
 
