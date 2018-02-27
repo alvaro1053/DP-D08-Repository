@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.QuestionService;
 import services.RendeService;
-import services.UserService;
 import domain.Question;
 import domain.Rende;
 
@@ -22,13 +20,6 @@ import domain.Rende;
 public class QuestionController extends AbstractController {
 
 	// Services
-
-	@Autowired
-	private QuestionService	questionService;
-
-	@Autowired
-	private UserService		userService;
-
 	@Autowired
 	private RendeService	rendeService;
 

@@ -25,38 +25,38 @@
 
 
 <tr>
-<td> <strong> <spring:message code="user.username" /> : </strong> </td>
-<td>  <jstl:out value = "${user.userAccount.username}"/> &nbsp;  </td>
+<td class ="left-display"> <strong> <spring:message code="user.username" /> : </strong> </td>
+<td class="right-display">  <jstl:out value = "${user.userAccount.username}"/> &nbsp;  </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="user.name" /> : </strong> </td>
-<td>  <jstl:out value = "${user.name}"/> &nbsp;  </td>
+<td class ="left-display"> <strong> <spring:message code="user.name" /> : </strong> </td>
+<td class="right-display">  <jstl:out value = "${user.name}"/> &nbsp;  </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="user.surname" /> : </strong> </td>
-<td>  <jstl:out value = "${user.surname}"/> &nbsp;  </td>
+<td class ="left-display"> <strong> <spring:message code="user.surname" /> : </strong> </td>
+<td class="right-display">  <jstl:out value = "${user.surname}"/> &nbsp;  </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="user.phone" /> : </strong> </td>
-<td>  <jstl:out value="${user.phone}" /> &nbsp; </td>
+<td class ="left-display"> <strong> <spring:message code="user.phone" /> : </strong> </td>
+<td class="right-display">  <jstl:out value="${user.phone}" /> &nbsp; </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="user.address" /> : </strong> </td>
-<td>  <jstl:out value="${user.address}" /> &nbsp; </td>
+<td class ="left-display"> <strong> <spring:message code="user.address" /> : </strong> </td>
+<td class="right-display">  <jstl:out value="${user.address}" /> &nbsp; </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="user.email" /> : </strong> </td>
-<td> <jstl:out value ="${user.email}" /> &nbsp; </td>
+<td class ="left-display"> <strong> <spring:message code="user.email" /> : </strong> </td>
+<td class="right-display"> <jstl:out value ="${user.email}" /> &nbsp; </td>
 </tr>
 
 <tr>
-<td> <strong> <spring:message code="user.dateBirth" /> : </strong> </td>
-<td> <jstl:out value ="${user.dateBirth}" /> &nbsp; </td>
+<td class ="left-display"> <strong> <spring:message code="user.dateBirth" /> : </strong> </td>
+<td class="right-display"> <jstl:out value ="${user.dateBirth}" /> &nbsp; </td>
 </tr>
 
 
@@ -65,8 +65,8 @@
 <spring:message code="user.showRende" var="showRende"/>
 
 <tr>
-<td> <strong> <spring:message code="user.rendes" /> : </strong> </td>
-<td> 
+<td class ="left-display"> <strong> <spring:message code="user.rendes" /> : </strong> </td>
+<td class="right-display"> 
 
 <jstl:choose>
 <jstl:when test="${not empty user.rendes}"> 
@@ -89,8 +89,8 @@
 <jstl:if test="${viewAttendants}">
 
 		<spring:message code="user.questionAndReplies" var="QuestionReplies"/>
-	<tr><td><strong><jstl:out value="${QuestionReplies}"/> <spring:message code="user.to"/> ${rende.name} :</strong></td>
-		<td><jstl:forEach items="${mapQuestionsView}" var="map" varStatus="loop">
+	<tr><td class ="left-display"><strong><jstl:out value="${QuestionReplies}"/> <spring:message code="user.to"/> ${rende.name} :</strong></td>
+		<td class="right-display"><jstl:forEach items="${mapQuestionsView}" var="map" varStatus="loop">
 				<br/>
 					<strong> <spring:message code="user.question" /> ${loop.count} : </strong><jstl:out value="${map.key.question}"/> &nbsp; <br/>
 					<strong> <spring:message code="user.reply" /> ${loop.count} : </strong><jstl:out value="${map.value.reply}"/><br/>
