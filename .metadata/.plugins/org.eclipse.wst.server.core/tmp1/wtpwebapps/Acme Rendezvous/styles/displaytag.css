@@ -12,6 +12,11 @@ table {
 	border: 1px solid #666;
 	width: 80%;
 	margin: 20px 0 20px 0 !important;
+	border-collapse: collapse; 
+}
+
+table, th, td {
+    border: 1px solid #DADFE1;
 }
 
 th,td {
@@ -19,26 +24,23 @@ th,td {
 	text-align: left;
 	vertical-align: top;
 }
+
+
 tr {
-	background-color: cyan;
+	background-color: #BDC3C7;
 }
 
 thead tr {
-	background-color: #fc0;
+	background-color: #6C7A89;
 }
+
+
+
 
 th.sorted {
-	background-color: orange;
+	background-color: #67809F;
 }
 
-th a,th a:visited {
-	color: black;
-}
-
-th a:hover {
-	text-decoration: underline;
-	color: black;
-}
 
 th.sorted a,th.sortable a {
 	background-position: right;
@@ -66,11 +68,11 @@ th.order2 a {
 }
 
 tr.odd {
-	background-color: #fff
+	background-color: #BDC3C7;
 }
 
 tr.tableRowEven,tr.even {
-	background-color: #fea
+	background-color: #ECF0F1;
 }
 
 div.exportlinks {
@@ -108,9 +110,11 @@ span.rtf {
 	background-image: url(../images/ico_file_rtf.png);
 }
 
+
+
 span.pagebanner {
-	background-color: #eee;
-	border: 1px dotted #999;
+	background-color: #6C7A89;
+	border: 1px solid #DADFE1;
 	padding: 2px 4px 2px 4px;
 	width: 79%;
 	margin-top: 10px;
@@ -119,14 +123,18 @@ span.pagebanner {
 }
 
 span.pagelinks {
-	background-color: #eee;
-	border: 1px dotted #999;
+	background-color: #6C7A89;
+	border: 1px solid #DADFE1;
 	padding: 2px 4px 2px 4px;
 	width: 79%;
 	display: block;
 	border-top: none;
 	margin-bottom: -5px;
 }
+
+
+
+
 
 .group-1 {
 	font-weight: bold;
@@ -165,3 +173,29 @@ span.pagelinks {
 .grandtotal-row {
 	border-top: 2px solid black;
 }
+
+.left-display {
+	background-color: #BDC3C7;
+}
+
+.right-display {
+	background-color: #ECF0F1;
+}
+
+a{
+	
+	color:#013243;
+}
+
+a:hover{
+	text-decoration: none;
+	color: #34495E;
+}
+
+a:visited{
+	text-decoration: underline;
+	
+	
+}
+
+
