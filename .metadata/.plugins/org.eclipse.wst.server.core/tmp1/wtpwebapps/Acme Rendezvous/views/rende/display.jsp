@@ -129,7 +129,6 @@
 
 <tr>
 <th> <strong> <spring:message code="rende.coordenates" /> : </strong> </th>
-<th></th>
 </tr>
 
 <tr>

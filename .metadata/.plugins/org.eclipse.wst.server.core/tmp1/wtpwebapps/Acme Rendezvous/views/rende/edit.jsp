@@ -19,11 +19,10 @@
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="isDeleted" />
 	
 	
 	<jstl:choose>
-	<jstl:when test="${rendeForm.isDraft == true || rendeForm.isDeleted == false}">
+	<jstl:when test="${rendeForm.isDraft == true || isDeleted}">
 <!-- ATRIBUTES -->
 	<!-- name -->
 	<acme:textbox code="rende.name" path="name"/>

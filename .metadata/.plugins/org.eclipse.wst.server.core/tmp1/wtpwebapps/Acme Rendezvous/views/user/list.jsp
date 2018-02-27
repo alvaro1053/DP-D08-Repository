@@ -46,9 +46,22 @@
 		
 	<!-- address -->
 	<spring:message code="user.address"
-		var="addressHeader" />
-	<display:column property="address" title="${addressHeader}"
-		sortable="true" />
+			var="addressHeader" />
+	<security:authorize access="hasRole('USER')">
+			<display:column title="${addressHeader}"
+			sortable="true">
+		<jstl:if test="${principal==row}">
+			<jstl:out value ="${row.address}"/>
+		</jstl:if>
+			</display:column>
+	</security:authorize>
+	
+	<security:authorize access="hasRole('ADMIN')">
+			<display:column title="${addressHeader}"
+			sortable="true">
+			<jstl:out value ="${row.address}"/>
+			</display:column>
+	</security:authorize>
 
 	<!-- email -->
 	<spring:message code="user.email"

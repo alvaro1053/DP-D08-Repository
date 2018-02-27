@@ -69,6 +69,10 @@
 		<li><a class="fNiv" href="user/user/list.do"><spring:message code="master.page.userList" /></a></li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('ADMIN')">
+		<li><a class="fNiv" href="user/admin/list.do"><spring:message code="master.page.userList" /></a></li>
+		</security:authorize>
+		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>

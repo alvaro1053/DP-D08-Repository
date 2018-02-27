@@ -53,6 +53,14 @@
 </jstl:if>
 </security:authorize>
 
+<security:authorize access="hasRole('ADMIN')">
+<tr>
+<td class ="left-display"> <strong> <spring:message code="user.address" /> : </strong> </td>
+<td class="right-display">  <jstl:out value="${user.address}" /> &nbsp; </td>
+</tr>
+
+</security:authorize>
+
 <tr>
 <td class ="left-display"> <strong> <spring:message code="user.email" /> : </strong> </td>
 <td class="right-display"> <jstl:out value ="${user.email}" /> &nbsp; </td>

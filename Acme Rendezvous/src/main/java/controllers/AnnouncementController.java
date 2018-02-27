@@ -53,13 +53,12 @@ public class AnnouncementController extends AbstractController {
 	public ModelAndView display(@RequestParam final int rendeId) {
 		ModelAndView result;
 		Collection<Announcement> announcements;
-		final User principal = this.userService.findByPrincipal();
+		
 
 		announcements = this.announcementService.announcementsChronological(rendeId);
 
 		result = new ModelAndView("announcement/display");
 		result.addObject("announcements", announcements);
-		result.addObject("principal", principal);
 
 		result.addObject("permisos", true);
 		return result;
