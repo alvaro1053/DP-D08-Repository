@@ -132,7 +132,8 @@ public class AnnouncementService {
 
 	public Collection<Announcement> announcementsChronologicalByUser(final int userId) {
 		Collection<Announcement> result;
-
+		
+		Assert.notNull(userId);
 		result = this.announcementRepository.announcementsChronologicalByUser(userId);
 
 		return result;

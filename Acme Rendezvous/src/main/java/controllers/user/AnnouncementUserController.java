@@ -74,18 +74,18 @@ public class AnnouncementUserController extends AbstractController {
 
 	//Display
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int userId) {
+	public ModelAndView display() {
 		ModelAndView result;
 		Collection<Announcement> announcements;
 		final User principal = this.userService.findByPrincipal();
 		Boolean permisos = false;
-		if (principal.getId() == userId)
-			permisos = true;
+		announcements = this.announcementService.announcementsChronologicalByUser(principal.getId());
 
-		announcements = this.announcementService.announcementsChronologicalByUser(userId);
+		permisos = true;
 
 		result = new ModelAndView("announcement/display");
 		result.addObject("announcements", announcements);
+		result.addObject("principal", principal);
 		result.addObject("permisos", permisos);
 		return result;
 	}

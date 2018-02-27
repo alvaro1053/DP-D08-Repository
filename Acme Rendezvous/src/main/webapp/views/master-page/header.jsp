@@ -42,8 +42,23 @@
 			<li><a class="fNiv" href="rende/user/list.do"><spring:message code="master.page.rendeList" /></a></li>
 		</security:authorize>
 		
-		
+		<security:authorize access="isAnonymous()">
 		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('ADMIN')">
+		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv"><spring:message	code="master.page.announcement" /></a>
+				<ul>
+					<li class="arrow"></li>
+						<li><a href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
+						<li><a href="announcement/user/display.do"><spring:message code="master.page.announcementListUser" /></a></li>				
+				</ul>
+			</li>
+		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.userList" /></a></li>

@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AnnouncementService;
 import services.RendeService;
+import services.UserService;
 import domain.Announcement;
+import domain.User;
 
 @Controller
 @RequestMapping("/announcement")
@@ -24,6 +26,9 @@ public class AnnouncementController extends AbstractController {
 
 	@Autowired
 	RendeService		rendeService;
+	
+	@Autowired
+	private UserService			userService;
 
 
 	//Constructor
@@ -48,11 +53,14 @@ public class AnnouncementController extends AbstractController {
 	public ModelAndView display(@RequestParam final int rendeId) {
 		ModelAndView result;
 		Collection<Announcement> announcements;
+		final User principal = this.userService.findByPrincipal();
 
 		announcements = this.announcementService.announcementsChronological(rendeId);
 
 		result = new ModelAndView("announcement/display");
 		result.addObject("announcements", announcements);
+		result.addObject("principal", principal);
+
 		result.addObject("permisos", true);
 		return result;
 	}
