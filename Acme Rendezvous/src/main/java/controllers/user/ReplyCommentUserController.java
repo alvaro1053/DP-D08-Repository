@@ -1,9 +1,11 @@
 
 package controllers.user;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +34,8 @@ public class ReplyCommentUserController extends AbstractController {
 	@Autowired
 	private CommentService		commentService;
 
+	@Autowired
+	private Validator		validator;
 
 	// Constructors
 
@@ -62,6 +66,7 @@ public class ReplyCommentUserController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(final ReplyComment replyComment, final BindingResult binding) {
 		ModelAndView result;
+		validator.validate(replyComment,binding);
 		if (binding.hasErrors())
 			result = this.createEditModelAndView(replyComment, true);
 		else

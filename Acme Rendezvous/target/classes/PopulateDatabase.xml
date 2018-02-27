@@ -727,7 +727,7 @@
 	<!-- Questions -->
 			<!-- Question 1 -->
 	<bean class="domain.Question" id="question1">
-	<property name="question" value="how could i solve my lag?" />
+	<property name="question" value="how many are you coming?" />
 	<property name="replyQuestions" >
 	<list>
 	<ref bean = "replyQuestion1"/>
@@ -738,7 +738,7 @@
 	</bean>
 			<!-- Question 2 -->
 	<bean class="domain.Question" id="question2">
-	<property name="question" value="i don't know how to turn on my router" />
+	<property name="question" value="What would you like to do?" />
 	<property name="replyQuestions" >
 	<list>
 	<ref bean = "replyQuestion2"/>
@@ -748,7 +748,7 @@
 	</bean>
 			<!-- Question 3 -->
 	<bean class="domain.Question" id="question3">
-	<property name="question" value="why can't i display +18 Rendezvouses?" />
+	<property name="question" value="How are you?" />
 	<property name="replyQuestions" >
 	<list>
 	<ref bean = "replyQuestion3"/>
@@ -771,35 +771,35 @@
 	<!-- RepliesQuestions -->
 			<!-- ReplyQuestion 1 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion1">
-	<property name="reply" value="i dunno lol" />
+	<property name="reply" value="i don't know" />
 	<property name="user" ref="user1"/>
 	<property name="question" ref="question1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 2 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion2">
-	<property name="reply" value="Just turn it on" />
+	<property name="reply" value="Have a long conversation" />
 	<property name="user" ref="user1"/>
 	<property name="question" ref="question2"/>
 	</bean>
 	
 			<!-- ReplyQuestion 3 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion3">
-	<property name="reply" value="Maybe you are under-age" />
+	<property name="reply" value="I'm fine, thanks!" />
 	<property name="user" ref="user2"/>
 	<property name="question" ref="question3"/>
 	</bean>
 	
 			<!-- ReplyQuestion 4 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion4">
-	<property name="reply" value="I search it" />
+	<property name="reply" value="We are 7" />
 	<property name="user" ref="user2"/>
 	<property name="question" ref="question1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 5 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion5">
-	<property name="reply" value="I friend on mine told me about it" />
+	<property name="reply" value="I friend on mine told me about you" />
 	<property name="user" ref="user3"/>
 	<property name="question" ref="question4"/>
 	</bean>
