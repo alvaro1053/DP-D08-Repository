@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.ActorService;
 import services.AnnouncementService;
 import services.RendeService;
-import services.UserService;
 import domain.Announcement;
-import domain.User;
 
 @Controller
 @RequestMapping("/announcement")
@@ -22,13 +21,13 @@ public class AnnouncementController extends AbstractController {
 
 	//Autowired
 	@Autowired
-	AnnouncementService	announcementService;
+	AnnouncementService		announcementService;
 
 	@Autowired
-	RendeService		rendeService;
-	
+	RendeService			rendeService;
+
 	@Autowired
-	private UserService			userService;
+	private ActorService	actorService;
 
 
 	//Constructor
@@ -53,12 +52,14 @@ public class AnnouncementController extends AbstractController {
 	public ModelAndView display(@RequestParam final int rendeId) {
 		ModelAndView result;
 		Collection<Announcement> announcements;
-		
+
+		final String uri = "";
 
 		announcements = this.announcementService.announcementsChronological(rendeId);
 
 		result = new ModelAndView("announcement/display");
 		result.addObject("announcements", announcements);
+		result.addObject("uri", uri);
 
 		result.addObject("permisos", true);
 		return result;

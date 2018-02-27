@@ -236,8 +236,8 @@
 			<!-- Rende1 -->
 		
 	<bean class="domain.Rende" id="rende1">
-	<property name="name" value="Rende 1" />
-	<property name="description" value="This is the rende 1, and its +18" />
+	<property name="name" value="Rendevous 1" />
+	<property name="description" value="This is the rendevous 1, and its +18" />
 	<property name="moment" value="2018/07/22 12:26"/>
 	<property name="picture" value="https://pbs.twimg.com/profile_images/604644048/sign051.gif"/>
 	<property name="coordenates" ref="location1"/>
@@ -288,8 +288,8 @@
 			<!-- Rende2 -->
 		
 	<bean class="domain.Rende" id="rende2">
-	<property name="name" value="Rende 2" />
-	<property name="Description" value="This is the rende 2, and its not +18" />
+	<property name="name" value="Rendevous 2" />
+	<property name="Description" value="This is the rendevous 2, and its not +18" />
 	<property name="moment" value="2018/03/27 12:26"/>
 	<property name="picture" value="https://vignette.wikia.nocookie.net/mrmen/images/5/52/Small.gif/revision/latest?cb=20100731114437"/>
 	<property name="coordenates" ref="location2"/>
@@ -340,8 +340,8 @@
 			<!-- Rende3 -->
 		
 	<bean class="domain.Rende" id="rende3">
-	<property name="name" value="Rende 3" />
-	<property name="Description" value="This is the rende 3, and its not +18" />
+	<property name="name" value="Rendevous 3" />
+	<property name="Description" value="This is the rendevous 3, and its not +18" />
 	<property name="moment" value="2018/03/12 06:22"/>
 	<property name="picture" value="https://vignette.wikia.nocookie.net/mrmen/images/5/52/Small.gif/revision/latest?cb=20100731114437"/>
 	<property name="coordenates" ref="location1"/>
@@ -387,8 +387,8 @@
 			<!-- Rende4 -->
 		
 	<bean class="domain.Rende" id="rende4">
-	<property name="name" value="Rende 4" />
-	<property name="Description" value="This is the rende 4, and its +18" />
+	<property name="name" value="Rendevous 4" />
+	<property name="Description" value="This is the rendevous 4, and its +18" />
 	<property name="moment" value="2019/01/14 18:10"/>
 	<property name="picture" value=""/>  <!-- ya que es opcional -->
 		<!-- Location NULL -->
@@ -433,8 +433,8 @@
 			<!-- Rende5 -->
 		
 	<bean class="domain.Rende" id="rende5">
-	<property name="name" value="Rende 5" />
-	<property name="Description" value="This is the rende 5, and its not +18" />
+	<property name="name" value="Rendevous 5" />
+	<property name="Description" value="This is the rendevous 5, and its not +18" />
 	<property name="moment" value="2018/07/20 11:11"/>
 	<property name="picture" value=""/>  <!-- ya que es opcional -->
 	<property name="coordenates" ref="location2"/>
@@ -727,7 +727,7 @@
 	<!-- Questions -->
 			<!-- Question 1 -->
 	<bean class="domain.Question" id="question1">
-	<property name="question" value="how could i solve my lag?" />
+	<property name="question" value="how many are you coming?" />
 	<property name="replyQuestions" >
 	<list>
 	<ref bean = "replyQuestion1"/>
@@ -738,7 +738,7 @@
 	</bean>
 			<!-- Question 2 -->
 	<bean class="domain.Question" id="question2">
-	<property name="question" value="i don't know how to turn on my router" />
+	<property name="question" value="What would you like to do?" />
 	<property name="replyQuestions" >
 	<list>
 	<ref bean = "replyQuestion2"/>
@@ -748,7 +748,7 @@
 	</bean>
 			<!-- Question 3 -->
 	<bean class="domain.Question" id="question3">
-	<property name="question" value="why can't i display +18 Rendezvouses?" />
+	<property name="question" value="How are you?" />
 	<property name="replyQuestions" >
 	<list>
 	<ref bean = "replyQuestion3"/>
@@ -771,35 +771,35 @@
 	<!-- RepliesQuestions -->
 			<!-- ReplyQuestion 1 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion1">
-	<property name="reply" value="i dunno lol" />
+	<property name="reply" value="i don't know" />
 	<property name="user" ref="user1"/>
 	<property name="question" ref="question1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 2 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion2">
-	<property name="reply" value="Just turn it on" />
+	<property name="reply" value="Have a long conversation" />
 	<property name="user" ref="user1"/>
 	<property name="question" ref="question2"/>
 	</bean>
 	
 			<!-- ReplyQuestion 3 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion3">
-	<property name="reply" value="Maybe you are under-age" />
+	<property name="reply" value="I'm fine, thanks!" />
 	<property name="user" ref="user2"/>
 	<property name="question" ref="question3"/>
 	</bean>
 	
 			<!-- ReplyQuestion 4 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion4">
-	<property name="reply" value="I search it" />
+	<property name="reply" value="We are 7" />
 	<property name="user" ref="user2"/>
 	<property name="question" ref="question1"/>
 	</bean>
 	
 			<!-- ReplyQuestion 5 -->
 	<bean class="domain.ReplyQuestion" id="replyQuestion5">
-	<property name="reply" value="I friend on mine told me about it" />
+	<property name="reply" value="I friend on mine told me about you" />
 	<property name="user" ref="user3"/>
 	<property name="question" ref="question4"/>
 	</bean>
