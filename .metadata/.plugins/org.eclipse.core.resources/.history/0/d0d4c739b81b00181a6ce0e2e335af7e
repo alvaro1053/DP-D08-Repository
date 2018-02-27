@@ -2,7 +2,6 @@
 package controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,17 +54,12 @@ public class UserRegisterController {
 			try {
 				this.userService.save(user);
 				result = new ModelAndView("redirect:../");
-			} catch (final DataIntegrityViolationException oops) {
-				binding.rejectValue("userAccount.username", "user.username.error");
-				result = this.createEditModelAndView(actorForm);
-				result.addObject("permiso", true);
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(actorForm, "user.commit.error");
 			}
 
 		return result;
 	}
-
 	protected ModelAndView createEditModelAndView(final ActorForm actorForm) {
 		ModelAndView result;
 

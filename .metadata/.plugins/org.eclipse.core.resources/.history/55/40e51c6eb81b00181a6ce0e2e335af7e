@@ -22,7 +22,7 @@ user.password.error = Las contraseñas no son las mismas
 user.check = Acepto los <a style = "color: blue" onclick="Terms()">TÉRMINOS Y CONDICIONES<a/> 
 user.passwordMiss= Las contraseñas no coinciden
 user.uncheck = ¡Debes aceptar los términos y condiciones pare registrarte!
-user.terms    =  Todo usuario registrado aceptará : 1.No usar vocabulario malsonante 2.No publicar contenido sexual 3.Por cuestiones de seguridad, no podrá modificar sus preguntas sobre un rende 4. Uso de cookies en toda la web
+user.terms    =  Todo usuario registrado aceptará : 1.No usar vocabulario malsonante 2.No publicar contenido sexual 3.Por cuestiones de seguridad, no podrá modificar sus preguntas sobre un rende
 user.display		= Mostrar usuario
 user.rendes		= Rendes
 user.showRende		= Mostrar Rende
@@ -33,5 +33,3 @@ user.question 		= Pregunta
 user.reply			= Respuesta
 user.questionAndReplies	 = Preguntas y respuestas
 user.to				= sobre el
-
-user.username.error = Ya hay un usuario con ese nombre de usuario.

@@ -56,7 +56,7 @@ public class UserRegisterController {
 				this.userService.save(user);
 				result = new ModelAndView("redirect:../");
 			} catch (final DataIntegrityViolationException oops) {
-				binding.rejectValue("userAccount.username", "user.username.error");
+				binding.rejectValue("username", "user.username.error");
 				result = this.createEditModelAndView(actorForm);
 				result.addObject("permiso", true);
 			} catch (final Throwable oops) {
