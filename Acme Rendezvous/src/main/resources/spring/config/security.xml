@@ -86,7 +86,7 @@
 
 		
 	
-		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
+
 
 		<security:form-login 
 			login-page="/security/login.do"
