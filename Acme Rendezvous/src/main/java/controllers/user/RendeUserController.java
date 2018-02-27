@@ -154,12 +154,14 @@ public class RendeUserController extends AbstractController {
 
 		rende = this.rendeService.findOne(rendeId);
 		Assert.notNull(rende);
+		Boolean isDeleted = rende.getIsDeleted();
 		rendeForm = this.rendeService.reconstructForm(rende);
 
 		permisos = principal.getId() == rende.getUser().getId();
 		result = this.createEditModelAndView(finalModeOption, rendeForm);
 
 		result.addObject("permisos", permisos);
+		result.addObject("isDeleted", isDeleted);
 
 		return result;
 	}

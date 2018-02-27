@@ -60,9 +60,15 @@
 	}
 </script>
 
+<script>
+function changeBackground(color) {
+    document.body.style.backgroundColor = color;
+}
+</script>
+
 </head>
 
-<body>
+<body onload="changeBackground('#DADFE1');">
 
 	<div>
 		<tiles:insertAttribute name="header" />

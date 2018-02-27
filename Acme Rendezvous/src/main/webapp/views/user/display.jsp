@@ -44,10 +44,22 @@
 <td class="right-display">  <jstl:out value="${user.phone}" /> &nbsp; </td>
 </tr>
 
+<security:authorize access="hasRole('USER')">
+<jstl:if test="${principal.id == user.id }">
 <tr>
 <td class ="left-display"> <strong> <spring:message code="user.address" /> : </strong> </td>
 <td class="right-display">  <jstl:out value="${user.address}" /> &nbsp; </td>
 </tr>
+</jstl:if>
+</security:authorize>
+
+<security:authorize access="hasRole('ADMIN')">
+<tr>
+<td class ="left-display"> <strong> <spring:message code="user.address" /> : </strong> </td>
+<td class="right-display">  <jstl:out value="${user.address}" /> &nbsp; </td>
+</tr>
+
+</security:authorize>
 
 <tr>
 <td class ="left-display"> <strong> <spring:message code="user.email" /> : </strong> </td>

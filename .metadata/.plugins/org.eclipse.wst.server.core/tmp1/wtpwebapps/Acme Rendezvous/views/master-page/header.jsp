@@ -13,6 +13,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
+
 <div>
 	<a href="/Acme-Rendezvous"><img src="images/logo.png" alt="Sample Co., Inc." /></a>
 </div>
@@ -24,18 +25,8 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="administrator/action-1.do"><spring:message code="master.page.administrator.action.1" /></a></li>
-					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>		
-				</ul>
-			</li>
-		</security:authorize>
-		
-		<security:authorize access="hasRole('CUSTOMER')">
-			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="customer/action-1.do"><spring:message code="master.page.customer.action.1" /></a></li>
-					<li><a href="customer/action-2.do"><spring:message code="master.page.customer.action.2" /></a></li>					
+					<li><a href="dashboard/admin/display.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
+						
 				</ul>
 			</li>
 		</security:authorize>
@@ -46,15 +37,29 @@
 		
 		<security:authorize access="hasRole('ADMIN')">
 		<li><a class="fNiv" href="rende/admin/list.do"><spring:message code="master.page.rendeList" /></a></li>
-		<li><a class="fNiv" href="dashboard/admin/display.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('USER')">
 			<li><a class="fNiv" href="rende/user/list.do"><spring:message code="master.page.rendeList" /></a></li>
 		</security:authorize>
 		
-		
+		<security:authorize access="isAnonymous()">
 		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('ADMIN')">
+		<li><a class="fNiv" href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv"><spring:message	code="master.page.announcement" /></a>
+				<ul>
+					<li class="arrow"></li>
+						<li><a href="announcement/list.do"><spring:message code="master.page.announcementList" /></a></li>
+						<li><a href="announcement/user/display.do"><spring:message code="master.page.announcementListUser" /></a></li>				
+				</ul>
+			</li>
+		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
 		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.userList" /></a></li>
